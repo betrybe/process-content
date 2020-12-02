@@ -9,7 +9,7 @@ async function run() {
 
     const path = core.getInput('storagePath', { required: true });
 
-    const arrayOfChapters =  buildChapters(path)
+    buildChapters(path)
 
 
   } catch (error) {

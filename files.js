@@ -73,7 +73,6 @@ const getBuildChapterObj = (type, commitId, rawContent, chapter) => {
   }
 }
 
-
 const sanitizeExtension = (file) => {
   return file.replace(/\.[^/.]+$/, "");
 };
@@ -99,5 +98,11 @@ const buildChapters = async (path) => {
 }
 
 module.exports = {
-  buildChapters
+  buildChapters,
+  getFiles,
+  groupFiles,
+  getCommitId,
+  getRawContent,
+  extractFileData,
+  getBuildChapterObj
 }
