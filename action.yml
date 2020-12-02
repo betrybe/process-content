@@ -1,13 +1,15 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Process Content"
+description: "Processes new content to be created on Trybe"
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  token:
+    description: "The GitHub token to use for checkout on git"
     required: true
-    default: '1000'
+  path:
+    description: "The directory path of files to be processed"
+    required: true
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  result:
+    description: "The message to output"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"

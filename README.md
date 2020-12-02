@@ -1,14 +1,41 @@
-# Create a JavaScript Action
-
 <p align="center">
-  <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>
+  <a href="https://github.com/betrybe/process-content/actions"><img alt="javscript-action status" src="https://github.com/betrybe/process-content/workflows/units-test/badge.svg"></a>
 </p>
 
-Use this template to bootstrap the creation of a JavaScript action.:rocket:
+# GitHub Action: Download files from PR
 
-This template includes tests, linting, a validation workflow, publishing, and versioning guidance.
+A GitHub action that download modified files from specific _Pull Request_.
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+## Example usage
+
+```yaml
+steps:
+  - name: Download files from PR
+    uses: betrybe/download-files-from-pr-action@master
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      path: 'priv/markdown_templates/content'
+```
+
+## Inputs
+
+This action accepts the following configuration parameters via `with:`
+
+- `path`
+
+  **Required**
+
+  The directory path of files to be processed
+
+## Outputs
+
+- `result`
+
+  If a new version was createad or not by the action
+
+  ```json
+  {"ok": true, "status": 200}
+  ```
 
 ## Create an action from this template
 
