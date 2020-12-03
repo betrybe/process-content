@@ -56,7 +56,7 @@ describe('Files', () => {
   });
 });
 
-describe('tiit', () => {
+describe('Extracts yaml and markdown file commit and blob', () => {
   beforeAll((done) => {
     exec
       .mockImplementationOnce((command, callback) => callback(null, { stdout: 'd9771871c0cadc48e3d4141f93004b9c25d7201a' }))
