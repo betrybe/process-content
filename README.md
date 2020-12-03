@@ -7,7 +7,6 @@
 A GitHub action that download modified files from specific _Pull Request_.
 
 ## Example usage
-
 ```yaml
 steps:
   - name: Download files from PR
@@ -26,6 +25,20 @@ This action accepts the following configuration parameters via `with:`
   **Required**
 
   The directory path of files to be processed
+
+- `apiKey`
+
+  **Required**
+
+  The Key for access on Trybe Api
+
+
+- `apiUrl`
+
+  **Required**
+
+  Trybe Application env URL to access
+
 
 ## Outputs
 

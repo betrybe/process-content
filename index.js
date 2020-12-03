@@ -7,9 +7,16 @@ async function run() {
   try {
     core.info('Tryhard Action Rolling')
 
-    const path = core.getInput('storagePath', { required: true });
+    const apiKey = core.getInput('apiKey', { required: true });
+    const apiURL = core.getInput('apiUrl', { required: true });
+    const filesPath = core.getInput('path', { required: true });
 
-    buildChapters(path)
+    const arrayOfChapters = buildChapters(path);
+
+    
+    //@Todo: disparar criação de capitulos via service.js
+
+    //@Todo: disparar criação de versão via service.js
 
 
   } catch (error) {

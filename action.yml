@@ -1,9 +1,12 @@
 name: "Process Content"
 description: "Processes new content to be created on Trybe"
 inputs:
-  token:
-    description: "The GitHub token to use for checkout on git"
+  apiKey:
+    description: "The Key for access on Trybe Api"
     required: true
+  apiUrl:
+    description: "Trybe Application env URL to access"
+    required: true 
   path:
     description: "The directory path of files to be processed"
     required: true
