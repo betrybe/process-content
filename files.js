@@ -1,5 +1,6 @@
 const util = require('util');
-const bashExec = util.promisify(require("child_process").exec);
+const { exec } = require("child_process")
+const bashExec = util.promisify(exec);
 
 const getFiles = async (path) => {
   const { stdout, stderr } = await bashExec(`git ls-files ${path}`);
@@ -50,6 +51,7 @@ const getRawContent = async (commitId, path) => {
 }
 
 const extractFileData = async (chapterObj) => {
+  console.log(Object.entries(chapterObj))
   for (const [type, path] of Object.entries(chapterObj)) {
     const commitId = await getCommitId(path);
     const rawContent = await getRawContent(commitId, path);
