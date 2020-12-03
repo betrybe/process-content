@@ -1,4 +1,4 @@
-name: "units-test"
+name: "Automated Tests"
 on:
   pull_request:
   push:
@@ -14,10 +14,8 @@ jobs:
       - uses: actions/setup-node@v1.4.4
         with:
           node-version: '12'
-      - name: ESLint
-        uses: betrybe/eslint-linter-action@v2.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: run eslint
+        run: npx eslint .
 
   units:
     runs-on: ubuntu-latest
