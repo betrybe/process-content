@@ -4,10 +4,10 @@
   "description": "JavaScript Action Template",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js",
+    "lint": "eslint --no-inline-config --ext .js,.jsx --no-error-on-unmatched-pattern -c .eslintrc.json ",
     "package": "ncc build index.js -o dist",
-    "test": "eslint index.js && jest",
-    "test:watch": "eslint index.js && jest --watchAll"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
     "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "jest": "^26.1.0"
   }
 }

@@ -7,15 +7,24 @@ on:
       - 'releases/*'
 
 jobs:
-  # unit tests
+  eslint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: '12'
+      - name: ESLint
+        uses: betrybe/eslint-linter-action@v2.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
   units:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: npm ci
     - run: npm test
 
-  # test action works running from the graph
   test:
     runs-on: ubuntu-latest
     steps:

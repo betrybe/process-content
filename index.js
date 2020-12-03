@@ -1,11 +1,11 @@
 const core = require('@actions/core');
 const {
-  buildChapters
-} = require('./main')
+  buildChapters,
+} = require('./files');
 
 async function run() {
   try {
-    core.info('Tryhard Action Rolling')
+    core.info('Tryhard Action Rolling');
 
     const apiKey = core.getInput('apiKey', { required: true });
     const apiURL = core.getInput('apiUrl', { required: true });
@@ -13,12 +13,9 @@ async function run() {
 
     const arrayOfChapters = buildChapters(path);
 
-    
-    //@Todo: disparar criação de capitulos via service.js
+    // @Todo: disparar criação de capitulos via service.js
 
-    //@Todo: disparar criação de versão via service.js
-
-
+    // @Todo: disparar criação de versão via service.js
   } catch (error) {
     core.setFailed(error.message);
   }
