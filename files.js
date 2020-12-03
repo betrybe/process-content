@@ -51,7 +51,6 @@ const getRawContent = async (commitId, path) => {
 }
 
 const extractFileData = async (chapterObj) => {
-  console.log(Object.entries(chapterObj))
   for (const [type, path] of Object.entries(chapterObj)) {
     const commitId = await getCommitId(path);
     const rawContent = await getRawContent(commitId, path);
