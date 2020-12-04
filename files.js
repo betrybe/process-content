@@ -1,6 +1,6 @@
+const core = require('@actions/core');
 const util = require('util');
 const { exec } = require('child_process');
-const core = require('@actions/core');
 
 const bashExec = util.promisify(exec);
 
@@ -8,42 +8,28 @@ const sanitizeExtension = (file) => file.replace(/\.[^/.]+$/, '');
 
 const getExtension = (file) => file.split('.').pop();
 
-const verifyFiles = (file1, file2) => sanitizeExtension(file1).includes(sanitizeExtension(file2))
-    && getExtension(file1) !== getExtension(file2);
+const verifyFileMatching = (file1, file2) =>
+  sanitizeExtension(file1).includes(sanitizeExtension(file2))
+  && getExtension(file1) !== getExtension(file2);
+
+const sanitizeFilesArray = (fileArray) =>
+  fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '');
 
 const getFiles = async (path) => {
   const { stdout, stderr } = await bashExec(`git ls-files ${path}`);
 
-  if (stderr) return core.info('Couldn\'t getFiles because: ', stderr);
+  if (stderr) return core.info('Error at getFiles because: ', stderr);
 
-  const arrayOfFiles = stdout.split('\n');
+  const arrayOfFiles = sanitizeFilesArray(stdout);
 
   return arrayOfFiles;
-};
-
-const groupFiles = (filesArr) => {
-  const newArr = [];
-  filesArr.reduce((acc, curr) => {
-    if (!acc) return curr;
-
-    const filesMatch = verifyFiles(acc, curr);
-
-    if (filesMatch) {
-      newArr.push({
-        markdown: acc,
-        yaml: curr,
-      });
-    }
-  });
-
-  return newArr;
 };
 
 const getCommitId = async (path) => {
   const { stdout, stderr } = await bashExec(`git log -n 1 --pretty=format:%H -- ${path}`);
 
   if (stderr) {
-    return console.log('Couldn\`t getCommitIds because: ', stderr);
+    return console.log('Error at getCommitIds because: ', stderr);
   }
 
   return stdout;
@@ -53,46 +39,59 @@ const getRawContent = async (commitId, path) => {
   const { stdout, stderr } = await bashExec(`git cat-file -p ${commitId}:${path}`);
 
   if (stderr) {
-    return console.log('Couldn\`t getRawContent because:: ', stderr);
+    return console.log('Error at getRawContent because:: ', stderr);
   }
 
   return stdout;
 };
 
-const getBuildChapterObj = (type, commitId, rawContent, chapter) => {
-  if (type === 'markdown') {
-    return {
-      ...chapter,
-      markdown_commit_id: commitId,
-      content_md: rawContent,
-    };
-  }
+const buildChapterObj = async (chapterObj) => {
+  const { markdownPath, yamlPath } = chapterObj;
+
+  const markdownCommitId = await getCommitId(markdownPath);
+
+  const yamlCommitId = await getCommitId(yamlPath);
+
+  const contentMd = await getRawContent(markdownCommitId, markdownPath);
+
+  const contentYaml = await getRawContent(yamlCommitId, yamlPath);
+
   return {
-    ...chapter,
-    yaml_commit_id: commitId,
-    content_yaml: rawContent,
+    ...chapterObj,
+    markdownCommitId,
+    yamlCommitId,
+    contentMd,
+    contentYaml,
   };
 };
 
-const extractFileData = async (chapterObj) => {
-  const chapterObjEntriesArray = Object.entries(chapterObj);
+const groupFiles = (filesArr) => {
+  return filesArr.reduce((acc, curr, index, array) => {
+    if (index === array.length) return acc;
 
-  for (const objEntries of chapterObjEntriesArray) {
-    const [type, path] = objEntries;
-    const commitId = await getCommitId(path);
-    const rawContent = await getRawContent(commitId, path);
-    return getBuildChapterObj(type, commitId, rawContent, chapterObj);
-  }
-};
+    if (getExtension(curr).includes('yaml')) return acc;
+
+    const filesMatch = verifyFileMatching(curr, array[index + 1]);
+
+    if (filesMatch) {
+      const markdownPath = curr;
+      const yamlPath = array[index + 1];
+
+      return [...acc, { markdownPath, yamlPath }];
+    }
+
+    return acc;
+  }, [])
+}
 
 const buildChapters = async (path) => {
   const arrayOfFiles = await getFiles(path);
 
-  const groupedChapters = groupFiles(arrayOfFiles);
+  const chapterArrayOfObj = groupFiles(arrayOfFiles);
 
-  return Promise.all(
-    groupedChapters.map((chapterObj) => extractFileData(chapterObj)),
-  );
+  return await Promise.all(
+    chapterArrayOfObj.map(chapterObj => buildChapterObj(chapterObj))
+  )
 };
 
 module.exports = {
@@ -101,6 +100,5 @@ module.exports = {
   groupFiles,
   getCommitId,
   getRawContent,
-  extractFileData,
-  getBuildChapterObj,
+  buildChapterObj,
 };

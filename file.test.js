@@ -33,8 +33,8 @@ describe('Files', () => {
 
     expect(typeof groupedFiles).toBe('object');
     expect(groupedFiles).toHaveLength(1);
-    expect(groupedFiles[0]).toHaveProperty('markdown', filesArray[0]);
-    expect(groupedFiles[0]).toHaveProperty('yaml', filesArray[1]);
+    expect(groupedFiles[0]).toHaveProperty('markdownPath', filesArray[0]);
+    expect(groupedFiles[0]).toHaveProperty('yamlPath', filesArray[1]);
   });
 
   test('Gets last commit id from a given file path', async () => {
@@ -59,31 +59,33 @@ describe('Files', () => {
 describe('Extracts yaml and markdown file commit and blob', () => {
   beforeAll((done) => {
     exec
-      .mockImplementationOnce((command, callback) => callback(null, { stdout: 'd9771871c0cadc48e3d4141f93004b9c25d7201a' }))
-      .mockImplementationOnce((command, callback) => callback(null, { stdout: rawMarkdownContent }))
-      .mockImplementationOnce((command, callback) => callback(null, { stdout: 'd9771871c0cadc48e3d4141f93004b9c25d7201a' }))
-      .mockImplementationOnce((command, callback) => callback(null, { stdout: rawYamlContent }));
+    .mockImplementation((command, callback) => callback(null, { stdout: 'd9771871c0cadc48e3d4141f93004b9c25d7201a' }))
+    .mockImplementationOnce((command, callback) => callback(null, { stdout: rawMarkdownContent }))
+    // .mockImplementationOnce((command, callback) => callback(null, { stdout: 'd9771871c0cadc48e3d4141f93004b9c25d7201a' }))
+    // .mockImplementationOnce((command, callback) => callback(null, { stdout: rawYamlContent }));
 
     setTimeout(done, 0);
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    // jest.clearAllMocks();
     jest.resetAllMocks();
   });
 
   test('Returns chapter Obj to Given', async () => {
     const chapterPaths = {
-      markdown: 'priv/markdown_templates/content/back-end/sql/table-management/_index.html.md',
-      yaml: 'priv/markdown_templates/content/back-end/sql/table-management/_index.yaml',
+      markdownPath: 'priv/markdown_templates/content/back-end/sql/table-management/_index.html.md',
+      yamlPath: 'priv/markdown_templates/content/back-end/sql/table-management/_index.yaml',
     };
 
-    const chapterObj = await files.extractFileData(chapterPaths);
+    const chapterObj = await files.buildChapterObj(chapterPaths);
 
     expect(typeof chapterObj).toBe('object');
-    expect(chapterObj).toHaveProperty('markdown', chapterPaths.markdown);
-    expect(chapterObj).toHaveProperty('yaml', chapterPaths.yaml);
-    expect(chapterObj).toHaveProperty('markdown_commit_id', 'd9771871c0cadc48e3d4141f93004b9c25d7201a');
-    expect(chapterObj).toHaveProperty('content_md', rawMarkdownContent);
+    expect(chapterObj).toHaveProperty('markdownPath', chapterPaths.markdownPath);
+    expect(chapterObj).toHaveProperty('yamlPath', chapterPaths.yamlPath);
+    expect(chapterObj).toHaveProperty('markdownCommitId', 'd9771871c0cadc48e3d4141f93004b9c25d7201a');
+    expect(chapterObj).toHaveProperty('yamlCommitId', 'd9771871c0cadc48e3d4141f93004b9c25d7201a');
+    // expect(chapterObj).toHaveProperty('contentMd', rawMarkdownContent);
+    // expect(chapterObj).toHaveProperty('yamlMd', rawYamlContent);
   });
 });
