@@ -16,7 +16,7 @@ const getCommitId = async (path) => {
   const { stdout, stderr } = await bashExec(`git log -n 1 --pretty=format:%H -- ${path}`);
 
   if (stderr) {
-    return console.log('Error at getCommitIds because: ', stderr);
+    return core.info('Error at getCommitIds because: ', stderr);
   }
 
   return stdout;
@@ -26,7 +26,7 @@ const getBlobContent = async (commitId, path) => {
   const { stdout, stderr } = await bashExec(`git cat-file -p ${commitId}:${path}`);
 
   if (stderr) {
-    return console.log('Error at getRawContent because:: ', stderr);
+    return core.info('Error at getRawContent because:: ', stderr);
   }
 
   return stdout;
