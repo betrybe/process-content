@@ -7,7 +7,7 @@ inputs:
   apiUrl:
     description: "Trybe Application env URL to access"
     required: true 
-  path:
+  dirPath:
     description: "The directory path of files to be processed"
     required: true
 outputs:

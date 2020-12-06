@@ -13,7 +13,7 @@ async function run() {
 
     const apiKey = core.getInput('apiKey') || process.env.API_KEY;
     const apiURL = core.getInput('apiUrl') || process.env.API_URL;
-    const filesPath = core.getInput('path') || process.env.FILES_PATH;
+    const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
 
     const arrayOfChapters = await buildChapters(filesPath);
     // @Todo: disparar criação de capitulos via service.js
