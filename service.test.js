@@ -1,5 +1,6 @@
 const axios = require('axios');
 const service = require('./service');
+require('dotenv').config();
 
 jest.mock('axios');
 
@@ -14,6 +15,9 @@ describe('Create Version', () => {
     jest.resetAllMocks();
   });
 
+  const apiURL = process.env.API_URL;
+  const apiKEY = process.env.API_KEY;
+
   test('creates one version sucessfully', async () => {
     const returnData = {
       data: '',
@@ -26,18 +30,9 @@ describe('Create Version', () => {
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
-    const config = {
-      headers: { 'X-api-content-key': 'esse-aqui-eh-u-certo' },
-    };
-
     axios.post.mockReturnValue(Promise.resolve(returnData));
-    await expect(service.createVersion('dummy.url.dot', versionObj, config)).resolves.toEqual(returnData);
+    await expect(service.createVersion(apiURL, versionObj, apiKEY)).resolves.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith(
-      'dummy.url.dot/api/content/version/release',
-      versionObj,
-      config,
-    );
   });
 
   test('version couldn`t be created ', async () => {
@@ -52,18 +47,9 @@ describe('Create Version', () => {
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
-    const config = {
-      headers: { 'X-api-content-key': 'esse-aqui-eh-u-certo' },
-    };
-
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion('dummy.url.dot', versionObj, config)).rejects.toEqual(returnData);
+    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith(
-      'dummy.url.dot/api/content/version/release',
-      versionObj,
-      config,
-    );
   });
 
   test('version timestamp format is incorrect', async () => {
@@ -78,18 +64,9 @@ describe('Create Version', () => {
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
-    const config = {
-      headers: { 'X-api-content-key': 'esse-aqui-eh-u-certo' },
-    };
-
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion('dummy.url.dot', versionObj, config)).rejects.toEqual(returnData);
+    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith(
-      'dummy.url.dot/api/content/version/release',
-      versionObj,
-      config,
-    );
   });
 
   test('version has been already released', async () => {
@@ -104,18 +81,9 @@ describe('Create Version', () => {
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
-    const config = {
-      headers: { 'X-api-content-key': 'esse-aqui-eh-u-certo' },
-    };
-
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion('dummy.url.dot', versionObj, config)).rejects.toEqual(returnData);
+    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith(
-      'dummy.url.dot/api/content/version/release',
-      versionObj,
-      config,
-    );
   });
 
   test('returns invalid api token if not authorized', async () => {
@@ -127,17 +95,8 @@ describe('Create Version', () => {
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
-    const config = {
-      headers: { 'X-api-content-key': 'covid-19-aqui-nao' },
-    };
-
     axios.post.mockReturnValue(Promise.reject(data));
-    await expect(service.createVersion('dummy.url.dot', versionObj, config)).rejects.toEqual(data);
+    await expect(service.createVersion(apiURL, versionObj, 'wrongkeybru')).rejects.toEqual(data);
     expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith(
-      'dummy.url.dot/api/content/version/release',
-      versionObj,
-      config,
-    );
   });
 });

@@ -1,8 +1,6 @@
 const axios = require('axios');
 
-const createChapters = async (url, arrayOfChapters) => Promise.all(
-  arrayOfChapters.map((chapter) => createOneChapter(url, chapter)),
-);
+const configHeaders = (apiKey) => ({ headers: { 'X-api-content-key': apiKey } });
 
 const createOneChapter = (apiUrl, body, config) => {
   const url = `${apiUrl}/api/content/chapter`;
@@ -10,14 +8,18 @@ const createOneChapter = (apiUrl, body, config) => {
   return axios.post(url, body, config);
 };
 
+const createChapters = async (arrayOfChapters, apiUrl, apiKey) => {
+  const headerObj = configHeaders(apiKey);
+
+  return Promise.all(
+    arrayOfChapters.map((chapter) => createOneChapter(apiUrl, chapter, headerObj)),
+  );
+};
+
 const createVersion = async (apiUrl, body, config) => {
   const url = `${apiUrl}/api/content/version/release`;
 
   return axios.post(url, body, config);
-};
-
-const config = {
-  headers: { 'X-api-content-key': 'teste_api_content_key_agora_vai_foguete_tem_re_sim-preview-staging' },
 };
 
 module.exports = {
