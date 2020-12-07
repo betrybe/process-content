@@ -4,8 +4,11 @@ inputs:
   apiKey:
     description: "The Key for access on Trybe Api"
     required: true
-  apiUrl:
-    description: "Trybe Application env URL to access"
+  chapterApiURL:
+    description: "Trybe Application Chapter env URL to access"
+    required: true 
+  versionApiURL:
+    description: "Trybe Application Version env URL to access"
     required: true 
   dirPath:
     description: "The directory path of files to be processed"
