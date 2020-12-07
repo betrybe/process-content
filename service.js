@@ -2,9 +2,7 @@ const axios = require('axios');
 
 const configHeaders = (apiKey) => ({ headers: { 'X-api-content-key': apiKey } });
 
-const createOneChapter = (apiUrl, body, config) => {
-  return axios.post(apiUrl, body, config);
-};
+const createOneChapter = (apiUrl, body, config) => axios.post(apiUrl, body, config);
 
 const createChapters = async (arrayOfChapters, apiUrl, apiKey) => {
   const headerObj = configHeaders(apiKey);
@@ -14,9 +12,7 @@ const createChapters = async (arrayOfChapters, apiUrl, apiKey) => {
   );
 };
 
-const createVersion = async (apiUrl, body, config) => {
-  return axios.post(apiUrl, body, config);
-};
+const createVersion = async (apiUrl, body, config) => axios.post(apiUrl, body, config);
 
 module.exports = {
   createChapters,

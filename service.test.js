@@ -37,7 +37,8 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.resolve(returnData));
-    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).resolves.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY))
+      .resolves.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -54,7 +55,8 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY))
+      .rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -71,7 +73,8 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY))
+      .rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -88,7 +91,8 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY))
+      .rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 

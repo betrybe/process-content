@@ -36,5 +36,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         dirPath: ${{ secrets.FILES_PATH}}
-        apiKey: ${{ secrets.TRYBE_API_KEY}}
-        apiUrl:  ${{ secrets.TRYBE_API_URL}}
+        apiKey: ${{ secrets.CONTENT_API_KEY}}
+        chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
+        versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}
