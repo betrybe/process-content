@@ -154,7 +154,7 @@ async function run() {
     const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
 
     const arrayOfChapters = await buildChapters(filesPath);
-
+    console.log(arrayOfChapters);
     // @Todo: disparar criação de capitulos via service.js
     const chapterIds = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
 
