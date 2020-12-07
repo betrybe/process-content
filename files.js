@@ -40,21 +40,21 @@ const buildChapterObj = async (chapterObj) => {
   };
 };
 
-const groupFiles = (filesArr) => filesArr.reduce((acc, curr, index, array) => {
-  if (index === array.length) return acc;
+const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, index, array) => {
+  if (index === array.length) return groupedFiles;
 
-  if (getExtension(curr).includes('yaml')) return acc;
+  if (getExtension(currentPath).includes('yaml')) return groupedFiles;
 
-  const filesMatch = verifyFileMatching(curr, array[index + 1]);
+  const filesMatch = verifyFileMatching(currentPath, array[index + 1]);
 
   if (filesMatch) {
-    const markdownPath = curr;
+    const markdownPath = currentPath;
     const yamlPath = array[index + 1];
 
-    return [...acc, { markdownPath, yamlPath }];
+    return [...groupedFiles, { markdownPath, yamlPath }];
   }
 
-  return acc;
+  return groupedFiles;
 }, []);
 
 const buildChapters = async (path) => {
