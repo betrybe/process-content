@@ -1,10 +1,16 @@
+require('dotenv').config();
 const axios = require('axios');
 const service = require('./service');
-require('dotenv').config();
 
 jest.mock('axios');
 
 describe('Create Chapters', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+  const chapterApiURL = process.env.CONTENT_CHAPTER_API_URL;
+  const apiKEY = process.env.API_KEY;
+
   test('creates one chapter sucessfully', async () => {
 
   });
@@ -15,7 +21,7 @@ describe('Create Version', () => {
     jest.resetAllMocks();
   });
 
-  const apiURL = process.env.API_URL;
+  const versionApiURL = process.env.CONTENT_VERSION_API_URL;
   const apiKEY = process.env.API_KEY;
 
   test('creates one version sucessfully', async () => {
@@ -31,7 +37,7 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.resolve(returnData));
-    await expect(service.createVersion(apiURL, versionObj, apiKEY)).resolves.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).resolves.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -48,7 +54,7 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -65,7 +71,7 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -82,7 +88,7 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(returnData));
-    await expect(service.createVersion(apiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
+    await expect(service.createVersion(versionApiURL, versionObj, apiKEY)).rejects.toEqual(returnData);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
@@ -96,7 +102,7 @@ describe('Create Version', () => {
     };
 
     axios.post.mockReturnValue(Promise.reject(data));
-    await expect(service.createVersion(apiURL, versionObj, 'wrongkeybru')).rejects.toEqual(data);
+    await expect(service.createVersion(versionApiURL, versionObj, 'wrongkeybru')).rejects.toEqual(data);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 });
