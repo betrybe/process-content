@@ -35,7 +35,7 @@ jobs:
     - uses: ./
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        dirPath: ${{ secrets.FILES_PATH}}
+        dirPath: priv/markdown_templates/content
         apiKey: ${{ secrets.CONTENT_API_KEY}}
         chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
         versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}
