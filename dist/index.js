@@ -159,6 +159,8 @@ async function run() {
     const chapterIds = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
 
     // @Todo: disparar criação de versão via service.js
+
+    core.setOutput('result', Buffer.from(arrayOfChapters.join(',')).toString('base64'));
   } catch (error) {
     core.setFailed(error.message);
   }
