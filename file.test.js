@@ -1,11 +1,16 @@
+const fs = require('fs');
 const files = require('./files');
 const gitCommands = require('./git');
-const { rawYamlContent, rawMarkdownContent } = require('./__mocks__/files');
 
 jest.mock('./git');
 
+const readMockFile = (path) => fs.readFileSync(path, 'utf8');
+
 describe('Files', () => {
   afterEach(() => jest.resetAllMocks());
+
+  const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
+  const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.yaml');
 
   test('Groups matching yaml and md files', async () => {
     const filesArray = [
@@ -25,7 +30,7 @@ describe('Files', () => {
     gitCommands.getCommitId.mockResolvedValue('d9771871c0cadc48e3d4141f93004b9c25d7201a');
     gitCommands.getBlobContent.mockResolvedValue(rawMarkdownContent);
 
-    const fileInfo = await files.extractFileInfo('priv/markdown_templates/content/back-end/sql/table-management/_index.html.md');
+    const fileInfo = await files.extractFileInfo('/priv/markdown_templates/content/back-end/sql/_index.html.md');
 
     expect(typeof fileInfo).toBe('object');
     expect(gitCommands.getCommitId).toHaveBeenCalledTimes(1);
