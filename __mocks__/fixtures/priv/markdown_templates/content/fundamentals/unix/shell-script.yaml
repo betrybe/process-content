@@ -1,0 +1,13 @@
+---
+block: unix-bash-e-shell-script
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "Shell Script"
+date: 2019-08-22
+weight: 6
+week: 1
+day: 5
+draft: true
+course: true
+---

@@ -1,0 +1,12 @@
+---
+block: introducao-ao-nodejs
+module: back-end
+category: introduction
+type: hard_skill
+title: "Intro - NodeJS"
+date: 2020-01-28
+weight: 108
+week: 26
+day: 1
+course: true
+---

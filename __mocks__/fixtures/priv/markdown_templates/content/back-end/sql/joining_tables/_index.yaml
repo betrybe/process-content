@@ -1,0 +1,12 @@
+---
+block: funcoes-sql-joins-e-subqueries
+module: back-end
+category: chapter
+type: hard_skill
+title: "Descomplicando JOINs e UNIONs"
+date: 2020-01-29
+weight: 91
+week: 21
+day: 2
+course: true
+---
