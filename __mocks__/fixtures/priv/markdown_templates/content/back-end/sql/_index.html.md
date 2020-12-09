@@ -1,19 +1,3 @@
-const lsFiles = 'priv/markdown_templates/content/back-end/sql/table-management/_index.html.md\npriv/markdown_templates/content/back-end/sql/table-management/_index.yaml';
-
-const rawYamlContent = `---
-block: introducao-a-sql
-module: back-end
-category: chapter
-type: hard_skill
-title: "Manipulando tabelas"
-date: 2020-01-11
-weight: 88
-week: 20
-day: 4
-course: true
----% `;
-
-const rawMarkdownContent = `
 ## O que vamos aprender?
 
 > **He who controls information controls the world - Stephen Franklin**
@@ -49,10 +33,3 @@ O conteúdo será abordado da seguinte forma:
 ## Vamos começar!
 
 <%= next_button(@conn) %>
-`;
-
-module.exports = {
-  lsFiles,
-  rawYamlContent,
-  rawMarkdownContent,
-};

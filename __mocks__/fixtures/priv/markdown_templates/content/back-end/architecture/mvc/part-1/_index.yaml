@@ -1,0 +1,12 @@
+---
+block: nodejs-http-e-introducao-a-arquitetura-mvc
+module: back-end
+category: chapter
+type: hard_skill
+title: "Arquitetura de Software - Introdução ao MVC"
+date: 2020-04-20
+weight: 114
+week: 26
+day: 6
+course: true
+---

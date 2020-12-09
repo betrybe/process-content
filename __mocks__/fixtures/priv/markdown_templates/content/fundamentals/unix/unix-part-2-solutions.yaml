@@ -1,0 +1,12 @@
+---
+block: unix-bash-e-shell-script
+module: fundamentals
+category: solutions
+type: hard_skill
+title: "Unix & Bash - Parte 2"
+date: 2019-08-21
+weight: 5
+week: 1
+day: 4
+course: true
+---
