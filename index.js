@@ -1,18 +1,27 @@
+require('dotenv').config();
 const core = require('@actions/core');
-const wait = require('./wait');
+const {
+  buildChapters,
+} = require('./files');
+const {
+  createChapters,
+} = require('./service');
 
-
-// most @actions toolkit packages have async methods
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    core.info(`Waiting ${ms} milliseconds ...`);
+    core.info('Tryhard Action Rolling');
 
-    core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-    await wait(parseInt(ms));
-    core.info((new Date()).toTimeString());
+    const apiKey = core.getInput('apiKey') || process.env.CONTENT_API_KEY;
+    const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
+    const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
+    const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
 
-    core.setOutput('time', new Date().toTimeString());
+    const arrayOfChapters = await buildChapters(filesPath);
+    console.log(arrayOfChapters);
+    // @Todo: disparar criação de capitulos via service.js
+    const chapterIds = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
+
+    // @Todo: disparar criação de versão via service.js
   } catch (error) {
     core.setFailed(error.message);
   }

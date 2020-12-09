@@ -1,0 +1,12 @@
+---
+block: introducao-a-sql
+module: back-end
+category: module_introduction
+type: hard_skill
+title: "Introdução - Back-end"
+date: 2019-12-23
+weight: 82
+week: 20
+day: 1
+course: true
+---

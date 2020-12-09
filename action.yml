@@ -1,13 +1,21 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Process Content"
+description: "Processes new content to be created on Trybe"
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  apiKey:
+    description: "The Key for access on Trybe Api"
     required: true
-    default: '1000'
+  chapterApiURL:
+    description: "Trybe Application Chapter env URL to access"
+    required: true 
+  versionApiURL:
+    description: "Trybe Application Version env URL to access"
+    required: true 
+  dirPath:
+    description: "The directory path of files to be processed"
+    required: true
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  result:
+    description: "The message to output"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"

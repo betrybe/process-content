@@ -1,0 +1,12 @@
+## Flexibilizando Ideias
+
+Uma das grandes questões que nos prende em processo de inovação é com relação à flexibilização de ideias. Para inovar, por mais que não se crie nada do zero, é interessante entender o histórico de referências para as soluções propostas. Por exemplo, se estamos desenvolvendo um aplicativo de entrega de comidas, a chance de repetir o mesmo produto que uma empresa que já trabalhe com isso é muito grande. Inclusive, é bem comum ouvir dentro das empresas de tecnologia "tipo o Uber para isso...", não é? Claro que as referências são bem-vindas, é desta forma que construímos nosso conhecimento. Contudo, temos que ir além do existente para poder atender muitas vezes um novo público com demandas diferentes e principalmente idear algo que tenha originalidade.
+
+O pensamento divergente se baseia exatamente nesta questão e é um processo muito comum em algumas metodologias de criação inovadoras e em sistemas de Brainstorm (chuvas de ideias). Este tipo de pensamento é comum para trazer ideias que extrapolam o senso comum de solução de um problema, por exemplo, e gerem a maior quantidade de soluções possíveis. Ela parte do princípio da liberdade de pensar e não-linearidade, ou seja, ela evita os julgamentos, o erro e o soar absurdo. As avaliações sobre viabilidade das ideias vêm em um processo posterior de convergência.
+
+Exercícios de Brainstorm são muito favoráveis para exercitar o cérebro e existem alguns que podem ser ótimos para ir treinando em casa. David Kelley, criador da IDEO e energizador da metodologia Design Thinking comenta no livro "Confiança Criativa" (Editora: HSM), sobre o exercício dos 30 círculos: você tem que gerar o maior número de ideias que conseguir desenhar em um círculo (desenhar é um importante exercício para eliminar barreiras criativas, já que muitos de nós temos o desenho como a primeira barreira de julgamento e o julgamento inibe a inovação).
+
+## Recursos adicionais:
+
+- [The Deep by PES](https://www.youtube.com/watch?v=AK18bdUEWSs) {: .external-link target="_blank" rel="noreferrer noopener" }
+- Você pode ver mais sobre o exercício dos 30 círculos [no minuto 09:45 do TED onde Tim Brown (CEO da IDEO)](https://www.youtube.com/watch?v=AK18bdUEWSs) {: .external-link target="_blank" rel="noreferrer noopener" } conta sobre criatividade e jogos.

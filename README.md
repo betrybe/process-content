@@ -1,25 +1,88 @@
-# Create a JavaScript Action
-
 <p align="center">
-  <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>
+  <a href="https://github.com/betrybe/process-content/actions"><img alt="javscript-action status" src="https://github.com/betrybe/process-content/workflows/units-test/badge.svg"></a>
 </p>
 
-Use this template to bootstrap the creation of a JavaScript action.:rocket:
+# GitHub Action: Process Content from Merge
 
-This template includes tests, linting, a validation workflow, publishing, and versioning guidance.
+A GitHub action that process and creates content after merge from a specific _Pull Request_.
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+## Example usage
+```yaml
+steps:
+  - name: Process Content
+    uses: betrybe/process-content@main
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      dirPath: ${{ secrets.FILES_PATH}}
+      apiKey: ${{ secrets.CONTENT_API_KEY}}
+      chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
+      versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}
+```
 
-## Create an action from this template
+## Inputs
 
-Click the `Use this Template` and provide the new repo details for your action
+This action accepts the following configuration parameters via `with:`
 
-## Code in Main
+- `token`
+
+  **Required**
+
+  The Github secrets token for checkout the repo
+
+- `dirPath`
+
+  **Required**
+
+  The directory path of files to be processed
+
+- `apiKey`
+
+  **Required**
+
+  The Key for access on Trybe Api
+
+
+- `chapterApiURL`
+
+  **Required**
+
+  Trybe Application Chapter env URL to process chapters
+
+- `versionApiURL`
+
+  **Required**
+
+  Trybe Application Version env URL to process versions
+
+## Outputs
+
+- `result`
+
+  If a new version was createad or not by the action
+
+  ```json
+  {"ok": true, "status": 200}
+  ```
+
+
+## Local Setup
 
 Install the dependencies
 
 ```bash
 npm install
+```
+
+Add Enviroment Variables
+
+```bash
+cp .env.example .env
+```
+
+Run locally
+
+```bash
+node index.js
 ```
 
 Run the tests :heavy_check_mark:
@@ -73,7 +136,7 @@ Actions are run from GitHub repos.  Packaging the action will create a packaged 
 Run prepare
 
 ```bash
-npm run prepare
+npm run package
 ```
 
 Since the packaged index.js is run from the dist folder.
@@ -108,9 +171,13 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-uses: actions/javascript-action@v1
+uses: betrybe/process-content@v1
 with:
-  milliseconds: 1000
+  token: ${{ secrets.GITHUB_TOKEN }}
+  dirPath: ${{ secrets.FILES_PATH}}
+  apiKey: ${{ secrets.CONTENT_API_KEY}}
+  chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
+  versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}
 ```
 
 See the [actions tab](https://github.com/actions/javascript-action/actions) for runs of this action! :rocket:

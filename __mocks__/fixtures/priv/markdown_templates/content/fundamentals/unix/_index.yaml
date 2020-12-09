@@ -1,0 +1,12 @@
+---
+block: unix-bash-e-shell-script
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "Introdução - Unix & Shell"
+date: 2019-08-21
+weight: 3
+week: 1
+day: 3
+course: true
+---

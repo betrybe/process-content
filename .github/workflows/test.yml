@@ -1,4 +1,4 @@
-name: "units-test"
+name: "Automated Tests"
 on:
   pull_request:
   push:
@@ -7,19 +7,35 @@ on:
       - 'releases/*'
 
 jobs:
-  # unit tests
-  units:
+  eslint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: '12'
+      - name: install dependencies
+        run: npm i
+      - name: run eslint
+        run: npx eslint .
+
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: npm ci
+    - name: install dependencies
+      run: npm i
+    - name: run jest tests
     - run: npm test
 
-  # test action works running from the graph
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        milliseconds: 1000
+        token: ${{ secrets.GITHUB_TOKEN }}
+        dirPath: ${{ secrets.FILES_PATH}}
+        apiKey: ${{ secrets.CONTENT_API_KEY}}
+        chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
+        versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}

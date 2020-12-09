@@ -1,0 +1,12 @@
+---
+block: unix-bash-e-shell-script
+module: fundamentals
+category: module_introduction
+type: hard_skill
+title: "Fundamentos do Desenvolvimento Web"
+date: 2019-08-21
+weight: 2
+week: 1
+day: 3
+course: true
+---
