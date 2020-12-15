@@ -4390,9 +4390,11 @@ const createOneChapter = (apiUrl, body, config) => axios.post(apiUrl, body, conf
 const createChapters = async (arrayOfChapters, apiUrl, apiKey) => {
   const headerObj = configHeaders(apiKey);
 
-  return Promise.all(
-    arrayOfChapters.map((chapter) => createOneChapter(apiUrl, chapter, headerObj)),
-  );
+  arrayOfChapters.map((chapter) =>
+    createOneChapter(apiUrl, chapter, headerObj)
+      .then(result => console.log(` O PATH ${chapter.path} SUCESSO MIZERAVI`, result))
+      .catch(error => console.log(` O PATH ${chapter.path} ERRRRROOU NA TRAVE MEU FI`, error))
+  )
 };
 
 const createVersion = async (apiUrl, body, config) => axios.post(apiUrl, body, config);
