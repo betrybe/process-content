@@ -4392,8 +4392,8 @@ const createChapters = async (arrayOfChapters, apiUrl, apiKey) => {
 
   arrayOfChapters.map((chapter) =>
     createOneChapter(apiUrl, chapter, headerObj)
-      .then(result => console.log(` O PATH ${chapter.path} SUCESSO MIZERAVI`, result))
-      .catch(error => console.log(` O PATH ${chapter.path} ERRRRROOU NA TRAVE MEU FI`, error))
+      .then(result => console.log(` O PATH ${chapter.path} SUCESSO MIZERAVI`, result.data, result.status))
+      .catch(error => console.log(` O PATH ${chapter.path} ERRRRROOU NA TRAVE MEU FI`, error.data, result.status))
   )
 };
 
