@@ -1,4 +1,6 @@
+const crypto = require('crypto');
 const gitCommands = require('./git');
+const s3 = require('./s3');
 
 const sanitizeExtension = (file) => file.replace(/\.[^/.]+$/, '');
 
@@ -20,11 +22,14 @@ const extractFileInfo = async (path) => {
       markdownCommitId: commitId,
       contentMd: blobContent,
     };
+  } if (getExtension(path) === 'yaml') {
+    return {
+      yamlCommitId: commitId,
+      contentYaml: blobContent,
+    };
   }
-  return {
-    yamlCommitId: commitId,
-    contentYaml: blobContent,
-  };
+
+  return { assetBlob: blobContent };
 };
 
 const buildChapterObj = async (chapterObj) => {
@@ -69,9 +74,50 @@ const buildChapters = async (path) => {
   );
 };
 
+const buildAssetHashUrl = (path, blob) => {
+  const extension = getExtension(path);
+  const pathSuffix = path.substring(0, path.lastIndexOf('.'));
+
+  return `${pathSuffix}-${blob}.${extension}`;
+};
+
+const generateHashOfAssetBlob = async (path, assetBlob) => {
+  const blobMd5 = await crypto.createHash('md5').update(assetBlob).digest('hex');
+  const newUrl = buildAssetHashUrl(path, blobMd5);
+
+  return newUrl;
+};
+
+const getAssetsFiles = async (path) => {
+  const arrayOfAssets = await gitCommands.getFiles(path);
+
+  const sanitizedArrayOfAssets = sanitizeFilesArray(arrayOfAssets);
+
+  return sanitizedArrayOfAssets;
+};
+
+const processAssetContent = async (assetPath, awsAccessKey, awsSecret) => {
+  const { assetBlob } = await extractFileInfo(assetPath);
+  const assetUrlHash = await generateHashOfAssetBlob(assetPath, assetBlob);
+
+  const s3BucketClient = s3.awsClientS3(awsAccessKey, awsSecret);
+  await s3.uploadToBucket(s3BucketClient, assetBlob, assetUrlHash);
+
+  return { [assetPath]: assetUrlHash };
+};
+
+const buildAssets = async (path, awsAccessKey, awsSecret) => {
+  const arrayOfAssets = await getAssetsFiles(path);
+
+  return Promise.all(
+    arrayOfAssets.map((assetPath) => processAssetContent(assetPath, awsAccessKey, awsSecret)),
+  );
+};
+
 module.exports = {
   buildChapters,
   groupFiles,
   buildChapterObj,
   extractFileInfo,
+  buildAssets,
 };
