@@ -17,11 +17,8 @@ async function run() {
     const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
     const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
     const assetsFilesPath = core.getInput('dirPath') || process.env.ASSETS_PATH;
-    const awsAccessKey = core.getInput('awsAccessKey') || process.env.AWS_ACCESS_KEY;
-    const awsSecret = core.getInput('awsSecret') || process.env.AWS_SECRET;
 
-    const arrayOfAssets = await buildAssets(assetsFilesPath, awsAccessKey, awsSecret);
-    console.log(arrayOfAssets);
+    const arrayOfAssets = await buildAssets(assetsFilesPath);
 
     // const arrayOfChapters = await buildChapters(filesPath);
     // // @Todo: disparar criação de capitulos via service.js

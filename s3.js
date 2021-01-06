@@ -1,31 +1,35 @@
 const core = require('@actions/core');
-const S3 = require('aws-sdk/clients/s3');
+const AWS = require('aws-sdk');
+const fs = require('fs');
 
-const awsClientS3 = (accessKeyId, secretAccessKey) => new S3({
-  params: {
-    Bucket: 'assets.app.betrybe.com',
-  },
-  credentials: {
-    accessKeyId,
-    secretAccessKey,
-  },
-});
+const credentials = {
+  accessKeyId: core.getInput('awsAccessKey') || process.env.AWS_ACCESS_KEY,
+  secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
+};
 
-const uploadToBucket = async (s3BucketClient, assetBlob, assetPath) => {
+// @todo colocar nome do bucket em env
+const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
   try {
+    const s3BucketClient = new AWS.S3(credentials);
+
+    const assetBlob = fs.readFileSync(assetPath);
+
     const params = {
-      Key: assetPath,
-      Body: JSON.stringify(assetBlob),
+      Bucket: core.getInput('bucketName') || process.env.BUCKET_NAME,
+      Key: assetUrlHash,
+      Body: assetBlob,
+      ContentType: `image/${fileType}`,
     };
 
     const { ETag } = await s3BucketClient.putObject(params).promise();
-    if (ETag) return;
+
+    return ETag;
   } catch (error) {
-    core.setFailed(`Error at uploading files to S3: ${error.message}`);
+    console.log(error);
+    return core.setFailed(`Error at uploading files to S3: ${error.message}`);
   }
 };
 
 module.exports = {
-  awsClientS3,
   uploadToBucket,
 };

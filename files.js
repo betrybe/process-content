@@ -1,3 +1,4 @@
+const core = require('@actions/core');
 const crypto = require('crypto');
 const gitCommands = require('./git');
 const s3 = require('./s3');
@@ -11,7 +12,7 @@ const verifyFileMatching = (file1, file2) =>
   && getExtension(file1) !== getExtension(file2);
 
 const sanitizeFilesArray = (fileArray) =>
-  fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '');
+  fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '' && getExtension(file) !== 'mp4');
 
 const extractFileInfo = async (path) => {
   const commitId = await gitCommands.getCommitId(path);
@@ -74,18 +75,17 @@ const buildChapters = async (path) => {
   );
 };
 
-const buildAssetHashUrl = (path, blob) => {
+const buildAssetHashUrl = (path, blobHash) => {
   const extension = getExtension(path);
   const pathSuffix = path.substring(0, path.lastIndexOf('.'));
+  const newHashUrl = `${pathSuffix}-${blobHash}.${extension}`;
 
-  return `${pathSuffix}-${blob}.${extension}`;
+  return newHashUrl;
 };
 
-const generateHashOfAssetBlob = async (path, assetBlob) => {
-  const blobMd5 = await crypto.createHash('md5').update(assetBlob).digest('hex');
-  const newUrl = buildAssetHashUrl(path, blobMd5);
-
-  return newUrl;
+const generateHashOfAssetBlob = (assetBlob) => {
+  const blobMd5 = crypto.createHash('md5').update(assetBlob).digest('hex');
+  return blobMd5;
 };
 
 const getAssetsFiles = async (path) => {
@@ -96,21 +96,23 @@ const getAssetsFiles = async (path) => {
   return sanitizedArrayOfAssets;
 };
 
-const processAssetContent = async (assetPath, awsAccessKey, awsSecret) => {
+const processAssetContent = async (assetPath) => {
   const { assetBlob } = await extractFileInfo(assetPath);
-  const assetUrlHash = await generateHashOfAssetBlob(assetPath, assetBlob);
+  const assetBlobMd5 = generateHashOfAssetBlob(assetPath, assetBlob);
+  const fileType = getExtension(assetPath);
+  const assetUrlHash = buildAssetHashUrl(assetPath, assetBlobMd5);
 
-  const s3BucketClient = s3.awsClientS3(awsAccessKey, awsSecret);
-  await s3.uploadToBucket(s3BucketClient, assetBlob, assetUrlHash);
+  await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
 
   return { [assetPath]: assetUrlHash };
 };
 
-const buildAssets = async (path, awsAccessKey, awsSecret) => {
+const buildAssets = async (path) => {
   const arrayOfAssets = await getAssetsFiles(path);
 
+  core.info(`Processing ${arrayOfAssets.length} assets`);
   return Promise.all(
-    arrayOfAssets.map((assetPath) => processAssetContent(assetPath, awsAccessKey, awsSecret)),
+    arrayOfAssets.map((assetPath) => processAssetContent(assetPath)),
   );
 };
 
@@ -120,4 +122,7 @@ module.exports = {
   buildChapterObj,
   extractFileInfo,
   buildAssets,
+  generateHashOfAssetBlob,
+  buildAssetHashUrl,
+  processAssetContent,
 };

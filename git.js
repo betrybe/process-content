@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const { exec } = require('child_process');
 const util = require('util');
+const { spawnProcess } = require('./processHelper');
 
 const bashExec = util.promisify(exec);
 
@@ -23,12 +24,11 @@ const getCommitId = async (path) => {
 };
 
 const getBlobContent = async (commitId, path) => {
-  const { stdout, stderr } = await bashExec(`git cat-file -p ${commitId}:${path}`);
+  const { stdout, stderr } = await spawnProcess('git', ['cat-file', '-p', `${commitId}:${path}`]);
 
   if (stderr) {
     return core.info('Error at getRawContent because: ', stderr);
   }
-
   return stdout;
 };
 
@@ -36,4 +36,5 @@ module.exports = {
   getFiles,
   getCommitId,
   getBlobContent,
+  spawnProcess,
 };
