@@ -7,7 +7,6 @@ const credentials = {
   secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
 };
 
-// @todo colocar nome do bucket em env
 const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
   try {
     const s3BucketClient = new AWS.S3(credentials);
