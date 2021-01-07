@@ -67,15 +67,15 @@ describe('Files', () => {
 
   test('Generates md5 hash of asset blob', () => {
     const assetPath = '__mocks__/fixtures/assets/static/agile/scrum.png';
-    const assetBlob = readMockFile(assetPath);
+    const assetContent = readMockFile(assetPath);
 
     gitCommands.getBlobContent
-      .mockResolvedValueOnce(assetBlob);
+      .mockResolvedValueOnce(assetContent);
 
-    const blobMd5 = files.generateHashOfAssetBlob(assetBlob);
+    const contentMd5 = files.generateContentMd5Hash(assetContent);
 
-    expect(typeof blobMd5).toBe('string');
-    expect(blobMd5).toEqual('c0c1cebaf505a08a0c63d2437ad338c7');
+    expect(typeof contentMd5).toBe('string');
+    expect(contentMd5).toEqual('c0c1cebaf505a08a0c63d2437ad338c7');
   });
 
   test('Builds a new asset path URL', () => {
@@ -89,10 +89,10 @@ describe('Files', () => {
 
   test('Builds array of assets new hash urls', async () => {
     const assetPath = '__mocks__/fixtures/assets/static/agile/scrum.png';
-    const assetBlob = readMockFile(assetPath);
+    const assetContent = readMockFile(assetPath);
 
     gitCommands.getBlobContent
-      .mockResolvedValueOnce(assetBlob);
+      .mockResolvedValueOnce(assetContent);
 
     s3.uploadToBucket
       .mockResolvedValueOnce({ ETag: 'bebda3f165aede5d08136413d13dca70' });

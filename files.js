@@ -30,7 +30,7 @@ const extractFileInfo = async (path) => {
     };
   }
 
-  return { assetBlob: blobContent };
+  return { assetContent: blobContent };
 };
 
 const buildChapterObj = async (chapterObj) => {
@@ -83,9 +83,9 @@ const buildAssetHashUrl = (path, blobHash) => {
   return newHashUrl;
 };
 
-const generateHashOfAssetBlob = (assetBlob) => {
-  const blobMd5 = crypto.createHash('md5').update(assetBlob).digest('hex');
-  return blobMd5;
+const generateContentMd5Hash = (fileContent) => {
+  const contentMd5 = crypto.createHash('md5').update(fileContent).digest('hex');
+  return contentMd5;
 };
 
 const getAssetsFiles = async (path) => {
@@ -97,10 +97,10 @@ const getAssetsFiles = async (path) => {
 };
 
 const processAssetContent = async (assetPath) => {
-  const { assetBlob } = await extractFileInfo(assetPath);
-  const assetBlobMd5 = generateHashOfAssetBlob(assetPath, assetBlob);
+  const { assetContent } = await extractFileInfo(assetPath);
+  const assetContentMd5 = generateContentMd5Hash(assetPath, assetContent);
   const fileType = getExtension(assetPath);
-  const assetUrlHash = buildAssetHashUrl(assetPath, assetBlobMd5);
+  const assetUrlHash = buildAssetHashUrl(assetPath, assetContentMd5);
 
   await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
 
@@ -122,7 +122,7 @@ module.exports = {
   buildChapterObj,
   extractFileInfo,
   buildAssets,
-  generateHashOfAssetBlob,
+  generateContentMd5Hash,
   buildAssetHashUrl,
   processAssetContent,
 };
