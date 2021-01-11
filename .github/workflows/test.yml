@@ -39,6 +39,3 @@ jobs:
         apiKey: ${{ secrets.CONTENT_API_KEY}}
         chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL}}
         versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL}}
-        mergedAt: ${{ github.event.pull_request.merged_at }}
-        mergeCommitId: ${{ github.event.pull_request.merge_commit_sha }}
-        
