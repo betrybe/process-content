@@ -1,18 +1,88 @@
 require('dotenv').config();
+const fs = require('fs');
 const axios = require('axios');
 const service = require('./service');
 
 jest.mock('axios');
 
+const readMockFile = (path) => fs.readFileSync(path, 'utf8');
+
 describe('Create Chapters', () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
+
   const chapterApiURL = process.env.CONTENT_CHAPTER_API_URL;
   const apiKEY = process.env.API_KEY;
 
   test('creates one chapter sucessfully', async () => {
+    const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
+    const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.yaml');
 
+    const returnData = {
+      data: {
+        chapter_id: 'c54f3049-965a-4634-ae16-6e4251ef7e3e',
+      },
+      status: 200,
+    };
+
+    const chapterBody = {
+      path: 'priv/markdown_templates/content/back-end/sql/table-management/_index.html.md',
+      markdownCommitId: 'd9771871c0cadc48e3d4141f93004b9c25d7201a',
+      contentMd: rawMarkdownContent,
+      yamlCommitId: 'd9771871c0cadc48e3d4141f93004b9c25d7201a',
+      contentYaml: rawYamlContent,
+    };
+
+    axios.post.mockReturnValue(Promise.resolve(returnData));
+    await expect(service.createVersion(chapterApiURL, chapterBody, apiKEY))
+      .resolves.toEqual(returnData);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+  });
+
+  test('non hard-skills chapter couldn`t be created ', async () => {
+    const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/soft-skills/creativity/_index.html.md');
+    const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/soft-skills/creativity/_index.html.md');
+
+    const returnData = {
+      data: { message: 'Este conteúdo não é hard-skill e não foi salvo' },
+      status: 422,
+    };
+
+    const chapterBody = {
+      path: '__mocks__/fixtures/priv/markdown_templates/content/soft-skills/creativity/_index.html.md',
+      markdownCommitId: 'd9771871c0cadc48e3d4141f93004b9c25d7201a',
+      contentMd: rawMarkdownContent,
+      yamlCommitId: 'd9771871c0cadc48e3d4141f93004b9c25d7201a',
+      contentYaml: rawYamlContent,
+    };
+
+    axios.post.mockReturnValue(Promise.resolve(returnData));
+    await expect(service.createVersion(chapterApiURL, chapterBody, apiKEY))
+      .resolves.toEqual(returnData);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+  });
+
+  test('chapter missing parameters couldn`t be created ', async () => {
+    const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
+    const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.yaml');
+
+    const returnData = {
+      data: {
+        message: 'Parâmetros incorretos. (path, markdownCommitId, contentMd, yamlCommitId, contentYaml) são obrigatórios',
+      },
+      status: 400,
+    };
+
+    const chapterBody = {
+      contentMd: rawMarkdownContent,
+      contentYaml: rawYamlContent,
+    };
+
+    axios.post.mockReturnValue(Promise.resolve(returnData));
+    await expect(service.createVersion(chapterApiURL, chapterBody, apiKEY))
+      .resolves.toEqual(returnData);
+    expect(axios.post).toHaveBeenCalledTimes(1);
   });
 });
 
