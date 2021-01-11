@@ -5,7 +5,6 @@ const {
 } = require('./files');
 const {
   createChapters,
-  createVersion,
 } = require('./service');
 
 async function run() {
@@ -15,20 +14,14 @@ async function run() {
     const apiKey = core.getInput('apiKey') || process.env.CONTENT_API_KEY;
     const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
     const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
-    const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
-    const mergeCommitId = core.getInput('mergeCommitId') || '';
     const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
 
     const arrayOfChapters = await buildChapters(filesPath);
-    const { results, success } = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
+    console.log(arrayOfChapters);
+    // @Todo: disparar criação de capitulos via service.js
+    const chapterIds = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
 
-    if (!success) {
-      throw new Error('A New Version Couldn`t be created due to error when creating a chapter');
-    }
-
-    await createVersion(versionApiURL, results, apiKey, mergedAt, mergeCommitId);
-
-    core.info('A new version of chapter was created with success');
+    // @Todo: disparar criação de versão via service.js
   } catch (error) {
     core.setFailed(error.message);
   }
