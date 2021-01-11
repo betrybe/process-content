@@ -13,6 +13,12 @@ inputs:
   dirPath:
     description: "The directory path of files to be processed"
     required: true
+  mergedAt:
+    description: "Time stamp data of when the PR was merged"
+    required: true
+  mergeCommitId:
+    description: "Commit sha from merge that triggered the action"
+    required: true
 outputs:
   result:
     description: "The message to output"
