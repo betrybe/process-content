@@ -2,6 +2,7 @@ require('dotenv').config();
 const core = require('@actions/core');
 const {
   buildChapters,
+  buildAssets,
 } = require('./files');
 const {
   createChapters,
@@ -16,9 +17,11 @@ async function run() {
     const chapterApiURL = core.getInput('chapterApiURL', { required: true }) || process.env.CONTENT_CHAPTER_API_URL;
     const versionApiURL = core.getInput('versionApiURL', { required: true }) || process.env.CONTENT_VERSION_API_URL;
     const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
+    const assetsFilesPath = core.getInput('dirPath') || process.env.ASSETS_PATH;
+
+    const arrayOfAssets = await buildAssets(assetsFilesPath);
+
     const arrayOfChapters = await buildChapters(filesPath);
-    
-    // @Todo: disparar criação de capitulos via service.js
     const chapterIds = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
 
     console.log(chapterIds)
