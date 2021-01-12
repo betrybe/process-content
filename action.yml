@@ -1,6 +1,9 @@
 name: "Process Content"
 description: "Processes new content to be created on Trybe"
 inputs:
+  token:
+    description: "The Github Token for checkout on repo"
+    required: true
   apiKey:
     description: "The Key for access on Trybe Api"
     required: true
@@ -10,8 +13,20 @@ inputs:
   versionApiURL:
     description: "Trybe Application Version env URL to access"
     required: true 
-  dirPath:
-    description: "The directory path of files to be processed"
+  contentPath:
+    description: "The directory path of content files to be processed"
+    required: true
+  assetPath:
+    description: "The directory path of asset files to be processed"
+    required: true
+  awsAccessKey:
+    description: "The aws key to authenticate via sdk"
+    required: true
+  awsSecret:
+    description: "The aws secret to authenticate via sdk"
+    required: true
+  bucketName:
+    description: "The aws bucket name for uploading assets"
     required: true
 outputs:
   result:
