@@ -54,6 +54,24 @@ This action accepts the following configuration parameters via `with:`
 
   Trybe Application Version env URL to process versions
 
+- `awsAccessKey`
+
+  **Required**
+
+  AWS Key for authentication via aws-sdk library
+
+- `awsSecret`
+
+  **Required**
+
+  AWS Secret for authentication via aws-sdk library
+
+- `bucketName`
+
+  **Required**
+
+  AWS S3 Bucket name for storing assets
+
 ## Outputs
 
 - `result`
