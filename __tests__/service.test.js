@@ -1,7 +1,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const axios = require('axios');
-const service = require('./service');
+const service = require('../src/service');
 
 jest.mock('axios');
 
