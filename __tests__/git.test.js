@@ -1,14 +1,14 @@
 const fs = require('fs');
 const { exec } = require('child_process');
-const gitCommands = require('./git');
-const processHelper = require('./processHelper');
+const gitCommands = require('../src/git');
+const processHelper = require('../processHelper');
 
 const readMockFile = (path) => fs.readFileSync(path, 'utf8');
 
 const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
 
 jest.mock('child_process');
-jest.mock('./processHelper');
+jest.mock('../processHelper');
 
 describe('Git Commands', () => {
   afterEach(() => jest.resetAllMocks());

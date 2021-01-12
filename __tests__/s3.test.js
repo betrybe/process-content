@@ -1,5 +1,5 @@
 const fs = require('fs');
-const s3Service = require('./s3');
+const s3Service = require('../src/s3');
 
 const readMockFile = (path) => fs.readFileSync(path, 'utf8');
 const putObjectOutputMock = { promise: jest.fn().mockResolvedValue({ ETag: 'bebda3f165aede5d08136413d13dca70' }) };

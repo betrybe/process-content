@@ -28,6 +28,12 @@ inputs:
   bucketName:
     description: "The aws bucket name for uploading assets"
     required: true
+  mergedAt:
+    description: "Time stamp data of when the PR was merged"
+    required: true
+  mergeCommitId:
+    description: "Commit sha from merge that triggered the action"
+    required: true
 outputs:
   result:
     description: "The message to output"

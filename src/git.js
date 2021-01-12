@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const { exec } = require('child_process');
 const util = require('util');
-const { spawnProcess } = require('./processHelper');
+const { spawnProcess } = require('../processHelper');
 
 const bashExec = util.promisify(exec);
 

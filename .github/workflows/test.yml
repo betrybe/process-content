@@ -43,3 +43,5 @@ jobs:
         awsAccessKey: ${{ secrets.AWS_ACCESS_KEY }}
         awsSecret: ${{ secrets.AWS_SECRET }}
         bucketName: ${{ secrets.BUCKET_NAME }}
+        mergedAt: ${{ github.event.pull_request.merged_at }}
+        mergeCommitId: ${{ github.event.pull_request.merge_commit_sha }}
