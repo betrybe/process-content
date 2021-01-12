@@ -17,7 +17,7 @@ async function run() {
     const chapterApiURL = core.getInput('chapterApiURL', { required: true }) || process.env.CONTENT_CHAPTER_API_URL;
     const versionApiURL = core.getInput('versionApiURL', { required: true }) || process.env.CONTENT_VERSION_API_URL;
     const filesPath = core.getInput('dirPath') || process.env.FILES_PATH;
-    const assetsFilesPath = core.getInput('dirPath') || process.env.ASSETS_PATH;
+    const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
 
     const arrayOfAssets = await buildAssets(assetsFilesPath);
 
