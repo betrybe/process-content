@@ -19,6 +19,7 @@ const processContent = async () => {
 
   // const arrayOfAssets = await buildAssets(assetsFilesPath);
   const arrayOfChapters = await buildChapters(filesPath);
+  core.info(`Processing ${arrayOfChapters.length} Chapters`);
   const { results, success } = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
 
   if (!success) {
