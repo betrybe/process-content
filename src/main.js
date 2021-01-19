@@ -2,6 +2,7 @@ require('dotenv').config();
 const core = require('@actions/core');
 const {
   buildChapters,
+  buildAssets,
 } = require('./files');
 const {
   createChapters,
@@ -17,9 +18,12 @@ const processContent = async () => {
   const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
   const mergeCommitId = core.getInput('mergeCommitId') || process.env.COMMIT_ID;
 
-  // const arrayOfAssets = await buildAssets(assetsFilesPath);
+  const arrayOfAssets = await buildAssets(assetsFilesPath);
   const arrayOfChapters = await buildChapters(filesPath);
-  const { results, success } = await createChapters(arrayOfChapters, chapterApiURL, apiKey);
+  const {
+    results,
+    success,
+  } = await createChapters(arrayOfChapters, arrayOfAssets, chapterApiURL, apiKey);
 
   if (!success) {
     throw new Error('A New Version Couldn`t be created due to error when creating a chapter');

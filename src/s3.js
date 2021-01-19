@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const logger = require('./logger');
 
 const credentials = {
   accessKeyId: core.getInput('awsAccessKey') || process.env.AWS_ACCESS_KEY,
@@ -24,8 +25,7 @@ const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
 
     return ETag;
   } catch (error) {
-    console.log(error);
-    return core.setFailed(`Error at uploading files to S3: ${error.message}`);
+    return logger.setFailed(assetPath, 'asset', 500, error.message);
   }
 };
 
