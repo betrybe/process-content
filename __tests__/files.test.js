@@ -1,10 +1,10 @@
 const fs = require('fs');
-const files = require('./files');
-const gitCommands = require('./git');
-const s3 = require('./s3');
+const files = require('../src/files');
+const gitCommands = require('../src/git');
+const s3 = require('../src/s3');
 
-jest.mock('./git');
-jest.mock('./s3');
+jest.mock('../src/git');
+jest.mock('../src/s3');
 
 const readMockFile = (path) => fs.readFileSync(path, 'utf8');
 

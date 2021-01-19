@@ -2,7 +2,7 @@
 
 E aí, você que nunca tinha usado uma _"tela preta"_ na vida, o que está achando ~~dos seus novos super poderes~~ das suas novas habilidades até agora?
 
-Hoje você vai dar um passo além e aprender a utilizar os comandos do UNIX para criar *scripts* utilizando o *shell*. Você vai programar utilizando o famoso _Shell Script_! 🐚
+Hoje você vai dar um passo além e aprender a utilizar os comandos do UNIX para criar _scripts_ utilizando o _shell_. Você vai programar utilizando o famoso _Shell Script_! 🐚
 
 ---
 
@@ -18,7 +18,7 @@ Hoje você vai dar um passo além e aprender a utilizar os comandos do UNIX para
 
 No dia a dia, você invariavelmente vai se deparar com o terminal, seja para _alterar arquivos de configuração, iniciar/reiniciar servidores, rodar ferramentas de teste_, enfim, isso vai acontecer mais cedo ou mais tarde. 📜
 
-Então, se você quer ter uma alta taxa de produtividade, aprender _Shell Script_ é fundamental. Você consegue realizar as tarefas básicas incrivelmente rápido. Depois disso, conforme a necessidade surgir, você estará muito mais preparado para estudar tópicos mais avançados sobre o *shell*. 💎
+Então, se você quer ter uma alta taxa de produtividade, aprender _Shell Script_ é fundamental. Você consegue realizar as tarefas básicas incrivelmente rápido. Depois disso, conforme a necessidade surgir, você estará muito mais preparado para estudar tópicos mais avançados sobre o _shell_. 💎
 
 O _Shell Script_ pode te ajudar a automatizar tarefas na linha de comando, te poupando tempo e esforço de fazer tarefas repetitivas. Além disso, vamos abordar conceitos fundamentais que estão presentes em qualquer linguagem de programação, que serão muito valiosos no decorrer do curso. 🖥
 
@@ -68,7 +68,7 @@ echo "Meu primeiro script em Shell Script!"
 
 <%= youtube_video "3YGGRaVBzFU" %>
 
-Nesse vídeo você aprendeu a como iniciar um código em _Shell Script_ e viu um pouco mais sobre o fluxo descrito na seção `Usando o VSCode`. Lembre-se de sempre adicionar na primeira linha do script o comando `#!/bin/bash`, que daqui para frente chamaremos de *Sha-Bang* e também de fornecer a permissão de execução para que seja possível executar o seu script.
+Nesse vídeo você aprendeu a como iniciar um código em _Shell Script_ e viu um pouco mais sobre o fluxo descrito na seção `Usando o VSCode`. Lembre-se de sempre adicionar na primeira linha do script o comando `#!/bin/bash`, que daqui para frente chamaremos de _Sha-Bang_ e também de fornecer a permissão de execução para que seja possível executar o seu script.
 
 ---
 
@@ -123,7 +123,7 @@ Chegou a hora de colocar a mão na massa! 🥖
 
 ##### ⚠️ Faça os exercícios a seguir em dupla com seus colegas. Fique atento às orientações do time sobre a sua dupla.
 
-Você vai criar vários *scripts* em *Shell*. Procure discutir a solução com a sua dupla e garanta que cada membro da dupla tenha o seu próprio código! 📌
+Você vai criar vários _scripts_ em _Shell_. Procure discutir a solução com a sua dupla e garanta que cada membro da dupla tenha o seu próprio código! 📌
 
 Dessa vez, o gabarito está disponível ~~escondido~~ junto com exercício, mas resista à tentação de abri-lo ao máximo, pelo menos até a dupla ter conseguido desenvolver o exercício por conta própria! 🤜🏼🤛🏼
 
@@ -363,7 +363,7 @@ E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras refe
 
 * [Tutorial de Shell Script **interativo** ~~hands on!~~](https://www.learnshell.org) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-* [\](https://explainshell.com) {: .external-link target="_blank" rel="noreferrer noopener" }Explicador\" de comandos do shell"
+* ['Explicador' de comandos do shell](https://explainshell.com) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Verificador de sintaxe de scripts shell](https://www.shellcheck.net) {: .external-link target="_blank" rel="noreferrer noopener" }
 
