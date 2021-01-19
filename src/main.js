@@ -10,8 +10,10 @@ const {
 
 const processContent = async () => {
   const apiKey = core.getInput('apiKey') || process.env.CONTENT_API_KEY;
-  const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
-  const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
+  //const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
+  const chapterApiURL = 'https://staging.course.betrybe.com/api/content/chapters';
+  //const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
+  const versionApiURL = 'https://staging.course.betrybe.com/api/content/version/release';
   const filesPath = core.getInput('contentPath') || process.env.FILES_PATH;
   const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
   const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
