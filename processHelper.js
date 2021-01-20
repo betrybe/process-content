@@ -21,7 +21,7 @@ const spawnProcess = (...args) => {
     }
 
     process.on('error', reject);
-    process.on('exit', (code) => {
+    process.on('close', (code) => {
       if (code === 0) return resolve(processOutput);
       return reject(processOutput);
     });
