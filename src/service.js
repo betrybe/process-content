@@ -32,11 +32,12 @@ const configHeaders = (apiKey) => ({ headers: { 'x-api-content-key': apiKey } })
 const createChapter = (apiUrl, body, arrayOfAssets, apiKey) => {
   const headerObj = configHeaders(apiKey);
   const bodyObj = {
+    path: body.path,
     markdown_commit_id: body.markdownCommitId,
     markdown_content: body.contentMd,
     yaml_commit_id: body.yamlCommitId,
     yaml_content: body.contentYaml,
-    assets_list: arrayOfAssets,
+    assets_map: arrayOfAssets,
   };
 
   return axios.post(apiUrl, bodyObj, headerObj);
