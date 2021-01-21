@@ -9,6 +9,7 @@ const handleChapterError = (chapter) => {
     path: filePath,
     step: 'Chapter',
     statusCode: chapter.status,
+    requestID: chapter.headers['x-request-id'],
     message: errorMessage,
   };
 
