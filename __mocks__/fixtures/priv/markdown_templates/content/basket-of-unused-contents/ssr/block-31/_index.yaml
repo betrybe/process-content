@@ -1,0 +1,13 @@
+---
+block: deployment
+category: chapter
+optional: true
+type: hard_skill
+title: "Express - Arquivos estáticos e SSR"
+date: 2020-03-09
+weight: 130
+week: 29
+day: 3
+draft: true
+course: true
+---

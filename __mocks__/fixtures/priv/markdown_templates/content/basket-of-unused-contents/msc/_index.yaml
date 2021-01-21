@@ -1,0 +1,13 @@
+---
+block: nodejs-camada-de-servico-e-arquitetura-rest-e-restful
+module: back-end
+category: chapter
+type: hard_skill
+title: "Arquitetura de Software - Camada de Serviço"
+date: 2020-04-20
+weight: 117
+week: 27
+day: 1
+draft: true
+course: true
+---
