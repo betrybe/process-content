@@ -25,7 +25,13 @@ const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
 
     return ETag;
   } catch (error) {
-    return logger.setFailed(assetPath, 'asset', 500, error.message);
+    const logBody = {
+      path: assetPath,
+      step: 'Asset',
+      statusCode: 500,
+      message: error.message,
+    };
+    return logger.setFailed(logBody);
   }
 };
 

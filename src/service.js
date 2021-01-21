@@ -5,11 +5,19 @@ const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
   const errorMessage = chapter.data.message ? chapter.data.message : chapter.statusText;
 
-  return logger.error(filePath, 'chapter', chapter.status, errorMessage);
+  const logBody = {
+    path: filePath,
+    step: 'Chapter',
+    statusCode: chapter.status,
+    message: errorMessage,
+  };
+
+  return logger.error(logBody);
 };
 
 const handleChaptersResult = (createdChaptersResult) =>
   createdChaptersResult.reduce((resultAccumulator, currentResult) => {
+    // console.log(currentResult);
     const newResultAccumulator = { ...resultAccumulator };
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
