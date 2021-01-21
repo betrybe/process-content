@@ -18,7 +18,7 @@ const handleChapterError = (chapter) => {
 
 const handleChaptersResult = (createdChaptersResult) =>
   createdChaptersResult.reduce((resultAccumulator, currentResult) => {
-    // console.log(currentResult);
+
     const newResultAccumulator = { ...resultAccumulator };
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
