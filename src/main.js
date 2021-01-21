@@ -14,7 +14,7 @@ const processContent = async () => {
   const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
   const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
   const filesPath = core.getInput('contentPath') || process.env.FILES_PATH;
-  const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
+  // const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
   const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
   const mergeCommitId = core.getInput('mergeCommitId') || process.env.COMMIT_ID;
 

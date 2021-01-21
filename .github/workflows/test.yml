@@ -8,7 +8,7 @@ on:
 
 jobs:
   eslint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1.4.4
@@ -26,7 +26,7 @@ jobs:
     - name: install dependencies
       run: npm i
     - name: run jest tests
-    - run: npm test
+      run: npm test
 
   test:
     runs-on: ubuntu-latest
