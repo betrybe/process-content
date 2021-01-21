@@ -72,7 +72,7 @@ const buildChapters = async (path) => {
 
   core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
   return Promise.all(
-    chapterArrayOfObj.slice(0,1).map((chapterObj) => buildChapterObj(chapterObj)),
+    chapterArrayOfObj.slice(0, 1).map((chapterObj) => buildChapterObj(chapterObj)),
   );
 };
 
