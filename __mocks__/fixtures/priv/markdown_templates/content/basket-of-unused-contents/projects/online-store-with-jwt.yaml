@@ -1,0 +1,13 @@
+---
+block: autenticacao-e-upload-de-arquivos
+category: project
+optional: true
+type: hard_skill
+title: "Projeto - Online Store with JWT"
+date: 2020-03-20
+weight: 124
+week: 28
+day: 3
+draft: true
+course: true
+---

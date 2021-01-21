@@ -70,6 +70,7 @@ const buildChapters = async (path) => {
 
   const chapterArrayOfObj = groupFiles(sanitizedArrayOfFiles);
 
+  core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
   return Promise.all(
     chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj)),
   );
@@ -110,7 +111,7 @@ const processAssetContent = async (assetPath) => {
 const buildAssets = async (path) => {
   const arrayOfAssets = await getAssetsFiles(path);
 
-  core.info(`Processing ${arrayOfAssets.length} assets`);
+  core.info(`Processing ${arrayOfAssets.length} Assets`);
   return Promise.all(
     arrayOfAssets.map((assetPath) => processAssetContent(assetPath)),
   );
