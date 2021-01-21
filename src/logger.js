@@ -1,21 +1,17 @@
 const core = require('@actions/core');
 
-const steps = {
-  chapter: 'Chapter',
-  asset: 'Asset',
-};
-
 const loggerDisplay = (params, display) => {
-  const [filePath, loggerStep, statusCode, message] = params;
-  display(`----------- Error at Processing ${steps[loggerStep]} ------------`);
-  display(`File Path: ${filePath}`);
-  display(`Status code: ${statusCode}`);
-  display(`Error Message: ${message}`);
+  const logEntries = Object.entries(params);
+
+  return logEntries.forEach((entrie) => {
+    display(`${entrie[0]}: ${entrie[1]}`);
+  });
 };
 
 const Logger = {
-  error: (...args) => { loggerDisplay(args, core.error); },
-  setFailed: (...args) => { loggerDisplay(args, core.setFailed); },
+  error: (args) => { loggerDisplay(args, core.error); },
+  setFailed: (args) => { loggerDisplay(args, core.setFailed); },
+  info: (args) => { loggerDisplay(args, core.info); },
 };
 
 module.exports = Logger;
