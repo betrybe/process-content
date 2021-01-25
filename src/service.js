@@ -1,6 +1,9 @@
 const axios = require('axios');
 const logger = require('./logger');
 
+const CHUNK_SIZE = 50;
+const INTERVAL_BETWEEN_CHUNKS = 1000;
+
 const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
   const errorMessage = chapter.data.message ? chapter.data.message : chapter.statusText;
@@ -51,10 +54,41 @@ const createChapter = (apiUrl, body, arrayOfAssets, apiKey) => {
   return axios.post(apiUrl, bodyObj, headerObj);
 };
 
-const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => Promise.all(
-  arrayOfChapters.map((chapter) =>
-    createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)),
-).then((result) => handleChaptersResult(result));
+const chunkArray = (myArray, chunkSize) => {
+  const results = [];
+
+  while (myArray.length) {
+    results.push(myArray.splice(0, chunkSize));
+  }
+
+  return results;
+};
+
+const createChaptersChunk = (arrayOfChapters) => chunkArray(arrayOfChapters, CHUNK_SIZE);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => {
+  const groupOfChapters = createChaptersChunk(arrayOfChapters);
+
+  console.log('groups: ', groupOfChapters.length);
+
+  const result = await groupOfChapters.reduce((chain, chapters) => (
+    chain.then(async (previousResults) => {
+      console.log('Start sending...');
+      const responses = await Promise.all(chapters.map((chapter) =>
+        createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)));
+
+      await sleep(INTERVAL_BETWEEN_CHUNKS);
+      console.log('Finished sending');
+
+      return [...responses, ...previousResults || []];
+    })
+  ), Promise.resolve());
+
+  console.log('Fineshed all');
+
+  return handleChaptersResult(result);
+};
 
 const createVersion = (apiUrl, body, apiKey, mergedAt, mergeCommitId) => {
   const headerObj = configHeaders(apiKey);
