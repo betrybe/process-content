@@ -27,23 +27,3 @@ jobs:
       run: npm i
     - name: run jest tests
       run: npm test
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        contentPath: ${{ secrets.FILES_PATH }}
-        assetPath: ${{ secrets.ASSETS_PATH }}
-        apiKey: ${{ secrets.CONTENT_API_KEY }}
-        chapterApiURL:  ${{ secrets.CONTENT_CHAPTER_API_URL }}
-        versionApiURL:  ${{ secrets.CONTENT_VERSION_API_URL }}
-        awsAccessKey: ${{ secrets.AWS_ACCESS_KEY }}
-        awsSecret: ${{ secrets.AWS_SECRET }}
-        bucketName: ${{ secrets.BUCKET_NAME }}
-        mergedAt: ${{ github.event.pull_request.merged_at }}
-        mergeCommitId: ${{ github.event.pull_request.merge_commit_sha }}
-        chunkSize: 50
-        intervalBetweenChunks: 1500
