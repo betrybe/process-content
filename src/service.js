@@ -2,8 +2,8 @@ const axios = require('axios');
 const core = require('@actions/core');
 const logger = require('./logger');
 
-const CHUNK_SIZE = core.getInput('CHUNK_SIZE') || process.env.CHUNK_SIZE;
-const INTERVAL_BETWEEN_CHUNKS = core.getInput('INTERVAL_BETWEEN_CHUNKS') || process.env.INTERVAL_BETWEEN_CHUNKS;
+const CHUNK_SIZE = core.getInput('chunkSize') || process.env.CHUNK_SIZE;
+const INTERVAL_BETWEEN_CHUNKS = core.getInput('intervalBetweenChunks') || process.env.INTERVAL_BETWEEN_CHUNKS;
 
 const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
