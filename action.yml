@@ -9,10 +9,10 @@ inputs:
     required: true
   chapterApiURL:
     description: "Trybe Application Chapter env URL to access"
-    required: true 
+    required: true
   versionApiURL:
     description: "Trybe Application Version env URL to access"
-    required: true 
+    required: true
   contentPath:
     description: "The directory path of content files to be processed"
     required: true
@@ -33,6 +33,12 @@ inputs:
     required: true
   mergeCommitId:
     description: "Commit sha from merge that triggered the action"
+    required: true
+  chunkSize:
+    description: "Size of group of files to be sent to chapter creation"
+    required: true
+  intervalBetweenChunks:
+    description: "Interval in milliseconds between each group of chapter creation requests"
     required: true
 outputs:
   result:
