@@ -1,8 +1,9 @@
 const axios = require('axios');
+const core = require('@actions/core');
 const logger = require('./logger');
 
-const CHUNK_SIZE = 50;
-const INTERVAL_BETWEEN_CHUNKS = 1000;
+const CHUNK_SIZE = core.getInput('CHUNK_SIZE') || process.env.CHUNK_SIZE;
+const INTERVAL_BETWEEN_CHUNKS = core.getInput('INTERVAL_BETWEEN_CHUNKS') || process.env.INTERVAL_BETWEEN_CHUNKS;
 
 const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
@@ -70,22 +71,22 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => {
   const groupOfChapters = createChaptersChunk(arrayOfChapters);
 
-  console.log('Número de Grupos: ', groupOfChapters.length);
+  core.info(`Número de Grupos: #${groupOfChapters.length}`);
 
   const result = await groupOfChapters.reduce((chain, chapters, index) => (
     chain.then(async (previousResults) => {
-      console.log(`Iniciando envio grupo ${(index + 1)}...`);
+      core.info(`Iniciando envio grupo ${(index + 1)}...`);
       const responses = await Promise.all(chapters.map((chapter) =>
         createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)));
 
       await sleep(INTERVAL_BETWEEN_CHUNKS);
-      console.log('Envio finalizado.');
+      core.info('Envio finalizado.');
 
       return [...responses, ...previousResults || []];
     })
   ), Promise.resolve());
 
-  console.log('::Todos os grupos de requests finalizados::');
+  core.info('::Todos os grupos de requests finalizados::');
 
   return handleChaptersResult(result);
 };
