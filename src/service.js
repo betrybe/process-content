@@ -70,22 +70,22 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => {
   const groupOfChapters = createChaptersChunk(arrayOfChapters);
 
-  console.log('groups: ', groupOfChapters.length);
+  console.log('Número de Grupos: ', groupOfChapters.length);
 
-  const result = await groupOfChapters.reduce((chain, chapters) => (
+  const result = await groupOfChapters.reduce((chain, chapters, index) => (
     chain.then(async (previousResults) => {
-      console.log('Start sending...');
+      console.log(`Iniciando envio grupo ${(index + 1)}...`);
       const responses = await Promise.all(chapters.map((chapter) =>
         createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)));
 
       await sleep(INTERVAL_BETWEEN_CHUNKS);
-      console.log('Finished sending');
+      console.log('Envio finalizado.');
 
       return [...responses, ...previousResults || []];
     })
   ), Promise.resolve());
 
-  console.log('Fineshed all');
+  console.log('::Todos os grupos de requests finalizados::');
 
   return handleChaptersResult(result);
 };
