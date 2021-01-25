@@ -1,5 +1,9 @@
 const axios = require('axios');
+const core = require('@actions/core');
 const logger = require('./logger');
+
+const CHUNK_SIZE = core.getInput('CHUNK_SIZE') || process.env.CHUNK_SIZE;
+const INTERVAL_BETWEEN_CHUNKS = core.getInput('INTERVAL_BETWEEN_CHUNKS') || process.env.INTERVAL_BETWEEN_CHUNKS;
 
 const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
@@ -51,10 +55,41 @@ const createChapter = (apiUrl, body, arrayOfAssets, apiKey) => {
   return axios.post(apiUrl, bodyObj, headerObj);
 };
 
-const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => Promise.all(
-  arrayOfChapters.map((chapter) =>
-    createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)),
-).then((result) => handleChaptersResult(result));
+const chunkArray = (myArray, chunkSize) => {
+  const results = [];
+
+  while (myArray.length) {
+    results.push(myArray.splice(0, chunkSize));
+  }
+
+  return results;
+};
+
+const createChaptersChunk = (arrayOfChapters) => chunkArray(arrayOfChapters, CHUNK_SIZE);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => {
+  const groupOfChapters = createChaptersChunk(arrayOfChapters);
+
+  core.info(`Número de Grupos: #${groupOfChapters.length}`);
+
+  const result = await groupOfChapters.reduce((chain, chapters, index) => (
+    chain.then(async (previousResults) => {
+      core.info(`Iniciando envio grupo ${(index + 1)}...`);
+      const responses = await Promise.all(chapters.map((chapter) =>
+        createChapter(apiUrl, chapter, arrayOfAssets, apiKey).catch((e) => e.response)));
+
+      await sleep(INTERVAL_BETWEEN_CHUNKS);
+      core.info('Envio finalizado.');
+
+      return [...responses, ...previousResults || []];
+    })
+  ), Promise.resolve());
+
+  core.info('::Todos os grupos de requests finalizados::');
+
+  return handleChaptersResult(result);
+};
 
 const createVersion = (apiUrl, body, apiKey, mergedAt, mergeCommitId) => {
   const headerObj = configHeaders(apiKey);
