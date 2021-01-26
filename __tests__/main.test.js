@@ -11,9 +11,49 @@ const readMockFile = (path) => fs.readFileSync(path, 'utf8');
 describe('Action Execution', () => {
   afterEach(() => jest.resetAllMocks());
 
+  test('throw error when heroku isn`t available yet', async () => {
+    const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.html.md');
+    const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.yaml');
+
+    service.checkForHeroku.mockReturnValue({ herokuReady: false });
+
+    files.buildChapters.mockReturnValueOnce(
+      [
+        {
+          path: '__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.html.md',
+          markdownCommitId: '7044d626ad61a8011a0ee8ad78e16c89f3c781f7',
+          contentMd: rawMarkdownContent,
+          yamlCommitId: '7044d626ad61a8011a0ee8ad78e16c89f3c781f7',
+          contentYaml: rawYamlContent,
+        },
+        {
+          path: '__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md',
+          markdownCommitId: '7044d626ad61a8011a0ee8ad78e16c89f3c781f7',
+          yamlCommitId: '7044d626ad61a8011a0ee8ad78e16c89f3c781f7',
+        },
+      ],
+    );
+
+    service.createChapters.mockReturnValue(
+      {
+        success: false,
+        results: [{
+          data: {
+            message: 'Parâmetros incorretos. (path, markdownCommitId, contentMd, yamlCommitId, contentYaml) são obrigatórios',
+          },
+          status: 400,
+        }],
+      },
+    );
+
+    await expect(main.processContent()).rejects.toThrow('Heroku deployment isn`t available');
+  });
+
   test('throw error when a chapter couldn`t be created', async () => {
     const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.html.md');
     const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.yaml');
+
+    service.checkForHeroku.mockReturnValue({ herokuReady: true });
 
     files.buildChapters.mockReturnValueOnce(
       [
@@ -53,6 +93,8 @@ describe('Action Execution', () => {
 
     const rawMarkdownContent2 = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
     const rawYamlContent2 = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.yaml');
+
+    service.checkForHeroku.mockReturnValue({ herokuReady: true });
 
     files.buildChapters.mockReturnValueOnce(
       [
