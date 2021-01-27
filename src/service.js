@@ -103,22 +103,22 @@ const createVersion = (apiUrl, body, apiKey, mergedAt, mergeCommitId) => {
   return axios.post(apiUrl, versionBodyObj, headerObj);
 };
 
-const checkForHeroku = (apiUrl, apiKey, retries = 15) => {
+const checkForApplication = (apiUrl, apiKey, retries = 15) => {
   const headerObj = configHeaders(apiKey);
 
   return axios.get(apiUrl, headerObj)
     .then((result) => {
-      if (result.status === 200) return { herokuReady: true };
-      return checkForHeroku(apiUrl, apiKey, retries - 1);
+      if (result.status === 200) return { applicationReady: true };
+      return checkForApplication(apiUrl, apiKey, retries - 1);
     })
     .catch(async () => {
       await sleep(15000);
-      return checkForHeroku(apiUrl, apiKey, retries - 1);
+      return checkForApplication(apiUrl, apiKey, retries - 1);
     });
 };
 
 module.exports = {
   createChapters,
   createVersion,
-  checkForHeroku,
+  checkForApplication,
 };

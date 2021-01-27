@@ -7,14 +7,14 @@ const {
 const {
   createChapters,
   createVersion,
-  checkForHeroku,
+  checkForApplication,
 } = require('./service');
 
 const processContent = async () => {
   const apiKey = core.getInput('apiKey') || process.env.CONTENT_API_KEY;
   const chapterApiURL = core.getInput('chapterApiURL') || process.env.CONTENT_CHAPTER_API_URL;
   const versionApiURL = core.getInput('versionApiURL') || process.env.CONTENT_VERSION_API_URL;
-  const herokuHealthApiURL = core.getInput('herokuHealthApiURL') || process.env.HEROKU_HEALTH_API_URL;
+  const applicationHealthApiURL = core.getInput('applicationHealthApiURL') || process.env.APPLICATION_HEALTH_API_URL;
   const filesPath = core.getInput('contentPath') || process.env.FILES_PATH;
   const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
   const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
@@ -22,10 +22,10 @@ const processContent = async () => {
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
 
-  const { herokuReady } = await checkForHeroku(herokuHealthApiURL, apiKey);
+  const { applicationReady } = await checkForApplication(applicationHealthApiURL, apiKey);
 
-  if (!herokuReady) {
-    throw new Error('Heroku deployment isn`t available');
+  if (!applicationReady) {
+    throw new Error('Application deployment isn`t available');
   }
 
   const arrayOfChapters = await buildChapters(filesPath);

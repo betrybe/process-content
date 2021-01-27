@@ -11,11 +11,11 @@ const readMockFile = (path) => fs.readFileSync(path, 'utf8');
 describe('Action Execution', () => {
   afterEach(() => jest.resetAllMocks());
 
-  test('throw error when heroku isn`t available yet', async () => {
+  test('throw error when application isn`t available yet', async () => {
     const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.html.md');
     const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.yaml');
 
-    service.checkForHeroku.mockReturnValue({ herokuReady: false });
+    service.checkForApplication.mockReturnValue({ applicationReady: false });
 
     files.buildChapters.mockReturnValueOnce(
       [
@@ -46,14 +46,14 @@ describe('Action Execution', () => {
       },
     );
 
-    await expect(main.processContent()).rejects.toThrow('Heroku deployment isn`t available');
+    await expect(main.processContent()).rejects.toThrow('Application deployment isn`t available');
   });
 
   test('throw error when a chapter couldn`t be created', async () => {
     const rawMarkdownContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.html.md');
     const rawYamlContent = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/joining_tables/_index.yaml');
 
-    service.checkForHeroku.mockReturnValue({ herokuReady: true });
+    service.checkForApplication.mockReturnValue({ applicationReady: true });
 
     files.buildChapters.mockReturnValueOnce(
       [
@@ -94,7 +94,7 @@ describe('Action Execution', () => {
     const rawMarkdownContent2 = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.html.md');
     const rawYamlContent2 = readMockFile('__mocks__/fixtures/priv/markdown_templates/content/back-end/sql/_index.yaml');
 
-    service.checkForHeroku.mockReturnValue({ herokuReady: true });
+    service.checkForApplication.mockReturnValue({ applicationReady: true });
 
     files.buildChapters.mockReturnValueOnce(
       [
