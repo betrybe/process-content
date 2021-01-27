@@ -13,6 +13,9 @@ inputs:
   versionApiURL:
     description: "Trybe Application Version env URL to access"
     required: true
+  applicationHealthApiURL:
+    description: "Heroku Trybe Application env URL to health check"
+    required: true
   contentPath:
     description: "The directory path of content files to be processed"
     required: true
