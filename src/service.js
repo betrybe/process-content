@@ -25,7 +25,7 @@ const handleChaptersResult = (createdChaptersResult) =>
     const newResultAccumulator = { ...resultAccumulator };
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
-        ...newResultAccumulator.results, currentResult.data.chapter_id,
+        ...newResultAccumulator.results, currentResult.data.data.chapter_id,
       ];
       return newResultAccumulator;
     }

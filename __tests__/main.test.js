@@ -121,13 +121,17 @@ describe('Action Execution', () => {
         results: [
           {
             data: {
-              chapter_id: 'c54f3049-965a-4634-ae16-6e4251ef7e3e',
+              data: {
+                chapter_id: 'c54f3049-965a-4634-ae16-6e4251ef7e3e',
+              },
             },
             status: 200,
           },
           {
             data: {
-              chapter_id: '94849e6f-0075-4970-a06a-ed821708490a',
+              data: {
+                chapter_id: '94849e6f-0075-4970-a06a-ed821708490a',
+              },
             },
             status: 200,
           },
