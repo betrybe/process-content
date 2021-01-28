@@ -21,7 +21,9 @@ describe('Create Chapters', () => {
 
     const returnData = {
       data: {
-        chapter_id: 'c54f3049-965a-4634-ae16-6e4251ef7e3e',
+        data: {
+          chapter_id: 'fb61c068-609e-447d-92ba-b083bc2dcd20',
+        },
       },
       status: 200,
     };
