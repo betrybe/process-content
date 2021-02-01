@@ -19,6 +19,7 @@ const processContent = async () => {
   const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
   const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
   const mergeCommitId = core.getInput('mergeCommitId') || process.env.COMMIT_ID;
+  const pullRequestId = core.getInput('prNumber') || process.env.PULL_REQUEST_ID;
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
 
@@ -38,7 +39,14 @@ const processContent = async () => {
     throw new Error('A New Version Couldn`t be created due to error when creating a chapter');
   }
 
-  return createVersion(versionApiURL, results, apiKey, mergedAt, mergeCommitId);
+  const bodyParams = {
+    merge_commit_id: mergeCommitId,
+    pull_request_merged_at: mergedAt,
+    pull_request_id: pullRequestId,
+    chapter_ids: results,
+  };
+
+  return createVersion(versionApiURL, apiKey, bodyParams);
 };
 
 module.exports = {

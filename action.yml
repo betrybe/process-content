@@ -37,6 +37,9 @@ inputs:
   mergeCommitId:
     description: "Commit sha from merge that triggered the action"
     required: true
+  prNumber:
+    description: "Pull request number that triggered the action"
+    required: true
   chunkSize:
     description: "Size of group of files to be sent to chapter creation"
     required: true
