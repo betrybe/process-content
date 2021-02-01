@@ -104,7 +104,8 @@ describe('Create Version', () => {
 
     const versionObj = {
       merge_commit_id: '086f1adba10ca38d91464225ac0ff96b9f717e44',
-      timestamp: 1607012042854,
+      pull_request_merged_at: Date.parse(new Date()),
+      pull_request_id: 666,
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
@@ -122,7 +123,8 @@ describe('Create Version', () => {
 
     const versionObj = {
       merge_commit_id: '086f1adba10ca38d91464225ac0ff96b9f717e44',
-      timestamp: 1607012042854,
+      pull_request_merged_at: Date.parse(new Date()),
+      pull_request_id: 666,
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
@@ -140,7 +142,8 @@ describe('Create Version', () => {
 
     const versionObj = {
       merge_commit_id: '086f1adba10ca38d91464225ac0ff96b9f717e44',
-      timestamp: 'this-definitely-doesnt-seem-like-a-valid-time-stamp',
+      pull_request_merged_at: 'this-definitely-doesnt-seem-like-a-valid-time-stamp',
+      pull_request_id: 666,
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
@@ -158,7 +161,8 @@ describe('Create Version', () => {
 
     const versionObj = {
       merge_commit_id: '086f1adba10ca38d91464225ac0ff96b9f717e44',
-      timestamp: 1607012042854,
+      pull_request_merged_at: Date.parse(new Date()),
+      pull_request_id: 666,
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
@@ -173,12 +177,13 @@ describe('Create Version', () => {
 
     const versionObj = {
       merge_commit_id: '086f1adba10ca38d91464225ac0ff96b9f717e44',
-      timestamp: 1607012042854,
+      pull_request_merged_at: Date.parse(new Date()),
+      pull_request_id: 666,
       chapter_ids: ['c54f3049-965a-4634-ae16-6e4251ef7e3e'],
     };
 
     axios.post.mockReturnValue(Promise.reject(data));
-    await expect(service.createVersion(versionApiURL, versionObj, 'wrongkeybru')).rejects.toEqual(data);
+    await expect(service.createVersion(versionApiURL, 'wrongkeybru', versionObj)).rejects.toEqual(data);
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
 });
