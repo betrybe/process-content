@@ -17,9 +17,9 @@ const processContent = async () => {
   const applicationHealthApiURL = core.getInput('applicationHealthApiURL') || process.env.APPLICATION_HEALTH_API_URL;
   const filesPath = core.getInput('contentPath') || process.env.FILES_PATH;
   const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
-  const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
-  const mergeCommitId = core.getInput('mergeCommitId') || process.env.COMMIT_ID;
-  const pullRequestId = core.getInput('prNumber') || process.env.PULL_REQUEST_ID;
+  const pullRequestMergedAt = core.getInput('pullRequestMergedAt') || Date.parse(new Date());
+  const pullRequestMergeCommitId = core.getInput('pullRequestMergeCommitId') || process.env.COMMIT_ID;
+  const pullRequestId = core.getInput('pullRequestId') || process.env.PULL_REQUEST_ID;
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
 
@@ -40,8 +40,8 @@ const processContent = async () => {
   }
 
   const bodyParams = {
-    merge_commit_id: mergeCommitId,
-    pull_request_merged_at: mergedAt,
+    merge_commit_id: pullRequestMergeCommitId,
+    pull_request_merged_at: pullRequestMergedAt,
     pull_request_id: pullRequestId,
     chapter_ids: results,
   };
