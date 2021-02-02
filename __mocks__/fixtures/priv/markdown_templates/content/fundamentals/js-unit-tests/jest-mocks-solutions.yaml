@@ -1,0 +1,12 @@
+---
+block: testes-automatizados-com-jest
+module: fundamentals
+category: solutions
+type: hard_skill
+title: "Jest - Simulando comportamentos"
+date: 2019-12-04
+weight: 52
+week: 10
+day: 3
+course: true
+---

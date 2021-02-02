@@ -1,0 +1,12 @@
+---
+block: arquitetura-solid-e-orm
+module: back-end
+category: chapter
+type: hard_skill
+title: "ORM - Interface da aplicação com o banco de dados"
+date: 2020-05-20
+weight: 130
+week: 31
+day: 2
+course: true
+---

@@ -1,0 +1,12 @@
+---
+block: mongodb-updates-simples-e-complexos
+module: back-end
+category: chapter
+type: hard_skill
+title: "Updates Simples"
+date: 2020-02-26
+weight: 102
+week: 24
+day: 1
+course: true
+---

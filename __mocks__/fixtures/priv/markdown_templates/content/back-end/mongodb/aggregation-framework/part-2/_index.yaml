@@ -1,0 +1,12 @@
+---
+block: mongodb-aggregation-framework
+module: back-end
+category: chapter
+type: hard_skill
+title: "Aggregation Framework - Parte 2"
+date: 2020-03-26
+weight: 107
+week: 25
+day: 2
+course: true
+---

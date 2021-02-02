@@ -1,0 +1,12 @@
+---
+block: arquitetura-de-computadores-e-redes
+module: computer-science
+category: chapter
+type: hard_skill
+title: "Arquitetura de redes"
+date: 2020-06-12
+weight: 141
+week: 34
+day: 2
+course: true
+---

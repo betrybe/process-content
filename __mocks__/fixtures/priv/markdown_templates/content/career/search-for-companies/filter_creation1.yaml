@@ -1,0 +1,15 @@
+---
+block: tomada-de-decisao
+module: career
+category: chapter
+day: 1
+week: 3
+title: "Criação e execução de filtros - parte 1"
+date: 2020-06-15
+weight: 3
+type: "career"
+topic: "T5"
+theme: "Tomada de Decisão"
+draft: false
+course: true
+---

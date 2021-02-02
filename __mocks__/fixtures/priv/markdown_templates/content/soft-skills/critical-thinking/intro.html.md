@@ -1,0 +1,20 @@
+## Introdução - Resolução de Problemas
+
+O texto abaixo foi elaborado a partir de excertos dos textos, “Criatividade e pensamento crítico como competências para a era digital” e, “Criatividade e pensamento crítico para o bem-estar pessoal e social”, do Caderno “Desenvolvimento da Criatividade e do Pensamento Crítico: o que significa na escola”, da Organização para a Cooperação de Desenvolvimento Econômico – OCDE, da qual o Brasil faz parte. Este caderno foi publicação em 2020, em parceria com o Instituto Ayrton Senna e a Fundação Santillana.
+A OCDE é uma organização internacional, com sede em Paris e composta por 35 membros. Criada em 1961, tem como objetivo promover o desenvolvimento e estabilidade econômica de seus países membros.
+
+**Pensamento Crítico e Criatividade**
+
+“Em 2016, CEOs e diretores de recursos humanos de grandes empresas nacionais e multinacionais que responderam à pesquisa “O Futuro do Trabalho”, realizada regularmente pelo Fórum Econômico Mundial, identificaram pensamento crítico e criatividade entre as dez competências que foram mais importantes no mercado de trabalho em 2015, classificadas na quarta e décima posições, respectivamente. Também previram que essas duas competências se tornariam ainda mais importantes em 2020, com pensamento crítico e criatividade ocupando o segundo e terceiro lugares, respectivamente, depois de resolução de problemas complexos (World Economic Forum - WEF, 2016). Em 2018, a pesquisa mostrou resultados similares: pensamento crítico e criatividade foram classificados como a terceira e a quinta competências mais importantes (a primeira foi pensamento analítico e inovação, e a segunda, resolução de problemas complexos). As previsões são de que se tornem a quinta (pensamento crítico) e terceira (criatividade) competências mais solicitadas em 2022. (WEF, 2018).
+
+O relatório destaca a importância de competências como criatividade, originalidade, iniciativa, pensamento crítico, persuasão e negociação, apresentando-as como habilidades “humanas” e um importante reforço para aprimorar a proficiência em novas tecnologias (pressupondo que em um mundo mais automatizado e com o desenvolvimento de novas tecnologias serão demandadas mais ações de codificação e criação de máquinas) (WEF, 2018). Uma nova motivação para desenvolver competências como criatividade e pensamento crítico é que elas parecem ser mais difíceis de automatizar ou simular com computadores e algoritmos. Elas parecem estar, pelo menos temporariamente, fora do alcance da inteligência artificial – mesmo que já saibamos que a IA pode criar ao imitar um determinado estilo de produção de forma convincente (p. ex., nas artes).
+Indo além do argumento econômico, competências como criatividade e pensamento crítico, são importantes, pois contribuem para o bem-estar das pessoas e para o bom funcionamento das sociedades democráticas.
+
+Atualmente, nas democracias modernas, espera-se que as pessoas exerçam seu pensamento crítico como parte integral da cidadania, tendo a capacidade de formar uma opinião independente e bem embasada para votar e para avaliar a qualidade dos argumentos apresentados na mídia e em outras fontes de informação. Em um mundo digital em que múltiplos fatos, visões, teorias e premissas são oferecidos, o pensamento crítico se tornou ainda mais importante. Nessa mesma linha, muitas pessoas consideram o pensamento criativo uma competência fundamental para superar os atuais desafios sociais, sejam eles de natureza global ou local”.
+
+A partir da leitura do texto acima, o que você entende como a importância de trabalhar o pensamento crítico para a sua vida pessoal e profissional?
+
+## Recursos adicionais
+
+- [Desenvolvimento da Criatividade e do Pensamento Crítico dos Estudantes](https://institutoayrtonsenna.org.br/content/dam/institutoayrtonsenna/documentos/instituto-ayrton-senna-documento-ocde-traduzido.pdf) {: .external-link target="_blank" rel="noreferrer noopener" }
+- [Critical Thinking ](https://www.youtube.com/watch?v=6OLPL5p0fMg ) {: .external-link target="_blank" rel="noreferrer noopener" }

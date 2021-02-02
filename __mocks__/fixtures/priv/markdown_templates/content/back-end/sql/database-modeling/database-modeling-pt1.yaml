@@ -1,0 +1,12 @@
+---
+block: normalizacao-e-modelagem-de-banco-de-dados
+module: back-end
+category: chapter
+type: hard_skill
+title: "Transformando ideias em um modelo de banco de dados"
+date: 2020-02-14
+weight: 94
+week: 22
+day: 1
+course: true
+---

@@ -1,0 +1,12 @@
+---
+block: introducao-a-python-e-raspagem-de-dados-da-web
+module: computer-science
+category: chapter
+type: hard_skill
+title: "Aprendendo Python"
+date: 2020-06-08
+weight: 144
+week: 35
+day: 1
+course: true
+---

@@ -1,0 +1,13 @@
+---
+block: nodejs-camada-de-servico-e-arquitetura-rest-e-restful
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Serviço de streaming Tryflix"
+date: 2020-23-03
+weight: 119
+week: 27
+day: 3
+draft: true
+course: true
+---

@@ -1,0 +1,63 @@
+<div class="card col-sm-12 col-md-12 col-lg-6 who-am-i">
+  <a data-toggle="collapse" href="#member-desc-<%= @anchor %>" role="button" aria-expanded="false" aria-controls="member-desc-<%= @anchor %>">
+    <%= if @img do %>
+      <%= img_tag @img, class: "card-img-top rounded mx-auto d-block img-fluid", loading: "lazy", alt: "profile image" %>
+    <% else %>
+      <%= img_tag "https://via.placeholder.com/142", class: "card-img-top rounded mx-auto d-block img-fluid", loading: "lazy", alt: "profile image" %>
+    <% end %>
+  </a>
+
+  <div class="card-body who-am-i">
+    <a data-toggle="collapse" href="#member-desc-<%= @anchor %>" role="button" aria-expanded="false"
+      aria-controls="member-desc-<%= @anchor %>">
+      <h2 class="card-title text-center"><%= @name %></h2>
+    </a>
+    <div class="row card-social">
+      <%= if Map.has_key?(assigns, :linkedin) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @linkedin, class: "fab fa-linkedin", target: "_blank" %>
+        </div>
+      <% end %>
+
+      <%= if Map.has_key?(assigns, :twitter) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @twitter, class: "fab fa-twitter-square", target: "_blank" %>
+        </div>
+      <% end %>
+
+      <%= if Map.has_key?(assigns, :github) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @github, class: "fab fa-github-square", target: "_blank" %>
+        </div>
+      <% end %>
+
+      <%= if Map.has_key?(assigns, :youtube) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @youtube, class: "fab fa-youtube-square", target: "_blank" %>
+        </div>
+      <% end %>
+
+      <%= if Map.has_key?(assigns, :stackoverflow) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @stackoverflow, class: "fab fa-stack-overflow", target: "_blank" %>
+        </div>
+      <% end %>
+
+      <%= if Map.has_key?(assigns, :blog) do %>
+        <div class="col d-flex justify-content-center">
+          <%= link "", to: @blog, class: "fab fa-blogger", target: "_blank" %>
+        </div>
+      <% end %>
+    </div>
+
+    <a data-toggle="collapse" href="#member-desc-<%= @anchor %>" role="button" aria-expanded="false"
+      aria-controls="member-desc-<%= @anchor %>">
+      <p class="card-text-heading"><span>Quem é você na Trybe?</span></br><%= @role %></p>
+      <p class="card-text-heading"><span>Saiba mais:</span></p>
+
+      <div class="collapse" id="member-desc-<%= @anchor %>">
+        <p class="card-text"><%= @details %></p>
+      </div>
+    </a>
+  </div>
+</div>

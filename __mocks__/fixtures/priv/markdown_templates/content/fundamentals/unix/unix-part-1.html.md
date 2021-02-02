@@ -31,7 +31,7 @@ Os principais pontos abordados serão:
 
 ## Por que isso é importante?
 
-No desenvolvimento de software, é muito importante que você entenda como interagir de forma eficiente com o sistema operacional no qual você vai programar. [Isso te poupará tempo e permitirá ser uma pessoa mais produtiva.](https://www.vivaolinux.com.br/artigo/A-importancia-do-modo-texto) {: .external-link target="_blank" rel="noreferrer noopener" } Para isso, é primordial que você saiba os principais comandos que podem ser utilizados no terminal.
+No desenvolvimento de software, é muito importante que você entenda como interagir de forma eficiente com o sistema operacional no qual você vai programar. Isso te poupará tempo e permitirá ser uma pessoa mais produtiva. Para isso, é primordial que você saiba os principais comandos que podem ser utilizados no terminal.
 
 Na maioria das vezes, principalmente por questões de custo, performance e facilidade de interação através do terminal, sistemas operacionais baseados em Unix são indicados como a melhor opção para você hospedar seus projetos web.
 
@@ -43,7 +43,13 @@ Na maioria das vezes, principalmente por questões de custo, performance e facil
 
 ---
 
-Primeiro você vai entender o que é o Unix, Kernel e Shell. Além de compreender como é a estrutura dos arquivos e o que é um processo.
+Você já deve ter se perguntando, por qual motivo fazemos uso da linha de comando, se podemos resolver demandas em poucos cliques através da interface gráfica?
+
+De forma resumida podemos dizer que ela é simples, estável, rápida, eficiente e exige baixíssimo poder de hardware. Pode soar estranho dizer que ela é simples, não é? Mas sim ela é, de modo geral a linha de comando não ~~fazia~~ faz parte do seu dia a dia e por este motivo pode parecer complicado. No entanto, a partir de agora, você vai conhecer em detalhes diversas vantagens e praticidades desta poderosa ferramenta, que te tornarão mais produtivo e mais eficiente na sua formação como pessoa desenvolvedora.
+
+Lembre-se que utilizar a linha de comando não te impede de também utilizar a interface gráfica, com tempo e prática você encontrará a forma de trabalho que te proporciona a melhor experiência. 😉
+
+Para que você possa começar a ter mais familiaridade e entendimento, assista o video abaixo. Nele vamos entender o que é o Unix, Kernel e Shell. Além de compreender como é a estrutura dos arquivos e o que é um processo.
 
 <%= vimeo "460354365" %>
 
@@ -71,7 +77,7 @@ Agora você verá outras formas de visualização do conteúdo de arquivos, alé
 
 ---
 
-Para facilitar sua vida, aprenda a utilizar *wildcards*. Vamos entender as convenções de nomes dos arquivos e diretórios Unix e como buscar por ajuda quando não souber qual comando usar ou o que ele faz.
+Para facilitar sua vida, aprenda a utilizar _wildcards_. Vamos entender as convenções de nomes dos arquivos e diretórios Unix e como buscar por ajuda quando não souber qual comando usar ou o que ele faz.
 
 <%= vimeo "460705811" %>
 
@@ -220,6 +226,8 @@ E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras refe
 * [Referência bem completa sobre shell, terminal e linux](http://linuxcommand.org/index.php) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Guia do bash para iniciantes](https://www.youtube.com/watch?v=oxuRxtrO2Ag) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [A importância do modo texto.](https://www.vivaolinux.com.br/artigo/A-importancia-do-modo-texto) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 ##### ⚠️ O sinal de % não é necessário antes da execução dos comandos listados nos links dos conteúdos abaixo.
 

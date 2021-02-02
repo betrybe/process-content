@@ -1,0 +1,14 @@
+---
+block: ganhando-experiencia
+module: career
+category: chapter
+title: "Hackathons"
+date: 2020-05-27
+weight: 6
+week: 3
+day: 1
+type: "career"
+topic: "T4"
+theme: "Ganhando Experiência"
+course: true
+---

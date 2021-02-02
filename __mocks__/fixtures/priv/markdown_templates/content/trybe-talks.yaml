@@ -1,0 +1,11 @@
+---
+block: support
+module: support
+category: support
+type: support
+title: "Trybe Talks"
+date: 2020-03-25
+weight: 1
+type: "trybe-talks"
+course: true
+---

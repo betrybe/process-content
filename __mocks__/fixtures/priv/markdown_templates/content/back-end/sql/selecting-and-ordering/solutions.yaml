@@ -1,0 +1,12 @@
+---
+block: introducao-a-sql
+module: back-end
+category: solutions
+type: hard_skill
+title: "Encontrando dados em um banco de dados"
+date: 2020-01-09
+weight: 86
+week: 20
+day: 2
+course: true
+---

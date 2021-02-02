@@ -1,0 +1,12 @@
+---
+block: autenticacao-e-upload-de-arquivos
+module: back-end
+category: chapter
+type: hard_skill
+title: "NodeJS - Upload de arquivos com Multer"
+date: 2020-01-23
+weight: 122
+week: 28
+day: 2
+course: true
+---

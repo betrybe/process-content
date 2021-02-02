@@ -1,0 +1,12 @@
+---
+block: introducao-ao-desenvolvimento-web-com-nodejs
+module: back-end
+category: chapter
+type: hard_skill
+title: "NodeJS - Introdução"
+date: 2020-02-01
+weight: 110
+week: 26
+day: 1
+course: true
+---

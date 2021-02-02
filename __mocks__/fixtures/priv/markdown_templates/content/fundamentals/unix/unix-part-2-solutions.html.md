@@ -143,7 +143,7 @@ chmod a-w bunch_of_things.txt
 ls -l
 ```
 
-5. Volte a permissão do arquivo `bunch_of_things.txt` para a listada inicialmente utilizando o comando `chmod 644 bunch_of_things.txt`. [Leia este artigo](https://github.com/CristianAmbrosi/tutoriais/blob/master/Permiss%C3%B5es%20de%20um%20Arquivo%20ou%20Diret%C3%B3rio%20no%20Linux.md) {: .external-link target="_blank" rel="noreferrer noopener" } para entender mais sobre o que é e como funciona essa numeração `644`.
+5. Volte a permissão do arquivo `bunch_of_things.txt` para a listada inicialmente utilizando o comando `chmod 644 bunch_of_things.txt`.
 
 ```language-sh
 # Exercício 5
@@ -199,7 +199,7 @@ bg
 sleep 300 &
 ```
 
-6. Crie mais dois processos que rodem o comando `sleep` por 200 e 100 segundos, respectivamente. Você deve criá-los em *foreground* (sem usar o `&`) e enviá-los para background após cada um começar a executar.
+6. Crie mais dois processos que rodem o comando `sleep` por 200 e 100 segundos, respectivamente. Você deve criá-los em _foreground_ (sem usar o `&`) e enviá-los para background após cada um começar a executar.
 
 ```language-sh
 # Exercício 6
@@ -211,7 +211,7 @@ sleep 100
 # deve aparecer "suspended" no terminal
 ```
 
-7. Verifique que apenas o processo `sleep 300` está em execução com o comando `jobs`. Suspenda a execução desse processo (você vai precisar trazer o processo para *foreground* e suspendê-lo, ou enviar um sinal).
+7. Verifique que apenas o processo `sleep 300` está em execução com o comando `jobs`. Suspenda a execução desse processo (você vai precisar trazer o processo para _foreground_ e suspendê-lo, ou enviar um sinal).
 
 ```language-sh
 # Exercício 7
@@ -251,19 +251,19 @@ killall sleep
 
 E pra terminar com a energia ~~óh,~~ lá no alto, que tal aprender agora alguns comandos divertidos do UNIX? ☝ 🎊	
 
-[Leia este artigo para fazer os exercícios ~~de aquecimento~~ abaixo](https://canaltech.com.br/linux/11-comandos-divertidos-e-inuteis-para-usar-no-linux/) {: .external-link target="_blank" rel="noreferrer noopener" }	
-
-1. Abra o terminal e execute o comando `cmatrix`. Quando estiver se sentindo como o *Neo*, aperte `ctrl+c` para voltar ao terminal;
+1. Abra o terminal e execute o comando `sudo apt-get install cmatrix` e, depois, execute o comando `cmatrix`. Quando estiver se sentindo como o _Neo_, aperte `ctrl+c` para voltar ao terminal;
 
 ```language-sh
 # Exercício 1
+    sudo apt-get install cmatrix
     cmatrix
 ```
 
-2. Crie um arquivo de texto chamado `fortune.txt` que contenha a sua sorte do dia. Utilize apenas uma linha de comando. _Dica: use o comando `fortune`, e o operador `>`;_
+2. Agora execute o comando `sudo apt-get install fortune`, após a instalação, crie um arquivo de texto chamado `fortune.txt` que contenha a sua sorte do dia. Utilize apenas uma linha de comando. _Dica: use o comando `fortune`, e o operador `>`;_
 
 ```language-sh
 # Exercício 2
+sudo apt-get install fortune
 fortune > fortune.txt
 ```
 
@@ -274,23 +274,25 @@ fortune > fortune.txt
 wc -m fortune.txt
 ```
 
-4. Execute o comando `sl`. Agora tente `sl -f`;
+4. Execute o comando `sudo apt-get install sl`, após a instalação, execute o comando `sl`. Agora tente `sl -F`;
 
 ```language-sh
 # Exercício 4
+sudo apt-get install sl
 sl
 sl -f
 ```
 
-5. Execute o comando `cowsay`. Agora faça a vaquinha dizer a frase que está gravada no arquivo `fortune.txt`;
+5. Execute o comando `sudo apt-get install cowsay`, após a instalação, execute o comando `cowsay` e algo que você queira falar. Agora faça a vaquinha dizer a frase que está gravada no arquivo `fortune.txt`;
 
 ```language-sh
 # Exercício 5
+sudo apt-get install cowsay
 cowsay show
 tail fortune.txt | cowsay
 ```
 
-6. Descubra os fatores primos do número 42 usando o comando `factor`;
+6. Descubra os fatores primos usando o comando `factor` e em seguida o número 42 ;
 
 ```language-sh
 # Exercício 6

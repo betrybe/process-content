@@ -1,0 +1,12 @@
+---
+block: gerenciamento-de-estado-com-redux
+module: front-end
+category: chapter
+type: hard_skill
+title: "Usando o Redux no React"
+date: 2019-12-13
+weight: 72
+week: 16
+day: 2
+course: true
+---

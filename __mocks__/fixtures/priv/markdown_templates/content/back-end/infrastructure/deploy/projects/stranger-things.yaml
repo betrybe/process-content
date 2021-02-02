@@ -1,0 +1,12 @@
+---
+block: deployment
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Stranger Things"
+date: 2020-03-31
+weight: 127
+week: 29
+day: 3
+course: true
+---

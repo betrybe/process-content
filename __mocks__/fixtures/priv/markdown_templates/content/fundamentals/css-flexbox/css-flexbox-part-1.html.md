@@ -1,12 +1,12 @@
 ## O que vamos aprender?
 
 Você vai aprender sobre CSS Flexbox Layout (_Flexible Box_).
-Flexbox é um módulo que visa a fornecer uma maneira mais eficiente de organizar, alinhar e distribuir espaço entre os itens em um *container*, mesmo quando seu tamanho é desconhecido.
+Flexbox é um módulo que visa a fornecer uma maneira mais eficiente de organizar, alinhar e distribuir espaço entre os itens em um _container_, mesmo quando seu tamanho é desconhecido.
 
-Um *container* pode ser qualquer elemento HTML que contenha outros elementos, como, por exemplo, um `<div>` ou `<section>`.
-Esse elemento pai é chamado de *container*, e os elementos filhos serão os itens.
+Um _container_ pode ser qualquer elemento HTML que contenha outros elementos, como, por exemplo, um `<div>` ou `<section>`.
+Esse elemento pai é chamado de _container_, e os elementos filhos serão os itens.
 
-A ideia principal por trás do "layout flexível" é dar ao *container* a habilidade de alterar o tamanho (_width_ e *height*) e a ordem dos itens para melhor ocupar o espaço disponível.
+A ideia principal por trás do "layout flexível" é dar ao _container_ a habilidade de alterar o tamanho (_width_ e _height_) e a ordem dos itens para melhor ocupar o espaço disponível.
 Essa habilidade nos permite acomodar uma página em todos os tipos de dispositivos e tamanhos de tela.
 
 ---
@@ -14,13 +14,14 @@ Essa habilidade nos permite acomodar uma página em todos os tipos de dispositiv
 ### Você será capaz de:
 
   * Utilizar _CSS Flexbox_ para criar layouts flexíveis;
-  * Utilizar _CSS Flexbox_ para alterar o comportamento de *containers*.
+  * Utilizar _CSS Flexbox_ para alterar o comportamento de _containers_.
 
 ---
 
 ## Por que isso é importante?
 
-O acesso à Internet não é feito apenas por computadores e notebooks. *Tablets* e principalmente *smartphones* também são utilizados para essa função.
+O acesso à Internet não é feito apenas por computadores e notebooks.
+_Tablets_ e principalmente _smartphones_ também são utilizados para essa função.
 Com tantos dispositivos e tamanhos diferentes de telas, um _design responsivo_ é necessário para promover a melhor experiência possível aos visitantes, independentemente do dispositivo e tela que estejam usando.
 
 Flexbox é uma ferramenta que nos permitirá criar páginas com _design responsivo_ de forma simples e organizada.
@@ -54,10 +55,10 @@ O layout do Flexbox é baseado em `flex-directions` (direções flex).
 Essas direções são determinadas por eixos (axes).
 A imagem abaixo mostra os eixos definidos em um Flex container:
 
-<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_axes.png", class: "rounded mx-auto d-block", caption: "CSS Flexbox Axes", width: "600px", height: "auto", alt: "CSS Flexbox axes description"}) %>
+<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_axes.png", class: "standard-screenshot text-center", caption: "CSS Flexbox Axes", width: "600px", height: "auto", alt: "CSS Flexbox axes description"}) %>
 
 Os flex items são dispostos dentro de um Flex container seguindo o **Main Axis**.
-O **Main Axis** tem a direção definida pela propriedade **flex-direction**, que pode ser *horizontal*, quando flex-direction é **row** ou **row-reverse**, e *vertical*, quando é **column** ou **column-reverse**.
+O **Main Axis** tem a direção definida pela propriedade **flex-direction**, que pode ser _horizontal_, quando flex-direction é **row** ou **row-reverse**, e _vertical_, quando é **column** ou **column-reverse**.
 
 #### Flex Lines
 
@@ -66,11 +67,11 @@ Um Flex container pode ser **single-line** ou **multi-line**, dependendo da prop
 
 - Um Flex container **single-line** dispõe todos os seus filhos (flex items) em uma única linha;
 
-<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_single_line.png", class: "rounded mx-auto d-block", caption: "CSS Flexbox Single Line", width: "600px", height: "auto"}) %>
+<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_single_line.png", class: "standard-screenshot text-center", caption: "CSS Flexbox Single Line", width: "600px", height: "auto"}) %>
 
 - Um Flex container **multi-line** quebra seus flex items em múltiplas linhas. Isso é similar ao que acontece quando um texto é quebrado em uma nova linha quando está muito grande (_overflow_).
 
-<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_multi_line.png", class: "rounded mx-auto d-block", caption: "CSS Flexbox Multi Line", width: "600px", height: "auto"}) %>
+<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/css_flexbox_multi_line.png", class: "standard-screenshot text-center", caption: "CSS Flexbox Multi Line", width: "600px", height: "auto"}) %>
 
 Agora vamos ver a estrutura e propriedades do Flexbox.
 
@@ -84,11 +85,52 @@ Já a propriedade `flex-wrap` define se os itens devem quebrar ou não a linha, 
 
 Por sua vez o `flex-flow` é um atalho para as propriedades `flex-direction` e `flex-wrap`, o primeiro valor que recebe é o do `flex-direction` e o segundo o do `flex-wrap`.
 
-* Teste as possibilidades (`row`, `column`, `row-reverse` e `column-reverse`) para a propriedade `flex-direction` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_flex-direction_column) {: .external-link target="_blank" rel="noreferrer noopener" }
+Vamos colocar em prática os novos conhecimentos adquiridos? Copie o código abaixo e realize os exercícios de fixação propostos.
 
-* Teste as possibilidades (`wrap` e `nowrap`) para a propriedade `flex-wrap` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_flex-wrap_wrap) {: .external-link target="_blank" rel="noreferrer noopener" }
+```language-HTML
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Flex Flow</title>
+    <style>
+      .box {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 50px;
+        height: 60px;
+        margin: 10px 5px;
+        text-align: center;
+        width: 30%;
+      }
 
-* Teste as possibilidades para a propriedade `flex-flow` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_flex-flow_row_wrap) {: .external-link target="_blank" rel="noreferrer noopener" }
+      .box-container {
+        background-color: #0fa36b;
+        display: flex;
+        /* ADICIONE AQUI SEUS TESTES */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="box-container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+  </body>
+</html>
+```
+
+1. Teste as possibilidades (`row`, `column`, `row-reverse` e `column-reverse`) para a propriedade `flex-direction`.
+
+2. Teste as possibilidades (`wrap` e `nowrap`) para a propriedade `flex-wrap`.
+
+3. Teste as possibilidades para a propriedade `flex-flow`.
 
 ### Propriedades: justify-content, align-items e align-content
 
@@ -100,11 +142,152 @@ Já a propriedade `align-items` alinha os flex items de acordo com o eixo transv
 
 Por fim, a propriedade `align-content` alinha as linhas do container em relação ao eixo transversal (cross-axis), sendo que essa propriedade só funciona caso haja mais de uma linha de flex items. As opções de alinhamento que o `align-content` apresenta são `stretch`, seu valor padrão que faz com que os flex items cresçam igualmente na vertical, `flex-start`, alinha todas as linhas de itens ao início, `flex-end`, que alinha todas as linhas de itens ao final, `center` que alinha todas as linhas ao centro, `space-between`, que cria um espaçamento igual entre as linhas, mantendo a primeira grudada no topo e a última no bottom, e `space-around`, que também cria um espaçamento entre as linhas, mas os espaçamentos do meio são duas vezes maiores que o top e o bottom.
 
-* Teste as possibilidades (`center`, `flex-start`, `flex-end`, `space-around` e `space-between`) para a propriedade `justify-content` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_justify-content_center) {: .external-link target="_blank" rel="noreferrer noopener" }
+Interessante quantas possibilidades para manipular o posicionamento de elementos o flex-box nos traz, não é? Copie o código abaixo e teste algumas destas possibilidades para fixar seu conhecimento.
 
-* Teste as possibilidades (`center`, `flex-start`, `flex-end`, `stretch` e `baseline`) para a propriedade `align-items` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_align-items_baseline) {: .external-link target="_blank" rel="noreferrer noopener" }
+1. Utilizando o código abaixo, teste as possibilidades (`center`, `flex-start`, `flex-end`, `space-around` e `space-between`) para a propriedade `justify-content`.
 
-* Teste as possibilidades (`center`, `flex-start`, `flex-end`, `stretch`, `space-around` e `space-between`) para a propriedade `align-content` [ aqui](https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_align-content_space-between) {: .external-link target="_blank" rel="noreferrer noopener" }
+```language-HTML
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Justify Content</title>
+    <style>
+      .box {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 50px;
+        height: 60px;
+        margin: 10px 5px;
+        text-align: center;
+        width: 20%;
+      }
+
+      .box-container {
+        background-color: #0fa36b;
+        display: flex;
+        /* ADICIONE AQUI SEUS TESTES */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="box-container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+  </body>
+</html>
+```
+2. Teste as possibilidades (`center`, `flex-start`, `flex-end`, `stretch` e `baseline`) para a propriedade `align-items`. Não se esqueça de copiar o código abaixo! 😉
+
+```language-HTML
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Align Items</title>
+    <style>
+      .box-one {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 70px;
+        height: 80px;
+        margin: 10px 5px;
+        text-align: center;
+        width: 50px;
+      }
+
+      .box-two {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 50px;
+        height: 60px;
+        margin: 10px 5px;
+        text-align: center;
+        width: 50px;
+      }
+
+      .box-three {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 30px;
+        margin: 10px 5px;
+        height: 50px;
+        text-align: center;
+        width: 50px;
+      }
+
+      .box-container {
+        background-color: #0fa36b;
+        display: flex;
+        /* ADICIONE AQUI SEUS TESTES */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="box-container">
+      <div class="box-one">1</div>
+      <div class="box-two">2</div>
+      <div class="box-three">3</div>
+    </div>
+  </body>
+</html>
+```
+3. Teste as possibilidades (`center`, `flex-start`, `flex-end`, `stretch`, `space-around` e `space-between`) para a propriedade `align-content`.
+
+```language-HTML
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Align Content</title>
+    <style>
+      .box {
+        color: #9069EF;
+        background-color: rgb(243, 243, 243);
+        border: 2px solid #232525;
+        font-size: 50px;
+        height: 60px;
+        margin: 10px 5px;
+        text-align: center;
+        width: 30%;
+      }
+
+      .box-container {
+        /* ADICIONE AQUI SEUS TESTES */
+        background-color: #0fa36b;
+        display: flex;
+        flex-wrap: wrap;
+        height: 600px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="box-container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+    </div>
+  </body>
+</html>
+```
 
 ---
 
@@ -112,7 +295,7 @@ Por fim, a propriedade `align-content` alinha as linhas do container em relaçã
 
 ###### Tempo sugerido para realização: 80 minutos
 
-Agora que você já estudou sobre **Flexbox** e as propriedades que afetam um *container*, vamos para a aula ao vivo.
+Agora que você já estudou sobre **Flexbox** e as propriedades que afetam um _container_, vamos para a aula ao vivo.
 
 O link estará disponível no Slack.
 
@@ -122,23 +305,16 @@ O link estará disponível no Slack.
 
 ###### Tempo sugerido para realização: 140 minutos
 
-<%= versioning_your_code(@conn) %>
+### Trybe Tech-Gallery
+Após conhecer um pouco mais dos conceitos de **Flexbox**, o que acha de praticar seus conhecimentos em uma aplicação WEB? 
 
-### Agora, a prática
+<%= figure(%{src: "/fundamentals/css-flexbox/css-flexbox-part-1/images/trybe-tech-gallery.jpeg", class: "rounded mx-auto d-block", caption: "Trybe Tech Gallery Preview", width: "800px", height: "auto", alt: "Trybe Tech Gallery Preview"}) %>
 
-Para os exercícios a seguir, utilize este [playground](https://the-echoplex.net/flexyboxes/) {: .external-link target="_blank" rel="noreferrer noopener" } para testar como as propriedades **Flexbox** influenciam a disposição dos elementos em um *container*. Existem outros *playgrounds* para **Flexbox** como este, e os links para eles estão nos **Recursos adicionais**.
+No exemplo acima foi criada uma galeria de fotos de algumas das tecnologias que você aprenderá no curso da Trybe. As imagens utilizadas estarão disponíveis para você, mas...caso queira, sinta-se livre para criar a página com a temática que você preferir ok? Só atente-se aos enunciados para que a proposta do exercício seja cumprida!
 
-Como os exercícios serão feitos na própria plataforma, crie um diretório em seu repositório para o site número 1 (problema do sapo) e outra para o site número 2 (problema das torres).
-Salve o ***CSS*** que você criar na plataforma colocando o número do exercício como nome do arquivo, veja exemplos abaixo:
+**Atenção**: os exercícios estão disponíveis [neste repositório](https://github.com/tryber/exercise-tech-gallery) {: .external-link target="_blank" rel="noreferrer noopener" }. As instruções de como realizar o exercício estão no `README.md` do repositório **exercise-tech-gallery**. As imagens utilizadas estão disponíveis na pasta **images** do repositório. 😉
 
-- Para o exercício número 3 do site número 1, o ***CSS*** deve ser salvo em `exercises/6.3/1/3.css`;
-
-- Para o exercício número 8 do site número 2, o ***CSS*** deve ser salvo em `exercises/6.3/2/8.css`;
-
-- Para o exercício número 9 do site número 2, o ***CSS*** deve ser salvo em `exercises/6.3/2/9.css`.
-
-1. Faça os exercícios de **1** a **13** neste [site](https://flexboxfroggy.com/) {: .external-link target="_blank" rel="noreferrer noopener" }. O seu objetivo é colocar os sapos em cima de suas respectivas folhas.
-2. Neste segundo [link](http://www.flexboxdefense.com/) {: .external-link target="_blank" rel="noreferrer noopener" }, complete os exercícios de **1** a **9**. Seu objetivo aqui é posicionar as torres de defesa para que elas abatam os inimigos. Você terá de pensar qual é a melhor posição para cada torre.
+**Spoiler**: Caso queira praticar ainda mais, na seção de recursos adicionais existem alguns exercícios gamificados que são super divertidos. 🚀
 
 ---
 
@@ -147,6 +323,12 @@ Salve o ***CSS*** que você criar na plataforma colocando o número do exercíci
 * [W3Schools CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [CSS Tricks: A Complete Guide To Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [Exercício: Flexbox Froggy](https://flexboxfroggy.com/) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [Exercício: Flexbox Defense](http://www.flexboxdefense.com/) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [Playground: The-echoplex ](https://the-echoplex.net/flexyboxes/) {: .external-link target="_blank" rel="noreferrer noopener" } 
 
 * [Playground: Properties for the flex container](https://codepen.io/enxaneta/full/adLPwv) {: .external-link target="_blank" rel="noreferrer noopener" }
 

@@ -1,0 +1,12 @@
+---
+block: support
+title: "Introdução ao JavaScript"
+date: 2019-12-03
+weight: 0
+day: 0
+week: 1
+type: hard_skill
+module: introducao-ao-javascript
+category: module_introduction
+optional: true
+---

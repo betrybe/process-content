@@ -1,0 +1,12 @@
+---
+block: introducao-ao-mongodb
+module: back-end
+category: chapter
+type: hard_skill
+title: "Filter Operators"
+date: 2020-02-18
+weight: 100
+week: 23
+day: 2
+course: true
+---

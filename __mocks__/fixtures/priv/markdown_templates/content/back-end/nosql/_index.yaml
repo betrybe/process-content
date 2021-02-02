@@ -1,0 +1,12 @@
+---
+block: introducao-ao-mongodb
+module: back-end
+category: introduction
+type: hard_skill
+title: "Introdução - NoSQL"
+date: 2020-01-14
+weight: 98
+week: 23
+day: 1
+course: true
+---

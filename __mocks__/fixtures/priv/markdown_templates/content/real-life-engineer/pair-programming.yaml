@@ -1,0 +1,10 @@
+---
+block: support
+module: support
+category: support
+type: support
+title: "Pair Programming"
+date: 2019-08-23
+weight: 1
+course: true
+---

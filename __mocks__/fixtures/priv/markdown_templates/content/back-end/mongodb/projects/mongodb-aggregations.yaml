@@ -1,0 +1,12 @@
+---
+block: mongodb-aggregation-framework
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Aggregations"
+date: 2020-03-31
+weight: 108
+week: 25
+day: 3
+course: true
+---

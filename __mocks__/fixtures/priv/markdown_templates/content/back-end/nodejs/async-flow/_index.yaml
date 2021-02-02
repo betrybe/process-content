@@ -1,0 +1,12 @@
+---
+block: introducao-ao-desenvolvimento-web-com-nodejs
+module: back-end
+category: chapter
+type: hard_skill
+title: "NodeJS - Fluxo Assíncrono"
+date: 2020-03-06
+weight: 111
+week: 26
+day: 2
+course: true
+---

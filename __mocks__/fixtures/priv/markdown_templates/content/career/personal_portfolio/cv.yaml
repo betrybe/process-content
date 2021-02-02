@@ -1,0 +1,15 @@
+---
+block: curriculo
+module: career
+category: chapter
+day: 1
+week: 2
+title: "Currículo"
+date: 2020-09-14
+weight: 2
+type: "career"
+topic: "T3"
+theme: "Currículo"
+Draft: false
+course: true
+---

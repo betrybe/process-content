@@ -1,0 +1,14 @@
+---
+block: ganhando-experiencia
+module: career
+category: chapter
+week: 3
+day: 2
+title: "Cursos e Aulas"
+date: 2020-05-27
+weight: 7
+type: "career"
+topic: "T4"
+theme: "Ganhando Experiência"
+course: true
+---

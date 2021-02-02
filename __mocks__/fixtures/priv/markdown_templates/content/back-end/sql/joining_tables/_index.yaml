@@ -3,7 +3,7 @@ block: funcoes-sql-joins-e-subqueries
 module: back-end
 category: chapter
 type: hard_skill
-title: "Descomplicando JOINs e UNIONs"
+title: "Descomplicando JOINs, UNIONs e Subqueries"
 date: 2020-01-29
 weight: 91
 week: 21

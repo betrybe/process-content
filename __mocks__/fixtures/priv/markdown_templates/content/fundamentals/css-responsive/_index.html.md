@@ -1,60 +1,60 @@
 ## O que vamos aprender?
 
-Construir páginas responsivas é uma habilidade fundamental para pessoas que trabalham com desenvolvimento *front-end* hoje em dia. Quando falamos sobre páginas responsivas, o termo "_mobile first_" - *layout* voltado para dispositivos móveis - vem à cabeça imediatamente.
+Construir páginas responsivas é uma habilidade fundamental para pessoas que trabalham com desenvolvimento _front-end_ hoje em dia. Quando falamos sobre páginas responsivas, o termo "_mobile first_" - _layout_ voltado para dispositivos móveis - vem à cabeça imediatamente.
 
-Em teoria, é mais fácil construir um *layout*  _"mobile first"_ quando você está começando o desenvolvimento, pois você não tem que se preocupar muito sobre funcionalidades complexas que podem entrar em telas grandes de *desktop*.
+Em teoria, é mais fácil construir um _layout_  _"mobile first"_ quando você está começando o desenvolvimento, pois você não tem que se preocupar muito sobre funcionalidades complexas que podem entrar em telas grandes de _desktop_.
 
-Você vai aprender como utilizar [_media queries_](https://developer.mozilla.org/pt-BR/docs/Web/Guide/CSS/CSS_Media_queries) {: .external-link target="_blank" rel="noreferrer noopener" } para mostrar um *layout* diferente em tamanhos de tela diferentes.
+Você vai aprender como utilizar [_media queries_](https://developer.mozilla.org/pt-BR/docs/Web/Guide/CSS/CSS_Media_queries) {: .external-link target="_blank" rel="noreferrer noopener" } para mostrar um _layout_ diferente em tamanhos de tela diferentes.
 
 Exemplo:
 
-  * *Layout* 1 para telas grandes: _desktops, laptops, etc_;
+  * _Layout_ 1 para telas grandes: _desktops, laptops, etc_;
 
-  * *Layout* 2 para telas médias: _tablets, telefones com tela grande (Samsung Note), etc_;
+  * _Layout_ 2 para telas médias: _tablets, telefones com tela grande (Samsung Note), etc_;
 
-  * *Layout* 3 para telas pequenas: *smartphones*.
+  * _Layout_ 3 para telas pequenas: _smartphones_.
 
-_Media queries_ são bastante utilizadas no design responsivo para mostrar diferentes *layouts* para diferentes telas, dependendo do seu tamanho e/ou orientação. A principal razão para isso é que alguns *layouts* podem parecer "estranhos" (ou até completamente quebrados) em telas muito estreitas, ou muito largas.
+_Media queries_ são bastante utilizadas no design responsivo para mostrar diferentes _layouts_ para diferentes telas, dependendo do seu tamanho e/ou orientação. A principal razão para isso é que alguns _layouts_ podem parecer "estranhos" (ou até completamente quebrados) em telas muito estreitas, ou muito largas.
 
 ---
 
 ### Você será capaz de:
 
-* Criar regras *CSS* específicas para serem aplicadas a dispositivos móveis;
+* Criar regras _CSS_ específicas para serem aplicadas a dispositivos móveis;
 
-* Construir páginas que alteram o seu *layout* de acordo com a orientação da tela;
+* Construir páginas que alteram o seu _layout_ de acordo com a orientação da tela;
 
 ---
 
 ## Por que isso é importante?
 
-**Responsividade** é uma abordagem de *design* e *desenvolvimento* que se adapta ao comportamento e ambiente do usuário baseado no tamanho, orientação e plataforma da sua tela. Em um cenário onde os tamanhos das telas que usamos variam drasticamente, ela é considerada uma habilidade indispensável para qualquer novo projeto.
+**Responsividade** é uma abordagem de _design_ e _desenvolvimento_ que se adapta ao comportamento e ambiente do usuário baseado no tamanho, orientação e plataforma da sua tela. Em um cenário onde os tamanhos das telas que usamos variam drasticamente, ela é considerada uma habilidade indispensável para qualquer novo projeto.
 
-É importante deixar claro que: *design* **não é** *desenvolvimento* e *desenvolvimento* **não é** *design*.
+É importante deixar claro que: _design_ **não é** _desenvolvimento_ e _desenvolvimento_ **não é** _design_.
 
-As duas frentes trabalham juntas para criar um produto final, mas a forma como elas trabalham não necessariamente segue o mesmo padrão. É comum escolher entre um caminho estritamente voltado para *desktop* ou para *mobile* durante tanto o *design* quanto o *desenvolvimento*, se isso for **o melhor para o projeto**.
+As duas frentes trabalham juntas para criar um produto final, mas a forma como elas trabalham não necessariamente segue o mesmo padrão. É comum escolher entre um caminho estritamente voltado para _desktop_ ou para _mobile_ durante tanto o _design_ quanto o _desenvolvimento_, se isso for **o melhor para o projeto**.
 
-Porém, podemos adotar uma abordagem flexível onde durante o *design* o foco é no *desktop*, e durante o início do *desenvolvimento* focar no *mobile* primeiro.
+Porém, podemos adotar uma abordagem flexível onde durante o _design_ o foco é no _desktop_, e durante o início do _desenvolvimento_ focar no _mobile_ primeiro.
 
-Pode parecer contraintuitivo, mas essa abordagem flexível é mais comum do que você imagina. Quando acontece o design de uma página que vai atender usuários tanto de *desktop* quanto de *mobile*, geralmente é melhor fazer o design da versão *desktop* primeiro (porque no pior caso, esse será o único design da página). 😆
+Pode parecer contraintuitivo, mas essa abordagem flexível é mais comum do que você imagina. Quando acontece o design de uma página que vai atender usuários tanto de _desktop_ quanto de _mobile_, geralmente é melhor fazer o design da versão _desktop_ primeiro (porque no pior caso, esse será o único design da página). 😆
 
-E então, quando chegar na fase de desenvolvimento, existem alguns benefícios de você inverter essa lógica e *codar* o *CSS* focado para o *mobile* primeiro:
+E então, quando chegar na fase de desenvolvimento, existem alguns benefícios de você inverter essa lógica e _codar_ o _CSS_ focado para o _mobile_ primeiro:
 
 * _**O tempo de carregamento para dispositivos móveis é menor**._
 
-  Pense em como o navegador interpreta o código *CSS*: de cima pra baixo. ⬇ 🤔
+  Pense em como o navegador interpreta o código _CSS_: de cima pra baixo. ⬇ 🤔
 
-  Isso significa que se você colocar o *CSS* para a versão *desktop* primeiro, o navegador do *mobile* vai ter que interpretar **todo** esse *CSS* antes dele chegar no código *CSS* feito para o *mobile* que é o que ele precisa renderizar.
+  Isso significa que se você colocar o _CSS_ para a versão _desktop_ primeiro, o navegador do _mobile_ vai ter que interpretar **todo** esse _CSS_ antes dele chegar no código _CSS_ feito para o _mobile_ que é o que ele precisa renderizar.
 
-  Se você colocar o *CSS* para *mobile* primeiro, o navegador do usuário *mobile* vai renderizar logo o primeiro *CSS* que ele encontrar, resultando numa experiência mais rápida.
+  Se você colocar o _CSS_ para _mobile_ primeiro, o navegador do usuário _mobile_ vai renderizar logo o primeiro _CSS_ que ele encontrar, resultando numa experiência mais rápida.
 
-  É importante lembrar que os usuários de dispositivos *mobile* geralmente tem menos poder de processamento, menos banda de internet disponível... então qualquer otimização que reduza o tempo de carregamento para eles já é um ganho! 🏅
+  É importante lembrar que os usuários de dispositivos _mobile_ geralmente tem menos poder de processamento, menos banda de internet disponível... então qualquer otimização que reduza o tempo de carregamento para eles já é um ganho! 🏅
 
 * _**Geralmente, resulta em menos linhas de código**._
 
-Quando você toma uma abordagem de pensar no *mobile* primeiro, o resultado geralmente são menos linhas de *CSS*. Mas por quê?
+Quando você toma uma abordagem de pensar no _mobile_ primeiro, o resultado geralmente são menos linhas de _CSS_. Mas por quê?
 
-Os elementos mostrados na versão *mobile* tendem a ser blocos mais simples, o que significa que é muito mais fácil escrever *CSS* para customizar essa versão numa tela *desktop* mais complexa, do que pegar um código complexo e cheio de detalhes feito para uma tela *desktop* e ter que simplificá-lo para uma tela *mobile*. 🧠
+Os elementos mostrados na versão _mobile_ tendem a ser blocos mais simples, o que significa que é muito mais fácil escrever _CSS_ para customizar essa versão numa tela _desktop_ mais complexa, do que pegar um código complexo e cheio de detalhes feito para uma tela _desktop_ e ter que simplificá-lo para uma tela _mobile_. 🧠
 
 Faz muito mais sentido você começar com elementos simples que você pode ir adicionando detalhes e comportamentos conforme a necessidade, do que começar com elementos extensos e complexos que você possivelmente precisará de muito mais código para redefiní-los.
 
@@ -64,15 +64,19 @@ Faz muito mais sentido você começar com elementos simples que você pode ir ad
 
 ###### Tempo sugerido para realização: 80 minutos
 
-Essa é a hora de você aprender como o *CSS* pode ser poderoso!
+Essa é a hora de você aprender como o _CSS_ pode ser poderoso!
 
-### Parte I
+### Parte I - Media Query
 
-Para começar mergulhando de cabeça, assista a este vídeo onde o autor demonstra como utilizar o _media query_ para alterar o *layout* da página de acordo com a sua largura:
+Para começar mergulhando de cabeça, vamos entender como utilizar media query
 
 _Obs: não se preocupe em reproduzir o código demonstrado no vídeo, faremos isso logo em seguida!_
 
-<%= youtube_video "AltqAPZzAqo" %>
+<%= vimeo "491520088" %>
+
+---
+
+### Parte II - Mão na massa
 
 Vamos praticar um pouco!
 
@@ -83,7 +87,7 @@ Vamos praticar um pouco!
 * Altere o código para que a `div` amarela fique com a cor **"vermelha"** quando a largura da página for até `600px`;
 
 * Crie uma outra `div` idêntica a existente e faça com que ela seja mostrada ao lado da `div` amarela quando a largura da página for maior que `1500px`;
-  * Dica: use *Flexbox*
+  * Dica: use _Flexbox_
 
 * Faça com que a segunda `div` desapareça quando a largura da tela estiver entre `600px` e `900px`;
 
@@ -91,51 +95,11 @@ Vamos praticar um pouco!
 
 ---
 
-### Parte II
-
-Antes de seguir para o próximo vídeo, prepare um arquivo `index-p1.html` e um arquivo `style-p1.css` para que você possa ir reproduzindo o código que o autor irá fazer!
-
-Agora o exercício é fazer junto com o vídeo! 🤓
-
-* Algumas dicas:
-
-  * Você vai perceber que o autor não se preocupou em organizar o *CSS* da melhor forma. Como você pode melhorar o código dele? ~~(indentação)~~
-
-<%= youtube_video "cSOcSmC39zo" %>
-
-O autor do vídeo usa uma _má prática (anti-pattern)_ enquanto está desenvolvendo o código. Consegue descobrir qual é?
-
-* Corrija o erro no código do autor do vídeo para que o *CSS* seja aplicado de uma forma melhor;
-
-  * Dica: tem a ver com o uso de `id` e `class` para referenciar elementos *HTML* no *CSS*.
-
-* **Bônus:** altere o código para que os elementos sejam alinhados usando *Flexbox*.
-
----
-
-### Parte III
-
-Neste outro vídeo, o autor mostra uma outra forma de você aplicar _media queries_.
-
-Antes de seguir para o vídeo, prepare um arquivo `index-p2.html` e um arquivo `style-p2.css` para que você possa ir reproduzindo o código que o autor irá fazer!
-
-Mais uma vez, faça junto com o autor do vídeo para que você possa ver na prática como aplicar _media queries_.
-
-<%= youtube_video "KAxbHLgybnY" %>
-
-Agora vamos praticar mais!
-
-* Altere o código do exercício anterior (`index-p1.html` e `style-p1.css`) para que o *CSS* específico da _media query_ seja carregado a partir de um outro arquivo, por exemplo `style-mobile-p1.css`;
-
-* Ainda no código do exercício anterior, altere as cores de cada um dos elementos da página para uma **escala de cinza** quando a orientação da página mudar para a horizontal (`landscape`);
-
----
-
 ## Vamos fazer juntos!
 
 ###### Tempo sugerido para realização: 80 minutos
 
-Esse tal de *CSS* é realmente impressionante não é?! Com ele, podemos criar infinitos estilos para nossas páginas.
+Esse tal de _CSS_ é realmente impressionante não é?! Com ele, podemos criar infinitos estilos para nossas páginas.
 Então, vamos fazer juntos?
 
 Aula ao vivo! Vamos para o Slack onde o link estará disponível.
@@ -146,7 +110,7 @@ Aula ao vivo! Vamos para o Slack onde o link estará disponível.
 
 ###### Tempo sugerido para realização: 140 minutos
 
-Agora que você aprendeu como criar *layouts* específicos para diferentes tamanhos de tela, vamos colocar as mãos na massa! 💻📲
+Agora que você aprendeu como criar _layouts_ específicos para diferentes tamanhos de tela, vamos colocar as mãos na massa! 💻📲
 
 <%= versioning_your_code(@conn) %>
 
@@ -154,7 +118,7 @@ Agora que você aprendeu como criar *layouts* específicos para diferentes taman
 
 ### Parte I - Criar uma página para uma tela pequena
 
-Antes de começar, copie o template *HTML* e *CSS* abaixo, e salve em seus respectivos arquivos:
+Antes de começar, copie o template _HTML_ e _CSS_ abaixo, e salve em seus respectivos arquivos:
 
 * `exercise1.html`
 
@@ -236,9 +200,9 @@ figure {
 }
 ```
 
-Comece o exercício analisando a página em uma tela de tamanho pequeno, para simular como ela pode parecer em um dispositivo móvel (você pode usar o *Chrome* para isso, veja no detalhe nos **Recursos adicionais** ).
+Comece o exercício analisando a página em uma tela de tamanho pequeno, para simular como ela pode parecer em um dispositivo móvel (você pode usar o _Chrome_ para isso, veja no detalhe nos **Recursos adicionais** ).
 
-Agora você vai ajustar o *CSS* para melhorar a visualização da página.
+Agora você vai ajustar o _CSS_ para melhorar a visualização da página.
 
 Realize as seguintes tarefas:
 
@@ -252,23 +216,23 @@ Realize as seguintes tarefas:
 
 ---
 
-> Ao pensar no *design* de uma tela pequena primeiro, estamos aplicando a abordagem do _mobile first_. Fazendo isso, começamos com um *design* básico ~~(mínimo denominador comum)~~ e então trabalhamos em melhorias mais sofisticadas para os navegadores com funcionalidades avançadas e *layouts* específicos.
+> Ao pensar no _design_ de uma tela pequena primeiro, estamos aplicando a abordagem do _mobile first_. Fazendo isso, começamos com um _design_ básico ~~(mínimo denominador comum)~~ e então trabalhamos em melhorias mais sofisticadas para os navegadores com funcionalidades avançadas e _layouts_ específicos.
 
 >Isso garante que estamos desenvolvendo uma experiência que funcionará para todos. Também tem um efeito colateral, que isso também nos ajuda a perceber qual o conteúdo é realmente importante na nossa página.
 
 ---
 
-###### Dica: no *Chrome* você pode facilmente encontrar qual o tamanho da sua tela usando o "Inspecionar elemento". Abra-o e redimensione a janela, enquanto isso preste atenção no topo da tela: as dimensãoes de largura e altura irão aparecer conforme você redimensiona a tela.
+###### Dica: no _Chrome_ você pode facilmente encontrar qual o tamanho da sua tela usando o "Inspecionar elemento". Abra-o e redimensione a janela, enquanto isso preste atenção no topo da tela: as dimensãoes de largura e altura irão aparecer conforme você redimensiona a tela.
 
-* Comece a expandir a largura da sua tela. Faça isso até chegar em um ponto onde o *design* atual da página não funciona mais.
+* Comece a expandir a largura da sua tela. Faça isso até chegar em um ponto onde o _design_ atual da página não funciona mais.
 
   * _Por exemplo, o comprimento das linhas pode começar a ficar muito grande para que o texto seja facilmente lido. Ou talvez a página fique com uma largura grande o suficiente que não faça mais sentido as imagens serem mostradas uma abaixo da outra..._
 
 Realize as seguintes tarefas:
 
-* Guarde a largura da tela no ponto que você identificou que o *layout* atual não funcionou bem _(por exemplo 800px)_. Esse será o primeiro *breakpoint* do *layout*. Um *breakpoint* é apenas um ponto onde estamos definindo que o *design* atual deve mudar;
+* Guarde a largura da tela no ponto que você identificou que o _layout_ atual não funcionou bem _(por exemplo 800px)_. Esse será o primeiro _breakpoint_ do _layout_. Um _breakpoint_ é apenas um ponto onde estamos definindo que o _design_ atual deve mudar;
 
-* Crie uma _media query_ no seu arquivo *CSS*, usando a dimensão em *pixels* que você guardou como o `min-width` do teste da _media query_. Dentro desse *breakpoint*, adicione os seguintes ajustes:
+* Crie uma _media query_ no seu arquivo _CSS_, usando a dimensão em _pixels_ que você guardou como o `min-width` do teste da _media query_. Dentro desse _breakpoint_, adicione os seguintes ajustes:
 
   * Altere a cor de fundo _(isso vai te ajudar a perceber quando a media query teve efeito)_;
 
@@ -278,9 +242,9 @@ Realize as seguintes tarefas:
 
   * Faça as imagens serem mostradas em duas colunas.
 
-Agora, você vai criar outro *breakpoint* para telas grandes. Redimensione sua tela de novo para encontrar um novo *breakpoint*.
+Agora, você vai criar outro _breakpoint_ para telas grandes. Redimensione sua tela de novo para encontrar um novo _breakpoint_.
 
-* Crie uma nova _media query_ no seu arquivo *CSS* usando a dimensão que você encontrou para telas grandes _(por exemplo 1300px)_, e realize os seguintes ajustes dentro do *breakpoint*:
+* Crie uma nova _media query_ no seu arquivo _CSS_ usando a dimensão que você encontrou para telas grandes _(por exemplo 1300px)_, e realize os seguintes ajustes dentro do _breakpoint_:
 
   * Altere a cor de fundo;
 
@@ -292,9 +256,9 @@ Agora, você vai criar outro *breakpoint* para telas grandes. Redimensione sua t
 
 ---
 
-### Parte II - Criando 3 *layouts* diferentes utilizando o _mobile first_
+### Parte II - Criando 3 _layouts_ diferentes utilizando o _mobile first_
 
-Antes de começar, copie o template *HTML* e *CSS* abaixo, e salve em seus respectivos arquivos:
+Antes de começar, copie o template _HTML_ e _CSS_ abaixo, e salve em seus respectivos arquivos:
 
 * `exercise2.html`
 
@@ -552,9 +516,9 @@ html {
 
 > A página acima é uma versão **_sem estilização_** do primeiro capítulo do livro: _Alice no País das Maravilhas_.
 
-* Utilizando a abordagem _mobile first_ e _media queries_, **crie três versões de *layout* diferentes para essa página**. Cada *layout* deve corresponder a um tamanho diferente de página _(pequeno, médio e grande)_.
+* Utilizando a abordagem _mobile first_ e _media queries_, **crie três versões de _layout_ diferentes para essa página**. Cada _layout_ deve corresponder a um tamanho diferente de página _(pequeno, médio e grande)_.
 
-  * Faça pelo menos um *commit* para cada *layout*;
+  * Faça pelo menos um _commit_ para cada _layout_;
 
 * Para fazer isso de forma adequada, você deve prestar atenção no conteúdo da página e pensar em como mostrá-lo em cada um dos tamanhos de tela:
 
@@ -566,13 +530,13 @@ html {
 
   * O que fazer com as informações do autor em cada tamanho de tela?
 
-* Talvez você precise alterar o *HTML* um pouco, adicionando elementos para facilitar a estilização, ou talvez mudando um bloco de lugar dentro da página.
+* Talvez você precise alterar o _HTML_ um pouco, adicionando elementos para facilitar a estilização, ou talvez mudando um bloco de lugar dentro da página.
 
 ---
 
-### Parte III - Criando *layouts* para dispositivos móveis e para impressão
+### Parte III - Criando _layouts_ para dispositivos móveis e para impressão
 
-Antes de começar, copie o template *HTML* e *CSS* abaixo, e salve em seus respectivos arquivos:
+Antes de começar, copie o template _HTML_ e _CSS_ abaixo, e salve em seus respectivos arquivos:
 
 * `exercise3.html`
 
@@ -738,7 +702,7 @@ Antes de começar, copie o template *HTML* e *CSS* abaixo, e salve em seus respe
 
 O objetivo deste exercício é usar _media queries_ para fazer a página acima parecer diferente na hora da impressão e em diferentes tamanhos de tela.
 
-* Adicione uma _media query_ no arquivo *CSS* e as regras necessárias para que a página se pareça com a imagem abaixo quando ela for impressa. Especificamente:
+* Adicione uma _media query_ no arquivo _CSS_ e as regras necessárias para que a página se pareça com a imagem abaixo quando ela for impressa. Especificamente:
 
   * Os elementos com `id` `header`, `navigation` e `footer` devem desaparecer;
 
@@ -747,7 +711,7 @@ O objetivo deste exercício é usar _media queries_ para fazer a página acima p
 <%= figure(%{src: "/fundamentals/css-responsive/images/exercise_3_before_print.png", class: "rounded mx-auto d-block", caption: "Visualização da página antes da impressão"}) %>
 
 
-* Adicione uma _media query_ no arquivo *CSS* e as regras necessárias para que a página se pareça com as imagens abaixo quando a tela for redimensionada para larguras menores. Especificamente:
+* Adicione uma _media query_ no arquivo _CSS_ e as regras necessárias para que a página se pareça com as imagens abaixo quando a tela for redimensionada para larguras menores. Especificamente:
 
   * O elemento com `id` `aside` deve desaparecer;
 
@@ -767,23 +731,23 @@ O objetivo deste exercício é usar _media queries_ para fazer a página acima p
 
 ### Bônus (opcional)
 
-O vídeo abaixo mostra como você pode criar *layouts* responsivos utilizando o _framework Bootstrap_.
+O vídeo abaixo mostra como você pode criar _layouts_ responsivos utilizando o _framework Bootstrap_.
 
 Use-o como referência para realizar o exercício **bônus** proposto a seguir.
 
 <%= youtube_video "n2tuBD2bwIw" %>
 
-Agora que você já está fera em criar *layouts* específicos para diferentes tamanhos de tela utilizando a abordagem _mobile first_, que tal voltar à pagina que você criou na aula de [HTML Semântico](/fundamentals/html-css/semantic-html) sobre o ***camarão louva deus*** e criar um *layout* bem bacana para ela ser acessada a partir de telas menores?  🦐🦗🥊
+Agora que você já está fera em criar _layouts_ específicos para diferentes tamanhos de tela utilizando a abordagem _mobile first_, que tal voltar à pagina que você criou na aula de [HTML Semântico](/fundamentals/html-css/semantic-html) sobre o ***camarão louva deus*** e criar um _layout_ bem bacana para ela ser acessada a partir de telas menores?  🦐🦗🥊
 
 Sugestão:
 
-* Crie um *layout* específico para telas pequenas _(smartphones)_; 📱
+* Crie um _layout_ específico para telas pequenas _(smartphones)_; 📱
 
-* Crie um *layout* específico para telas médias _(tablets)_; 📱
+* Crie um _layout_ específico para telas médias _(tablets)_; 📱
 
-* Crie um *layout* específico para impressão _(impressoras, salvar como PDF, etc)_. 🖨
+* Crie um _layout_ específico para impressão _(impressoras, salvar como PDF, etc)_. 🖨
 
-  * Dica: o *Bootstrap* não tem uma classe específica para o tipo de media `print`. Você deve definir a _media query_ no seu arquivo *CSS* e estilizar conforme achar melhor! 😉
+  * Dica: o _Bootstrap_ não tem uma classe específica para o tipo de media `print`. Você deve definir a _media query_ no seu arquivo _CSS_ e estilizar conforme achar melhor! 😉
 
 ---
 
@@ -791,7 +755,7 @@ Sugestão:
 
 * [Como simular tamanhos de tela diferentes com o _Google Chrome_](https://developers.google.com/web/tools/chrome-devtools/device-mode/?hl=pt-BR) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-* [Referência do Bootstrap sobre *layout* responsivo](https://getbootstrap.com/docs/3.4/css/) {: .external-link target="_blank" rel="noreferrer noopener" }
+* [Referência do Bootstrap sobre _layout_ responsivo](https://getbootstrap.com/docs/3.4/css/) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Guia sobre _media queries_ do MDN](https://developer.mozilla.org/pt-BR/docs/Web/Guide/CSS/CSS_Media_queries) {: .external-link target="_blank" rel="noreferrer noopener" }
 
@@ -801,7 +765,7 @@ Sugestão:
 
 * [Construtor de _media queries_](http://giona.net/tools/css3-mediaquery-generator/) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-* [Artigo - Como criar *layouts* responsivos com *Flexbox* (em inglês)](https://www.quackit.com/css/flexbox/tutorial/create_a_responsive_flexbox_layout.cfm) {: .external-link target="_blank" rel="noreferrer noopener" }
+* [Artigo - Como criar _layouts_ responsivos com _Flexbox_ (em inglês)](https://www.quackit.com/css/flexbox/tutorial/create_a_responsive_flexbox_layout.cfm) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Artigo - Como escrever CSS focado para _mobile first_ (em inglês)](https://zellwk.com/blog/how-to-write-mobile-first-css/) {: .external-link target="_blank" rel="noreferrer noopener" }
 

@@ -1,4 +1,4 @@
-### O que vamos aprender?
+## O que vamos aprender?
 
 Na quinta parte da nossa aula, você vai aprender sobre `funções` no _JavaScript_
 e como melhorar o seu código fazendo uso delas.

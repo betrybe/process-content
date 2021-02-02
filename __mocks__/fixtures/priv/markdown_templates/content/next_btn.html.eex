@@ -1,0 +1,5 @@
+<%= if @next_page do %>
+  <%= link "Próximo passo: #{@next_page.title} 🚀", to: handle_path(@next_page), class: "shadow btn-green btn btn-block mt-5" %>
+<% else %>
+  <%= link "⛔ Whoops! Zumbis comeram o próximo passo! 🧟‍♀ 🧠🧟‍♂", to: "#", class: "shadow btn-green btn btn-block mt-5" %>
+<% end %>

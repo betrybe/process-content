@@ -1,0 +1,113 @@
+<% chapter = @content.chapter %>
+<% block = @content.block %>
+
+<h3 id="antes-de-começar-versionando-seu-código">Antes de começar: versionando seu código </h3>
+
+<p>Para versionar seu código, utilize o seu repositório de exercícios. 😉</p>
+
+<p>Caso você ainda não tenha um, crie um repositório com o nome <strong>Trybe</strong> ou algo similar.</p>
+
+<p>Abaixo você vai ver exemplos de como organizar cada exercício em uma <code>branch</code>, com arquivos e
+  <code>commits</code> específicos para cada exercício. Você deve seguir este padrão para realizar os exercícios a
+  seguir.</p>
+
+<ol>
+  <li>
+    <p>Crie uma <code>branch</code> com o nome <code>exercises/<%= block %>.<%= chapter %></code> <em>(bloco <%= block %>, dia
+        <%= chapter %>)</em></p>
+
+    <div class="highlight">
+      <pre
+        style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git checkout -b exercises/<%= block %>.<%= chapter %></code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Crie um diretório <code>exercises</code> e, dentro dele, um diretório <code><%= block %>_<%= chapter %></code>. O caminho
+      completo para
+      o diretório a partir da raiz do projeto deverá ser <code>exercises/<%= block %>_<%= chapter %></code>.</p>
+
+    <div class="highlight">
+      <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ mkdir -p exercises/<%= block %>_<%= chapter %>
+$ cd exercises/<%= block %>_<%= chapter %>
+$ pwd
+&lt;path_to_your_repo&gt;/exercises/<%= block %>_<%= chapter %></code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Crie um arquivo com um nome descritivo para cada exercício. Os arquivos devem estar dentro da pasta
+      <code>exercises/<%= block %>_<%= chapter %></code>, mas lembre-se de fazer os commits a partir da pasta raiz do seu
+      projeto!</p>
+
+    <div class="highlight">
+      <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git status
+On branch exercises/<%= block %>.<%= chapter %>
+Changes not staged <span style="color:#66d9ef">for</span> commit:
+  <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add &lt;file&gt;...&#34;</span> to update what will be committed<span style="color:#f92672">)</span>
+  <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git checkout -- &lt;file&gt;...&#34;</span> to discard changes in working directory<span style="color:#f92672">)</span>
+
+  modified:   exercise_1.html</code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Faça <code>commits</code> organizados durante o processo de resolução de cada um de seus exercícios. As mensagens
+      dos <code>commits</code> devem ser breves e explicativas.</p>
+
+    <div class="highlight">
+      <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git log
+commit 100c5ca0d64e2b8649f48edf3be13588a77b8fa4 <span style="color:#f92672">(</span>HEAD -&gt; exercises/<%= block %>.<%= chapter %><span style="color:#f92672">)</span>
+Author: Tryber Bot &lt;tryberbot@betrybe.com&gt;
+Date:   Fry Sep <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">17</span>:48:01 <span style="color:#ae81ff">2019</span> -0300
+
+    Exercicio <span style="color:#ae81ff">2</span> - mudando o evento de click para mouseover, tirei o alert e coloquei pra quando clicar aparecer uma imagem <span style="color:#66d9ef">do</span> lado direito da tela
+
+commit c0701d91274c2ac8a29b9a7fbe4302accacf3c78
+Author: Tryber Bot &lt;tryberbot@betrybe.com&gt;
+Date:   Fry Sep <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">16</span>:47:21 <span style="color:#ae81ff">2019</span> -0300
+
+    Exercicio <span style="color:#ae81ff">2</span> - adicionando um alert, usando função e o evento click
+
+commit 6835287c44e9ac9cdd459003a7a6b1b1a7700157
+Author: Tryber Bot &lt;tryberbot@betrybe.com&gt;
+Date:   Fry Sep <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">15</span>:46:32 <span style="color:#ae81ff">2019</span> -0300
+
+    Resolvendo o exercício <span style="color:#ae81ff">1</span> usando eventListener</code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Lembre-se que <strong>na primeira vez</strong> que você for enviar o código para o repositório remoto a branch
+      <code>exercises/<%= block %>.<%= chapter %></code> não vai existir lá.<br />Então você precisa configurar o
+      <code>remote</code>
+      utilizando a
+      opção <code>--set-upstream</code> (ou <code>-u</code>, que é a forma abreviada).</p>
+
+    <div class="highlight">
+      <pre
+        style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git push -u origin exercises/<%= block %>.<%= chapter %></code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Lembre-se de enviar os commits para o repositório do <code>GitHub</code> <del>de vez em sempre</del>.</p>
+
+    <div class="highlight">
+      <pre
+        style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git push origin exercises/<%= block %>.<%= chapter %></code></pre>
+    </div>
+  </li>
+
+  <li>
+    <p>Quando terminar os exercícios, seus códigos devem estar todos commitados na branch
+      <code>exercises/<%= block %>.<%= chapter %></code>, e
+      disponíveis no repositório remoto do <code>GitHub</code>. <br />Pra finalizar, crie um <a
+        href="https://help.github.com/en/articles/creating-a-pull-request" class="external-link" target="_blank">
+        <code>Pull Request</code>
+      </a>
+      , adicione uma descrição bem bacana, e envie para a monitoria e/ou colegas revisarem! 🤜🏼🤛🏼</p>
+  </li>
+</ol>
+
+<hr />

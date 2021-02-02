@@ -1,0 +1,12 @@
+---
+block: introducao-a-javascript-es6-e-testes-unitarios
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "Testes unitários em JavaScript"
+date: 2019-12-02
+weight: 40
+week: 7
+day: 3
+course: true
+---

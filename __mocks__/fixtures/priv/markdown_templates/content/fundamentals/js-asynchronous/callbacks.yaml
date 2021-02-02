@@ -1,0 +1,12 @@
+---
+block: javascript-assincrono-e-promises
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript Assíncrono e Callbacks"
+date: 2019-10-30
+weight: 47
+week: 9
+day: 1
+course: true
+---

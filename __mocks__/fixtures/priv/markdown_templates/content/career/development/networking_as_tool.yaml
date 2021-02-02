@@ -1,0 +1,16 @@
+---
+block: networking
+module: career
+category: chapter
+type: career
+title: "Networking como Ferramenta"
+date: 2020-05-27T22:31:57-03:00
+weight: 3
+week: 2
+day: 2
+type: "career"
+topic: "T4"
+theme: "Networking"
+draft: false
+course: true
+---

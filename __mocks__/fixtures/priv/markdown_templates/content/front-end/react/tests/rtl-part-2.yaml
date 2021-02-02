@@ -1,0 +1,12 @@
+---
+block: testes-automatizados-com-react-testing-library
+module: front-end
+category: chapter
+type: hard_skill
+title: "RTL - Mocks e Inputs"
+date: 2019-12-10
+weight: 68
+week: 15
+day: 2
+course: true
+---

@@ -1,0 +1,14 @@
+---
+block: entrevista
+module: career
+category: chapter
+day: 5
+week: 1
+title: "Dúvidas frequentes e dicas finais"
+date: 2020-04-09
+weight: 5
+type: "career"
+topic: "T8"
+theme: "Entrevista Técnica"
+course: true
+---

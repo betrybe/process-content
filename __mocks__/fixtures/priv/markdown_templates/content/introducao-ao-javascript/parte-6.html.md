@@ -40,4 +40,4 @@ Para acessar:
 
 **Boa sorte!**
 
-<%= next_button(%{text: "Próximo passo: Desafio Prático 🚀", href: "https:\/\/hr.gs/desafio-turma-10"}) %>
+<%= next_button(%{text: "Próximo passo: Desafio Prático 🚀", href: "https:\/\/hr.gs/desafio-turma-12"}) %>

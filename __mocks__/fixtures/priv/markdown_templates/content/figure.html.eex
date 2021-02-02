@@ -1,0 +1,7 @@
+<figure class="<%= Map.get(assigns, :class) %>">
+  <%= img_tag @src, alt: Map.get(assigns, :alt), width: Map.get(assigns, :width), height: Map.get(assigns, :height) %>
+
+  <figcaption>
+    <p><%= Map.get(assigns, :caption) %></p>
+  </figcaption>
+</figure>

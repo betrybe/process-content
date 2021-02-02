@@ -1,0 +1,12 @@
+---
+block: gerenciamento-de-estado-com-redux
+module: front-end
+category: solutions
+type: hard_skill
+title: "Testes com React-Redux"
+date: 2020-01-01
+weight: 75
+week: 16
+day: 5
+course: true
+---

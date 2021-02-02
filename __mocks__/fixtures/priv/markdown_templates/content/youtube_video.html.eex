@@ -1,0 +1,3 @@
+<div class="margin-video youtube-player" data-youtube-id="<%= @id %>">
+  <div id="<%= @id %>"></div>
+</div>

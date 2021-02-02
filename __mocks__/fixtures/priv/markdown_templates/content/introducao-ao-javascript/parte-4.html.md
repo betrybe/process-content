@@ -1,4 +1,4 @@
-### O que vamos aprender?
+## O que vamos aprender?
 
 Na quarta parte do Curso Introdutório da Trybe, você aprenderá uma das principais estruturas de dados disponíveis no _JavaScript_, o `Array`.
 

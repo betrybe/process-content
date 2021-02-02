@@ -1,0 +1,12 @@
+---
+block: arquitetura-solid-e-orm
+module: back-end
+category: chapter
+type: hard_skill
+title: "Arquitetura - Princípios SOLID"
+date: 2020-05-05
+weight: 129
+week: 31
+day: 1
+course: true
+---

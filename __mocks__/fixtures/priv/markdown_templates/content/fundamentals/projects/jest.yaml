@@ -1,0 +1,12 @@
+---
+block: testes-automatizados-com-jest
+module: fundamentals
+category: project
+type: hard_skill
+title: "Projeto - Jest Assíncrono e Mocking"
+date: 2020-16-04
+weight: 53
+week: 10
+day: 4
+course: true
+---

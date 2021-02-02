@@ -1,0 +1,12 @@
+---
+block: sockets
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Webchat"
+date: 2020-07-14
+weight: 137
+week: 32
+day: 4
+course: true
+---

@@ -1,0 +1,12 @@
+---
+block: funcoes-sql-joins-e-subqueries
+module: back-end
+category: chapter
+type: hard_skill
+title: "Stored Routines & Stored Functions"
+date: 2020-02-06
+weight: 92
+week: 21
+day: 3
+course: true
+---

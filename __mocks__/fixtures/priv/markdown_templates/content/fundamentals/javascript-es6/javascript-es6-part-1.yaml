@@ -1,0 +1,12 @@
+---
+block: introducao-a-javascript-es6-e-testes-unitarios
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript ES6 - let, const, arrow functions e template literals"
+date: 2019-10-21
+weight: 38
+week: 7
+day: 1
+course: true
+---

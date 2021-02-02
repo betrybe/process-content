@@ -234,7 +234,7 @@ Para nos comunicarmos com o MySQL, precisamos de um **driver**. Um driver é um 
 $ npm install @mysql/xdevapi
 ```
 
-Agora, crie uma pasta `models` e, dentro dela, um arquivo `connection.js` na raiz do projeto. Coloque nele o código abaixo. Lembre-se de substituir os campos `user` e `password` pelo usuário e senha que você utiliza para acessar o banco:
+Agora, crie uma pasta `models` e, dentro dela, crie um arquivo `connection.js` na raiz do projeto e coloque nele o código abaixo. Para criar uma conexão recorrente com o banco de dados, vamos usar um padrão de design chamado *singleton*, que nesse caso é usado para criar apenas uma instância de conexão.  Lembre-se de substituir os campos `user` e `password` pelo usuário e senha que você utiliza para acessar o banco:
 
 > models/connection.js
 
@@ -264,8 +264,9 @@ const connection = () => {
 module.exports = connection;
 ```
 
-O método `getSession` cria uma conexão com o banco de dados. Ele recebe uma string URI, como `root@senha123@localhost:33060/mvc_example`, ou um objeto com as credenciais necessárias para estabelecer a conexão. Entre as opções possíveis estão:
+Usando o padrão de singleton, evitamos que o banco abra mais conexões que necessário.
 
+O método `getSession` cria uma conexão com o banco de dados. Ele recebe uma string URI, como `root@senha123@localhost:33060/mvc_example`, ou um objeto com as credenciais necessárias para estabelecer a conexão. Entre as opções possíveis, estão:
 
 - `host`: local onde o servidor do MySQL está armazenado. Como estamos executando localmente, usamos `localhost`;
 
@@ -1046,7 +1047,7 @@ Lembre-se de organizar sua aplicação seguindo a arquitetura MVC, separando as 
 
 ---
 
-## Recursos adicionais teste com `grave`
+## Recursos adicionais
 
 - [O que é MVC?](https://tableless.com.br/mvc-afinal-e-o-que/) {: .external-link target="_blank" rel="noreferrer noopener" }
 

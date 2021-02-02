@@ -1,0 +1,12 @@
+---
+block: sockets
+module: back-end
+category: chapter
+type: hard_skill
+title: "Sockets - Socket.io"
+date: 2020-02-01
+weight: 136
+week: 32
+day: 3
+course: true
+---

@@ -1,0 +1,12 @@
+---
+block: javascript-assincrono-e-promises
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript Promises"
+date: 2019-11-06
+weight: 48
+week: 9
+day: 2
+course: true
+---

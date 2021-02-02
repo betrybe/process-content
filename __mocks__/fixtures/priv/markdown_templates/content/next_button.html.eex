@@ -1,0 +1,1 @@
+<a class="shadow btn-green btn btn-block mt-5" href="<%= @href %>"><%= {:safe, @text} %></a>

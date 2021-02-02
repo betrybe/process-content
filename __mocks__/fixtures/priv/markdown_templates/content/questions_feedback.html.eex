@@ -1,0 +1,9 @@
+<div class="container question-feedback">
+  <div class="row justify-content-md-center">
+    <details class="col-10" data-question-id="<%= @id %>">
+      <summary class="question-feedback-summary">Veja o gabarito dessa questão</summary>
+
+      <%= render_existing(TrybeWeb.ContentView, "questions_feedback/#{@id}.html", %{}) %>
+    </details>
+  </div>
+</div>

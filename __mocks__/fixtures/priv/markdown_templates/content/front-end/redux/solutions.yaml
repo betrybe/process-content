@@ -1,0 +1,12 @@
+---
+block: gerenciamento-de-estado-com-redux
+module: front-end
+category: solutions
+type: hard_skill
+title: "Introdução ao Redux"
+date: 2019-11-04
+weight: 71
+week: 16
+day: 1
+course: true
+---

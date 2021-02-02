@@ -1,0 +1,15 @@
+---
+block: nossas-empresas-parceiras
+module: career
+category: chapter
+day: 1
+week: 1
+title: "Informação sobre Empresas Parceiras"
+date: 2020-09-17
+weight: 1
+type: "career"
+topic: "T10"
+theme: "Nossas Empresas Parceiras"
+draft: false
+course: true
+---

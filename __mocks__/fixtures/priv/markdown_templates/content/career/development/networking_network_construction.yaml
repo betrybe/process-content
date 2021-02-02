@@ -1,0 +1,15 @@
+---
+block: networking
+module: career
+category: chapter
+day: 4
+week: 2
+title: "Construção de Redes"
+date: 2020-05-27T22:31:57-03:00
+weight: 5
+type: "career"
+topic: "T4"
+theme: "Networking"
+draft: false
+course: true
+---

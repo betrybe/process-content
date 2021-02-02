@@ -64,7 +64,7 @@ Agora que você já viu como funciona o _HackerRank_, você pode começar respon
 
 Agora que você já sabe o que são variáveis e constantes, vamos entender quais são os `tipos primitivos` no JavaScript!
 
-<%= youtube_video("iBGBcXeMa6A") %>
+<%= youtube_video("a1NiHwH9clE") %>
 
 Vamos praticar? Faça o exercício:
 

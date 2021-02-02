@@ -1,0 +1,12 @@
+---
+block: git-github-e-internet
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "Internet - Entendendo como ela funciona"
+date: 2019-08-21
+weight: 8
+week: 2
+day: 3
+course: true
+---

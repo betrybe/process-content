@@ -1,0 +1,12 @@
+---
+block: autenticacao-e-upload-de-arquivos
+module: back-end
+category: solutions
+type: hard_skill
+title: "NodeJS - JWT (JSON Web Token) - Gabarito"
+date: 2020-02-01
+weight: 121
+week: 28
+day: 1
+course: true
+---

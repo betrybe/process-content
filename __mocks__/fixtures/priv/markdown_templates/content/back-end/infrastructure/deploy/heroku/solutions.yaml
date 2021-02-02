@@ -1,0 +1,12 @@
+---
+block: deployment
+module: back-end
+category: solutions
+type: hard_skill
+title: "Infraestrutura - Deploy com Heroku - Gabarito"
+date: 2020-02-29
+weight: 125
+week: 29
+day: 1
+course: true
+---

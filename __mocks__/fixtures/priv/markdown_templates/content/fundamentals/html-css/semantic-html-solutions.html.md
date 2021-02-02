@@ -1,0 +1,393 @@
+## Gabarito dos exercícios
+
+A seguir temos uma possível solução para os exercícios:
+
+---
+
+#### Exemplo de um arquivo ***HTML*** que teve erros encontrados pelo validador de acessibilidade:
+
+```language-html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="exercise-solution.css" />
+</head>
+
+<body class="centered">
+    <header class="header">
+        <h1>Soco a 80km/h: Conheça o Stomatopoda</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Página Inical</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Fatos sobre o Stomatopoda</h2>
+        <section>
+            <h3>Descrição</h3>
+            <p>O Stomatopoda (<i>Odontodactylus scyllarus</i>) é caracterizado
+               por ser extremamente agressivo, presente há 400 milhões de anos
+               atrás.
+            </p>
+            <img
+                src="https://assets.newatlas.com/dims4/default/4be78d6/2147483647/strip/true/crop/1000x667+0+3/resize/1160x774!/quality/90/?url=https%3A%2F%2Fassets.newatlas.com%2Farchive%2Fmantis_shrimp_body_armor-7.jpg"
+                class="centered">
+            <p>Atualmente, seu habitat se encontra dentro da região mostrada
+               conforme figura abaixo:
+            </p>
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Odontodactylus_scyllarus_distribution_map.png/440px-Odontodactylus_scyllarus_distribution_map.png"
+                class="centered">
+            <p>Na tabela a seguir constam informações biológicas do animal:</p>
+            <table>
+                <tr>
+                    <td><b>Reino</b></td>
+                    <td>Animalia</td>
+                </tr>
+                <tr>
+                    <td><b>Filo</b></td>
+                    <td>Arthropoda</td>
+                </tr>
+                <tr>
+                    <td><b>Subfilo</b></td>
+                    <td>Crustacea</td>
+                </tr>
+                <tr>
+                    <td><b>Classe</b></td>
+                    <td>Malacostraca</td>
+                </tr>
+                <tr>
+                    <td><b>Subclasse</b></td>
+                    <td>Hoplocarida</td>
+                </tr>
+                <tr>
+                    <td><b>Ordem</b></td>
+                    <td>Stromatopoda</td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h3>Possuem uma visão incrível</h3>
+            <p>De forma que seja possível para o ser humano ver todo o espectro
+               de cor, nosso sistema de visão possui cones. Cone é a estrutura
+               responsável por reconhecer cor, e o ser humano possui 3 cones,
+               cada um sendo responsável por reconhecer:
+            </p>
+            <ul>
+                <li>vermelho</li>
+                <li>verde</li>
+                <li>azul</li>
+            </ul>
+            <p>Logo, todas as cores visíveis ao ser humano são resultado
+               da combinação de cores obtidas por esses 3 tipos de cones.
+               Bem legal, né?
+            </p>
+            <p>Pois bem, o Stomatopoda possui não 3, nem 5,
+               mas <b>16</b> tipos de cone, sendo capaz de reconhecer
+               cores que estão simplesmente fora do nosso alcance!
+            </p>
+            <img
+                src="https://animalogic.ca/wp-content/uploads/2015/12/KBSHOGUN_S004_S001_T095.MOV_snapshot_00.40_2015.12.03_22.45.36.jpg"
+                class="centered">
+        </section>
+        <section>
+            <h3>Eles possuem um soco poderoso</h3>
+            <p>O Stomatopoda possui dois apêndices frontais que são usados
+               como mecanismo de ataque: ao se deparar com uma presa, os
+               apêndices são alavancados, provendo como resultado um soco
+               a <b>80km/h</b> na presa, com uma aceleração comparável a
+               uma bala disparada por revólver de calibre 22.
+            </p>
+            <p>O soco é tão rápido que a água em torno dos apêndices
+               <b>evapora</b>, formando bolhas que quando estouradas
+               emitem luz e fazem com que a temperatura chegue a uma
+               similar à da superfície do Sol! Esse fenômeno de emissão
+               de luz é chamado de sololuminescência
+            </p>
+            <img
+                src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555299571/shape/mentalfloss/prim_3_0.jpg"
+                class="centered">
+        </section>
+        <section>
+            <h3>Referências bibliográficas</h3>
+            <ul>
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Stomatopoda" target="_blank">
+                        Stomatopoda – Wikipédia, a enciclopédia livre
+                    </a>
+                </li>
+                <li>
+                    <a href="https://theoatmeal.com/comics/mantis_shrimp" target="_blank">
+                        Why the mantis shrimp is my new favorite animal - The Oatmeal
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mentalfloss.com/article/86128/10-eye-popping-facts-about-mantis-shrimp"
+                        target="_blank">
+                        10 Eye-Popping Facts About Mantis Shrimp | Mental Floss
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.nationalgeographic.com/science/phenomena/2014/07/03/natures-most-amazing-eyes-just-got-a-bit-weirder/"
+                        target="_blank">
+                        Nature’s Most Amazing Eyes Just Got A Bit Weirder
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <aside>
+        <p>
+            Quer saber mais? Veja o vídeo
+            <a href="https://www.youtube.com/watch?v=E0Li1k5hGBE" target="_blank">
+                aqui
+            </a>
+        </p>
+    </aside>
+    <footer>
+        <p>Conteúdo compilado por Inácio, 2019</p>
+    </footer>
+</body>
+
+</html>
+```
+
+---
+
+#### Página ***HTML*** com os devidos erros de validação corrigidos:
+
+```language-html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="exercise-solution.css" />
+    <title>Soco a 80km/h: Conheça o Stomatopoda</title>
+</head>
+
+<body class="centered">
+    <header class="header">
+        <h1>Soco a 80km/h: Conheça o Stomatopoda</h1>
+    </header>
+    <nav>
+        <ul>
+            <li> <a href="#">Página Inical</a></li>
+            <li> <a href="#">Sobre</a></li>
+            <li> <a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h2>Fatos sobre o Stomatopoda</h2>
+        <section>
+            <h3>Descrição</h3>
+            <p>O Stomatopoda (<em>Odontodactylus scyllarus</em>) é caracterizado
+               por ser extremamente agressivo, presente há 400 milhões de anos
+               atrás.
+            </p>
+            <img
+                src="https://assets.newatlas.com/dims4/default/4be78d6/2147483647/strip/true/crop/1000x667+0+3/resize/1160x774!/quality/90/?url=https%3A%2F%2Fassets.newatlas.com%2Farchive%2Fmantis_shrimp_body_armor-7.jpg"
+                class="centered"
+                alt="Imagem do Stomatopoda">
+            <p>Atualmente, seu habitat se encontra dentro da região mostrada
+               conforme figura abaixo:
+            </p>
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Odontodactylus_scyllarus_distribution_map.png/440px-Odontodactylus_scyllarus_distribution_map.png"
+                class="centered"
+                alt="Região oceânica em destaque no mapa mundi mostrando o habitat do Stomatopoda">
+            <p>Na tabela a seguir constam informações biológicas do animal:</p>
+            <table>
+                <tr>
+                    <td><strong>Reino</strong></td>
+                    <td>Animalia</td>
+                </tr>
+                <tr>
+                    <td><strong>Filo</strong></td>
+                    <td>Arthropoda</td>
+                </tr>
+                <tr>
+                    <td><strong>Subfilo</strong></td>
+                    <td>Crustacea</td>
+                </tr>
+                <tr>
+                    <td><strong>Classe</strong></td>
+                    <td>Malacostraca</td>
+                </tr>
+                <tr>
+                    <td><strong>Subclasse</strong></td>
+                    <td>Hoplocarida</td>
+                </tr>
+                <tr>
+                    <td><strong>Ordem</strong></td>
+                    <td>Stromatopoda</td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h3>Possuem uma visão incrível</h3>
+            <p>De forma que seja possível para o ser humano ver todo o espectro
+               de cor, nosso sistema de visão possui cones. Cone é a estrutura
+               responsável por reconhecer cor, e o ser humano possui 3 cones,
+               cada um sendo responsável por reconhecer:
+            </p>
+            <ul>
+                <li>vermelho</li>
+                <li>verde</li>
+                <li>azul</li>
+            </ul>
+            <p>Logo, todas as cores visíveis ao ser humano são resultado
+               da combinação de cores obtidas por esses 3 tipos de cones.
+               Bem legal, né?
+            </p>
+            <p>Pois bem, o Stomatopoda possui não 3, nem 5,
+               mas <strong>16</strong> tipos de cone, sendo capaz de reconhecer
+               cores que estão simplesmente fora do nosso alcance!
+            </p>
+            <img
+                src="https://animalogic.ca/wp-content/uploads/2015/12/KBSHOGUN_S004_S001_T095.MOV_snapshot_00.40_2015.12.03_22.45.36.jpg"
+                class="centered"
+                alt="Foto mostrando os olhos do Stomatopoda">
+        </section>
+        <section>
+            <h3>Eles possuem um soco poderoso</h3>
+            <p>O Stomatopoda possui dois apêndices frontais que são usados
+               como mecanismo de ataque: ao se deparar com uma presa, os
+               apêndices são alavancados, provendo como resultado um soco
+               a <strong>80km/h</strong> na presa, com uma aceleração comparável a
+               uma bala disparada por revólver de calibre 22.
+            </p>
+            <p>O soco é tão rápido que a água em torno dos apêndices
+               <strong>evapora</strong>, formando bolhas que quando estouradas
+               emitem luz e fazem com que a temperatura chegue a uma
+               similar à da superfície do Sol! Esse fenômeno de emissão
+               de luz é chamado de sololuminescência
+            </p>
+            <img
+                src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555299571/shape/mentalfloss/prim_3_0.jpg"
+                class="centered"
+                alt="Foto do Stomatopoda mostrando seus dois apêndices frontais">
+        </section>
+        <section>
+            <h3>Referências bibliográficas</h3>
+            <ul>
+                <li>
+                    <a href="https://pt.wikipedia.org/wiki/Stomatopoda" target="_blank">
+                        Stomatopoda – Wikipédia, a enciclopédia livre
+                    </a>
+                </li>
+                <li>
+                    <a href="https://theoatmeal.com/comics/mantis_shrimp" target="_blank">
+                        Why the mantis shrimp is my new favorite animal - The Oatmeal
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mentalfloss.com/article/86128/10-eye-popping-facts-about-mantis-shrimp"
+                        target="_blank">
+                        10 Eye-Popping Facts About Mantis Shrimp | Mental Floss
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.nationalgeographic.com/science/phenomena/2014/07/03/natures-most-amazing-eyes-just-got-a-bit-weirder/"
+                        target="_blank">
+                        Nature’s Most Amazing Eyes Just Got A Bit Weirder
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <aside>
+        <p>
+            Quer saber mais? Veja o vídeo
+            <a href="https://www.youtube.com/watch?v=E0Li1k5hGBE" target="_blank">
+                aqui
+            </a>
+        </p>
+    </aside>
+    <footer>
+        <p>Conteúdo compilado por Inácio, 2019</p>
+    </footer>
+</body>
+
+</html>
+```
+
+---
+
+
+#### Arquivo ***CSS*** usado para estilizar
+
+```language-css
+aside, footer, nav {
+  border-top: 1px gray solid;
+}
+
+body {
+  font-size: 19px;
+  font-weight: normal;
+  letter-spacing: .1px;
+  line-height: 33px;
+  font-family: Georgia, serif;
+  width: 70%;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+.header {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+nav {
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px gray solid;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav ul li a {
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+}
+```

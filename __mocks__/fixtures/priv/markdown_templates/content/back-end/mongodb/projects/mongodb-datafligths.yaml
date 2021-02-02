@@ -1,0 +1,12 @@
+---
+block: introducao-ao-mongodb
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Data Flights"
+date: 2020-02-23
+weight: 101
+week: 23
+day: 3
+course: true
+---

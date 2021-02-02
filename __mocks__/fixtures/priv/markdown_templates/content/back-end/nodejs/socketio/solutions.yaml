@@ -1,0 +1,12 @@
+---
+block: sockets
+module: back-end
+category: solutions
+type: hard_skill
+title: "Gabarito - Sockets - Socket.io"
+date: 2019-09-25
+weight: 136
+week: 32
+day: 3
+course: true
+---

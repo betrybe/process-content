@@ -1,0 +1,14 @@
+---
+block: tipos-de-testes
+module: career
+category: chapter
+day: 2
+week: 1
+title: "Testes de Raciocínio Matemático"
+date: 2020-09-04
+weight: 2
+type: "career"
+topic: "T7"
+theme: "Tipos de Testes"
+course: true
+---

@@ -12,7 +12,7 @@ Para começar essa busca com pé-direito, que tal aprender mais sobre como é um
 
 Dê uma olhada nesse guia para entender melhor a sua jornada no aprendizado de carreiras na Trybe!
 
-* [Explore o conteúdo de carreira da Trybe através deste guia](/career/guia-carreira_VF.pdf) {: .external-link target="_blank" rel="noreferrer noopener" }
+* [Explore o conteúdo de carreira da Trybe através deste guia](/career/introduction/guia_de_careira_trybe_2020.pdf) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 Os materiais que vimos no momento carreira também estão disponíveis para acesso.
 

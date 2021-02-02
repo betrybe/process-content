@@ -1,0 +1,12 @@
+---
+block: introducao-a-javascript-e-logica-de-programacao
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript - Array e loop For"
+date: 2019-09-17
+weight: 17
+week: 4
+day: 2
+course: true
+---

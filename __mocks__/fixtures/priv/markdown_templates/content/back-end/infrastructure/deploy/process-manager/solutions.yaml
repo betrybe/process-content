@@ -1,0 +1,12 @@
+---
+block: deployment
+module: back-end
+category: solutions
+type: hard_skill
+title: "Deploy - Gerenciadores de Processos - Gabarito"
+date: 2020-03-13
+weight: 126
+week: 29
+day: 2
+course: true
+---

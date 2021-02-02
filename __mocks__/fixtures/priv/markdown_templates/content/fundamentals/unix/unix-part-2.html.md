@@ -2,7 +2,7 @@
 
 Vamos continuar explorando os comandos do UNIX.
 
-Se você já tem familiaridade com o ambiente UNIX, o terminal e tudo mais, que tal ajudar outras pessoas a tirar as dúvidas? Abra uma videochamada, se disponibilize no *Slack* e vamos colaborar! 💁🏽‍♂
+Se você já tem familiaridade com o ambiente UNIX, o terminal e tudo mais, que tal ajudar outras pessoas a tirar as dúvidas? Abra uma videochamada, se disponibilize no _Slack_ e vamos colaborar! 💁🏽‍♂
 
 Agora, se você ainda não está confiante nas suas habilidades ~~jedi~~ com a tela preta, vamos praticar com vários exercícios para que você possa ver na prática como os comandos do UNIX podem ser úteis!
 
@@ -22,7 +22,7 @@ Agora, se você ainda não está confiante nas suas habilidades ~~jedi~~ com a t
 
 ## Por que isso é importante?
 
-Conhecer variáveis de ambiente e saber como usá-las no seu código é uma das principais habilidades que você irá usar para trazer flexibilidade e segurança em seu código. Imagine que você precisa fazer um *script* que se conecte com uma máquina remota, e precise de usuário e senha. Você colocaria a senha direto no *script*? 🤔
+Conhecer variáveis de ambiente e saber como usá-las no seu código é uma das principais habilidades que você irá usar para trazer flexibilidade e segurança em seu código. Imagine que você precisa fazer um _script_ que se conecte com uma máquina remota, e precise de usuário e senha. Você colocaria a senha direto no _script_? 🤔
 
 Quando se trabalha usando o terminal, cada comando que você digita é executado dentro de um processo. Então é importante saber como você pode se comunicar com tais processos quando, por exemplo, quiser terminar a execução de algum que está travado. 🔫
 
@@ -90,6 +90,46 @@ Dado que você já sabe os comandos básicos do Bash, você vai aprender como fu
     
 <%= vimeo "461125756" %>
 
+Vamos entender um pouco mais a fundo as permissões? Abra seu terminal e digite o comando `ls -l` ou `ll` e veja detalhadamente o que significa abaixo:
+
+```language-sh
+  Permissões | Links  | Proprietário | Grupo | Tamanho | Data e Hora   | Nome
+  -----------|--------|--------------|-------|---------|---------------|---------
+  drwxr-xr-x | 2 	  | root 	     | root  | 4096    | Out 19 09:10  | composer/
+```
+    
+* **Permissões** => Possível identificar o tipo do item e nível de permissão para Leitura, Escrita e Execução de item ou diretório;
+
+* **Links** => Número de ligações que o item possui, no caso do diretório, número de subdiretórios que possui;
+
+* **Proprietário** => Quem é o dono, quem criou. É o diretório padrão do usuário, o home;
+
+* **Grupo** => Grupo ao qual pertence o item ou diretório. Utilizado para dar permissões à outras pessoas;
+
+* **Tamanho** => Em Bytes;
+
+* **Data e Hora** => Momento em que foi criado;
+
+* **Nome** => Nome do item ou diretório;
+
+Você aprendeu no vídeo como alterar as permissões no modo literal (caracteres), mas também é possível usar o modo octal. Para compreendermos esta outra forma, precisamos entender que eles são administrados por meio de valores como descrito abaixo:
+
+* Leitura **r** - 4
+* Escrita **w** - 2
+* Execução **x** - 1
+
+Esses valores são permissões com base em bits de **ligados = 1** e **desligados = 0**,
+
+    rwx = 111 ( 7 | Acesso Total )
+    r-- = 100 ( 4 | Somente Leitura )
+    -w- = 010 ( 2 | Somente Escrita )
+    --x = 001 ( 1 | Somente Execução )
+    rw- = 110 ( 6 | Somente Leitura e Escrita )
+    r-x = 101 ( 5 | Somente Leitura e Execução )
+    -wx = 011 ( 3 | Somente Escrita e Execução )
+    --- = 000 ( 0 | Todos Acessos Negados )
+
+Por tanto cada vez que você liga a chave de leitura, atribui-se o valor para esta chave somando-se com as demais chaves de administração de escrita e execução, caso você também deseje liga-las. A sintaxe para realizar esta alteração continua a mesma que do modo literal, sendo `chmod 766 [arquivo ou diretório]`. Cada número corresponde aos grupos de usuário, de grupo e de outros usuários.
 
 Agora você verá o que são, como listar e manipular os processos e jobs.
 
@@ -229,7 +269,7 @@ Você vai continuar a partir dos exercícios anteriores, então é importante qu
 
     > Resultado esperado: `-r--r--r-- 1 ana ana 1860 ago 13 11:39 bunch_of_things.txt`
 
-5. Volte à permissão do arquivo `bunch_of_things.txt` para a listada inicialmente utilizando o comando `chmod 644 bunch_of_things.txt`. [Leia este artigo](https://github.com/CristianAmbrosi/tutoriais/blob/master/Permiss%C3%B5es%20de%20um%20Arquivo%20ou%20Diret%C3%B3rio%20no%20Linux.md) {: .external-link target="_blank" rel="noreferrer noopener" } para entender mais sobre o que é e como funciona essa numeração `644`.
+5. Volte à permissão do arquivo `bunch_of_things.txt` para a listada inicialmente utilizando o comando `chmod 644 bunch_of_things.txt`.
 
     > Resultado esperado: `-rw-r--r-- 1 ana ana 1860 ago 13 11:39 bunch_of_things.txt`
 
@@ -249,11 +289,11 @@ Você vai continuar a partir dos exercícios anteriores, então é importante qu
 
 6. Crie mais dois processos que rodem o comando `sleep` por 200 e 100 segundos, respectivamente.
 
-    > Você deve criá-los em *foreground* (sem usar o `&`) e suspendê-los (apertando `ctrl+z`) após cada um começar a executar.
+    > Você deve criá-los em _foreground_ (sem usar o `&`) e suspendê-los (apertando `ctrl+z`) após cada um começar a executar.
 
 7. Verifique que apenas o processo `sleep 300` está em execução com o comando `jobs`. Suspenda a execução desse processo.
 
-    > Você vai precisar trazer o processo para *foreground* (`fg`) e suspendê-lo (`ctrl+z`), ou enviar um sinal).
+    > Você vai precisar trazer o processo para _foreground_ (`fg`) e suspendê-lo (`ctrl+z`), ou enviar um sinal).
 
 8. Retome a execução do processo `sleep 100` em background com o comando `bg`.
 
@@ -265,23 +305,23 @@ Você vai continuar a partir dos exercícios anteriores, então é importante qu
 
 E pra terminar com a energia ~~óh,~~ lá no alto, que tal aprender agora alguns comandos divertidos do UNIX? ☝ 🎊
 
-[Leia este artigo para fazer os exercícios ~~de aquecimento~~ abaixo](https://canaltech.com.br/linux/11-comandos-divertidos-e-inuteis-para-usar-no-linux/) {: .external-link target="_blank" rel="noreferrer noopener" }
+1. Abra o terminal e execute o comando `sudo apt-get install cmatrix` e, depois, execute o comando `cmatrix`. Quando estiver se sentindo como o _Neo_, aperte `ctrl+c` para voltar ao terminal;
 
-1. Abra o terminal e execute o comando `cmatrix`. Quando estiver se sentindo como o *Neo*, aperte `ctrl+c` para voltar ao terminal;
-
-2. Crie um arquivo de texto chamado `fortune.txt` que contenha a sua sorte do dia. Utilize apenas uma linha de comando. _Dica: use o comando `fortune`, e o operador `>`;_
+2. Execute o comando `sudo apt-get install fortune`, após a instalação, crie um arquivo de texto chamado `fortune.txt` que contenha a sua sorte do dia. Utilize apenas uma linha de comando. _Dica: use o comando `fortune`, e o operador `>`;_
 
 3. Conte quantas palavras tem a frase da sua sorte do dia. _Dica: use o comando `wc`;_
 
-4. Execute o comando `sl`. Agora tente `sl -F`;
+4. Execute o comando `sudo apt-get install sl`, após a instalação, execute o comando `sl`. Agora tente `sl -F`;
 
-5. Execute o comando `cowsay`. Agora faça a vaquinha dizer a frase que está gravada no arquivo `fortune.txt`;
+5. Execute o comando `sudo apt-get install cowsay`, após a instalação, execute o comando `cowsay` e algo que você queira falar. Agora faça a vaquinha dizer a frase que está gravada no arquivo `fortune.txt`;
 
-6. Descubra os fatores primos do número 42 usando o comando `factor`;
+6. Descubra os fatores primos usando o comando `factor` e em seguida o número 42 ;
 
 7. Veja como fica a sua sorte do dia ao contrário. Dica: utilize o comando `rev`.
 
 8. Execute o comando `telnet towel.blinkenlights.nl` e espere alguns segundos. Lembre-se que você tem mais exercícios para fazer! 😅
+
+Gostou das curiosidades? Nos _Recursos Adicionais_ tem mais alguns comandos divertidos. Confere lá!
 
 ---
 
@@ -321,6 +361,8 @@ E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras refe
 * [Programando em Shell Script](http://www.devin.com.br/shell_script/) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Qual a diferença entre bash e shell? ~~nenhuma~~](https://pt.phhsnews.com/what-s-difference-between-bash-zsh-and-other-linux-shells3733) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [11 comandos divertidos (e inúteis) para usar no Linux](https://canaltech.com.br/linux/11-comandos-divertidos-e-inuteis-para-usar-no-linux/) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 ##### ⚠️ O sinal de % não é necessário antes da execução dos comandos listados nos links dos conteúdos abaixo.
 

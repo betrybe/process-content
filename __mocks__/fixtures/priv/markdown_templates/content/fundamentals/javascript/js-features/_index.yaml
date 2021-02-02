@@ -1,0 +1,12 @@
+---
+block: introducao-a-javascript-e-logica-de-programacao
+module: fundamentals
+category: introduction
+type: hard_skill
+title: "Introdução - JavaScript"
+date: 2019-08-21
+weight: 15
+week: 4
+day: 1
+course: true
+---

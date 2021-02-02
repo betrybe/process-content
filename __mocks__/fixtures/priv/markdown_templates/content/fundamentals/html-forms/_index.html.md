@@ -31,39 +31,75 @@ Agora vamos ver como criar formulários em ***HTML***, **are you ready**?
 Neste vídeo, você vai aprender o que é um formulário.
 Não se preocupe com a parte sobre requisições `GET` e `POST`, que são brevemente abordadas no vídeo. Esse conteúdo será visto mais à frente em nosso curso.
 
-<%= youtube_video "uVmQDw115pg" %>
+<%= vimeo "476922702" %>
 
 ### Parte II - input tag, types e attributes
 
-Agora veremos essa playlist com os principais campos de entrada e exibição de texto de um formulário.
+Agora veremos esse vídeo com os principais campos de entrada e exibição de texto de um formulário.
 
-<%= youtube_playlist "PLP6Z8YhN_d5Qgk5QHCC5G3SQHiFFhneMl" %>
+<%= vimeo "476939805" %>
 
-**Importante: Para os próximos dois links, não há a necessidade de ler e anotar tudo de uma vez só. Você pode pegar a ideia geral do texto e voltar a essas referências quando quiser.**
+Você observou no vídeo que temos uma grande quantidade de `types` e atributos para o `<input>` para usar em formulários.
 
-[Aqui você verá mais informações sobre os diferentes tipos de `<input>` de um formulário](https://www.w3schools.com/html/html_form_input_types.asp) {: .external-link target="_blank" rel="noreferrer noopener" }.
+Neste momento, não há necessidade de gravar todas as informações, no entanto é importante que você extraia o conceito e consulte sempre as referências nos recursos adicionais.
 
-[Outra referência importante é a dos atributos possíveis de um formulário](https://www.w3schools.com/html/html_form_attributes.asp) {: .external-link target="_blank" rel="noreferrer noopener" }.
+De modo geral, estes são os `types` que podem ser usados de acordo com a aplicação do campo input:
 
-Vamos praticar um pouco? 🔥
+* `button`: define um botão;
+* `checkbox`: permite que o usuário selecione ZERO ou MAIS opções de um número limitado de escolhas;
+* `color`: campos de entrada que devem conter uma cor para selecionar;
+* `date`: campos de entrada que devem conter uma data;
+* `datetime-local`: campo de entrada de data e hora, sem fuso horário;
+* `email`: campos de entrada que devem conter um endereço de e-mail;
+* `file`: campo de seleção de arquivo e um botão "Procurar" para uploads de arquivos;
+* `month`: permite ao usuário selecionar um mês e ano;
+* `number`: define um campo de entrada numérico;
+* `password`: os caracteres do campo de senha são mascarados (mostrados como asteriscos ou círculos);
+* `radio`: permite que um usuário selecione **APENAS UMA** de um número limitado de opções;
+* `range`: define um controle para inserir um número (como um controle deslizante). Intervalo padrão é de 0 a 100;
+* `reset`: redefinirá todos os valores do formulário para seus valores padrão;
+* `search`: usado para campos de pesquisa;
+* `submit`: envia dados de formulário a um manipulador de formulários(especificado na`action` do `form`);
+* `tel`: campos de entrada que devem conter um número de telefone;
+* `text`: campo de entrada de texto de linha única;
+* `time`: permite que o usuário selecione um horário (sem fuso horário);
+* `url`: campos de entrada que devem conter um endereço URL;
+* `week`: permite ao usuário selecionar uma semana e um ano.
 
-* [Exercício de input type 1](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types1) {: .external-link target="_blank" rel="noreferrer noopener" }
+O valor default de um `type`, sempre será `text`. Portanto, é preciso especificar de acordo com a sua necessidade.
 
-* [Exercício de input type 2](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types2) {: .external-link target="_blank" rel="noreferrer noopener" }
+Como complemento, temos os atributos que são propriedades inseridas para seus input `HTML`. Com elas você poderá adicionar funcionalidades ao seus formulário. Temos os seguintes atributos abaixos:
 
-* [Exercício de input type 3](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types3) {: .external-link target="_blank" rel="noreferrer noopener" }
+* `value`: especifica um valor inicial para um campo de entrada;
+* `readonly`: especifica que um campo de entrada é somente leitura;
+* `disabled`: especifica que um campo de entrada deve ser desativado;
+* `size`: especifica a largura visível, em caracteres, de um campo de entrada;
+* `maxlength`: especifica o número máximo de caracteres permitidos em um campo de entrada;
+* `min` e `max`: especificam os valores mínimo e máximo para um campo de entrada;
+* `multiple`: especifica que o usuário tem permissão para inserir mais de um valor em um campo de entrada;
+* `pattern`: especifica uma expressão regular em relação à qual o valor do campo de entrada é verificado;
+* `placeholder`: especifica uma dica curta que descreve o valor esperado de um campo de entrada;
+* `required`: especifica que um campo de entrada deve ser preenchido antes de enviar o formulário;
+* `step`: especifica os intervalos de números válidos para um campo de entrada;
+* `autofocus`: especifica que um campo de entrada deve obter foco automaticamente quando a página é carregada;
+* `height` e `width`: especificam a altura e a largura de um elemento;
+* `autocomplete`: especifica se um campo de entrada deve ter o preenchimento automático ativado ou desativado.
 
-* [Exercício de input type 4](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types4) {: .external-link target="_blank" rel="noreferrer noopener" }
+Vamos praticar um pouco, criando uma tela de login? 🔥
 
-* [Exercício de input type 5](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_input_types5) {: .external-link target="_blank" rel="noreferrer noopener" }
+1. Adicione os campos de entrada para email e senha.
 
-* [Exercício de atributos 1](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_attributes1) {: .external-link target="_blank" rel="noreferrer noopener" }
+2. Adicione um checkbox com o texto _Lembre-me_.
 
-* [Exercício de atributos 2](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_attributes2) {: .external-link target="_blank" rel="noreferrer noopener" }
+3. Adicione um botão com o texto _Entrar_.
 
-* [Exercício de atributos 3](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_attributes3) {: .external-link target="_blank" rel="noreferrer noopener" }
+4. Adicione os placeholder _Digite seu email_ e _Digite sua senha_ para os campos de email e senha.
 
-* [Exercício de atributos 4](https://www.w3schools.com/html/exercise.asp?filename=exercise_html_form_attributes4) {: .external-link target="_blank" rel="noreferrer noopener" }
+5. Adicione o atributo `required` para os campos de email e senha.
+
+6. Adicione o atributo `autocomplete="off"` para o campo de email.
+
+7. Adicione o atributo `autofocus` para o campo de email.
 
 ---
 
@@ -71,7 +107,7 @@ Vamos praticar um pouco? 🔥
 
 Na parte final, você verá um vídeo ensinando a criar um formulário completo.
 
-<%= youtube_video "vJoCnzEucCc" %>
+<%= vimeo "476951248" %>
 
 ---
 
@@ -200,6 +236,10 @@ Vamos criar um formulário de cadastro de currículo com base na especificação
 * [Como criar um formulário de registro?](https://www.w3schools.com/howto/howto_css_register_form.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Guia para ***HTML*** forms](https://www.freecodecamp.org/news/a-step-by-step-guide-to-getting-started-with-html-forms-7f77ae4522b5/) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [Referência para Input Types HTML](https://www.w3schools.com/html/html_form_input_types.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+* [Referência para Atributos HTML](https://www.w3schools.com/html/html_form_attributes.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 ---
 

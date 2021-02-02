@@ -1,0 +1,12 @@
+---
+block: javascript-dom-eventos-e-web-storage
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript - DOM e seletores"
+date: 2019-09-19
+weight: 21
+week: 5
+day: 1
+course: true
+---

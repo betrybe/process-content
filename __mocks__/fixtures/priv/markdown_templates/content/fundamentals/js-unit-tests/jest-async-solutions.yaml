@@ -1,0 +1,12 @@
+---
+block: testes-automatizados-com-jest
+module: fundamentals
+category: solutions
+type: hard_skill
+title: "Jest - Testes Assíncronos"
+date: 2019-12-04
+weight: 51
+week: 10
+day: 2
+course: true
+---

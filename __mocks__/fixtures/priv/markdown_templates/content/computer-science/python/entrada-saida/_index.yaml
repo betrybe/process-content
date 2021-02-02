@@ -1,0 +1,12 @@
+---
+block: introducao-a-python-e-raspagem-de-dados-da-web
+module: computer-science
+category: chapter
+type: hard_skill
+title: "Entrada e Saída de Dados"
+date: 2020-07-07
+weight: 145
+week: 35
+day: 2
+course: true
+---

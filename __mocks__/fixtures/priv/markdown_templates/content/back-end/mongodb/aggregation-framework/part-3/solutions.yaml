@@ -1,0 +1,13 @@
+---
+block: mongodb-aggregation-framework
+module: back-end
+category: solutions
+type: hard_skill
+title: "Aggregation Framework - Parte 3 - Gabarito"
+date: 2020-03-30
+weight: 108
+week: 25
+day: 3
+draft: true
+course: true
+---

@@ -1,0 +1,14 @@
+---
+block: tomada-de-decisao
+module: career
+category: chapter
+week: 3
+day: 3
+title: "MDC - Matriz de Decisão de Carreira"
+date: 2020-08-05
+weight: 5
+type: "career"
+topic: "T5"
+theme: "Tomada de Decisão"
+course: true
+---

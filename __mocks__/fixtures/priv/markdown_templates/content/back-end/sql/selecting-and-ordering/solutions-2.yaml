@@ -1,0 +1,12 @@
+---
+block: introducao-a-sql
+module: back-end
+category: solutions
+type: hard_skill
+title: "Filtrando dados de forma específica"
+date: 2020-01-09
+weight: 86
+week: 20
+day: 3
+course: true
+---

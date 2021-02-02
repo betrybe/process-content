@@ -1,0 +1,14 @@
+---
+block: entrevista
+module: career
+category: chapter
+day: 1
+week: 1
+title: "O que é valorizado em uma entrevista?"
+date: 2020-07-27
+weight: 1
+type: "career"
+topic: "T8"
+theme: "Entrevista"
+course: true
+---

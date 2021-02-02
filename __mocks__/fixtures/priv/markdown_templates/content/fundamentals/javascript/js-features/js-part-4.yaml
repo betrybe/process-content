@@ -1,0 +1,12 @@
+---
+block: introducao-a-javascript-e-logica-de-programacao
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "JavaScript - Objetos e funções"
+date: 2019-09-19
+weight: 19
+week: 4
+day: 4
+course: true
+---

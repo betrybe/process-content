@@ -1,0 +1,14 @@
+---
+block: jat-job-application-tracking
+module: career
+category: chapter
+week: 2
+day: 1
+title: "Huntr"
+date: 2020-07-13
+weight: 3
+type: "career"
+topic: "T6"
+theme: "JAT (Job Application Tracking) "
+course: true
+---

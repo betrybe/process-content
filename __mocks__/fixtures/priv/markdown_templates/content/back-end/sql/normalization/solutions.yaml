@@ -1,0 +1,12 @@
+---
+block: normalizacao-e-modelagem-de-banco-de-dados
+module: back-end
+category: solutions
+type: hard_skill
+title: "Normalização e Formas Normais"
+date: 2020-02-06
+weight: 95
+week: 22
+day: 2
+course: true
+---

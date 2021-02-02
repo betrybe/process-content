@@ -1,0 +1,12 @@
+---
+block: autenticacao-e-upload-de-arquivos
+module: back-end
+category: project
+type: hard_skill
+title: "Projeto - Cookmaster"
+date: 2020-03-20
+weight: 123
+week: 28
+day: 3
+course: true
+---

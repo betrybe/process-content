@@ -1,0 +1,15 @@
+---
+block: selecionando-empresas
+module: career
+category: chapter
+day: 1
+week: 1
+title: "Empresas de acordo com interesse"
+date: 2020-06-15
+weight: 1
+type: "career"
+topic: "T5"
+theme: "Selecionando Empresas"
+draft: false
+course: true
+---

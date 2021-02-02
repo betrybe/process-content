@@ -1,0 +1,12 @@
+---
+block: introducao-a-html-e-css
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "HTML & CSS - Estruturas de página"
+date: 2019-09-09
+weight: 10
+week: 3
+day: 1
+course: true
+---

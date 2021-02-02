@@ -1,0 +1,12 @@
+---
+block: algoritmos-e-estrutura-de-dados
+module: computer-science
+category: chapter
+type: hard_skill
+title: "Recursividade e Estratégias para solução de problemas"
+date: 2020-08-25
+weight: 155
+week: 37
+day: 3
+course: true
+---

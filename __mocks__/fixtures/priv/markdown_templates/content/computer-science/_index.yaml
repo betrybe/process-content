@@ -1,0 +1,12 @@
+---
+block: arquitetura-de-computadores-e-redes
+module: computer-science
+category: module_introduction
+type: hard_skill
+title: "Introdução - Ciência da Computação"
+date: 2020-06-12
+weight: 139
+week: 34
+day: 1
+course: true
+---

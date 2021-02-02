@@ -1,0 +1,12 @@
+---
+block: testes-automatizados-com-jest
+module: fundamentals
+category: chapter
+type: hard_skill
+title: "Primeiros passos no Jest"
+date: 2019-12-04
+weight: 50
+week: 10
+day: 1
+course: true
+---

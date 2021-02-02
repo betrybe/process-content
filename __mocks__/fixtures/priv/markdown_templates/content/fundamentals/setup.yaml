@@ -1,0 +1,12 @@
+---
+block: unix-bash-e-shell-script
+module: fundamentals
+category: introduction
+type: hard_skill
+title: "Setup"
+date: 2019-08-21
+weight: 1
+week: 1
+day: 3
+course: true
+---

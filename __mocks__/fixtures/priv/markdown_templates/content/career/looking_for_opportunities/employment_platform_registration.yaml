@@ -1,0 +1,14 @@
+---
+block: plataformas-de-empregabilidade
+module: career
+category: chapter
+week: 1
+day: 1
+title: "Cadastro em plataformas"
+date: 2020-07-13
+weight: 1
+type: "career"
+topic: "T6"
+theme: "Plataformas de empregabilidade"
+course: true
+---

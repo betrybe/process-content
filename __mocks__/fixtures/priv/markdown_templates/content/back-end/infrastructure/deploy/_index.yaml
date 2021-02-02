@@ -1,0 +1,12 @@
+---
+block: deployment
+module: back-end
+category: introduction
+type: hard_skill
+title: "Introdução - Deploy"
+date: 2020-02-29
+weight: 124
+week: 29
+day: 1
+course: true
+---

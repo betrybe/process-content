@@ -29,7 +29,7 @@
           </div>
 
           <div class="col-md-1 text-right index--small-right">
-            <%= chapter.weight %>
+            <%= Map.get(chapter.content, :weight) %>
           </div>
         </div>
       <% end %>

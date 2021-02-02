@@ -1,0 +1,12 @@
+---
+block: sockets
+module: back-end
+category: solutions
+type: hard_skill
+title: "Gabarito - Sockets - TCP/UDP & NET"
+date: 2020-02-01
+weight: 135
+week: 32
+day: 2
+course: true
+---
