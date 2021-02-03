@@ -17,7 +17,7 @@ const processContent = async () => {
   const applicationHealthApiURL = core.getInput('applicationHealthApiURL') || process.env.APPLICATION_HEALTH_API_URL;
   const filesPath = core.getInput('contentPath') || process.env.FILES_PATH;
   const assetsFilesPath = core.getInput('assetPath') || process.env.ASSETS_PATH;
-  const mergedAt = core.getInput('mergedAt') || Date.parse(new Date());
+  const mergedAt = Date.parse(core.getInput('mergedAt')) || Date.parse(new Date());
   const mergeCommitId = core.getInput('mergeCommitId') || process.env.COMMIT_ID;
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
