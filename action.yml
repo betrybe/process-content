@@ -31,11 +31,14 @@ inputs:
   bucketName:
     description: "The aws bucket name for uploading assets"
     required: true
-  mergedAt:
+  pullRequestMergedAt:
     description: "Time stamp data of when the PR was merged"
     required: true
-  mergeCommitId:
+  pullRequestMergeCommitId:
     description: "Commit sha from merge that triggered the action"
+    required: true
+  pullRequestId:
+    description: "Pull request number that triggered the action"
     required: true
   chunkSize:
     description: "Size of group of files to be sent to chapter creation"
