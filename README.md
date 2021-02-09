@@ -72,6 +72,36 @@ This action accepts the following configuration parameters via `with:`
 
   AWS S3 Bucket name for storing assets
 
+- `pullRequestMergedAt`
+
+  **Required**
+
+  Time stamp data of when the PR was merged
+
+- `pullRequestMergeCommitId`
+
+  **Required**
+
+  Pull request number that triggered the action
+
+- `pullRequestId`
+
+  **Required**
+
+  Pull request number that triggered the action
+
+- `chunkSize`
+
+  **Required**
+
+  Size of group of files to be sent to chapter creation
+
+- `intervalBetweenChunks`
+
+  **Required**
+
+  Interval in milliseconds between each group of chapter creation requests
+
 ## Outputs
 
 - `result`

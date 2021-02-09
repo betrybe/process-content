@@ -91,14 +91,8 @@ const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) =>
   return handleChaptersResult(result);
 };
 
-const createVersion = (apiUrl, body, apiKey, mergedAt, mergeCommitId) => {
+const createVersion = (apiUrl, apiKey, versionBodyObj) => {
   const headerObj = configHeaders(apiKey);
-
-  const versionBodyObj = {
-    merge_commit_id: mergeCommitId,
-    timestamp: mergedAt,
-    chapter_ids: body,
-  };
 
   return axios.post(apiUrl, versionBodyObj, headerObj);
 };
