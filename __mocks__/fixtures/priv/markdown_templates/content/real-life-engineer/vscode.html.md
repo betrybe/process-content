@@ -6,7 +6,7 @@ Quando você entrou na Trybe precisou fazer o `setup` do seu computador e durant
 
 ## Por quê isso é importante?
 
-Como pessoa desenvolvedora o uso de um editor de código-fonte fará parte do seu dia a dia, sendo assim é muito importante que você conheça as funcionalidades que o editor que usa possui, no caso o `VS Code`, e também sabia como otimizar o seu trabalha com o uso de `plugins`.
+Como pessoa desenvolvedora o uso de um editor de código-fonte fará parte do seu dia a dia, sendo assim é muito importante que você conheça as funcionalidades que o editor que usa possui, no caso o `VS Code`, e também saiba como otimizar o seu trabalho com o uso de `plugins`.
 
 ---
 

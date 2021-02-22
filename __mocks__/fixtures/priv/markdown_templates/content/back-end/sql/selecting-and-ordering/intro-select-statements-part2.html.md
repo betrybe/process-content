@@ -2,6 +2,8 @@
 
 Olá, pessoal, bem-vindos e bem-vindas de volta! Na última aula, você teve a oportunidade de dar os primeiros passos com um banco de dados, aprendendo a filtrar e ordenar os seus resultados, além de limitar a quantidade de dados que são exibidos. Hoje você vai expandir ainda mais seu conhecimento de **SQL**, o que te permitirá criar consultas mais refinadas, complexas e precisas.
 
+<%= vimeo "506178565" %>
+
 ---
 
 ### Você será capaz de:
@@ -38,16 +40,16 @@ Você já deve estar conseguindo montar pesquisas básicas com certa segurança.
 
 <%= figure(%{src: "/back-end/sql/images/ordemDeOperadores.jpg", caption: "Ordem dos operadores", class: "text-center rounded mx-auto d-block", width: "500px", height: "auto"}) %>
 
-Sendo assim, quando se faz a seguinte *query*:
+Sendo assim, quando se faz a seguinte _query_:
 
 ```language-sql
 SELECT * FROM sakila.payment
 WHERE amount = 0.99 OR amount = 2.99 AND staff_id = 2;
 ```
 
-Como o operador `AND` tem preferência sobre o operador `OR`, ele é avaliado primeiro. Então os registros buscados são aqueles nos quais `amount = 2.99` e `staff_id = 2`. Na sequência, são buscados os registros nos quais `amount = 0.99`, independente do valor de `staff_id`. Os valores retornados serão os resultados dessas duas buscas. Ou seja, a *query* é executada como se tivesse os seguintes parênteses: `amount = 0.99 OR (amount = 2.99 AND staff_id = 2)`.
+Como o operador `AND` tem preferência sobre o operador `OR`, ele é avaliado primeiro. Então os registros buscados são aqueles nos quais `amount = 2.99` e `staff_id = 2`. Na sequência, são buscados os registros nos quais `amount = 0.99`, independente do valor de `staff_id`. Os valores retornados serão os resultados dessas duas buscas. Ou seja, a _query_ é executada como se tivesse os seguintes parênteses: `amount = 0.99 OR (amount = 2.99 AND staff_id = 2)`.
 
-Agora, quando executar a seguinte *query*:
+Agora, quando executar a seguinte _query_:
 
 ```language-sql
 SELECT * FROM sakila.payment
@@ -76,7 +78,7 @@ IS  COMPARA COM VALORES BOOLEANOS (TRUE, FALSE, NULL)
 
 Depois de ter assistido ao vídeo acima, você já deve ter agora uma noção do que pode ser feito com os operadores do **SQL** e de como é possível combiná-los para trazer relatórios ainda mais granulares. Vamos buscar algumas informações no nosso banco de dados para consolidar esse aprendizado.
 
-**Dica final:** Sempre se atente a essa ordem de precedência para que consiga montar suas *queries* de acordo com o que precisa. Na dúvida, use parênteses.
+**Dica final:** Sempre se atente a essa ordem de precedência para que consiga montar suas _queries_ de acordo com o que precisa. Na dúvida, use parênteses.
 
 **A tabela a seguir é um guia de como a classificação indicativa é usada no banco de dados `sakila`. Consulte-a ao fazer os desafios propostos.**
 
@@ -90,7 +92,7 @@ Depois de ter assistido ao vídeo acima, você já deve ter agora uma noção do
 
 **NC-17** = permitido apenas para adultos
 
-Entre no banco de dados `sakila` e siga as instruções (e guarde as *queries* para conferir posteriormente):
+Entre no banco de dados `sakila` e siga as instruções (e guarde as _queries_ para conferir posteriormente):
 
 1. Precisamos identificar o cliente com o e-mail `LEONARD.SCHOFIELD@sakilacustomer.org`.
 2. Precisamos de um relatório dos nomes, em ordem alfabética, dos clientes que não estão mais ativos no nosso sistema e pertencem à loja com o **id** 2. Porém, não inclua o cliente `KENNETH` no resultado.
@@ -99,7 +101,7 @@ Entre no banco de dados `sakila` e siga as instruções (e guarde as *queries* p
 5. Mostre todos os detalhes dos clientes que não estão ativos na loja 1.
 6. Precisamos descobrir quais são os 50 filmes feitos para maiores de 17 anos e adultos com a menor taxa de aluguel, para que possamos fazer uma divulgação melhor desses filmes.
 
-Você vai se deparar também com casos em que você só tem parte de uma informação, ou em que precisa criar *queries* mais dinâmicas. Para esses casos, temos o `LIKE`. Como assim? É o que veremos a seguir.
+Você vai se deparar também com casos em que você só tem parte de uma informação, ou em que precisa criar _queries_ mais dinâmicas. Para esses casos, temos o `LIKE`. Como assim? É o que veremos a seguir.
 
 ### Como criar pesquisas mais dinâmicas e maleáveis usando o `LIKE`
 
@@ -166,7 +168,7 @@ A seguir, vamos entender como trazer resultados que englobam uma faixa de valore
 
 ##### Operador `IN`
 
-Como você viu no início do dia hoje, é possível juntar várias condições nas suas *queries* usando os operadores `AND` e `OR`. No entanto, você ainda terá que digitar cada condição separadamente, como no exemplo a seguir:
+Como você viu no início do dia hoje, é possível juntar várias condições nas suas _queries_ usando os operadores `AND` e `OR`. No entanto, você ainda terá que digitar cada condição separadamente, como no exemplo a seguir:
 
 ```language-sql
 SELECT * FROM sakila.actor
@@ -218,7 +220,7 @@ expressão BETWEEN valor1 AND valor2;
 -- e valor1 e valor2 delimitam o resultado
 ```
 
-Então, quando você faz uma *query* como essa, você terá o resultado da imagem a seguir:
+Então, quando você faz uma _query_ como essa, você terá o resultado da imagem a seguir:
 
 ```language-sql
 -- Note que o MySQL inclui o valor inicial e o final nos resultados
@@ -258,7 +260,7 @@ Lembre-se de que, no caso do `IN`, você precisa especificar os valores que deve
 
 A melhor forma de responder a essa pergunta é: **depende**.
 
-Não é o que você esperava? Então vai aqui uma resposta melhor: isso vai depender do tipo e quantidade de dados com os quais você está trabalhando. A melhor forma de você não chutar é clicar no botão *Execution Plan* no **MySQL Workbench** e verificar o tempo de execução para tomar a decisão de qual tem o menor custo de execução - o que significa que a *query* finalizará mais rápido.
+Não é o que você esperava? Então vai aqui uma resposta melhor: isso vai depender do tipo e quantidade de dados com os quais você está trabalhando. A melhor forma de você não chutar é clicar no botão *Execution Plan* no **MySQL Workbench** e verificar o tempo de execução para tomar a decisão de qual tem o menor custo de execução - o que significa que a _query_ finalizará mais rápido.
 
 Há outras ferramentas inteiras só para mensurar performance. Considere o *Execution Plan* apenas uma introdução ao tema.
 
@@ -291,7 +293,7 @@ No MySQL, o tipo `DATE` faz parte dos [tipos de dados](https://www.mysqltutorial
 * ***DATE*** - Possui apenas data, no formato `YYYY-MM-DD` na faixa de `1001-01-01` até `9999-12-31`
 * ***DATETIME*** - Possui data e tempo, no formato `YYYY-MM-DD HH:MM:SS` com a faixa de `1000-01-01 00:00:00` até `9999-12-31 23:59:59`.
 
-Se você pesquisar agora no banco `sakila` usando a seguinte *query*:
+Se você pesquisar agora no banco `sakila` usando a seguinte _query_:
 
 ```language-sql
 SELECT * FROM sakila.payment;
@@ -363,7 +365,7 @@ Você já tem as ferramentas em mãos, então quero ver os dedos se mexendo. **L
 
 3. Usando a tabela `rental`, extraia data, ano, mês, dia, hora, minuto e segundo dos registros com `rental_id` = 10330.
 
-4. Monte uma *query* que encontre o id e a data de aluguel do filme que foi alugado no dia 18/08/2005 às 00:14:03.
+4. Monte uma _query_ que encontre o id e a data de aluguel do filme que foi alugado no dia 18/08/2005 às 00:14:03.
 
 ---
 
@@ -379,27 +381,85 @@ Vamos bater um papo sobre **SQL**? Hora da aula ao vivo! Vamos para o Slack, ond
 
 ###### Tempo sugerido para realização: 40 minutos
 
-**Uma dica antes de iniciar:** Você pode, sim, traduzir as páginas usando o Google Tradutor. No entanto, lembre-se de que, em muitos casos, o código pode acabar sendo traduzido junto com a página. Por isso, caso o código não faça sentido ou não funcione, pode ser esse o motivo.
+**Exercício 1**: Para realizar as tarefas do 1 ao 7, restaure o seguinte banco de dados:
 
-Tente pegar apenas a parte da pergunta que não entendeu e faça a tradução apenas dessa parte.
+```language-sql
+DROP SCHEMA IF EXISTS PecasFornecedores;
+CREATE SCHEMA PecasFornecedores;
+USE PecasFornecedores;
 
-**Exercício 1**: [Encontrando dados de tabelas usando `SELECT`](https://sqlzoo.net/wiki/SELECT_names) {: .external-link target="_blank" rel="noreferrer noopener" }
+CREATE TABLE Pecas (
+  code INTEGER PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL
+);
 
-**Exercício 2**: [SQL - Operadores booleanos e relacionais](https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial) {: .external-link target="_blank" rel="noreferrer noopener" }
+CREATE TABLE Fornecedores (
+  code VARCHAR(40) PRIMARY KEY NOT NULL,  
+  name TEXT NOT NULL
+);
 
-**Exercício 3**: [Praticando `SELECT` com o prêmio Nobel](https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial) {: .external-link target="_blank" rel="noreferrer noopener" }
+CREATE TABLE Fornecimentos (
+  code INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  peca INTEGER,
+  FOREIGN KEY (peca) REFERENCES Pecas (code),
+  Fornecedor VARCHAR(40),
+  FOREIGN KEY (fornecedor) REFERENCES Fornecedores (code),
+  Preco INTEGER NOT NULL
+);
 
-**Exercício 4**: [Teste de conhecimentos do `SELECT`](https://sqlzoo.net/wiki/SELECT_Quiz) {: .external-link target="_blank" rel="noreferrer noopener" }
+CREATE TABLE Vendas (
+  code INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  fornecimento INTEGER,
+  quantity INTEGER,
+  order_date DATETIME,
+  FOREIGN KEY (fornecimento) REFERENCES Fornecimentos (code)
+);
+ 
+INSERT INTO Fornecedores(code, name)
+  VALUES ('ROB', 'Robauto SA'),
+    ('CNF', 'Confiauto LTDA'),
+    ('MAP', 'Malok Auto Peças'),
+    ('INF', 'Infinity Peças LTDA');
 
-**Exercício 5**: [Teste de conhecimentos do `SELECT` - Parte 2](https://sqlzoo.net/wiki/BBC_QUIZ) {: .external-link target="_blank" rel="noreferrer noopener" }
+INSERT INTO Pecas(code, name)
+  VALUES (1, 'Rebimboca'),
+    (2, 'Parafuseta'),
+    (3, 'Grampola'),
+    (4, 'Grapeta');
+
+INSERT INTO Fornecimentos(peca, fornecedor, preco)
+  VALUES (1, 'CNF', 10),
+    (1, 'ROB', 15),
+    (2, 'CNF', 20),
+    (2, 'ROB', 25),
+    (2, 'MAP', 14),
+    (3, 'INF', 50),
+    (3, 'MAP', 45),
+    (4, 'CNF', 5),
+    (4, 'ROB', 7);
+
+INSERT INTO Vendas(fornecimento, quantity, order_date)
+  VALUES (1, 3, '2017-05-22 11:28:36'),
+    (2, 2, '2018-03-22 11:35:24'),
+    (3, 8, '2018-11-16 15:51:36'),
+    (3, 10, '2019-02-13 13:23:22'),
+    (8, 5, '2019-06-11 12:22:48'),
+    (6, 1, '2019-09-07 09:53:58'),
+    (7, 3, '2020-01-05 08:39:33'),
+    (9, 5, '2020-05-13 14:05:19');
+```
+
+1. Escreva uma query para exibir todas as peças que começam com `GR`.
+2. Escreva uma query para exibir todos os fornecimentos que contenham a peça com code `2`. Organize o resultado por alfabética de fornecedor.
+3. Escreva uma query para exibir as peças e o preço de todos os fornecimentos em que o código do fornecedor tenha a letra `N`.
+4. Escreva uma query para exibir todas as informações dos fornecedores que são empresas limitadas (LTDA). Ordene os resultados em ordem alfabética decrescente.
+5. Escreva uma query para exibir o número de empresas (fornecedores) que contém a letra `F` no código.
+6. Escreva uma query para exibir os fornecimentos onde as peças custam mais de `R$15,00` e menos de `$40,00`. Ordene os resultados por ordem crescente.
+7. Escreva uma query para exibir o número de vendas feitas entre o dia `15/04/2018` e o dia `30/07/2019`.
 
 ### Bônus
 
-**Exercício 6**: [Perguntas sobre fundamentos do SQL](https://sqlzoo.net/wiki/Nobel_Quiz) {: .external-link target="_blank" rel="noreferrer noopener" }
-
-**Exercício 7**: [Desafios do HackerRank sobre conhecimentos básicos](https://www.hackerrank.com/domains/sql?filters%5Bsubdomains%5D%5B%5D=select) {: .external-link target="_blank" rel="noreferrer noopener" }
-
-**Exercício 8**: Usando o banco de dados `Scientists` restaurado no dia anterior, realize os exercícios a seguir. Caso ainda não tenha restaurado o banco, utilize o código abaixo para fazê-lo.
+**Exercício 3**: Usando o banco de dados `Scientists` restaurado no dia anterior, realize os exercícios a seguir. Caso ainda não tenha restaurado o banco, utilize o código abaixo para fazê-lo.
 
 ```language-sql
 DROP SCHEMA IF EXISTS Scientists;
@@ -485,7 +545,12 @@ INSERT INTO Scientists(SSN,Name)
 
 ---
 
+
 ## Recursos adicionais (opcional)
+
+- [Quiz prêmio nobel com MySQL](https://sqlzoo.net/wiki/Nobel_Quiz) {: .external-link target="_blank" rel="noreferrer noopener" }
+
+- [Desafios do HackerRank sobre conhecimentos básicos](https://www.hackerrank.com/domains/sql?filters%5Bsubdomains%5D%5B%5D=select) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 - [Lidando com datas no MySQL](https://popsql.com/learn-sql/mysql/how-to-query-date-and-time-in-mysql/) {: .external-link target="_blank" rel="noreferrer noopener" }
 

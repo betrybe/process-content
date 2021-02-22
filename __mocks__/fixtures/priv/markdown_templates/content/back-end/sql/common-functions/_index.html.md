@@ -11,6 +11,8 @@ Hoje você vai aprender como facilitar **MUITO** sua vida através das principai
 * Utilizar as funções de agregação `AVG`, `MIN`, `MAX`, `SUM` e `COUNT`;
 * Exibir e filtrar dados de forma agrupada com `GROUP BY` e `HAVING`.
 
+<%= vimeo "510234994" %>
+
 ---
 
 ## Por que isso é importante?

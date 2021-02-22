@@ -6,7 +6,7 @@ const { spawnProcess } = require('../processHelper');
 const bashExec = util.promisify(exec);
 
 const getFiles = async (path) => {
-  const { stdout, stderr } = await bashExec(`git ls-files ${path} ':!:priv/markdown_templates/content/basket-of-unused-content*'`);
+  const { stdout, stderr } = await bashExec(`git ls-files ${path} ':!:__mocks__/fixtures/priv/markdown_templates/content/basket-of-unused-content*'`);
 
   if (stderr) return logger.info({ message: `Error at getFiles because: ${stderr}` });
 

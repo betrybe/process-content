@@ -2,6 +2,8 @@
 
 Bem-vindo de volta! Hoje você vai começar a juntar as peças da sua jornada! Elas te levarão a aprender a manipular e a transformar dados em informação, e informação em conhecimento!
 
+<%= vimeo "506179211" %>
+
 ---
 
 ### Você será capaz de:
@@ -270,17 +272,9 @@ Vamos bater um papo sobre **SQL**? Hora da aula ao vivo! Vamos para o Slack, ond
 
 ###### Tempo sugerido para realização: 40 minutos
 
-**Exercício 1**: Faça os exercícios de 1 a 3 [deste link](https://www.w3schools.com/sql/exercise.asp?filename=exercise_select1) {: .external-link target="_blank" rel="noreferrer noopener" }.
+**Exercício 1**: Faça as tarefas de 1 a 15.
 
-**Exercício 2**: Faça os exercícios de 1 a 3 [deste link](https://www.w3schools.com/sql/exercise.asp?filename=exercise_orderby1) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercício 3**: Faça a página 1 [deste link](https://sqlbolt.com/lesson/select_queries_introduction) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercício 4**: Faça os exercícios [deste link](https://sqlzoo.net/wiki/SELECT_basics) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercício 5**: Faça os exercícios de 1 a 10.
-
-> Para realizar os exercícios do 5 ao 10, restaure o banco de dados seguinte.
+> Para realizar os exercícios do 1 ao 15, restaure o banco de dados seguinte.
 
 ```language-sql
 DROP SCHEMA IF EXISTS Scientists;
@@ -360,15 +354,20 @@ INSERT INTO Scientists(SSN,Name)
 3. Escreva uma query para exibir a soma dos números 10 e 15.
 4. Escreva uma query para exibir o resultado de uma expressão aritmética qualquer.
 5. Escreva uma query para exibir todas as informações de todos os cientistas.
-6. Escreva uma query para exibir o nome e as horas de cada projeto.
-7. Escreva uma query para exibir o nome e as horas dos três projetos com a maior quantidade de horas.
-8. Escreva uma query para exibir o código de todos os projetos da tabela `AssignedTo` sem que haja repetições.
-9. Escreva uma query para exibir todos os cientistas cujos projetos são `Ast3`.
-10. Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
+6. Escreva uma query para exibir o nome como "Nome do Projeto" e as horas como "Tempo de Trabalho" de cada projeto.
+7. Escreva uma query para exibir o nome dos cientistas em ordem alfabética.
+8. Escreva uma query para exibir o nome dos Projetos em ordem alfabética descendente.
+9. Escreva uma query que exiba a string "O projeto `Name` precisou de `Hours` horas para ser concluído." para cada projeto.
+10. Escreva uma query para exibir o nome e as horas dos três projetos com a maior quantidade de horas.
+11. Escreva uma query para exibir o código de todos os projetos da tabela `AssignedTo` sem que haja repetições.
+12. Escreva uma query para exibir o nome do projeto com maior quantidade de horas.
+13. Escreva uma query para exibir o nome do segundo projeto com menor quantidade de horas.
+14. Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
+15. Escreva uma query que exiba a string "Existem `Number` cientistas na tabela Scientists.", em que `Number` se refira a quantidade de cientistas.
 
 ### Bônus
 
-**Exercício 6**: Para realizar os exercícios do 1 ao 5, restaure o seguinte banco de dados:
+**Exercício 2**: Para realizar as tarefas do 1 ao 4, restaure o seguinte banco de dados:
 
 ```language-sql
 DROP SCHEMA IF EXISTS PiecesProviders;
@@ -419,19 +418,10 @@ INSERT INTO Provides(Piece, Provider, Price)
 
 > Esse banco de dados é de uso livre, sendo licenciado de acordo com os termos [deste link](https://creativecommons.org/licenses/by-sa/3.0/) {: .external-link target="_blank" rel="noreferrer noopener" }.
 
-1. Escreva uma query para exibir a peça e o preço de tudo que é provido pela empresa `RBT`.
+1. Escreva uma query para ordernar o nome das empresas de forma alfabética descendente e que retorne somente o código e o nome da primeira empresa.
 2. Escreve uma query para exibir todas as informações das cinco peças com os maiores preços.
-3. Escreva uma query para exibir o nome das empresas e preço das peças com os quatro maiores preços, começando a lista a partir do 3º item.
-4. Escreva uma query para exibir todas as informações das peças que são providas pela empresa `HAL`. Ordene o resultado pelos preços dos peças de forma decrescente.
-5. Escreva uma query para exibir por quantas empresas a peça `1` é provida.
-
-**Exercício 7**: Usando `WHERE`, faça os exercícios [deste link](https://www.w3schools.com/sql/exercise.asp?filename=exercise_where1) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercício 8**: Aplicando Restrições, faça os exercícios [deste link](https://sqlbolt.com/lesson/select_queries_with_constraints) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercícios 9**: Estude e faça os exercícios das páginas 1 a 3 [deste link](http://www.sqlcourse.com/intro.html) {: .external-link target="_blank" rel="noreferrer noopener" }.
-
-**Exercício 10**: Exercícios de comparação de valores. Faça os exercícios [deste link](https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial) {: .external-link target="_blank" rel="noreferrer noopener" }.
+3. Escreva uma query para exibir o nome das empresas e preço das peças, começando a lista a partir do 3º item, e exibindo o preço das quatro peças mais caras.
+4. Escreva uma query para exibir a string "A peça mais cara é a: `Piece` , provida pela empresa `Provider` e custa `Price` reais.", essa query deve retornar somene uma única string, sendo que `Price` se refere ao maior preço.
 
 ---
 

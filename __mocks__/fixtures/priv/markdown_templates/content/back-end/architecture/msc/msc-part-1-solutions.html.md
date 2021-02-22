@@ -1,3 +1,281 @@
+## Gabarito dos exercícios de fixação
+
+#### Listando livros com MySQL
+
+Depois de criar a tabela no banco de dados, faça as seguintes implementações.
+
+1. Crie um modelo Book e defina o método `getAll` para retornar a lista de todos os livros.
+
+Crie o arquivo `Book.js` dentro da pasta models e adicione o seguinte código.
+
+```language-javascript
+const connection = require('./connection');
+
+const getAll = async () => {
+  const [books] = await connection.execute('SELECT * FROM model_example.books;');
+
+  return books.map(({ id, title, author_id }) => ({
+    id,
+    title
+    authorId: author_id
+  }));
+};
+
+module.exports = {
+  getAll
+}
+```
+
+2. Crie uma rota `books` para trazer a lista de todos os livros.
+
+```language-javascript
+// const express = require('express');
+//const bodyParser = require('body-parser');
+
+// const Author = require('../models/Author');
+const Book = require('./models/Book');
+
+// ...
+
+// Adicione o código antes do app.listen
+
+app.get('/books', async (req, res) => {
+  const books = await Book.getAll();
+  res.status(200).json(books);
+});
+```
+
+
+3. Altere o middleware criado no passo 2 para que quando for enviado a query string com a chave `author_id`, retorne apenas os livros associados com o `author_id`.
+
+Comece implementando um novo método no arquivo `models/Book.js`.
+
+```language-javascript
+const getByAuthorId = async (authorId) => {
+  const [books] = await connection.execute('SELECT * FROM model_example.books WHERE author_id=?;', [authorId]);
+
+  return books.map(({ id, title, author_id }) => ({
+    id,
+    title
+    authorId: author_id
+  }));
+}
+
+// module.exports = {
+//  getAll,
+    getByAuthorId
+// }
+```
+
+Agor no arquivo `index.js`, altere o middleware da rota `/books` para ficar da seguinte forma.
+
+```language-javascript
+
+app.get('/books', async (req, res) => {
+  const { author_id } = req.query;
+
+  const books = (author_id) 
+    ? await Book.getByAuthorId(author_id) 
+    : await Book.getAll();
+
+  res.status(200).json(books);
+});
+```
+
+#### Pegando detalhes de um livro com MySQL
+
+Continuando o exercício anterior faça o seguinte.
+
+1. Crie uma rota `/books/:id` e retorne o livro de acordo com o id passado por parâmetro. Se não existir retorne um json no seguinte formato `{ message: 'Not found' }`.
+
+Comece implementando um novo método no arquivo `models/Book.js`.
+
+```language-javascript
+const getById = async (id) => {
+  const [books] = await connection.execute('SELECT * FROM model_example.books WHERE id=?;', [id]);
+
+  if (books.length === 0) return null;
+
+  return books.map(({ id, title, author_id }) => ({
+    id,
+    title
+    authorId: author_id
+  }))[0];
+}
+
+// module.exports = {
+//  getAll,
+//  getByAuthorId,
+    getById,
+// }
+```
+
+Agora no arquivo `index.js`, altere o middleware da rota `/books` para ficar da seguinte forma.
+
+```language-javascript
+
+app.get('/book/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const book = await Book.getById(id);
+
+  if (!book) return res.status(400).json({ message: 'Not found' })
+
+  res.status(200).json(book);
+});
+```
+
+#### Criando um livro com MySQL
+
+1. Ainda usando a tabela books como referência crie uma rota `books` do tipo `POST`. Faça as seguintes validações:
+
+* Título não pode ser vazio;
+* Título precisa ter pelo menos três caracteres;
+* O campo `author_id` não pode ser vazio;
+* O campo `author_id` só é válido se existir um autor com esse id;
+
+Se algum dos requisitos anteriores não for atendido, retornar um json no seguinte formato `{ message: 'Dados inválidos' }` com `status 400`. Caso contrário, insira o livro na tabela `books` e retorne o json `{ message: 'Livro criado com sucesso! '}` com o `status 201`.
+
+No arquivo `models/Book.js`, acrescente os dois métodos abaixo
+
+```language-javascript
+const isValid = async (title, authorId) => {
+  if (!title || typeof title !== 'string' || title.length < 3) return false;
+  if (!authorId || typeof authorId !== 'number' || !(await Author.findById(authorId))) return false;
+  
+  return true;
+};
+
+const create = async (title, authorId) => connection.execute(
+  'INSERT INTO mvc_example.books (title, author_id) VALUES (?,?,?)',
+  [title, authorId],
+);
+
+// module.exports = {
+//   getAll,
+//   getByAuthorId,
+//   getById,
+     isValid,
+     create
+// }
+```
+
+No arquivo index.js, acrescente a nova rota.
+
+```language-javascript
+app.post('/books', async (req, res) => {
+const { title, author_id } = req.body;
+
+if (!await Book.isValid(title, author_id)) {
+  return res.status.(400).json({ message: 'Dados inválidos' });
+}
+
+await Book.create(title, author_id);
+
+res.status(201).({ message: 'Livro criado com sucesso! '});
+});
+```
+
+#### Listando os livros... mas do MongoDB
+
+1. Refatore o método `getAll` de `models/Book` para utilizar o mongo como banco de dados.
+
+```language-javascript
+const connection = require('./connection');
+
+const getAll = () => connection()
+    .then((db) => db.collection('books').find({}).toArray())
+
+module.exports = {
+  getAll,
+}
+```
+
+2. Refatore o método `getByAuthorId` de `models/Book` para utilizar o mongo como banco de dados.
+
+```language-javascript
+// ...
+
+const getByAuthorId = (authorId) => connection()
+    .then((db) => db.collection('books').find({author_id: authorId}).toArray())
+
+
+// module.exports = {
+//   getAll,
+     getByAuthorId
+// }
+```
+
+#### Obtendo detalhes de um livro
+
+1. Refatore o método `getById` de `models/Book` para utilizar o mongo como banco de dados.
+
+```language-javascript
+// const connection = require('./connection');
+const { ObjectId } = require('mongodb');
+// ...
+
+const findById = async (id) => { 
+  const book = await connection()
+    .then((db) => db.collection('books').findOne(ObjectId(id)));
+
+  if (!book) return null;
+
+  return book;
+}
+
+// module.exports = {
+//   getAll,
+//   getByAuthorId,
+     findById
+// }
+```
+
+#### Criando um novo livro
+
+1. Refatore o método `isValid` de `models/Book` para utilizar o mongo como banco de dados.
+
+```language-javascript
+// const connection = require('./connection');
+// const { ObjectId } = require('mongodb');
+const Author = require('./Author');
+
+// ...
+
+const isValid = async (title, authorId) => {
+  if (!title || typeof title !== 'string') return false;
+  if (!authorId || typeof authorId !== 'number' || !(await Author.findById(ObjectId(authorId)))) return false;
+
+  return true;
+}
+
+
+// module.exports = {
+//   getAll,
+//   getByAuthorId,
+//   findById,
+     isValid
+// }
+```
+
+2. Refatore o método `create` de `models/Book` para utilizar o mongo como banco de dados.
+
+```language-javascript
+// ...
+
+const create = (title, authorId) => connection()
+    .then((db) => db.collection('books').insertOne({ title, authorId}))
+
+// module.exports = {
+//   getAll,
+//   getByAuthorId,
+//   findById,
+//   isValid,
+     create
+// }
+```
+
+
 ## Gabarito dos exercícios
 
 A seguir temos uma possível solução para os exercícios:

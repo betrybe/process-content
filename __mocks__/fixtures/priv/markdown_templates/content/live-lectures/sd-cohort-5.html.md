@@ -1,3 +1,9 @@
+## Aula 32.3 - Sockets - Socket.io
+<%= vimeo "507725039" %>
+
+## Aula 32.2 - Sockets - TCP/UDP & NET
+<%= vimeo "507346002" %>
+
 ## Aula 32.1 - Arquitetura de Software - Camada de View
 <%= vimeo "506353663" %>
 

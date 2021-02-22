@@ -1,6 +1,6 @@
 ## O que vamos aprender?
 
-Agora que você já aprendeu a usar as principais ferramentas que a `react-testing-library` oferece, vamos aprofundar em alguns casos mais avançados. Na aula de hoje você irá aprender mais sobre *mocks* e testes de inputs.
+Agora que você já aprendeu a usar as principais ferramentas que a `react-testing-library` oferece, vamos aprofundar em alguns casos mais avançados. Na aula de hoje você irá aprender mais sobre _mocks_ e testes de inputs.
 
 <%= vimeo "466146057" %>
 
@@ -8,14 +8,14 @@ Agora que você já aprendeu a usar as principais ferramentas que a `react-testi
 
 ### Você será capaz de:
 
-* Criar *mocks* de APIs utilizando fetch;
+* Criar _mocks_ de APIs utilizando fetch;
 * Testar inputs;
 
 ---
 
 ## Por que isso é importante?
 
-Ter uma boa cobertura de testes aumenta a confiabilidade da sua aplicação, o que significa que também teremos que testar formulários. Para manter uma boa cobertura de testes de maneira sustentável, também é necessário garantir que seus testes executem rápido. É aí que entram os *mocks*, que nos permitem evitar chamadas reais a APIs e transições CSS, por exemplo, que podem demorar muito e em alguns casos, como na falta de internet, não funcionar adequadamente durante os testes.
+Ter uma boa cobertura de testes aumenta a confiabilidade da sua aplicação, o que significa que também teremos que testar formulários. Para manter uma boa cobertura de testes de maneira sustentável, também é necessário garantir que seus testes executem rápido. É aí que entram os _mocks_, que nos permitem evitar chamadas reais a APIs e transições CSS, por exemplo, que podem demorar muito e em alguns casos, como na falta de internet, não funcionar adequadamente durante os testes.
 
 ---
 
@@ -77,7 +77,7 @@ Teste se sua aplicação tem o funcionamento correto no navegador retornando uma
 
 Agora temos o problema, como testar a aplicação sem que quebre toda vez que nossa api retornar uma nova piada diferente? 🤔
 
-Para resolver esse problema, vamos ver dois exemplos com o *Jest* que vão nos permitir *mockar*, respectivamente, um módulo e sua implementação.
+Para resolver esse problema, vamos ver dois exemplos com o _Jest_ que vão nos permitir _mockar_, respectivamente, um módulo e sua implementação.
 
 <%= vimeo "466139601" %>
 
@@ -178,7 +178,7 @@ global.fetch = jest.fn(async () => ({
 
 Mockar requisições é uma coisa realmente complexa mas, **Palma, palma, não priemos cânico**, você pode revisitar o conteúdo sempre que precisar e com o tempo e prática, estará fazendo `mocks` como se não fosse nada.
 
-Nestes casos, utilizamos o *mock* para evitar uma chamada externa à API, tornando o nosso teste mais rápido e confiável, retornando o resultado contido na constante `joke`. Imagine que a API saia do ar ou que perdemos acesso à internet enquanto o teste roda. O teste quebraria, apesar do seu código estar funcionando. *Mockar* a chamada à API evita esse tipo de problema. Outro ponto é que seus testes vão rodar mais rápido se você não fizer uma chamada real à API todas as vezes que você for rodar seu teste.
+Nestes casos, utilizamos o _mock_ para evitar uma chamada externa à API, tornando o nosso teste mais rápido e confiável, retornando o resultado contido na constante `joke`. Imagine que a API saia do ar ou que perdemos acesso à internet enquanto o teste roda. O teste quebraria, apesar do seu código estar funcionando. _Mockar_ a chamada à API evita esse tipo de problema. Outro ponto é que seus testes vão rodar mais rápido se você não fizer uma chamada real à API todas as vezes que você for rodar seu teste.
 
 ### Testando inputs em React
 
@@ -284,7 +284,7 @@ it('alterando o valor dos campos e testando o valor guardado', () => {
 
   * Uma coisa que pode ajudar a entender o que está acontecendo é O `console.log` na função `handleInput` do arquivo `App.js` exibindo a variável `value`. Fazendo isso, o `console.log` aparece no teste, o que lhe dará a certeza de que a `RTL` está realmente renderizando sua página e inserindo nos campos os valores, da mesma forma que o usuário faria.
 
-  * Para visualizar o comportamento dos testas acima basta ter uma aplicação react e substituir o arquivo `App.js` e `App.test.js`.
+  * Para visualizar o comportamento dos testes acima basta ter uma aplicação react e substituir o arquivo `App.js` e `App.test.js`.
 
 ---
 
@@ -308,7 +308,7 @@ it('alterando o valor dos campos e testando o valor guardado', () => {
 
 Para esse exercício, faremos testes em uma aplicação simples, já pronta, para fixar o que foi aprendido.
 
-O *README* do [repositório do Digimon Finders](https://github.com/tryber/exercise-digimon-finders) {: .external-link target="_blank" rel="noreferrer noopener" } tem as instruções mais detalhadas para a execução dos exercícios.
+O _README_ do [repositório do Digimon Finders](https://github.com/tryber/exercise-digimon-finders) {: .external-link target="_blank" rel="noreferrer noopener" } tem as instruções mais detalhadas para a execução dos exercícios.
 
 ---
 

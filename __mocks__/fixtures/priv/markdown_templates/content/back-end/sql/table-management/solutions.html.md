@@ -17,7 +17,7 @@ VALUES
     ('Geralt', 'of Rivia', 2, 'tossacoin@gmail.com', 1, 1, 'geralt', 'theWhiteWolf');
 ```
 
-**Exercício 2:** Feito o exercício anterior, vamos agora para o nível 2. Insira 2 funcionários novos em apenas uma *query*.
+**Exercício 2:** Feito o exercício anterior, vamos agora para o nível 2. Insira 2 funcionários novos em apenas uma _query_.
 
 ```language-sql
 INSERT INTO `sakila`.`staff`
@@ -56,7 +56,7 @@ VALUES (3, 3);
 
 ### Digitou algo errado? De boa, vamos dar um `UPDATE`
 
-Rode o seguinte comando em uma janela de *query* dentro do MySQL Workbench **sempre** que abri-lo, para desabilitar essa funcionalidade antes de executar seus comandos `UPDATE` ou `DELETE`:
+Rode o seguinte comando em uma janela de _query_ dentro do MySQL Workbench **sempre** que abri-lo, para desabilitar essa funcionalidade antes de executar seus comandos `UPDATE` ou `DELETE`:
 
 ```language-sql
 SET SQL_SAFE_UPDATES = 0;
@@ -164,8 +164,122 @@ Basta inspecionar e analisar uma a uma.
 
 4. Clique com o botão direito [neste link](/back-end/sakila.sql) {: .external-link target="_blank" rel="noreferrer noopener" } e salve como arquivo `.sql`.
 
-5. Selecione todo o conteúdo do arquivo **(CTRL + A)** e cole-o dentro de uma janela de nova *query* no **MySQL Workbench**.
+5. Selecione todo o conteúdo do arquivo **(CTRL + A)** e cole-o dentro de uma janela de nova _query_ no **MySQL Workbench**.
 
 6. Clique em executar para restaurar o banco de dados.
 
     <%= figure(%{src: "/back-end/sql/images/RestoringDatabase.png", caption: "Restaurando o banco \`sakila\`", class: "text-center rounded mx-auto d-block", width: "500px", height: "auto"}) %>
+
+
+## Exercícios
+
+**Exercício 1**: Insira as produções da Pixar abaixo na tabela `Movies`:
+
+- Monstros SA, de Pete Docter, lançado em 2001, com 92 minutos de duração.
+- Procurando Nemo, de John Lasseter, lançado em 2003, com 107 minutos de duração.
+- Os Incríveis, de Brad Bird, lançado em 2004, com 116 minutos de duração.
+- WALL-E, de Pete Docter, lançada em 2008, com 104 minutos de duração.
+
+```language-sql
+USE Pixar;
+
+INSERT INTO Movies(title, director, year, length_minutes)
+  VALUES ('Monstros SA', 'Pete Docter', 2001, 92),
+         ('Procurando Nemo', 'Jon Lasseter', 2003, 107),
+         ('Os Incríveis', 'Brad Bird', 2004, 116),
+         ('WALL-E', 'Pete Docter', 2008, 104);
+```
+
+**Exercício 2**: Procurando Nemo foi aclamado pela crítica! Foi classificado em 6.8, fez 450 milhões no mercado interno e 370 milhões no mercado internacional. Adicione as informações à tabela `BoxOffice`.
+
+```language-sql
+INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
+  VALUE (9, 6.8, 450000000, 370000000);
+```
+
+**Exercício 3**: O diretor do filme "Procurando Nemo" está incorreto, na verdade ele foi dirigido por Andrew Staton. Corrija esse dado utilizando o `UPDATE`.
+
+```language-sql
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE Movies
+SET director = 'Andrew Staton'
+WHERE title = 'Procurando Nemo';
+```
+
+**Exercício 4**: O título do filme "Ratatouille" esta escrito de forma incorreta na tabela `Movies`, além disso, o filme foi lançado em 2007 e não em 2010. Corrija esses dados utilizando o `UPDATE`.
+
+```language-sql
+UPDATE Movies
+SET title = 'Ratatouille', year = 2007
+WHERE title = 'ratatui';
+```
+
+**Exercício 5**: Insira as novas classificações abaixo na tabela `BoxOffice`, lembre-se que a coluna `movie_id` é uma foreign key referente a coluna `id` da tabela `Movies`:
+
+- Monsters SA, classificado em 8.5, lucrou 300 milhões no mercado interno e 250 milhões no mercado internacional.
+- Os Incríveis, classificado em 7.4, lucrou 460 milhões no mercado interno e 510 milhões no mercado internacional.
+- WALL-E, classificado em 9.9, lucrou 290 milhões no mercado interno e 280 milhões no mercado internacional.
+
+```language-sql
+INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
+  VALUES (8, 8.5, 300000000, 250000000),
+         (10, 7.4, 460000000, 510000000),
+         (11, 9.9, 290000000, 280000000);
+```
+
+**Exercício 6**: Exclua da tabela `Movies` o filme "WALL-E". P.S.: Lembrando que existe uma relação de Primary key-Foreign Key, portanto devemos excluir primeiro a referencia da tabela BoxOffice, para depois exluir da tabela Movies.
+
+```language-sql
+DELETE FROM BoxOffice
+WHERE movie_id = 11; -- este é o id do filme WALL-E
+
+DELETE FROM Movies 
+WHERE title = 'WALL-E';
+```
+
+**Exercício 7**: Exclua da tabela `Movies` todos os filmes dirigidos por "Andrew Staton".
+
+```language-sql
+SELECT id FROM Movies
+WHERE director = 'Andrew Staton';
+-- primeiro é utilizada essa query para selecionar os ids dos filmes a serem excluídos (2 e 5)
+
+DELETE FROM BoxOffice
+WHERE movie_id IN (2, 9);
+ 
+DELETE FROM Movies
+WHERE director = 'Andrew Staton';
+```
+
+## Bônus
+
+**Exercício 8**: Altere a classificação da tabela `BoxOffice` para 9.0 de todos os filmes que lucraram mais de 400 milhões no mercado interno.
+
+```language-sql
+UPDATE BoxOffice
+SET rating = 9.0
+WHERE domestic_sales > 400000000;
+```
+
+**Exercício 9**: Altere a classificação da tabela `BoxOffice` para 6.0 de todos os filmes que lucraram menos de 300 milhões no mercado internacional e mais de 200 milhões no mercado interno.
+
+```language-sql
+UPDATE BoxOffice
+SET rating = 6.0
+WHERE domestic_sales > 200000000 AND international_sales < 300000000;
+```
+
+**Exercício 10**: Exclua da tabela `Movies` todos os filmes com menos de 100 minutos de duração.
+
+```language-sql
+SELECT id, length_minutes FROM Movies
+WHERE length_minutes < 100;
+-- primeiro é utilizada essa query para selecionar os ids dos filmes a serem excluídos
+
+ DELETE FROM BoxOffice
+ WHERE movie_id IN (1, 6, 7, 8, 12);
+ 
+DELETE FROM Movies
+WHERE length_minutes < 100;
+```

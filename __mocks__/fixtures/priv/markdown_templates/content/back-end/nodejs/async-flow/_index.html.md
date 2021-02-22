@@ -20,6 +20,8 @@ Por último, você vai aprender como reescrever código que utiliza callbacks de
 
 - Reescrever código que usa callbacks para que use Promises.
 
+<%= vimeo "507616584" %>
+
 ---
 
 ## Por que isso é importante?
@@ -211,6 +213,51 @@ O conceito de uma Promise, ou um objeto Promise, não é muito diferente da idei
 <big>OK, mas o que isso tem a ver com callbacks e com fluxo assíncrono?</big>
 
 A grande sacada das Promises está em como tratamos o sucesso ou o erro. Enquanto com callbacks temos apenas uma função que recebe tanto o sucesso quanto o erro, nas promises temos uma forma de registrar uma callback para sucesso e outra forma de registrar uma callback para erros.
+
+Antes de continuar assista o vídeo abaixo para entender como utilizar promises.
+
+<%= vimeo "507621383" %>
+
+Exemplos feito no vídeo:
+
+Exemplo 1: Tratando erros de forma síncrona.
+
+```language-javascript
+function dividirNumeros(num1, num2) {
+  if (num2 == 0) throw new Error("Não pode ser feito uma divisão por zero");
+
+  return num1 / num2;
+}
+
+try {
+  const resultado = dividirNumeros(2, 1);
+  console.log("resultado: %s", resultado);
+} catch (e) {
+  console.log(e.message);
+}
+```
+{: .line-numbers}
+
+Exemplo 2: Tratando erros de forma assíncrona.
+
+```language-javascript
+function dividirNumeros(num1, num2) {
+  const promise = new Promise((resolve, reject) => {
+    if (num2 == 0) reject(Error("Não pode ser feito uma divisão por zero"));
+
+    const resultado = num1 / num2;
+    resolve(resultado)
+  });
+
+  return promise;
+}
+
+dividirNumeros(2, 1)
+  .then(result => console.log("sucesso: %s", result))
+  .catch(err => console.log("erro: %s", err.message));
+```
+{: .line-numbers}
+
 
 Pra entender melhor, vamos dar uma olhada num exemplo prático: vamos escrever uma função capaz de ler arquivos utilizando Promises. Antes de começar, no entanto, vamos dar uma olhada na sintaxe da criação de uma Promise.
 

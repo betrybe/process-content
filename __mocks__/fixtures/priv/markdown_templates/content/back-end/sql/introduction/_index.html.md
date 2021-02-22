@@ -2,6 +2,8 @@
 
 Hoje você vai aprender os conceitos fundamentais sobre um **banco de dados** e sobre como o **SQL** é usado na criação de tabelas. Além disso, aprenderá a usar a ferramenta **MySQL Workbench** para praticar os comandos **SQL**.
 
+<%= vimeo "506178397" %>
+
 ---
 
 ### Você será capaz de:
@@ -198,6 +200,14 @@ brew services start mysql
 ```
 
 Como não há senha definida ainda, nenhuma senha deve ser digitada. Continue dando 'Enter'.
+
+Caso ocorra algum erro, tente novamente adicionando o `sudo` igual o comando abaixo.
+
+```language-bash
+ sudo mysql -u root -p
+```
+
+O mesmo ocorre acima, nenhuma senha deve ser digitada. Continue dando 'Enter'.
 
 Aqui, você está navegando pelo **MySQL monitor** que é a **interface padrão do mysql no terminal**. E a partir daqui, você já tem o mysql instalado no seu computador e consegue executar os comandos do curso nessa interface.
 

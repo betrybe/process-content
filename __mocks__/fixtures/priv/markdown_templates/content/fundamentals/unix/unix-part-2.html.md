@@ -50,7 +50,7 @@ Maria
 João
 
 # O > redireciona a saída padrão para um arquivo, sendo assim 
-# caso haja algum conteúdo no arquivo será substituído
+# caso haja algum conteúdo no arquivo, ele será substituído
 
 cat > nomes.txt
 # Digite o nome "Amanda" e encerre o cat (Ctrl + D)
@@ -59,11 +59,11 @@ cat nomes.txt
 # Resultado
 Amanda
 
-# O >> anexa saída padrão a um arquivo, sendo assim ele adiciona 
+# O >> anexa a saída padrão a um arquivo. Sendo assim, ele adiciona 
 # o que for digitado ao final do arquivo em questão
 
 cat >> nomes.txt
-# Digite o nome "Fernanda", depois `enter` e o nome "Fabiano" e encerre o cat (Ctrl + D)
+# Digite o nome "Fernanda", depois `enter` e o nome "Fabiano", e encerre o cat (Ctrl + D)
 
 cat nomes.txt
 # Resultado
@@ -86,7 +86,7 @@ Fernanda
 
 ---
 
-Dado que você já sabe os comandos básicos do Bash, você vai aprender como funciona o controle de acesso aos arquivos no Unix.
+Agora que você já sabe os comandos básicos do Bash, você vai aprender como funciona o controle de acesso aos arquivos no Unix.
     
 <%= vimeo "461125756" %>
 
@@ -98,7 +98,7 @@ Vamos entender um pouco mais a fundo as permissões? Abra seu terminal e digite 
   drwxr-xr-x | 2 	  | root 	     | root  | 4096    | Out 19 09:10  | composer/
 ```
     
-* **Permissões** => Possível identificar o tipo do item e nível de permissão para Leitura, Escrita e Execução de item ou diretório;
+* **Permissões** => É possível verificar o tipo do item e nível de permissão para Leitura, Escrita e Execução de item ou diretório;
 
 * **Links** => Número de ligações que o item possui, no caso do diretório, número de subdiretórios que possui;
 
@@ -108,7 +108,7 @@ Vamos entender um pouco mais a fundo as permissões? Abra seu terminal e digite 
 
 * **Tamanho** => Em Bytes;
 
-* **Data e Hora** => Momento em que foi criado;
+* **Data e Hora** => Momento em que foi criado ou última modificação;
 
 * **Nome** => Nome do item ou diretório;
 
@@ -129,7 +129,7 @@ Esses valores são permissões com base em bits de **ligados = 1** e **desligado
     -wx = 011 ( 3 | Somente Escrita e Execução )
     --- = 000 ( 0 | Todos Acessos Negados )
 
-Por tanto cada vez que você liga a chave de leitura, atribui-se o valor para esta chave somando-se com as demais chaves de administração de escrita e execução, caso você também deseje liga-las. A sintaxe para realizar esta alteração continua a mesma que do modo literal, sendo `chmod 766 [arquivo ou diretório]`. Cada número corresponde aos grupos de usuário, de grupo e de outros usuários.
+Portanto, cada vez que você liga a chave de leitura, atribui-se o valor para esta chave somando-se com as demais chaves de administração de escrita e execução, caso você também deseje ligá-las. A sintaxe para realizar esta alteração continua a mesma que do modo literal, sendo `chmod 766 [arquivo ou diretório]`. Cada número corresponde aos grupos de usuário, de grupo e de outros usuários.
 
 Agora você verá o que são, como listar e manipular os processos e jobs.
 
@@ -146,20 +146,25 @@ Agora você verá o que são, como listar e manipular os processos e jobs.
 # Para listar todos os arquivos que terminam em .txt
 find . -name "*.txt"
 
-# Para localizar apenas diretórios ou arquivos
+# Para localizar todos os diretórios
+find . -type d
 
-# Localizar tanto arquivos quanto diretórios
+# Para localizar todos os arquivos
+find . -type f
+
+# Localizar tanto arquivos quanto diretórios que comecem
+# por algum trecho
 find ./teste -name exemplo*
 # Resultado
 ./teste/exemplo.txt
 ./teste/exemplo
 
-# Localizar somente arquivos
+# Localizar somente arquivos que comecem por algum trecho
 find ./teste -type f -name "exemplo*"
 # Resultado
 ./teste/exemplo.txt
 
-# Localizar somente diretórios
+# Localizar somente diretórios que comecem por algum trecho
 find ./teste -type d -name "exemplo*"
 # Resultado
 ./teste/exemplo

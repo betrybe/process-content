@@ -10,6 +10,8 @@ Olá, boas vindas de volta! Hoje veremos como criar blocos de código reutilizá
 
 - Criar reações dinâmicas com `TRIGGERS`.
 
+<%= vimeo "490902042" %>
+
 ---
 
 ## Por que isso é importante?
@@ -49,9 +51,7 @@ MontarNomeCompleto
 
 ##### Stored Procedures
 
-Caso queira uma breve introdução, sugerimos assitir ao vídeo abaixo. Caso não goste desse tipo de mídia e/ou queira uma explicação mais detalhada, prossiga com a leitura.
-
-<%= youtube_video "w3F4JQ8ndJ0" %>
+<%= vimeo "490902163" %>
 
 **Pontos fortes quanto ao uso de Stored Procedures**
 
@@ -243,9 +243,7 @@ Nesse ponto, temos uma das principais ferramentas para combater esse problema no
 
 Através delas, podemos encapsular nossas queries usadas mais frequentemente dentro de um bloco de código nomeado e parametrizável.
 
-Caso queira uma breve introdução, sugerimos assitir ao vídeo abaixo. Caso não goste desse tipo de mídia e/ou queira uma explicação mais detalhada, prossiga com a leitura.
-
-<%= youtube_video "WTTGml9Co90" %>
+<%= vimeo "491134368" %>
 
 ##### Sua primeira stored function
 
@@ -350,6 +348,8 @@ Ou seja:
 Ainda restam dúvidas com relação à diferença das duas na prática? Que tal dar uma lida na resposta mais votada [aqui?](https://pt.stackoverflow.com/questions/60323/qual-a-diferen%C3%A7a-entre-function-e-procedure) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 ### Criando reações dinâmicas com `Triggers`
+
+<%= vimeo "491133777" %>
 
 ##### O que são triggers?
 

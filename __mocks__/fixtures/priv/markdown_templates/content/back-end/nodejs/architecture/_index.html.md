@@ -12,6 +12,8 @@ Vamos passar, de forma geral, por três conceitos:
 
 Esses três conceitos são sempre os mesmos, independente de qual implementação do JavaScript você estiver usando. Ou seja, o que você vai aprender aqui vale tanto pro JS que roda no browser quanto pro código que você executará com o NodeJS.
 
+<%= vimeo "507747652" %>
+
 ### Você será capaz de:
 
 - Realizar chamadas de funções de forma consciente;
@@ -221,9 +223,9 @@ O último tópico pelo qual precisamos passar agora é o **V8**.
 
 O V8 é a **engine** que de fato executa nosso código JavaScript dentro do NodeJS. É nele que existe a call stack e a task queue, que já vimos anteriormente. Além delas, o V8 também é responsável pelo **heap**, que é onde acontece a alocação de memória para nossas variáveis e funções.
 
-Para uma rápida explicação do que o V8 faz, assista ao vídeo abaixo até o minuto 5:47.
+Para uma explicação detalhada do que o V8 faz, assista ao vídeo abaixo.
 
-<%= youtube_video "PsDqH_RKvyc" %>
+<%= vimeo "507747121" %>
 
 Para entendermos melhor, vamos passar novamente pelos passos que o V8 realiza quando está executando nosso código JavaScript:
 

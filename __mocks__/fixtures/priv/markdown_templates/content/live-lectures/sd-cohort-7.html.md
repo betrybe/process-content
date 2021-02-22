@@ -1,3 +1,12 @@
+## Aula 20.3 - Filtrando dados de forma específica
+<%= vimeo "511784620" %>
+
+## Aula 20.2 - Encontrando dados em um banco de dados
+<%= vimeo "511312132" %>
+
+## Aula 20.1 - Introdução a Banco de Dados
+<%= vimeo "510875185" %>
+
 ## Aula 18.3 - React Hooks - useEffect e Hooks customizados
 <%= vimeo "503470343" %>
 

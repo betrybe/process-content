@@ -40,7 +40,7 @@ const buildChapterObj = async (chapterObj) => {
   const markdownYaml = await extractFileInfo(yamlPath);
 
   return {
-    path: markdownPath,
+    path: markdownPath.replace('__mocks__/fixtures/', ''),
     ...markdownObj,
     ...markdownYaml,
   };

@@ -120,21 +120,21 @@ Wrote to /home/cleyton/Documents/meuApp/package.json:
 }
 ```
 
-b. Este comando acabou de criar o arquivo `package.json`. Agora você precisa editar este arquivo, substituindo da seguinte forma:
+b. Este comando acabou de criar o arquivo `package.json`. Agora você precisa editar este arquivo, substituindo `"test": "echo \"Error: no test specified\" && exit 1"` por `"test": "jest"`, da seguinte forma::
 
 ```language-javascript
-// {
-//  "name": "meuApp",
-//  "version": "1.0.0",
-//  "description": "",
-//  "main": "index.js",
-//  "scripts": {
-      "test": "jest"
-//  },
-//  "keywords": [],
-//  "author": "",
-//  "license": "ISC"
-// }
+ {
+  "name": "meuApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+ }
 ```
 
 Explicando o que é o `package.json`:

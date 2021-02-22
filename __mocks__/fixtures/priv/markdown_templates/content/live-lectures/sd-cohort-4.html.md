@@ -1,3 +1,15 @@
+## 37.4 Estruturas de Dados I - Algoritmos de ordenação e busca
+<%= vimeo "509015514" %> 
+
+## 37.3 Estruturas de Dados I - Recursividade e Estratégias para solução de problemas
+<%= vimeo "508615628" %>
+
+## 37.2 Estruturas de Dados I - Complexidade de Algoritmos
+<%= vimeo "508176477" %>
+
+## 37.1 Estruturas de Dados I - Arrays
+<%= vimeo "507729822" %>
+
 ## 36.3 Padrões de Projeto
 <%= vimeo "505458288" %>
 

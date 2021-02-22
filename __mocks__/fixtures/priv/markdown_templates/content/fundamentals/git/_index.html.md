@@ -494,7 +494,7 @@ git push origin master
 
 Com isso, você está enviando as alterações feitas localmente para o a branch principal, `master`, do seu repositório remoto, `origin`.
 
-Se tudo ocorreu conforme o espero, acesse novamente, ou atualize, a página do seu repositório no ***GitHub***, você então verá que os arquivos e alterações que comitou agora se encontram lá!
+Se tudo ocorreu conforme o esperado, acesse novamente, ou atualize, a página do seu repositório no ***GitHub***, você então verá que os arquivos e alterações que comitou agora se encontram lá!
 
 ---
 

@@ -41,7 +41,7 @@ Apesar de ser baseado no V8, o NodeJS possui algumas diferenças em relação ao
 
 ##### Ele está por toda a parte
 
-Como dito anteriormente, o uso do NodeJS pelo mercado de tecnologia vem crescendo muito nos últimos anos. Dados do site [ModuleCounts.com](https://modulecounts.com) {: .external-link target="_blank" rel="noreferrer noopener" } mostram que, atualmente, o `npm`, que é onde os pacotes NodeJS são disponibilizados, é o repositório com mais pacotes quando comparado a repositórios de outras grandes linguagens, como mostra o gráfico abaixo:
+Como dito anteriormente, o uso do NodeJS pelo mercado de tecnologia vem crescendo muito nos últimos anos. Dados do site [ModuleCounts.com](https://www.modulecounts.com) {: .external-link target="_blank" rel="noreferrer noopener" } mostram que, atualmente, o `npm`, que é onde os pacotes NodeJS são disponibilizados, é o repositório com mais pacotes quando comparado a repositórios de outras grandes linguagens, como mostra o gráfico abaixo:
 
 <%= figure(%{src: "/back-end/nodejs/images/modulecounts.png", caption: "Gráfico extraído no dia 2 de Fevereiro de 2020, mostrando a quantidade de pacotes em vários repositórios.", class: "text-center"}) %>
 
@@ -236,7 +236,7 @@ Quando importamos um módulo que não é nativo do NodeJS em um arquivo local, o
 
 ### NPM
 
-O `npm` (sigla para *Node Package Manager*) é, como dito no tópico anterior, o repositório oficial para publicação de pacotes NodeJS. É para ele que realizamos upload dos arquivos de nosso pacote quando queremos disponibilizá-lo para uso de outras pessoas ou em diversos projetos. Atualmente, uma média de 659 pacotes são publicados no `npm` todos os dias, segundo o site [ModuleCounts.com](https://modulecounts.com) {: .external-link target="_blank" rel="noreferrer noopener" }
+O `npm` (sigla para *Node Package Manager*) é, como dito no tópico anterior, o repositório oficial para publicação de pacotes NodeJS. É para ele que realizamos upload dos arquivos de nosso pacote quando queremos disponibilizá-lo para uso de outras pessoas ou em diversos projetos. Atualmente, uma média de 659 pacotes são publicados no `npm` todos os dias, segundo o site [ModuleCounts.com](https://www.modulecounts.com) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 Um pacote é um conjunto de arquivos que exportam um ou mais módulos Node. Nem todo pacote Node é uma biblioteca, visto que uma API desenvolvida em Node também tem um pacote.
 

@@ -64,6 +64,20 @@ Naturalmente, em sistemas de software, as regras de negócio se traduzem em cód
 
 Com o conceito de regras de negócio bem entendido, podemos falar das três camadas do MSC e quais são as responsabilidades de cada uma.
 
+## Arquitetura MSC
+
+Ao longo desse bloco iremos abordar a arquitetura MSC. Vamos entrar em detalhes ao longo dos conteúdos de cada dia mas fazendo um resumo, podemos definir as três camadas das seguinte forma:
+
+* **Camada de Modelo (M):** Arquivos onde iremos executar as operações do banco de dados, como criar conexões e executar queries.
+* **Camada de Serviço (S):** Arquivos onde iremos estruturar nossas regras de negócio, geralmente é quem chama os métodos definidos na camada de modelo. 
+* **Camada de Controladores (C}:** Interface mais próxima do usuário ou de uma requisição, vai processar e chamar as devidas funções da camada de modelo.
+
+A imagem abaixo ilustra essa arquitetura.
+
+<%= figure(%{class: "rounded mxh-auto d-block", width: "788px", height: "auto", caption: "Arquitetura MSC", src: "/back-end/architecture/images/arquitetura_msc.png", class: "text-center"}) %>
+
+Obs.: Algumas vezes a camada de Controller pode se comunicar direto com a camada de modelo, dispensando o uso da camada de serviço, principalmente em situações onde não temos uma regra de negócio tão complexa. Entenderemos melhor isso, ao terminar de estudar as 3 camadas.
+
 ---
 
 ## Recursos adicionais

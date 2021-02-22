@@ -71,7 +71,7 @@ Nome da função e parâmetro:
     Chamada de si mesma
 ```
 
-Declaramos uma função com um parâmetro. Dentro da função criada, definimos qual é a condição de parada da função. A condição de parada faz uma comparação entre o valor da condição com o parâmetro que a função está recebendo. Caso a condição não se satisfaça, a função a chamada novamente com um novo parâmetro. Caso contrário a execução para na condição de parada.
+Declaramos uma função com um parâmetro. Dentro da função criada, definimos qual é a condição de parada da função. A condição de parada faz uma comparação entre o valor da condição com o parâmetro que a função está recebendo. Caso a condição não se satisfaça, a função é chamada novamente com um novo parâmetro. Caso contrário a execução para na condição de parada.
 
 Chega de teoria e vamos ver na prática como isso acontece. Para isso, vamos criar um arquivo python e escrever o código abaixo:
 

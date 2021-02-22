@@ -96,7 +96,7 @@ A composição da resposta é definida por:
 
 Após a resposta, a conexão TCP é fechada ou guardada para futuras requisições (seu navegador faz essa parte por você).
 
-Note que tanto requisições quanto respostas podem ter headers e um body. No entanto, é importante não confundir uma coisa com a outra: o body e os headers da **requisição** representam a informação que **o cliente está enviando para o servidor**, ao passo que o body e os headers da **resposta** representam a informação que **o servidor está *devolvendo* para o cliente**.
+Note que tanto requisições quanto respostas podem ter headers e um body. No entanto, é importante não confundir uma coisa com a outra: o body e os headers da **requisição** representam a informação que **o cliente está enviando para o servidor**, ao passo que o body e os headers da **resposta** representam a informação que **o servidor está _devolvendo_ para o cliente**.
 
 ### APIs
 
@@ -112,7 +112,7 @@ Nos projetos de front-end, você integrou várias APIs com suas aplicações.
 
 Agora, veja o vídeo abaixo com mais detalhes sobre o que é uma API:
 
-<%= youtube_video "vGuqKIRWosk" %>
+<%= vimeo "507201939" %>
 
 ### Contextualizando
 
@@ -122,9 +122,9 @@ O que importa, nesse momento, é entender qual o contexto em que você estará t
 
 <%= figure(%{src: "/back-end/nodejs/express-http-with-nodejs/rest_api.png", caption: "Imagem que demonstra a arquitetura da ligação back-end e front-end", width: "600em", heigh: "auto"}) %>
 
-> **Nota**: Não se preocupe com o termo *Rest* no momento, você irá aprender sobre isso mais à frente.
+> **Nota**: Não se preocupe com o termo _Rest_ no momento, você irá aprender sobre isso mais à frente.
 
-Imagine que uma API se comporta como uma esteira de um centro de distribuição. Pacotes entram pela esteira. Esses pacotes, no contexto das APIs, são as requisições. Cada requisição, ou pacote, possui um destino. O destino, nesse contexto, é a resposta que será enviada ao usuário dono do pacote. O que define o destino são as informações presentes na embalagem do pacote. Nas requisições, essas informações são os métodos (_GET_, *POST*, *PUT*, *DELETE*), as rotas e os headers. Mas calma! Não tem só isso. Lembre-se de que em uma esteira pode haver pacotes com defeito ou em que estejam faltando informações! Mais à frente veremos qual a solução que o Express nos dá para resolver esses problemas. 
+Imagine que uma API se comporta como uma esteira de um centro de distribuição. Pacotes entram pela esteira. Esses pacotes, no contexto das APIs, são as requisições. Cada requisição, ou pacote, possui um destino. O destino, nesse contexto, é a resposta que será enviada ao usuário dono do pacote. O que define o destino são as informações presentes na embalagem do pacote. Nas requisições, essas informações são os métodos (_GET_, _POST_, _PUT_, _DELETE_), as rotas e os headers. Mas calma! Não tem só isso. Lembre-se de que em uma esteira pode haver pacotes com defeito ou em que estejam faltando informações! Mais à frente veremos qual a solução que o Express nos dá para resolver esses problemas.
 
 ### E o Express?
 
@@ -142,9 +142,64 @@ Outro ponto importante para citarmos é que, hoje, o Express faz parte da [Node.
 
 O framework foi construído pensando em um padrão de construção de APIs chamado de REST, que você vai estudar mais à frente.
 
+### Criando uma aplicação com express
+
+Primeiro crie um diretório `hello-express` e inicialize-o utilizando `npm init -y`.
+
+Agora instale o express usando o comando `npm i express`.
+
+Para facilitar o fluxo de desenvolvimento instale uma dependência chamado nodemon, essa dependencia vai fazer com que não precisamos restartar a aplicação sempre que fizermos uma alteração no código.
+
+Para instalar execute `npm i nodemon -D` (a flag `-D` indica que essa é uma dependência de desenvolvimento, entederemos melhor o que isso significa no futuro).
+
+Agora abra seu package.json e adicione um script da seguinte forma:
+
+```language-javascript
+// {
+//   "name": "expressComRescue",
+//   "version": "1.0.0",
+//   "description": "",
+//   "main": "index.js",
+//   "scripts": {
+//     "test": "echo \"Error: no test specified\" && exit 1",
+       "dev": "nodemon index.js"
+//   },
+//   "keywords": [],
+//   "author": "",
+//   "license": "ISC",
+//   "dependencies": {
+//     "express": "^4.17.1",
+//   },
+//   "devDependencies": {
+//     "nodemon": "^2.0.7"
+//   }
+// }
+```
+{: .line-numbers}
+
+
+Agora crie o arquivo index.js e coloque a estrutura básica uma aplicação express.
+
+```language-javascript
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send("Hello world");
+});
+
+app.listen(3000);
+```
+{: .line-numbers}
+
+Coloque sua aplicação para rodar executando o comando `npm run dev`.
+
+Agora, vá até o Chrome e abra a url http://localhost:3000. Parabéns, você criou sua primeira aplicação node com express.
+
+
 ### Com o que ele se parece?
 
-O código, de maneira geral, é bem simples. Nossa constante `app` representa a aplicação do express. É nela que registramos o que deve acontecer em cada *rota* da nossa aplicação. Você verá mais sobre rotas a seguir.
+O código, de maneira geral, é bem simples. Nossa constante `app` representa a aplicação do express. É nela que registramos o que deve acontecer em cada _rota_ da nossa aplicação. Você verá mais sobre rotas a seguir.
 
 ```language-javascript
 const express = require('express');
@@ -163,6 +218,7 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 ```
+{: .line-numbers}
 
 Para escrever o mesmo código sem utilizar o express, precisaríamos importar o [módulo `http` do node](https://nodejs.org/api/http.html) e utilizar a função [`createServer`](https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener), para a qual passaríamos uma callback. Dentro da callback passada, adicionaríamos uma série de `if`s para verificar qual o tipo da requisição e o caminho, para decidir como responder. Seria bem mais trabalhoso, e complexo.
 
@@ -181,6 +237,9 @@ No Express, nós declaramos uma rota utilizando a assinatura `app.METODO(caminho
 **As rotas respondem a requisições que satisfaçam a condição método HTTP + caminho**.
 
 ```language-javascript
+const express = require('express');
+const app = express();
+
 /* Rota com caminho '/', utilizando o método GET */
 app.get('/', function (req, res) {
   res.send('hello world');
@@ -205,11 +264,18 @@ app
   .post(function (req, res) {
     res.send('hello world post');
   });
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 ```
+{: .line-numbers}
 
 Existe também a possibilidade de se passar N callbacks para a mesma rota:
 
 ```language-javascript
+// ...
+
 app.get(
   '/ping',
   function (req, res, next) {
@@ -222,7 +288,10 @@ app.get(
     res.send('pong!');
   }
 );
+
+// ...
 ```
+{: .line-numbers}
 
 ##### Caminhos
 
@@ -231,28 +300,44 @@ Por vezes, numa API, precisamos ajustar a resposta de acordo com informações r
 O framework nos dá métodos específicos para lidar com esses casos:
 
 ```language-javascript
+const express = require('express');
+const app = express();
+
 /* :id vira um atributo dentro do objeto params,
    que por sua vez está dentro do objeto req */
 app.get('/api/people/:id', function (req, res) {
   res.send(req.params.id);
 });
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 ```
+{: .line-numbers}
 
 Note que definimos um parâmetro `id` na rota, utilizando a sintaxe `:id`. Esse parâmetro pode, depois, ser acessado através da propriedade `params`, presente em `req` utilizando `req.params.id`. O express suporta a definição de mais de um parâmetro no caminho da rota, e cada um deles vira uma propriedade no objeto `params`.
 
 Inclusive podemos usar [expressões regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions), o famoso RegEx:
 
 ```language-javascript
+const express = require('express');
+const app = express();
+
 /* Qualquer rota que tem o padrão de terminar com "be".
    Exemplo: trybe, wannabe, letitbe */
 app.get(/.*be$/, function (req, res) {
   res.send('/.*be$/');
 });
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
 ```
+{: .line-numbers}
 
 ##### Query String
 
-Em outros casos, precisamos receber uma informação na URL que não faz parte do caminho. Um caso de uso muito comum é quando temos um endpoint que permite realizar uma pesquisa. O mais comum é passarmos esses parâmetros num formato conhecido como `Query String`. Esse formato consiste em passar uma string contendo o nome de cada parâmetro, seguido pelo seu valor, separando vários parâmetros através do caractere `&`. A QueryString é separada do caminho utilizando o caractere `?`.
+Em outros casos, precisamos receber uma informação na URL que não faz parte do caminho, ao contrário do último tópico. Um caso de uso muito comum é quando temos um endpoint que permite realizar uma pesquisa. O mais comum é passarmos esses parâmetros num formato conhecido como `Query String`. Esse formato consiste em passar uma string contendo o nome de cada parâmetro, seguido pelo seu valor, separando vários parâmetros através do caractere `&`. A QueryString é separada do caminho utilizando o caractere `?`.
 
 Por exemplo: `https://minha-api.com/endpoint/1?name=exemplo&number=10`.
 
@@ -270,13 +355,58 @@ app.get('/hello', (req, res) => {
   res.status(200)
     .json({ message: `Hello, ${name}` });
 })
+app.listen(3000, () => console.log('rodando na clássica 3000'));
 ```
+{: .line-numbers}
 
 **⚠️ Atenção ⚠️**: O valor dos parâmetros passados através da query string sempre é... Bom... Uma string 😅. Isso quer dizer que, quando quiser receber um número através da query string, você precisará realizar a conversão de string para número utilizando a função `parseInt`.
 
+### Body Parser
+
+Esse é um pacote usando normalmente para tratar o `body` de requisições do tipo `POST`. 
+Quando há intenção de colocar parâmetros no corpo da requisição é importante que esse corpo (body) seja parseado, pois o express não lê um corpo em JSON por padrão.
+
+Para isso é necessário instalar o pacote `body-parser` com o comando `npm i body-parser`.
+
+Veja o exemplo abaixo para o `body-parser` em ação:
+
+```language-js
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // Aqui o body-parser entra convertendo o body para JSON
+
+app.post('/', (req, res) => {
+  const nome = req.body.name
+  res.send(`Meu nome é ${nome} e manjo dos sambas`)
+})
+
+app.listen(3000, () => console.log('rodando na clássica 3000'));
+```
+{: .line-numbers}
+
+Para testar isso o ideal é ter algum gerenciador de requisições como o  [Postman](https://www.postman.com/) {: .external-link target="_blank" rel="noreferrer noopener" } e [Insomnia.](https://insomnia.rest/) {: .external-link target="_blank" rel="noreferrer noopener" }. Assim você pode testar sua API durante o desenvolvimento, utilize ferramentas que permitem fazer requisições HTTP.
+
+Faça uma requisição do tipo `POST` para a url `http://localhost:3000/` com o body:
+```json
+{
+  "name": "Zeca Pagodinho"
+}
+```
+
+Experimente comentar a linha do `bodyParser` e faça uma nova requisição para ver no que dá.
+
+Você vai ver que ocorrerá um erro assim:
+```sh
+TypeError: Cannot read property 'name' of undefined
+```
+
+Isso acontece pois sem o parse do `body` em `JSON` o express não consegue reconhecer o conteúdo `JSON` do `body` e assim ele é definido como `undefined`.
+
 ### Middlewares Pattern
 
-Vamos dar um passo atrás e voltar para a analogia da esteira. O `Middleware` é a solução pro problema da falta de informações ou erro no pacote levantado anteriormente. Claro, ele pode também servir em muitos cenários, como autenticação. Imagine que todos os pacotes que entrarem pela esteira e que tenham como destino as rotas `/products` e `/purchases` precisem de uma assinatura no pacote para poderem chegar ao destino. Faz sentido que seja criada uma única máquina que, após a analise do destino dos pacotes, atravesse a esteira e retire os pacotes que não possuem autorização para estar lá. 
+Vamos dar um passo atrás e voltar para a analogia da esteira. O `Middleware` é a solução pro problema da falta de informações ou erro no pacote levantado anteriormente. Claro, ele pode também servir em muitos cenários, como autenticação. Imagine que todos os pacotes que entrarem pela esteira e que tenham como destino as rotas `/products` e `/purchases` precisem de uma assinatura no pacote para poderem chegar ao destino. Faz sentido que seja criada uma única máquina que, após a analise do destino dos pacotes, atravesse a esteira e retire os pacotes que não possuem autorização para estar lá.
 
 Os `Middlewares`, apesar de ser mais comum encontrá-los trabalhando simultaneamente em várias rotas, também podem estar presentes em uma rota específica apenas. Por exemplo, imagine que na rota `/cars` seja necessário que dentro do pacote estejam presentes os dados `name`, `year` e `brand`. É possível e recomendável que uma máquina, ou um `Middleware`, seja criado pra validar se todos esses dados estão dentro do pacote.
 
@@ -295,6 +425,9 @@ A assinatura de um middleware é a mesma do callback de uma rota: `function (req
 Como os middlewares ficam "no meio" de uma operação, provavelmente vamos querer que em algum momento nosso controller ou o próximo middleware seja chamado. É aí que essa função `next` entra.
 
 ```language-javascript
+const express = require('express');
+const app = express();
+
 /* app.use é utilizado para registrar um middleware */
 /* Nesse caso, toda vez que um request for recebido, vamos logar o método HTTP e o caminho */
 app.use(function (req, res, next) {
@@ -307,6 +440,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 ```
+{: .line-numbers}
 
 Outro detalhe é a maneira como um middleware pode ser utilizado. No exemplo acima, você pode ver o uso do `app.use`. A função tem o objetivo de **"registrar" o middleware para todas as nossas rotas de forma sequencial**.
 
@@ -318,6 +452,7 @@ app.use(middleware1);
 /* Segundo a ser chamado */
 app.use(middleware2);
 ```
+{: .line-numbers}
 
 Outra aplicação comum é passar dados de um middleware para outro ou para nossa callback da rota.
 
@@ -342,6 +477,7 @@ app.get('/', function (req, res) {
 
 app.listen(3000);
 ```
+{: .line-numbers}
 
 #### Organização
 
@@ -368,14 +504,21 @@ router.get('/homer', function (req, res) {
 
 module.exports = router;
 ```
+{: .line-numbers}
 
 ```language-javascript
 // index.js
+const express = require('express');
 const simpsons = require('./simpsons');
+
+const app = express();
 
 /* Todas as rotas com /simpsons/<alguma-coisa> entram aqui e vão para o roteador. */
 app.use('/simpsons', simpsons);
+
+app.listen(3000);
 ```
+{: .line-numbers}
 tiverem
 No exemplo acima, as rotas `/simpsons` e `/simpsons/homer` estão criadas e serão ouvidas pela aplicação.
 
@@ -388,6 +531,8 @@ Os exemplos dados acima são de middlewares **em nível de aplicação**, ou sej
 Podemos também definir os escopos desses middlewares. Um exemplo é um middleware que se aplica a apenas uma rota específica, que pode ser passado como um dos parâmetros na hora de definir uma rota:
 
 ```language-javascript
+const app = require('express')();
+
 const logRouteIdMiddleware = (req, res, next) => {
   console.log('ID:', req.params.id);
   next();
@@ -396,7 +541,9 @@ const logRouteIdMiddleware = (req, res, next) => {
 app.get('/simpsons/people/:id', logRouteIdMiddleware, (req, res) => {
   res.send('Hello, Homer!');
 });
+app.listen(3000);
 ```
+{: .line-numbers}
 
 Os middlewares podem ser utilizados em conjunto com um **Router** também. Nesse caso, eles se aplicam apenas às rotas que fazem parte desse roteador:
 
@@ -421,12 +568,27 @@ router.get('/homer', function (req, res) {
 
 module.exports = router;
 ```
+{: .line-numbers}
+
+Agora, para importa o router e usá-lo é super simples:
+
+```language-javascript
+// index.js 
+const app = require('express')();
+const router = require('./simpsons')
+/* Aqui importamos o router e usamos o roteamento, definido no último arquivo, apenas nas requisições que começem com '.../simpsons' */
+
+app.use('/simpsons', router);
+
+app.listen(3000, () => console.log('ouvindo na porta 3000'));
+```
+{: .line-numbers}
 
 Para aprofundar-se mais no assunto sobre middlewares, vale assistir a este vídeo.
 
 <%= vimeo "412790359" %>
 
-##### Lidando com erros ☠
+### Lidando com erros
 
 O Express tem um padrão para lidar com erros chamado de **error first (erro primeiro)**, em que o erro é passado como primeiro parâmetro para as funções, que devem ser registradas como **midlewares de erro**.
 
@@ -439,6 +601,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send(`Algo deu errado! Mensagem: ${err.message}`);
 });
 ```
+{: .line-numbers}
 
 É importante notar que:
 
@@ -461,31 +624,80 @@ app.use(function (err, req, res, next) {
   res.send({ error: err });
 });
 ```
+{: .line-numbers}
 
-Repare que estamos fazendo `next(err)` na linha 4. Isso diz ao express que ele não deve continuar executando nenhum middleware ou rota que não seja de erro. Esse detalhe é importante, pois se um erro acontece dentro de uma rota ou middleware e nós não o capturamos e o passamos para a função `next`, os middlewares de erro não serão chamados para tratar aquele erro, o que quer dizer que nossa API ficará sem responder àquela requisição, ou até mesmo que o erro encerrará o processo do Node. Por isso, lembre-se: **sempre realize tratamento de erros nas suas rotas e middlewares, passando o erro para a função `next`, caso necessário.**
+Repare que estamos fazendo `next(err)` na linha 4. Isso diz ao express que ele não deve continuar executando nenhum middleware ou rota que não seja de erro. Ou seja, quando passamos um parâmetro para o `next` o `express` entende que é um erro e passa ao próximo middleware que aceita erros, logo tem quatro parâmetro, onde o erro passado é o primeiro parâmetro.
 
-O pacote [`express-rescue`](https://www.npmjs.com/package/express-rescue) está disponível no npm e nos ajuda com a tarefa de garantir que os erros sempre sejam tratados. Seu uso é muito simples. Por exemplo, no código abaixo:
+Esse detalhe é importante, pois se um erro acontece dentro de uma rota ou middleware e nós não o capturamos e o passamos para a função `next`, os middlewares de erro não serão chamados para tratar aquele erro, o que quer dizer que nossa API ficará sem responder àquela requisição, ou até mesmo que o erro encerrará o processo do Node. Por isso, lembre-se: **sempre realize tratamento de erros nas suas rotas e middlewares, passando o erro para a função `next`, caso necessário.**
+
+#### Pacote express-rescue
+
+O pacote [`express-rescue`](https://www.npmjs.com/package/express-rescue) está disponível no npm e nos ajuda com a tarefa de garantir que os erros sempre sejam tratados. Para utilizá-lo, primeiro faça a instalação usando o comando `npm i express-rescue`
+
+Para aprender a usá-lo, vamos pegar um caso de uso fazendo uma rota que recebe uma query param com o nome de um arquivo e usa o método readFile do pacote fs para ler um arquivo e depois retornar o conteúdo do arquivo como resposta da requisição.
 
 ```language-js
-const fs = require('fs').promises
+const fs = require('fs').promises; // este é um módulo do pacote fs que nos permite usa funções que retornam promises, assim podemos usar ele com async/await como visto abaixo.
 
 app.get('/:fileName', async (req, res) => {
-  const file = await fs.readFile('./fileName')
+  const file = await fs.readFile(`./${req.params.fileName}`);
+  res.send(file.toString('utf-8'));
 });
 ```
+{: .line-numbers}
 
-Para adicionarmos os `express-rescue`, basta passarmos nossa callback para ele, e passar seu retorno para o express, da seguinte forma:
+Para adicionarmos os `express-rescue`, basta passarmos nossa callback para ele, e passar seu retorno para o express envelopando o middleware da rota com o método rescue, da seguinte forma:
 
 ```language-js
-const rescue = require('express-rescue')
-// const fs = require('fs').promises
+const rescue = require('express-rescue');
+// const fs = require('fs').promises;
 
 app.get('/:fileName', rescue(async (req, res) => {
-//   const file = await fs.readFile('./fileName')
+//   const file = await fs.readFile(`./${req.params.fileName}`);
+     res.send(file.toString('utf-8'))
 }));
-```
 
-O que ele faz é simplesmente executar a função de callback dentro de um bloco de `try ... catch`, fazendo com que qualquer erro não tratado dentro do callback seja passado para a função `next`.
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: `Erro: ${err.message}`})
+})
+```
+{: .line-numbers}
+
+O que ele faz é simplesmente executar a função de callback dentro de um bloco de `try ... catch`, fazendo com que qualquer erro não tratado dentro do callback seja passado para a função `next`. Neste caso, se o arquivo não poder ser lido por qualquer razão que seja ele vai cair no middleware de erro que retorna uma resposta com status 500 e a mensagem de erro da excessão que foi gerada.
+
+Para ver em execução, veja o código abaixo com o código completo
+
+```language-js
+const express = require('express');
+const rescue = require('express-rescue');
+const fs = require('fs').promises;
+
+const app = express();
+
+app.get('/:fileName', rescue(async (req, res) => {
+  const file = await fs.readFile(`./${req.params.fileName}`);
+  res.send(file.toString('utf-8'));
+}));
+
+
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: `Erro: ${err.message}`})
+})
+
+app.listen(3000);
+```
+{: .line-numbers}
+
+Para testar o erro você pode acessar a URL `http://localhost:3000/<algum_arquivo>`, crie um arquivo no mesmo diretório do código e veja que ele retorna o conteúdo deste arquivo. Ao tentar acessar um arquivo que não existe, vai retornar o json abaixo
+
+```language-js
+{
+  "error": "Erro: ENOENT: no such file or directory, open './contatos1.json'"
+}
+```
+{: .line-numbers}
+
+Através do Express Rescue, você vai conseguir de uma forma centralizar todos os erros da sua aplicação para um único middleware. Isso facilita a construção dos middlewares de rotas, pois você não precisa ficar tratando erros em todos esses middlewares. Se algo der errado em qualquer rota que estiver envelopada pelo método `rescue`, esse erro vai ser tratado pelo middleware de erros geral, onde você pode devolver um erro genérico. 
 
 ---
 
@@ -514,7 +726,7 @@ Hora de pôr a mão na massa!
 
 2. Crie uma aplicação express que receba uma requisição do tipo GET no caminho `/ping` e retorne o JSON `{ "message": "Pong!" }`.
 
-3. Crie um endpoint que receba requisições do tipo POST no caminho `/hello`, contendo o JSON `{ "name": "<nome do usuário>" }` e retorne um JSON `{ "message": "Hello, <nome do usuário>!" }`;
+3. Crie um endpoint que receba requisições do tipo POST no caminho `/hello`, contendo o JSON `{ "name": "<nome do usuário>" }` e retorne um JSON `{ "message": "Hello, <nome do usuário>!" }`.
 
 4.  Crie um endpoint que receba requisições do tipo POST no caminho `/hello`, contendo o JSON `{ "name": "<nome do usuário>", "age": "<idade do usuário>" }`. Caso o usuário tenha idade superior a 17 anos, retorne um JSON `{ "message": "Hello, <nome do usuário>!" }` com o `status code 200`. Caso contrário, retorne o JSON `{ "message": "Unauthorized"}` com o `status code 401`;
 
@@ -616,6 +828,7 @@ function generateToken () {
 
 module.exports = generateToken;
 ```
+{: .line-numbers}
 
 A resposta da requisição deve ser um objeto com o formato `{ token: <novo-token-gerado> }`.
 
@@ -627,7 +840,7 @@ A resposta da requisição deve ser um objeto com o formato `{ token: <novo-toke
 
 - [Documentação Express - Middleware](https://expressjs.com/pt-br/guide/writing-middleware.html) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-- [Página do *MDN* sobre Node + Express](https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Express_Nodejs/Introdu%C3%A7%C3%A3o) {: .external-link target="_blank" rel="noreferrer noopener" }
+- [Página do _MDN_ sobre Node + Express](https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Express_Nodejs/Introdu%C3%A7%C3%A3o) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 - [Rest with Node and Express](https://www.robinwieruch.de/node-express-server-rest-api) {: .external-link target="_blank" rel="noreferrer noopener" }
 

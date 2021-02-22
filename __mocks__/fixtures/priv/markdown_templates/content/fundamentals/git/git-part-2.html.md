@@ -186,6 +186,8 @@ O que eu vou aprender na Trybe:
 
         * Dê contexto para o que você está fazendo, passe links ou cite especificações que forem relevantes. Ex: _"Trabalho feito para a semana 1 do curso de Software Developer da Trybe. Aqui, o desafio foi... E para resolver o problema fizemos... E o resultado foi..."_
 
+        * O merge deve ser feito apenas quando chegar no exercício 10
+
 5. Retorne para a branch principal, `master`, com o comando: `git checkout master`;
 
 6. Verifique que você está na branch `master`, com o comando: `git branch` (esta branch deve estar com o formato original, sem as habilidades recém adicionadas);
@@ -193,14 +195,19 @@ O que eu vou aprender na Trybe:
 7. Crie uma nova `branch` `trybe-skills-updates`  a partir da  `master` e faça checkout nela;
 
 8. No mesmo arquivo `.txt` que você modificou no _passo 4_, também ao final da sua lista de habilidades, adicione mais um aprendizado que você terá nos próximos blocos;
+    * Atenção! Aqui o arquivo não terá as alterações feitas anteriormente na outra branch 😉
 
     * Faça um `git add nome-do-arquivo.extensao`
 
     * Agora um `git commit -m "Mensagem que você gostaria"`
 
     * e por último um `git push -u origin trybe-skills-updates`
-* Após o primeiro _"push"_ da sua branch, você pode usar apenas o comando `git push` 
+    
+    * Após o primeiro _"push"_ da sua branch, você pode usar apenas o comando `git push` 
+    
     * Abra um _Pull Request_ com uma descrição amigável.
+
+        * O merge deve ser feito apenas quando chegar no exercício 10
 
 9. No **Slack**, procure pelo canal _"code-review-*"_  relativo à sua turma, e avise que você chegou a este ponto. O próximo passo será realizar o _Code Review (CR)_ do projeto de outras pessoas estudantes. Entre em pelo menos um _Pull Request_ e deixe alguns comentários para seus colegas;
 

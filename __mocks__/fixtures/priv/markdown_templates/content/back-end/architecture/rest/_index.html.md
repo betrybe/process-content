@@ -4,6 +4,8 @@ Nesse bloco, vamos nos aprofundar em um dos padrões mais famosos ao se construi
 
 E vamos também aprender como aplicar esse padrão nas nossas APIs.
 
+<%= vimeo "511667040" %>
+
 ---
 
 ### Você será capaz de:
@@ -166,6 +168,8 @@ Esse ponto é importante, pois nos dá alguns benefícios:
 
 - **Escalabilidade**: sem precisar manter estado, nosso servidor pode desalocar recursos que foram alocados para realizar uma ação específica e alocá-los apenas quando necessário.
 
+Obs: No próximo bloco, vamos aprender sobre JWT, um pacote para possibilitar autenticação sem estado, e veremos como o conceito *Stateless* funciona na prática.
+
 #### 4 - _Cacheable_
 
 Primeiro, precisamos saber o que é `cache`. Cache é simplesmente um "depósito de informações". O exemplo mais próximo disso é quando seu navegador armazena imagens e arquivos para não precisar pedi-los para o servidor novamente toda vez que você revisitar uma página.
@@ -200,7 +204,6 @@ Agora que vimos as restrições do REST, vale ressaltar: **Você não precisa ap
 
 Cenários diferentes exigem soluções diferentes. Em Software, nada é escrito em pedra. Os princípios podem ser quebrados, desde que a justificativa para tal seja plausível.
 
-<%= youtube_video "S7MduKwvVGk" %>
 
 ### REST no Express
 

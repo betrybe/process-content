@@ -48,7 +48,7 @@ A `store` é onde o estado da sua aplicação fica registrado e protegido. As mu
 
 ##### Reducers
 
-Os `reducers` são responsáveis por manipular a `store` seguindo as regras definidas pelas `actions`. Os `reducers` são importantes para evitar a manupulação direta da `store` e facilitam a manutenção do código.
+Os `reducers` são responsáveis por manipular a `store` seguindo as regras definidas pelas `actions`. Os `reducers` são importantes para evitar a manipulação direta da `store` e facilitam a manutenção do código.
 
 #### Para entendermos melhor
 

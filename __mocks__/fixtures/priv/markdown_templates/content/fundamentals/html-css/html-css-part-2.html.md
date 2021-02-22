@@ -17,19 +17,19 @@ Na segunda parte da sua jornada através do **HTML & CSS**, você vai aprender n
 
 Para que você aprenda na prática, teremos conteúdos interativos, por meio dos quais você irá seguir a teoria e fazer exercícios ao mesmo tempo. Vamos lá!
 
-Você irá desenvolver alguns desafios entre os vídeos, para subi-los para o seu repositório de exercícios, siga as instruções abaixo:
+Você irá desenvolver alguns desafios entre os vídeos. Para subi-los para o seu repositório de exercícios, siga as instruções abaixo:
 
 1. Acesse seu repositório de exercícios, `trybe-exercises`. Caso ainda não tenha um, crie-o e então siga para os próximos passos;
 
 ```language-sh
 $ cd trybe-exercises
 ```
-2. Então crie uma `branch` para os desafios de hoje, a partir da `master`;
+2. Crie uma `branch` para os desafios de hoje, a partir da `master`;
 
 ```language-sh
 $ git checkout -b exercises/3.2
 ```
-3. Já dentro dá `branch exercises/3.2` crie uma pasta para o bloco em que você se encontra, caso ainda não tenha o feito, e então dentro dessa pasta crie uma outra pasta para os arquivos dos desafios de hoje;
+3. Já dentro da `branch exercises/3.2` crie uma pasta para o bloco em que você se encontra **(caso ainda não o tenha feito)** e então dentro dessa pasta crie uma outra pasta para os arquivos dos desafios de hoje;
 
 ```language-sh
 $ mkdir bloco_3
@@ -51,7 +51,7 @@ $ git push -u origin exercises/3.2
 
 ### Parte I
 
-Vamos começar com este vídeo, para você criar suas primeiras regras com CSS:
+Vamos começar com este vídeo para você criar suas primeiras regras com CSS:
 
 <%= vimeo "466421413" %>
 
@@ -75,7 +75,7 @@ Vamos começar com este vídeo, para você criar suas primeiras regras com CSS:
     <!-- Exercícios
      1 - Modifique o tamanho do h1 para 65 pixels
      2 - Modifique a cor do texto do h1 para laranja
-     3 - Modifique a cor de fundo da lista não ordenada 
+     3 - Modifique a cor de fundo da lista não ordenada
      4 - Crie uma classe para modificar a cor de fundo da tag p e da ul ao mesmo tempo
     -->
   </body>
@@ -88,7 +88,7 @@ Vamos começar com este vídeo, para você criar suas primeiras regras com CSS:
 
 ### Parte II
 
-Agora, você vai aprender sobre seletores CSS que modificam propriedades do texto nas páginas:
+Agora você vai aprender sobre os seletores CSS que modificam propriedades do texto nas páginas:
 
 <%= vimeo "466426641" %>
 
@@ -111,9 +111,9 @@ Agora, você vai aprender sobre seletores CSS que modificam propriedades do text
 
     <!-- Exercícios
      1 - Modifique o família do h1 para sans-serif
-     2 - Deixe o paragrafo com o font-weight 600
+     2 - Deixe o parágrafo com o font-weight 600
      3 - Modifique o font-size do body para 16px
-     4 - Coloque o tamanho do paragrafo com o tamanho de 3 vezes o padrão do body
+     4 - Coloque o tamanho do parágrafo com o tamanho de 3 vezes o padrão do body
      5 - Explore as propriedades font-style, line-height, text-align e text-decoration
      6 - Troque a cor de fundo de cada item da lista para a cor correspondente ao texto
     -->
@@ -123,7 +123,7 @@ Agora, você vai aprender sobre seletores CSS que modificam propriedades do text
 
 [Link de referência para propriedades de texto em CSS](https://www.w3schools.com/css/css_text.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-`Não se esqueça de dar um PUSH no seu repositório para sincronizá-lo com o GitHub`
+`Não se esqueça de dar um PUSH no seu repositório para sincronizá-lo com o GitHub!`
 
 ---
 
@@ -165,7 +165,7 @@ Hora de aprender outras formas de adicionar o CSS nas páginas web:
 
 ###### Tempo sugerido para realização: 80 minutos
 
-Agora que você já começou a praticar com o **HTML**, que tal fazermos um encontro ao vivo pelo Zoom para colocarmos juntos a mão na massa?
+Agora que você já começou a praticar com o **CSS**, que tal fazermos um encontro ao vivo pelo Zoom para colocarmos juntos a mão na massa?
 
 Aula ao vivo! Vamos pro Slack, onde o link estará disponível.
 
@@ -175,9 +175,9 @@ Aula ao vivo! Vamos pro Slack, onde o link estará disponível.
 
 ###### Tempo sugerido para realização: 140 minutos
 
-Vamos continuar com a criação do seu _Portfólio Web_! Agora é hora de estilizar tudo que você aprendeu!
+Vamos continuar com a criação do seu _Portfólio Web_! Hoje é o segundo dia utilizando o GitHub Pages, então lembre-se: o processo de versionamento é relativamente diferente do restante dos exercícios do curso.
 
-Com este exercício, você será capaz de:
+Agora é hora de estilizar tudo que você aprendeu! Com este exercício, você será capaz de:
 
 * Estilizar seu _Portfólio Web_ usando todo o conhecimento que você construiu hoje;
 
@@ -189,8 +189,8 @@ Antes de começar, você deve seguir as instruções abaixo e fazer o setup para
 
 1. Entre no diretório que você criou no dia anterior;
 2. Adicione a tag `<style></style>`, que é onde você vai colocar suas alterações;
-3. Procure uma palheta de cores com que você mais se identifica e que você pode gerar  [nesse site](https://coolors.co/) {: .external-link target="_blank" rel="noreferrer noopener" }.
-4. Lembre-se que para executar o seu código enquanto o desenvolve você deve utilizar a extensão `Live Server`, para saber mais sobre ela acesse nosso [conteúdo](/real-life-engineer/vscode) {: .external-link target="_blank" rel="noreferrer noopener" } sobre isso.
+3. Procure uma paleta de cores com a qual você mais se identifique e que você pode gerar  [nesse site](https://coolors.co/) {: .external-link target="_blank" rel="noreferrer noopener" }.
+4. Lembre-se que, para executar o seu código enquanto o desenvolve, você deve utilizar a extensão `Live Server`. Para saber mais sobre ela, acesse nosso [conteúdo](/real-life-engineer/vscode) {: .external-link target="_blank" rel="noreferrer noopener" } sobre isso.
 
 ---
 
@@ -220,7 +220,7 @@ Seu _Portfólio Web_ deve ser estilizado usando as informações a seguir:
 
 ### Atualizando seu Portfólio Web para o mundo ver!
 
-Agora que você estilizou seu _Portfólio Web_, chegou o momento de atualizar tudo que o você fez e colocar no seu GitHub Pages!
+Agora que você estilizou seu _Portfólio Web_, chegou o momento de atualizar tudo o que você fez e colocar no seu GitHub Pages!
 
 Para isso, basta você atualizar seu projeto usando o que você aprendeu de `Git`. 😉
 
@@ -228,7 +228,7 @@ Para isso, basta você atualizar seu projeto usando o que você aprendeu de `Git
 
 ## Recursos adicionais (opcional)
 
-E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras referências para você se aprofundar no tema. Artigos, tutoriais, livros etc…
+E aí, gostou do que aprendeu até aqui? Nesta parte, vamos colocar outras referências para você se aprofundar no tema:
 
 * [Tutorial - Como utilizar as ferramentas de desenvolvedor do browser](https://www.khanacademy.org/computing/computer-programming/html-css/web-development-tools/a/using-the-browser-developer-tools) {: .external-link target="_blank" rel="noreferrer noopener" }
 

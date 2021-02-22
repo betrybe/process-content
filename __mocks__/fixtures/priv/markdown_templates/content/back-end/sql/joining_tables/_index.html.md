@@ -13,6 +13,8 @@ Bem-vindo de volta! Hoje você vai aprender a utilizar os diferentes tipos de `J
 * Utilizar `SUBQUERIES`
 * Criar queries mais eficientes através do `EXISTS`
 
+<%= vimeo "510243882" %>
+
 ---
 
 ## Por que isso é importante?

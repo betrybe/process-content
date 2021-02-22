@@ -2,7 +2,7 @@
 
 Agora que você já aprendeu sobre como fazer mocks e a testar formulários com a `react-testing-library`, vamos aprender a testar rotas, para sermos capazes de testar o fluxo de nossas aplicações.
 
-<%= vimeo "466629334" %>
+<%= vimeo "509918087" %>
 
 ---
 
@@ -30,11 +30,11 @@ Outra opção que ganhamos ao aprender a testar rotas, é que podemos testar pá
 
 Para começar a entender como fazer testes, precisamos passar por alguns pontos antes, entendê-los nos trará uma maior compreensão do que vamos realizar:
 
-1. A biblioteca `history` é uma ferramenta que lhe permite acessar a sessão de histórico do navegador e também a localização atual (URL), onde quer que o *JavaScript* execute, nesse [link](https://reacttraining.com/react-router/web/api/history) {: .external-link target="_blank" rel="noreferrer noopener" } tem uma documentação de fácil consulta.
+1. A biblioteca `history` é uma ferramenta que lhe permite acessar a sessão de histórico do navegador e também a localização atual (URL), onde quer que o _JavaScript_ execute, nesse [link](https://reacttraining.com/react-router/web/api/history) {: .external-link target="_blank" rel="noreferrer noopener" } tem uma documentação de fácil consulta.
 
     * Na documentação acima, tem uma explicação sobre todos os métodos da biblioteca, mas para nossos testes, os métodos mais utilizados são o `push`, que te permite mudar de rota dentro do **ambiente de testes**, e o `location.pathname`, que te retorna a URL exata em que você está.
 
-    * De dentro da biblioteca, você também importará a `createMemoryHistory`, que é feita para ser utilizada em ambientes que não possuem DOM, por exemplo, em testes automatizados. O trabalho dessa *função* é criar um novo histórico de navegação, para ser utilizado durante o teste. Essa biblioteca é bastante utilizada nesses casos, como veremos no próximo tópico.
+    * De dentro da biblioteca, você também importará a `createMemoryHistory`, que é feita para ser utilizada em ambientes que não possuem DOM, por exemplo, em testes automatizados. O trabalho dessa _função_ é criar um novo histórico de navegação, para ser utilizado durante o teste. Essa biblioteca é bastante utilizada nesses casos, como veremos no próximo tópico.
 
 2. A função `renderWithRouter` é uma função customizada para fazer testes com rotas, uma vez que a função `render` normal da RTL não dá suporte ao `router`. Ela pode ser muito útil e usa o `createMemoryHistory` para embutir no seu componente renderizado a lógica de _histórico de navegação_, para uso nos testes. Veja o [código de exemplo](https://testing-library.com/docs/example-react-router#reducing-boilerplate) {: .external-link target="_blank" rel="noreferrer noopener" } para se familiarizar. Vamos praticar com um novo app React:
 
@@ -97,11 +97,11 @@ ReactDOM.render(
 );
 ```
 
-  * Agora sim! Vamos ao navegador entender o que esse código está fazendo. Basicamente, o nosso código cria um router básico com duas páginas, a **Home** e a **About**, além de criar uma página de **Not Found** para quando a pessoa coloca uma *URL* que não existe.
+  * Agora sim! Vamos ao navegador entender o que esse código está fazendo. Basicamente, o nosso código cria um router básico com duas páginas, a **Home** e a **About**, além de criar uma página de **Not Found** para quando a pessoa coloca uma _URL_ que não existe.
 
-  * Após isso, vamos usar a função `renderWithRouter` que é uma função *helper* ou assistente. Uma função *helper* executa uma tarefa específica e não depende de outras funções.
+  * Após isso, vamos usar a função `renderWithRouter` que é uma função _helper_ ou assistente. Uma função _helper_ executa uma tarefa específica e não depende de outras funções.
 
-  * No nosso caso, a *helper* irá criar um histórico e renderizar o componente que iremos testar. Para não ficarmos sem contexto de onde essa função veio, ela foi tirada da documentação oficial da **Testing Library** que você pode encontrar [aqui.](https://testing-library.com/docs/example-react-router#reducing-boilerplate) {: .external-link target="_blank" rel="noreferrer noopener" } Vamos salvar a *helper* num arquivo `src/renderWithRouter.js` e entendê-la antes de escrevermos os testes:
+  * No nosso caso, a _helper_ irá criar um histórico e renderizar o componente que iremos testar. Para não ficarmos sem contexto de onde essa função veio, ela foi tirada da documentação oficial da **Testing Library** que você pode encontrar [aqui.](https://testing-library.com/docs/example-react-router#reducing-boilerplate) {: .external-link target="_blank" rel="noreferrer noopener" } Vamos salvar a _helper_ num arquivo `src/renderWithRouter.js` e entendê-la antes de escrevermos os testes:
 
 ```language-react
 //src/renderWithRouter.js
@@ -120,7 +120,7 @@ const renderWithRouter = (component) => {
 export default renderWithRouter;
 ```
 
-  * Aqui utilizaremos a biblioteca `history` para criar um histórico de navegação. A *helper* irá passar o histórico para o componente `Router`, e vai renderizar o componente que quisermos dentro dele, bastando apenas passar o componente como argumento quando a chamarmos.
+  * Aqui utilizaremos a biblioteca `history` para criar um histórico de navegação. A _helper_ irá passar o histórico para o componente `Router`, e vai renderizar o componente que quisermos dentro dele, bastando apenas passar o componente como argumento quando a chamarmos.
 
   * Existe uma forma de fazer sem o `helper`, mas ela implica em escrever bem mais código. [Esse link](https://testing-library.com/docs/example-react-router) {: .external-link target="_blank" rel="noreferrer noopener" } tem um exemplo muito parecido com o que estamos fazendo juntos, a grande diferença é que lá eles não utilizam uma função auxiliar. Repare que a sintaxe que utilizaremos será bem parecida com a do site, com a diferença de verbosidade que no exemplo do link acima será bem maior.
 
@@ -144,9 +144,9 @@ it('deve renderizar o componente App', () => {
 });
 ```
 
-  * Aqui, fizemos os imports necessários: o próprio `react`, a *helper* e o *componente* que iremos testar.
+  * Aqui, fizemos os imports necessários: o próprio `react`, a _helper_ e o _componente_ que iremos testar.
 
-  * Importamos o teste em si, que chama a *helper* passando o *componente* a ser renderizado. Nesse primeiro caso, mostraremos como renderizar a aplicação toda, fazendo um teste geral, depois vamos ver como renderizar um componente específico.
+  * Importamos o teste em si, que chama a _helper_ passando o _componente_ a ser renderizado. Nesse primeiro caso, mostraremos como renderizar a aplicação toda, fazendo um teste geral, depois vamos ver como renderizar um componente específico.
 
   * Continuando os testes, vamos clicar no link `About` em nossa aplicação e verificar se estamos na página correta.
 
@@ -288,7 +288,7 @@ O readme desse repositório contém as instruções de como realizar os exercíc
 
 Para esse exercício, tomaremos como base o nosso antigo portifólio - que foi feito em `HTML` e `CSS` puros no Bloco [3.1](https://app.betrybe.com/course/fundamentals/html-css/html-css-part-1) {: .external-link target="_blank" rel="noreferrer noopener" } - e o faremos novamente usando React e TDD!
 
-O *README* do [repositório do Portfólio Web](https://www.github.com/tryber/exercise-portfolio-web) {: .external-link target="_blank" rel="noreferrer noopener" } tem as instruções mais detalhadas para o exercício.
+O _README_ do [repositório do Portfólio Web](https://www.github.com/tryber/exercise-portfolio-web) {: .external-link target="_blank" rel="noreferrer noopener" } tem as instruções mais detalhadas para o exercício.
 
 ---
 

@@ -1,3 +1,141 @@
+## Gabarito dos exercícios de fixação
+
+> models/Author.js
+
+```language-javascript
+const connection = require('./connection');
+
+const getAll = () => connection()
+    .then((db) => db.collection('books').find({}).toArray());
+
+const getByAuthorId = (authorId) => connection()
+    .then((db) => db.collection('books').find({author_id: authorId}).toArray());
+
+const findById = async (id) => { 
+  const book = await connection()
+    .then((db) => db.collection('books').findOne(ObjectId(id)));
+
+  if (!book) return null;
+
+  return book;
+}
+
+const create = (title, authorId) => connection()
+    .then((db) => db.collection('books').insertOne({ title, authorId}))
+
+
+module.exports = {
+  getAll,
+  getByAuthorId,
+  findById,
+  create
+}
+```
+
+> services/Author.js
+
+```language-javascript
+const Author = require('../models/Author');
+
+
+const isValid = async (title, authorId) => {
+  if (!title || typeof title !== 'string') return false;
+  if (!authorId || typeof authorId !== 'number' || !(await Author.findById(ObjectId(authorId)))) return false;
+
+  return true;
+}
+
+const getAll = async () => {
+  return await Book.getAll();
+}
+
+const findById = async (id) => {
+  return await Book.findById(id);
+}
+
+const create = async (title, authorId) => {
+  const bookIsValid = isValid(title, authorId);
+
+  if (!bookIsValid) return false;
+
+  const { insertedId } = await Book.create(title, authorId);
+
+  return getNewAuthor({
+    id: insertedId,
+    title,
+    authorId
+  });
+}
+
+module.exports = {
+  getAll,
+  findById,
+  create
+}
+```
+
+> controllers/Author.js
+
+```language-javascript
+const Book = require('../services/Book');
+
+const getAll = async (req, res) => {
+  const books = await Book.getAll();
+
+  res.status(200).json(books);
+}
+
+const findById = async (req, res) => {
+  const { id } = req.params;
+
+  const book = await Book.findById(id);
+
+  if (!book) return res.status(404).json({ message: 'Not found' });
+
+  res.status(200).json(book);
+}
+
+const create = async (req, res) => {
+  const { first_name, middle_name, last_name } = req.body;
+
+  const book = await Book.create(first_name, middle_name, last_name);
+
+  if (!book) return res.status(400).json({ message: 'Dados inválidos' });
+
+  res.status(201).json(book);
+}
+
+module.exports = {
+  getAll,
+  findById,
+  create
+}
+```
+
+> index.js
+
+```language-javascript
+// const bodyParser = require('body-parser');
+// const express = require('express')
+// const app = express()
+// const port = 3000
+
+// const Author = require('./controllers/Author');
+
+// app.use(bodyParser.json());
+
+// app.get('/authors', Author.getAll);
+// app.get('/authors/:id', Author.findById);
+// app.post('/authors', Author.create);
+
+
+app.get('/books', Book.getAll);
+app.get('/books/:id', Book.findById);
+app.post('/books', Book.create);
+
+// app.listen(port, () => console.log(`Example app listening on port port!`))
+```
+
 ## Gabarito dos exercícios
 
 A seguir temos uma possível solução para os exercícios:

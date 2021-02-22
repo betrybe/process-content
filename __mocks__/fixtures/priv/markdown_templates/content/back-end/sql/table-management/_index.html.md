@@ -2,6 +2,8 @@
 
 Nos últimos dias temos visto principalmente como fazer _queries_ para encontrar e filtrar dados em um banco usando os diversos comandos do **SQL**. Porém, hoje será um pouco diferente. Vamos focar em aprender a fazer a **inserção**, **alteração** e **exclusão** de dados nas tabelas de um banco de dados. Em uma ~~futura~~ aula não tão distante, aprenderemos também a criar tabelas (**No Spoilers!!!**).
 
+<%= vimeo "506178702" %>
+
 ---
 
 ### Você será capaz de:
@@ -40,7 +42,7 @@ Como apagar (_dropar_) o banco `sakila` e recriá-lo do zero:
 
 6. Clique em executar para restaurar o banco de dados.
 
-<%= figure(%{src: "/back-end/sql/images/RestoringDatabase.png", caption: "Restaurando o banco \`sakila\`", class: "text-center rounded mx-auto d-block", width: "500px", height: "auto"}) %>
+    <%= figure(%{src: "/back-end/sql/images/RestoringDatabase.png", caption: "Restaurando o banco \`sakila\`", class: "text-center rounded mx-auto d-block", width: "500px", height: "auto"}) %>
 
 7. _That's IT!_ Está pronto para ~~**quebrar**~~ brincar com ele de novo!
 
@@ -244,15 +246,44 @@ ORDER BY last_update
 LIMIT 2;
 ```
 
-Essas são as maneiras mais comuns de utilizar o `UPDATE` no dia a dia. Agora está na hora de praticar!
+Essas são as maneiras mais comuns de utilizar o `UPDATE` no dia a dia.
 
-##### Dê um `UPDATE` em seus conhecimentos com estes desafios
+##### Um pouco mais sobre o modo `--safe-updates`
 
-**P.S.** Como dito anteriormente, o [safe updates mode](https://dev.mysql.com/doc/refman/8.0/en/mysql-tips.html#safe-updates) {: .external-link target="_blank" rel="noreferrer noopener" } é habilitado por padrão no **MySQL Workbench**. Ele exige que você inclua os IDs dos itens a serem atualizados ou apagados para poder executar o `UPDATE` ou o `DELETE`. Essa camada de segurança é importante em bancos reais executando em ambientes de produção, mas torna-se inconveniente em ambientes de aprendizado, como é o caso aqui. Como o banco pode ser apagado e recriado infinitamente, vamos desabilitá-lo nos exercícios. Além disso, esse modo pode ser habilitado novamente quando necessário.
+Para quem está ainda está se familiarizando com o MySQL, o `--safe-updates` (ou -`-i-am-a-dummy`, sim, é uma propriedade real do MySQL) pode ser uma configuração segura para utlizar operadores de alteração de dados. Ele é útil para casos em que você tenha emitido um comando `UPDATE` ou `DELETE`, mas esquecido de incluir `WHERE` para indicar quais linhas devem ser modificadas, evitanto que a query atualize ou exclua todas as linhas da tabela.
+
+O `--safe-updates` exige que você inclua um valor chave (key value), por exemplo os ids (lembrando que os valores da coluna id de uma tabela são do tipo `KEY`) dos itens selecionados para executar o `UPDATE` ou o `DELETE`. Essa camada de segurança é importante em bancos reais executando em ambientes de produção e ajuda a prevenir acidentes. Este modo também restringe querys `SELECT` que produzem resultados muito grandes, com uma quantidade excessiva de linhas.
+
+A opção `--safe-updates` exige que o mysql execute a seguinte instrução ao se conectar ao servidor:
+
+```language-sql
+SET sql_safe_updates=1, sql_select_limit=1000, max_join_size=1000000;
+```
+
+- `sql_select_limit`=1000 limita o conjunto de resultados `SELECT` a 1.000 linhas, a menos que a instrução inclua `LIMIT`.
+- `max_join_size`=1.000.000 faz com que as instruções `SELECT` de várias tabelas produzam um erro se o servidor estimar que deve examinar mais de 1.000.000 combinações de linhas.
+
+Você pode desabilitar o `--safe-updates` utilizando o comando `SET`:
+
+```language-sql
+SET SQL_SAFE_UPDATES = 0;
+```
+
+Ou configurar para um modo mais conveniente para você, alterando os valores das variáveis:
+
+```language-sql
+SET sql_safe_updates=1, sql_select_limit=500, max_join_size=10000;
+```
+
+Quando ocorre um erro de `--safe-updates`, a mensagem de erro inclui o primeiro diagnóstico que foi produzido, para fornecer informações sobre o motivo da falha. Por exemplo, a mensagem pode indicar que o `UPDATE` esta sendo executado com um operador `WHERE` que não se refere a uma coluna do tipo `KEY` (veja a imagem abaixo), nesse caso voce pode **desabilitar** o `--safe-updates`, ou utilizar uma coluna `KEY` como referência do seu operador `WHERE`. Lembre-se que ler e interpretar os erros pode ajudar na sua solução !
 
 <%= figure(%{src: "/back-end/sql/images/mysqlsafeupdatemode.png", caption: "Erro devido ao Safe Updates Mode estar habilitado", class: "text-center rounded mx-auto d-block", width: "800px", height: "auto"}) %>
 
-Rode o seguinte comando em uma janela de _query_ dentro do MySQL Workbench **sempre** que abri-lo para desabilitar essa funcionalidade, antes de executar seus comandos `UPDATE` ou `DELETE`:
+Agora está na hora de praticar!
+
+##### Dê um `UPDATE` em seus conhecimentos com estes desafios
+
+Como o banco pode ser apagado e recriado infinitamente, vamos desabilitar o `--safe-updates` nos exercícios. Além disso, esse modo pode ser habilitado novamente quando necessário. Rode o seguinte comando em uma janela de _query_ dentro do MySQL Workbench **sempre** que abri-lo para desabilitar essa funcionalidade, antes de executar seus comandos `UPDATE` ou `DELETE`:
 
 ```language-sql
 SET SQL_SAFE_UPDATES = 0;
@@ -278,7 +309,7 @@ Para excluir dados de forma básica, temos a seguinte sintaxe:
 
 ```language-sql
 DELETE FROM banco_de_dados.tabela
-WHERE coluna = 'valor'
+WHERE coluna = 'valor';
 -- O WHERE é opcional. Porém, sem ele, todas as linhas da tabela seriam excluídas.
 ```
 
@@ -289,7 +320,7 @@ DELETE FROM sakila.film_text
 WHERE title = 'ACADEMY DINOSAUR';
 ```
 
-**P.S.** Novamente, caso o [safe update mode](https://dev.mysql.com/doc/refman/8.0/en/mysql-tips.html#safe-updates) {: .external-link target="_blank" rel="noreferrer noopener" } esteja habilitado, os comandos `DELETE` só funcionariam se os IDs fossem incluídos em suas _queries_. Para fins de prática, vamos desabilitá-lo.
+**P.S.** Novamente, caso o modo `--safe-updates` esteja habilitado, o comando `DELETE` só funcionaria se os IDs fossem incluídos em suas _queries_. Para fins de prática, vamos desabilitá-lo.
 
 Rode o seguinte comando em uma janela de _query_, dentro do MySQL Workbench, **sempre** que abri-lo, para desabilitar essa funcionalidade antes de executar seus comandos `DELETE`:
 
@@ -303,16 +334,16 @@ Caso haja relações entre as tabelas (**primary key** e **foreign keys**) e exi
 
 ```language-sql
 -- Rejeita o comando DELETE.
-ON DELETE NO ACTION
+ON DELETE NO ACTION;
 
 -- Rejeita o comando DELETE.
-ON DELETE RESTRICT
+ON DELETE RESTRICT;
 
 -- Permite a exclusão dos registros da tabela pai, e seta para NULL os registros da tabela filho.
-ON DELETE SET NULL
+ON DELETE SET NULL;
 
 -- Exclui a informação da tabela pai e registros relacionados.
-ON DELETE CASCADE
+ON DELETE CASCADE;
 ```
 
 Vamos analisar um exemplo prático:
@@ -342,7 +373,9 @@ DELETE FROM sakila.actor
 WHERE first_name = 'GRACE';
 ```
 
-Antes de excluir dados que possuem restrições de chave estrangeira, como o exemplo que acabamos de ver, analise se você realmente deve excluir essa informação do banco de dados e depois, caso precise, faça de acordo com as restrições que foram impostas durante a criação da tabela. Elas são colocadas lá para garantir [a integridade de seus dados](https://pt.wikipedia.org/wiki/Integridade_de_dados) {: .external-link target="_blank" rel="noreferrer noopener" }. Se existem restrições, normalmente não faria sentido simplesmente ignorá-las.
+Antes de excluir dados que possuem restrições de chave estrangeira, como o exemplo que acabamos de ver, analise se você realmente deve excluir essa informação do banco de dados e depois, caso precise, faça de acordo com as restrições que foram impostas durante a criação da tabela.
+
+As regras e restrições que acompanham querys de alteração do banco (como o `UPDATE` e o `DELETE`) são importantes para manter a **Integridade dos Dados**, pois evitam mudanças involuntárias e garatem que as taxas de erro sejam menores, resultando em economia de tempo na solução de problemas. Um banco de dados que possui um sistema de integridade de dados bem controlado e bem definido aumenta a **estabilidade** das informações, **desempenho** das operações e **manutenção** das tabelas. Se existem restrições, normalmente não faria sentido simplesmente ignorá-las.
 
 ##### `DELETE` VS `TRUNCATE`
 
@@ -368,6 +401,12 @@ Caso precise excluir condicionalmente, usando regras e especificações, use sem
 
 6. Exclua o banco de dados e o recrie (use as instruções no início desta aula).
 
+### Recapitulando
+
+Para fixar melhor, agora que você passou pelo conteúdo escrito, assista ao vídeo gravado pela nossa equipe de especialistas para garantir que entendeu tudo e reforçar alguns conceitos:
+
+<%= vimeo "508442772" %>
+
 ---
 
 ## Vamos fazer juntos!
@@ -384,30 +423,81 @@ Vamos bater um papo sobre **SQL**? Hora da aula ao vivo! Vamos para o Slack, ond
 
 Os exercícios propostos possuem níveis variáveis de dificuldade. Tente fazer o máximo que conseguir.
 
-**Exercício 1**: Faça o exercício sobre `INSERT` [deste link](https://sqlbolt.com/lesson/inserting_rows) {: .external-link target="_blank" rel="noreferrer noopener" }.
+> Para realizar os exercícios 1 a 7, restaure o banco de dados `Pixar` abaixo.
 
-**Exercício 2**: Faça o exercício sobre `UPDATE`[deste link](https://sqlbolt.com/lesson/updating_rows) {: .external-link target="_blank" rel="noreferrer noopener" }
+```language-sql
+DROP SCHEMA IF EXISTS Pixar;
+CREATE SCHEMA Pixar;
+USE Pixar;
 
-Crie uma conta no [Vertabelo Academy](https://academy.vertabelo.com/) {: .external-link target="_blank" rel="noreferrer noopener" } para conseguir fazer os próximos exercícios.
+CREATE TABLE Movies (
+  id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  title VARCHAR(30) NOT NULL,
+  director VARCHAR(30) NULL,
+  year INT NOT NULL,
+  length_minutes INT NOT NULL
+);
 
-**Exercício 3**: Faça [este exercício](https://academy.vertabelo.com/course/operating-on-data-in-sql/insert/insert/insert) {: .external-link target="_blank" rel="noreferrer noopener" } sobre `INSERT`.
+CREATE TABLE BoxOffice (
+  movie_id INTEGER,
+  FOREIGN KEY (movie_id) REFERENCES Movies (id),
+  rating DECIMAL(2,1) NOT NULL,
+  domestic_sales INT NOT NULL,
+  international_sales INT NOT NULL
+);
 
-**Exercício 4**: Faça [este exercício](https://academy.vertabelo.com/course/operating-on-data-in-sql/update/update/update) {: .external-link target="_blank" rel="noreferrer noopener" } sobre `UPDATE`.
+INSERT INTO Movies(title, director, year, length_minutes)
+  VALUES ('Toy Story', 'John Lasseter', 1995, 81),
+         ('Vida de inseto', 'Andrew Staton', 1998, 95),
+         ('ratatui', 'Brad Bird', 2010, 115),
+         ('UP', 'Pete Docter', 2009, 101),
+         ('Carros', 'John Lasseter', 2006, 117),
+         ('Toy Story 2', 'John Lasseter', 1999, 93),
+         ('Valente', 'Brenda Chapman', 2012, 98);
 
-**Exercício 5**: Faça [este exercício](https://academy.vertabelo.com/course/operating-on-data-in-sql/delete/delete/delete) {: .external-link target="_blank" rel="noreferrer noopener" } sobre `DELETE`.
+
+INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
+  VALUES (1, 8.3, 190000000, 170000000),
+         (2, 7.2, 160000000, 200600000),
+         (3, 7.9, 245000000, 239000000),
+         (4, 6.1, 330000000, 540000000),
+         (5, 7.8, 140000000, 310000000),
+         (6, 5.8, 540000000, 600000000),
+         (7, 7.5, 250000000, 190000000);
+```
+
+**Exercício 1**: Insira as produções da Pixar abaixo na tabela `Movies`:
+
+- Monstros SA, de Pete Docter, lançado em 2001, com 92 minutos de duração.
+- Procurando Nemo, de John Lasseter, lançado em 2003, com 107 minutos de duração.
+- Os Incríveis, de Brad Bird, lançado em 2004, com 116 minutos de duração.
+- WALL-E, de Pete Docter, lançada em 2008, com 104 minutos de duração.
+
+**Exercício 2**: Procurando Nemo foi aclamado pela crítica! Foi classificado em 6.8, fez 450 milhões no mercado interno e 370 milhões no mercado internacional. Adicione as informações à tabela `BoxOffice`.
+
+**Exercício 3**: O diretor do filme "Procurando Nemo" está incorreto, na verdade ele foi dirigido por Andrew Staton. Corrija esse dado utilizando o `UPDATE`.
+
+**Exercício 4**: O título do filme "Ratatouille" esta escrito de forma incorreta na tabela `Movies`, além disso, o filme foi lançado em 2007 e não em 2010. Corrija esses dados utilizando o `UPDATE`.
+
+**Exercício 5**: Insira as novas classificações abaixo na tabela `BoxOffice`, lembre-se que a coluna `movie_id` é uma foreign key referente a coluna `id` da tabela `Movies`:
+
+- Monsters SA, classificado em 8.5, lucrou 300 milhões no mercado interno e 250 milhões no mercado internacional.
+- Os Incríveis, classificado em 7.4, lucrou 460 milhões no mercado interno e 510 milhões no mercado internacional.
+- WALL-E, classificado em 9.9, lucrou 290 milhões no mercado interno e 280 milhões no mercado internacional.
+
+**Exercício 6**: Exclua da tabela `Movies` o filme "WALL-E".
+
+**Exercício 7**: Exclua da tabela `Movies` todos os filmes dirigidos por "Andrew Staton".
 
 ### Bônus
 
-Para fazer os exercícios a seguir, restaure o backup do banco de dados `HR`, disponível clicando [neste link](/back-end/HR_database_backup.sql) {: .external-link target="_blank" rel="noreferrer noopener" } com o botão direito e escolhendo a opção "Salvar como".
+> Para realizar os exercícios 8 a 10, faça os exercícios anteriores (1 a 7) e utilize o banco de dados `Pixar`.
 
-1. Execute o conteúdo deste arquivo `.sql` em seu banco de dados local.
-2. Leia o enunciado do exercício.
-3. Monte uma _query_ em seu banco local, que você acabou de restaurar, e veja se seu resultado resolve o desafio.
-4. Caso não consiga resolver os exercícios, consulte as respostas clicando em "Click me to see the solution" na página do desafio.
+**Exercício 8**: Altere a classificação da tabela `BoxOffice` para 9.0 de todos os filmes que lucraram mais de 400 milhões no mercado interno.
 
-**Exercício 6**: Faça os exercícios sobre `INSERT` [deste link](https://www.w3resource.com/mysql-exercises/insert-into-statement/) {: .external-link target="_blank" rel="noreferrer noopener" }.
+**Exercício 9**: Altere a classificação da tabela `BoxOffice` para 6.0 de todos os filmes que lucraram menos de 300 milhões no mercado internacional e mais de 200 milhões no mercado interno.
 
-**Exercício 7**: Faça os exercícios sobre `UPDATE` [deste link](https://www.w3resource.com/mysql-exercises/update-table-statement/) {: .external-link target="_blank" rel="noreferrer noopener" }.
+**Exercício 10**: Exclua da tabela `Movies` todos os filmes com menos de 100 minutos de duração.
 
 ---
 

@@ -1,3 +1,18 @@
+## Aula 16.2 - Usando o Redux no React
+<%= vimeo "511800641" %>
+
+## Aula 16.1 - Introdução ao Redux - O estado global da aplicação
+<%= vimeo "511343557" %>
+
+## Aula 15.3 - RTL - Testando React Router
+<%= vimeo "510007204" %>
+
+## Aula 15.2 - RTL - Mocks e Inputs
+<%= vimeo "509041003" %>
+
+## Aula 15.1 - RTL - Primeiros Passos
+<%= vimeo "508629070" %>
+
 ## Aula 14.1 - Parte 2 - Trabalhando em grupo com o GitHub
 <%= vimeo "505422669" %>
 

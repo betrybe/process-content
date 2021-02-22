@@ -57,7 +57,6 @@ const startScript = Date.now();
 let timeFile1;
 let timeFile2;
 let timeScript;
-const startFile1 = Date.now();
 
 function printScriptEnd () {
   if (timeFile1 && timeFile2) {

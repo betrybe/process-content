@@ -1,3 +1,27 @@
+## Aula 27.3 - Arquitetura REST e RESTful
+<%= vimeo "511777151" %>
+
+## Aula 27.2 - Arquitetura de Software - Camada de Service e Controller
+<%= vimeo "511329714" %>
+
+## Aula 27.1 - Arquitetura de Software - Camada de Model
+<%= vimeo "510877145" %>
+
+## Aula 26.5 - Node.js: Praticando Express
+<%= vimeo "509003775" %>
+
+## Aula 26.4 - Node.js: HTTP com Express
+<%= vimeo "508615252" %>
+
+## Aula 26.3 - Node.js: Arquitetura
+<%= vimeo "508160992" %>
+
+## Aula 26.2 - Node.js: Fluxo Assíncrono
+<%= vimeo "507709109" %>
+
+## Aula 26.1 - Node.js: Introdução
+<%= vimeo "507271975" %>
+
 ## Aula 25.2 - Mongodb: Aggregation Framework - Parte 2
 <%= vimeo "504966258" %>
 

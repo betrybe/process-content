@@ -66,7 +66,7 @@ Está ficando mais evidente? Vamos entender se há ferramentas que podem nos aux
 
 ##### Cobertura de Código e Cobertura com Testes Automatizados
 
-O principal objetivo da **Cobertura de Código** (_code coverage_), ou **Cobertura do Testes** é evidenciar quais linhas do código foram testadas e quais não estão sendo exploradas nos testes. É importante salientar que um projeto com cobertura de código alta não significa necessariamente que os testes não podem melhorar: cobertura alta é somente o primeiro passo!
+O principal objetivo da **Cobertura de Código** (_code coverage_) ou **Cobertura de Testes**, é evidenciar quais linhas do código foram testadas e quais não estão sendo exploradas nos testes. É importante salientar que um projeto com cobertura de código alta não significa necessariamente que os testes não podem melhorar: cobertura alta é somente o primeiro passo!
 
 Existem diversos softwares que checam para nós a cobertura de código. Em linhas gerais, os resultados podem evidenciar:
 
@@ -462,7 +462,7 @@ Passo a passo:
 
 ### Reforçando o conteúdo
 
-Acabamos de aprender um pouco sobre os seletores, tire alguns minutos para confirir o Cheatsheet na documentação oficial, lembrando que não é necessário ler todo o documento, mas sim confirir algumas das queries usadas e reforçar os conceitos!
+Acabamos de aprender um pouco sobre os seletores, tire alguns minutos para conferir o Cheatsheet na documentação oficial, lembrando que não é necessário ler todo o documento, mas sim conferir algumas das queries usadas e reforçar os conceitos!
 
 [RTL Cheatsheet](https://testing-library.com/docs/dom-testing-library/cheatsheet) {: .external-link target="_blank" rel="noreferrer noopener" }
 
@@ -503,7 +503,7 @@ Substitua uma linha no `App.js`, e não esqueça de importar o `ValidEmail` para
 <ValidEmail email={saveEmail}/>
 ```
 
-Rode os teste e observe que mesmo sem mudar nenhum teste, todos eles passaram, assegurando que nossa aplicação continua funcionando mesmo após essa mudança (super conveniente, certo?!). Agora falta testar essa funcionalidade nova que adicionamos. Mas testaremos apenas renderizando o nosso componente `ValidEmail`. Crie um arquivo `ValidEmail.test.js`.
+Rode os testes e observe que mesmo sem mudar nenhum teste, todos eles passaram, assegurando que nossa aplicação continua funcionando mesmo após essa mudança (super conveniente, certo?!). Agora falta testar essa funcionalidade nova que adicionamos. Mas testaremos apenas renderizando o nosso componente `ValidEmail`. Crie um arquivo `ValidEmail.test.js`.
 
 ```language-react
 import React from 'react';

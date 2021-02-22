@@ -4,6 +4,8 @@ Hoje você continuará a aprender a melhorar a organização e divisão de respo
 
 Além disso, você verá uma aplicação em que o modelo acessa um banco MongoDB e entenderá o que é a arquitetura de cliente-servidor.
 
+<%= vimeo "511127937" %>
+
 ---
 
 ### Você será capaz de:
@@ -60,9 +62,9 @@ Durante todo o conteúdo de front-end com React você desenvolveu aplicações f
 
 ### A camada de controle
 
-O `controller` recebe as requisições do `cliente` e então consulta o `service` enviando para o `cliente` aquilo o `service` retornar, podendo seu uma mensagem de erro em caso de falha ou as informações requisitas em caso de sucesso.
+O `controller` recebe as requisições do `cliente` e então consulta o `service` enviando para o `cliente` aquilo que o `service` retornar, podendo ser uma mensagem de erro em caso de falha ou as informações requisitas em caso de sucesso. Em uma aplicação Node com Express, o controller vai ser a camada onde iremos definir nossos middlewares para rotas, geralmente em um escopo definido para um contexto bem específico.
 
-Ao se comunicar com o `service` o `controller` deve passar apenas as informações necessárias, sendo assim não é uma boa prática passar toda a `request` para o `service`, as informações devem ser extraídas e então apenas o que for necessário para determinada ação deve ser transferido.
+Ao se comunicar com o `service`, o `controller` deve passar apenas as informações necessárias, sendo assim não é uma boa prática passar toda a `request` para o `service`, as informações devem ser extraídas e então apenas o que for necessário para determinada ação deve ser transferido.
 
 Uma ótima analogia para o `controller` é que ele seria como um garçom em um restaurante.
 
@@ -106,7 +108,9 @@ Para colocar em prática os conceitos de `controller` e `service` vamos adiciona
 
 > Para essa prática usaremos a última versão da aplicação, isso é, aquela em que a aplicação acessa ao MongoDB
 
-Vamos começar abstraindo toda a lógica do nosso `model`, mantendo nele apenas a conexão com o banco. Para isso substitua o conteúdo do arquivo pelo código abaixo:
+Vamos começar abstraindo toda a lógica do nosso `model`, mantendo nele apenas a conexão com o banco. Para isso substitua o conteúdo do arquivo pelo código abaixo ou assista o vídeo:
+
+<%= vimeo "511128106" %>
 
 > models/Author.js
 
@@ -177,14 +181,7 @@ const isValid = (firstName, middleName, lastName) => {
 const getAll = async () => {
   const authors = await Author.getAll();
 
-  return authors.map(({ _id, firstName, middleName, lastName }) =>
-    getNewAuthor({
-      id: _id,
-      firstName,
-      middleName,
-      lastName,
-    })
-  );
+  return authors.map(getNewAuthor);
 };
 
 const findById = async (id) => {
@@ -202,9 +199,14 @@ const create = async (firstName, middleName, lastName) => {
 
   if(!userValid) return false;
 
-  await Author.create(firstName, middleName, lastName);
+  const { insertedId } = await Author.create(firstName, middleName, lastName);
 
-  return true;
+  return getNewAuthor({
+    id: insertedId,
+    firstName,
+    middleName,
+    lastName
+  });
 }
 
 module.exports = {
@@ -256,6 +258,10 @@ module.exports = {
 
 Você deve estar pensando "Esse não é o mesmo código que se encontra no index.js?", e bem, você tem toda a razão. É o `controller` quem lida com as `requests` e as `responses`, desse modo, ao invés de mantermos toda essa lógica no `index.js`, separamos ela no `controller` e então o usamos como middleware em nossas rotas no `index.js`, assim o arquivo fica responsável apenas por configurar e iniciar aplicação.
 
+Assista o vídeo abaixo e depois veja o código para ver as mudanças de criar a camada de controller.
+
+<%= vimeo "511128225" %>
+
 > index.js
 
 ```language-js
@@ -280,6 +286,13 @@ app.listen(PORT, () => {
   console.log(`Ouvindo a porta ${PORT}`);
 });
 ```
+
+##### Vamos praticar
+
+Ontem, criamos um CRUD para a entidade `Books`. Vamos refatorar o código da aula de ontem aplicando a arquitetura MSC. Para isso:
+
+1. Crie um arquivo `services/Book.js` e aplique as regras de negócio definidos no modelo `Book` para dentro do service. (lembre-se de remover de models/Book.js o que não vai ser mais utilizado na camada de modelo).
+2. Crie um arquivo `controllers/BooksController.js` e transfira os middlewares relacionados ao nosso CRUD de livros para esse controller.
 
 ### Boas Práticas em Arquitetura de Software
 

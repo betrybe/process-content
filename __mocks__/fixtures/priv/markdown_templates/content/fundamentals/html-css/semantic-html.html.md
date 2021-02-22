@@ -44,7 +44,7 @@ Suponha que, no seu dia a dia de desenvolvimento de software, na empresa em que 
 
 Qual elemento ***HTML*** você usaria para conter a imagem do usuário?
 
-Hummn... 🤔
+Hum... 🤔
 
 Um candidato ideal para esse caso seria o elemento `img`, concorda? Você pode **averiguar** que `img` é um candidato olhando em alguma [documentação do ***HTML***.](https://www.w3schools.com/tags/tag_img.asp) {: .external-link target="_blank" rel="noreferrer noopener" }
 
@@ -68,7 +68,7 @@ Analogamente, suponha que você precise mostrar para o usuário uma tabela com t
 
 Qual elemento você usaria para representar essa tabela? Existe um elemento ***HTML*** cujo propósito é definir uma tabela, o `table`.
 
-Agora assista aos vídeos do nosso instrutor, que vão te fazer compreender melhor o que é e como funciona o HTML Semântico.
+Agora assista aos vídeos a seguir, que vão te fazer compreender melhor o que é e como funciona o HTML Semântico.
 
 <%= vimeo "470334089" %>
 
@@ -88,7 +88,7 @@ Agora que você já sabe sobre as propriedades `display inline` e `display block
 
 Para fixar esse conteúdo, realize o exercício a seguir. Para realizar o exercício, leia atentamente o enunciado. Após entender o que foi pedido, desenvolva a solução e então verifique se você conseguiu cumprir com o que foi solicitado.
 
-1. Para realizar este exercício copie o código `HTML` abaixo. Em seguida, faça a implementação das propriedades `CSS` e se necessário faça adições à estrutura `HTML` existente, para que o resultado final seja similar à imagem referência.
+1. Para realizar este exercício copie o código `HTML` abaixo. Em seguida, faça a implementação das propriedades `CSS` e, se necessário, faça adições à estrutura `HTML` existente, para que o resultado final seja similar à imagem referência.
   * Lembre-se que a estrutura da página deve ser mantida para que a semântica do código seja preservada.
 
 <%= figure(%{src: "/fundamentals/html-css/images/podium-final.png", class: "rounded mx-auto d-block", caption: "Podium and prizes final structure", width: "600px", height: "auto"}) %>
@@ -169,7 +169,7 @@ Para fixar esse conteúdo, realize o exercício a seguir. Para realizar o exerc�
 
 #### Links de referência para os novos elementos semânticos do HTML 5
 
-> Apesar desses artigos possuirem uma versão em português, recomendamos que você o leia em inglês por ser mais completo.
+> Apesar desses artigos possuírem uma versão em português, recomendamos que você o leia em inglês por ser mais completo.
 > Todos os links devem ser consumidos apenas até a seção **Examples**.
 
 ---
@@ -204,7 +204,7 @@ Aula ao vivo! Vamos para o Slack, onde o link estará disponível.
 
 ###### Tempo sugerido para realização: 100 minutos
 
-A partir de agora você sempre verá uma seção mostrando como realizar o versionamento do seu código antes da descrição dos exercícios do dia. Então, para te ajudar a organizar seus exercícios criamos um conteúdo focado nisso que está cheio de exemplos, você pode acessá-lo [aqui](/real-life-engineer/exercise-portfolio).
+A partir de agora, você sempre verá uma seção mostrando como realizar o versionamento do seu código antes da descrição dos exercícios do dia. Então, para te ajudar a organizar seus exercícios criamos um conteúdo focado nisso que está cheio de exemplos, você pode acessá-lo [aqui](/real-life-engineer/exercise-portfolio).
 
 No conteúdo que criamos, você será apresentado a uma estrutura de organização utilizando pastas para módulos e para blocos. Essa estrutura é diferente da que você verá na seção de versionamento do código do conteúdo do dia, fica a seu critério decidir qual a melhor forma de organizar seus exercícios!
 
@@ -248,11 +248,11 @@ Para uma melhor organização, faça commits a cada tarefa concluída. Vamos aos
 3. Crie um artigo que vai conter os fatos interessantes sobre o `Stomatopoda`. O artigo terá o subtítulo `Fatos sobre o Stomatopoda`. Segue [um site animal](https://theoatmeal.com/comics/mantis_shrimp) {: .external-link target="_blank" rel="noreferrer noopener" } de inspiração para pegar fatos.
 
 4. Divida o artigo em seções, organizando-o da seguinte forma:
-  1. Uma primeira seção contendo informações gerais a respeito do animal. O subtítulo para essa seção fica a seu critério. É necessário que conste nessa seção seu _nome científico_, que é `Odontodactylus scyllarus`, em itálico. Além disso, é preciso que haja informação tabular a respeito de sua classifição científica, em específico: `Reino `, `Filo `, `Subfilo `, `Classe `, `Subclasse ` e `Ordem`. Tais informações você consegue obter [na Wikipedia.](https://pt.wikipedia.org/wiki/Stomatopoda) {: .external-link target="_blank" rel="noreferrer noopener" }
+  1. Uma primeira seção contendo informações gerais a respeito do animal. O subtítulo para essa seção fica a seu critério. É necessário que conste nessa seção seu _nome científico_, que é `Odontodactylus scyllarus`, em itálico. Além disso, é preciso que haja informação tabular a respeito de sua classificação científica, em específico: `Reino `, `Filo `, `Subfilo `, `Classe `, `Subclasse ` e `Ordem`. Tais informações você consegue obter [na Wikipedia.](https://pt.wikipedia.org/wiki/Stomatopoda) {: .external-link target="_blank" rel="noreferrer noopener" }
 
   2. As outras seções dizem respeito aos fatos interessantes que você escolheu acerca do animal. Para cada fato escolhido você vai criar uma seção.
 
-  3. Adicione para cada seção um subtítulo referente ao fato escolhido.
+  3. Adicione, para cada seção, um subtítulo referente ao fato escolhido.
 
   4. Adicione, para cada seção, parágrafo(s) descrevendo o fato escolhido. Destaque características impressionantes referentes ao fato que você escolheu, de forma a reforçar a unicidade do `Stomatopoda`. Por exemplo: se você criar uma seção detalhando o soco potente do animal, seria interessante destacar a velocidade desse soco (80km/h) em negrito.
 
@@ -268,7 +268,7 @@ Para uma melhor organização, faça commits a cada tarefa concluída. Vamos aos
 "Conteúdo compilado por <insere seu nome>, <ano atual>".
 ```
 
-*Obs:* para esse exercício, é obrigatório fazer uso de **no mínimo** 6 elementos com as seguintes tags: `header`, `nav`, `article`, `section`, `h1`, `h2`, `h3,` `aside`, `footer`, `table` e `img`.
+*Obs:* para esse exercício, é obrigatório fazer uso de, **no mínimo**, 6 elementos com as seguintes tags: `header`, `nav`, `article`, `section`, `h1`, `h2`, `h3,` `aside`, `footer`, `table` e `img`.
 
 ---
 
@@ -296,7 +296,7 @@ _No fim do exercício, além de ter uma página acessível, você vai reforçar 
 
 ## Recursos adicionais (opcional)
 
-Os artigos sobre os displays `inline` e `block` possuem um vídeo, então caso você prefira aprender assistindo vídeo você terá essa possibilidade, visto que o conteúdo do artigo é o mesmo do vídeo. Fica a seu critério decidir através de qual forma se aprofundar no conteúdo, e claro você também ler o artigo e assistir ao vídeo.
+Os artigos sobre os displays `inline` e `block` possuem vídeos, então, caso você prefira aprender assistindo ao invés de lendo, não terá nenhum problema, visto que os conteúdos são os mesmos. Fica a seu critério decidir através de qual forma se aprofundar no conteúdo.
 
 * [Artigo - Pare de chutar e aprenda como funciona o display: inline](https://medium.com/collabcode/pare-de-chutar-e-aprenda-como-funciona-o-display-inline-4ccb7b77371d) {: .external-link target="_blank" rel="noreferrer noopener" }
 

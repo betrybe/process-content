@@ -1,3 +1,18 @@
+## Aula 11.2 - Componentes React!
+<%= vimeo "511312073" %>
+
+## Aula 11.1 - ‘Hello, world!’ no React!
+<%= vimeo "510880192" %>
+
+## Aula 10.3 - Jest - Simulando Comportamentos
+<%= vimeo "509252750" %>
+
+## Aula 10.2 - Jest - Testes Assíncronos
+<%= vimeo "508624953" %>
+
+## Aula 10.1 - Primeiros passos no Jest
+<%= vimeo "508185477" %>
+
 ## Casa de Câmbio
 <%= vimeo "506326661" %>
 

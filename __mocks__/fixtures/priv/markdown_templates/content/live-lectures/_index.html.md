@@ -23,4 +23,8 @@ Fique à vontade para assistir novamente uma aula e explorar as aulas das outras
 
 [Turma 9 - Início nov/2020](/live-lectures/sd-cohort-9)
 
+[Turma 10 - Tribo A - Início fev/2021](/live-lectures/sd-cohort-10-a)
+
+[Turma 10 - Tribo B - Início fev/2021](/live-lectures/sd-cohort-10-b)
+
 ---

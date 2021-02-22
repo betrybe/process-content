@@ -4,6 +4,8 @@ Hoje você irá aprender sobre a camada de `Model` e entenderá quais são suas 
 
 Além disso, você verá como realizar a conexão da sua aplicação com um banco de dados e aprenderá a acessar um banco MongoDB e também um banco MySQL.
 
+<%= vimeo "510250338" %>
+
 ---
 
 ### Você será capaz de:
@@ -21,6 +23,10 @@ Além disso, você verá como realizar a conexão da sua aplicação com um banc
 A intenção desse tema é iniciar sua visão arquitetural. Além disso, dividir sua aplicação em camadas facilita muito a manutenção, a adição de novas funcionalidades e a organização geral do seu código, pois você sabe exatamente onde cada coisa deve ficar.
 
 Quanto mais padrões você conhecer e quanto mais entender em quais cenários cada uma se aplica melhor, maiores as chances de o seu projeto ter sucesso.
+
+Assista o vídeo abaixo para entender um pouco da arquitetura MSC e sobre a camada de modelo que vamos aprender hoje.
+
+<%= vimeo "510421128" %>
 
 ---
 
@@ -93,7 +99,14 @@ VALUES
 ('Júlio', NULL, 'Verne', '1905-03-24', 'francês');
 ```
 
+Assista o vídeo abaixo para ver como criar a conexão com o MySQL e como utilizar para criar uma listagem de autores.
+
+<%= vimeo "510423024" %>
+
+Caso, prefira, leia os dois próximos tópicos para criar o começo da aplicação. 
+
 #### Estabelecendo uma conexão com o banco
+
 
 Com o banco criado e populado, vamos criar nosso projeto Node.js.
 
@@ -110,13 +123,13 @@ Agora, iniciamos um novo projeto Node.js, passando a flag `-y` para pular as per
 $ npm init -y
 ```
 
-Para nos comunicarmos com o MySQL, precisamos de um **driver**. Um driver é um software que permite que você se comunique com o banco de dados a partir de uma aplicação. Qual driver usar depende tanto da linguagem quanto do banco de dados que você está utilizando. Vamos instalar o `Node MySQL 2`:
+Para nos comunicarmos com o MySQL, precisamos de um **driver**. Um driver é um software que permite que você se comunique com o banco de dados a partir de uma aplicação. Qual driver usar depende tanto da linguagem quanto do banco de dados que você está utilizando. Vamos instalar o pacote `mysql2` executando o comando abaixo:
 
 ```language-bash
 $ npm install mysql2
 ```
 
-Agora, crie uma pasta `models` e, dentro dela, crie um arquivo `connection.js` na raiz do projeto e coloque nele o código abaixo. Lembre-se de substituir os campos `user` e `password` pelo usuário e senha que você utiliza para acessar o banco:
+Agora, na raiz do projeto crie uma pasta `models` e, dentro dela, crie um arquivo `connection.js` e coloque nele o código abaixo. Lembre-se de substituir os campos `user` e `password` pelo usuário e senha que você utiliza para acessar o banco:
 
 > models/connection.js
 
@@ -288,7 +301,41 @@ app.listen(PORT, () => {
 
 Em `index.js`, importamos o `express` e iniciamos uma nova aplicação. A essa aplicação, adicionamos uma nova rota `GET /authors`. Então fazemos como já havíamos aprendido anteriormente, passamos uma função que acessa os parâmetros `req` e `res`, que chama a função `getAll` do nosso `model`, aguarda sua execução e então retorna um `JSON` com os dados envíados pelo banco.
 
+##### Vamos praticar
+
+Vamos colocar em prática, tudo que aprendemos até aqui. Primeiro, cria a tabela `Books` usando o SQL abaixo
+
+```language-sql
+CREATE TABLE books (
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(90) NOT NULL,
+author_id INT(11) NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY (author_id) REFERENCES authors (id)
+);
+
+INSERT INTO books (title, author_id)
+VALUES
+('A Game of Thrones', 1),
+('A Clash of Kings', 1),
+('A Storm of Swords', 1),
+('The Lord of The Rings - The Fellowship of the Ring', 2),
+('The Lord of The Rings - The Two Towers', 2),
+('The Lord of The Rings - The Return of The King', 2),
+('Foundation', 3);
+```
+
+Depois de criar a tabela no banco de dados, faça as seguintes implementações.
+
+1. Crie um modelo Book e defina o método `getAll` para retornar a lista de todos os livros.
+2. Crie uma rota `books` para trazer a lista de todos os livros.
+3. Altere o middleware criado no passo 2 para que quando for enviado a query string com a chave `author_id`, retorne apenas os livros associados com o `author_id`.
+
 ##### Buscando pelos detalhes de um escritor
+
+Veja o vídeo a seguir ou leia o conteúdo para aprender a implementar uma busca por id.
+
+<%= vimeo "510425575" %>
 
 Agora vamos criar um endpoint para obter os detalhes de um escritor, a rota do endpoint é `/authors/:id`, onde `id` é o id do escritor.
 
@@ -344,7 +391,7 @@ const findById = async (id) => {
   const [
     authorData,
   ] = await connection.execute(
-    'SELECT  first_name, middle_name, last_name FROM mvc_example.authors WHERE id = ?',
+    'SELECT  first_name, middle_name, last_name FROM model_example.authors WHERE id = ?',
     [id]
   );
 
@@ -402,7 +449,17 @@ No `index.js`, registramos uma nova rota para obter os detalhes de um autor, ond
 
 No model, adicionamos o método `findById`. Esse método é muito semelhante a `getAll`. A grande diferença é que usamos o `where` na nossa query para limitar o escopo da busca ao escritor procurado. Em vez de passar valores diretamente na string, fazendo interpolação, é uma boa prática separar os valores da string. Fazemos isso usando '?' como parâmetros na string e usando, como segundo argumento, um array que contém os valores que devem substituir o ?, na ordem.
 
+##### Vamos praticar!
+
+Continuando o exercício anterior faça o seguinte.
+
+1. Crie uma rota `/books/:id` e retorne o livro de acordo com o id passado por parâmetro. Se não existir retorne um json no seguinte formato `{ message: 'Not found' }`.
+
 #### Criando um novo escritor
+
+Veja o vídeo a seguir ou leia o conteúdo para aprender a implementar um cadastro de autor.
+
+<%= vimeo "510436535" %>
 
 Agora vamos incrementar nossa aplicação para permitir a criação de novos escritores.
 
@@ -444,7 +501,7 @@ Primeiro, vamos adicionar dois métodos no nosso model.
 
 // const getAll = async () => {
 //   const [authors] = await connection.execute(
-//     'SELECT id, first_name, middle_name, last_name FROM mvc_example.authors;',
+//     'SELECT id, first_name, middle_name, last_name FROM model_example.authors;',
 //   );
 //   return authors.map(serialize).map(getNewAuthor);
 // };
@@ -457,7 +514,7 @@ Primeiro, vamos adicionar dois métodos no nosso model.
 //   const [
 //     authorData,
 //   ] = await connection.execute(
-//     'SELECT  first_name, middle_name, last_name FROM mvc_example.authors WHERE id = ?',
+//     'SELECT  first_name, middle_name, last_name FROM model_example.authors WHERE id = ?',
 //     [id],
 //   );
 
@@ -477,7 +534,7 @@ const isValid = (firstName, middleName, lastName) => {
 };
 
 const create = async (firstName, middleName, lastName) => connection.execute(
-  'INSERT INTO mvc_example.authors (first_name, middle_name, last_name) VALUES (?,?,?)',
+  'INSERT INTO model_example.authors (first_name, middle_name, last_name) VALUES (?,?,?)',
   [firstName, middleName, lastName],
 );
 
@@ -544,11 +601,26 @@ res.status(201).({ message: 'Autor criado com sucesso! '});
 
 A rota `POST /authors` extrai as informações do autor que chegam em `req.body` e verifica se os dados enviados são válidos. Caso não sejam, o endpoint retorna um `JSON` com uma mensagem informando o que houve, juntamente como o `status 400`, que indica uma requisição ruim, no caso com dados inválidos. Caso os dados sejam válidos, pede ao modelo para criar um novo escritor e retorna um `JSON` com uma mensagem indicando que o autor foi criado com sucesso.
 
+##### Vamos praticar
+
+1. Ainda usando a tabela books como referência crie uma rota `books` do tipo `POST`. Faça as seguintes validações:
+
+* Título não pode ser vazio;
+* Título precisa ter pelo menos três caracteres;
+* O campo `author_id` não pode ser vazio;
+* O campo `author_id` só é válido se existir um autor com esse id;
+
+Se algum dos requisitos anteriores não for atendido, retornar um json no seguinte formato `{ message: 'Dados inválidos' }` com `status 400`. Caso contrário, insira o livro na tabela `books` e retorne o json `{ message: 'Livro criado com sucesso! '}` com o `status 200`.
+
 ### Model com MongoDB
 
 Como dissemos anteriormente, uma das maiores vantagens que a camada de `model` nos traz é que, independentemente de como os dados são armazenados, a representação e as responsabilidades do modelo não mudam.
 
 A aplicação que construímos na seção anterior utilizava MySQL como _data storage_. Nessa seção, vamos trocar o MySQL pelo MongoDB. Isso servirá a dois propósitos: mostrar como acessar o MongoDB a partir de aplicações Node.js e exemplificar como é possível trocar nosso _data storage_ com algumas poucas alterações na camada de `model`, sem afetar as demais.
+
+Assista o vídeo abaixo ou leia o conteúdo para ver como refatorar nossa aplicação para utilizar mongodb.
+
+<%= vimeo "510437917" %>
 
 #### Populando o banco
 
@@ -591,15 +663,16 @@ const { MongoClient } = require('mongodb');
 const MONGO_DB_URL = 'mongodb://127.0.0.1:27017';
 
 const connection = () => {
-return MongoClient
-.connect(MONGO_DB_URL, {
-useNewUrlParser: true,
-useUnifiedTopology: true})
-.then((conn) => conn.db('model_example'))
-.catch((err) => {
-console.error(err);
-process.exit(1);
-});
+  return MongoClient
+    .connect(MONGO_DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((conn) => conn.db('model_example'))
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
 };
 
 module.exports = connection;
@@ -626,22 +699,21 @@ Altere o modelo `Author`, modificando o método `getAll` para ficar desta forma:
 ```language-js
 // const connection = require('./connection');
 
-// // Busca todos os autores do banco.
-
-// const getAll = async () =>
-// connection()
-.then((db) => db.collection('authors').find().toArray())
-.then((authors) =>
-authors.map(({ \_id, firstName, middleName, lastName }) =>
-// getNewAuthor({
-id: \_id,
-// firstName,
-// middleName,
-// lastName,
-// })
-// )
-// );
-
+// Busca todos os autores do banco.
+const getAll = async () => {
+  return connection()
+    .then((db) => db.collection('authors').find().toArray())
+    .then((authors) =>
+      authors.map(({ _id, firstName, middleName, lastName }) =>
+        getNewAuthor({
+          id: _id,
+          firstName,
+          middleName,
+          lastName,
+        })
+      )
+  );
+}
 // ...
 ```
 
@@ -650,6 +722,25 @@ O método `getAll` continua funcionando de forma parecida. Ela busca no banco to
 A API que o pacote `mongodb` oferece é bem semelhante à que usamos no cliente do MongoDB, com pequenas mudanças. Em vez de fazer `db.authors.find()`, por exemplo, precisamos fazer `db.collection('authors').find()`. Além de `find`, você pode utilizar outros métodos conhecidos, como `findOne`, `insertMany` e `updateMany`.
 
 Inicie a aplicação com `node index.js` e faça uma requisição `GET` para `http://localhost:3000/authors`. A listagem de autores continua funcionando, mas agora os dados estão sendo lidos do MongoDB. Não precisamos alterar nada fora da camada de modelo. 😉
+
+##### Vamos praticar
+
+Vamos aplicar as alterações do nosso modelo `Book`, primeiro vamos criar e popular uma coleção com a mesma lista de livros que salvamos no mysql.
+
+```language-javascript
+db.books.insertMany([
+  { title: 'A Game of Thrones', author_id: 1 },
+  { title: 'A Clash of Kings', author_id: 1 },
+  { title: 'A Storm of Swords', author_id: 1 },
+  { title: 'The Lord of The Rings - The Fellowship of the Ring', author_id: 2 },
+  { title: 'The Lord of The Rings - The Two Towers', author_id: 2 },
+  { title: 'The Lord of The Rings - The Return of The King', author_id: 2 },
+  { title: 'Foundation', author_id: 3 },
+]);
+```
+
+1. Refatore o método `getAll` de `models/Book` para utilizar o mongo como banco de dados.
+2. Refatore o método `getByAuthorId` de `models/Book` para utilizar o mongo como banco de dados.
 
 #### Obtendo detalhes de um escritor
 
@@ -668,19 +759,19 @@ const { ObjectId } = require('mongodb');
 
 // ...
 
-// // Busca um autor específico, a partir do seu ID
-// // @param {String} id ID do autor a ser recuperado
+// Busca um autor específico, a partir do seu ID
+// @param {String} id ID do autor a ser recuperado
 
-// const findById = async (id) => {
-// const authorData = await connection()
-.then((db) => db.collection('authors').findOne(ObjectId(id)));
+const findById = async (id) => {
+  const authorData = await connection()
+    .then((db) => db.collection('authors').findOne(ObjectId(id)));
 
-// if (!authorData) return null;
+  if (authorData) return null;
 
-const { firstName, middleName, lastName } = authorData;
+  const { firstName, middleName, lastName } = authorData;
 
-// return getNewAuthor({ id, firstName, middleName, lastName });
-// };
+  return getNewAuthor({ id, firstName, middleName, lastName });
+};
 
 // ...
 ```
@@ -688,6 +779,13 @@ const { firstName, middleName, lastName } = authorData;
 Aqui usamos `findOne(ObjectId(id))`, uma sintaxe mais sucinta que podemos empregar quando estamos filtrando documentos pelo campo `_id`. Também poderíamos usar a versão completa e mais verbosa: `findOne({ _id: new ObjectId(id) })`.
 
 Reinicie o servidor e faça a requisição de detalhes de alguns escritores.
+
+##### Vamos praticar
+
+Continuando a refatorar nosso CRUD de livros, agora faça o seguinte:
+
+1. Refatore o método `getById` de `models/Book` para utilizar o mongo como banco de dados.
+
 
 #### Criando um novo escritor
 
@@ -717,6 +815,11 @@ $ npm uninstall mysql2
 ```
 
 E é isso! Nossa aplicação continua funcionando 100%. E o melhor é que não foi preciso mudar **absolutamente nada** no `index.js`!
+
+Continuando a refatorar nosso CRUD de livros, agora faça o seguinte:
+
+1. Refatore o método `create` de `models/Book` para utilizar o mongo como banco de dados.
+
 
 ---
 

@@ -200,7 +200,7 @@ LIMIT 20;
 
 ### Soluções Encontrando dados em um banco de dados
 
-**Exercício 5:** Faça os exercícios de 1 a 10.
+**Exercício 1**: Faça as tarefas de 1 a 15.
 
 1. Escreva uma query para exibir a string "This is SQL Exercise, Practice and Solution".
 
@@ -236,46 +236,84 @@ SELECT * FROM Scientists;
 6. Escreva uma query para exibir o nome e as horas de cada projeto.
 
 ```language-sql
-SELECT Name, Hours FROM Projects;
+SELECT Name AS 'Nome do Projeto', Hours AS 'Tempo de Trabalho' FROM Projects;
 ```
 
-7. Escreva uma query para exibir o nome e as horas dos três projetos com a maior quantidade de horas.
+6. Escreva uma query para exibir o nome dos cientistas em ordem alfabética ascendente.
+
+```language-sql
+SELECT Name FROM Scientists
+ORDER BY Name ASC;
+```
+
+8. Escreva uma query para exibir o nome dos Projetos em ordem alfabética descendente.
+
+```language-sql
+SELECT Name FROM Projects
+ORDER BY Name DESC;
+```
+
+9. Escreva uma query que exiba a string "O projeto `Name` precisou de `Hours` horas para ser concluído." para cada projeto.
+
+```language-sql
+SELECT CONCAT('O projeto ', Name, ' precisou de ', Hours, ' horas para ser concluído.') FROM Projects;
+```
+
+10. Escreva uma query para exibir o nome e as horas dos três projetos com a maior quantidade de horas.
 
 ```language-sql
 SELECT Name, Hours FROM Projects
 ORDER BY Hours DESC LIMIT 3;
 ```
 
-8. Escreva uma query para exibir o código de todos os projetos da tabela AssignedTo sem que haja repetições.
+11. Escreva uma query para exibir o código de todos os projetos da tabela AssignedTo sem que haja repetições.
 
 ```language-sql
 SELECT DISTINCT Project FROM AssignedTo;
 ```
 
-9. Escreva uma query para exibir todos os cientistas cujos projetos são Ast3 .
+12. Escreva uma query para exibir o nome do projeto com maior quantidade de horas.
 
 ```language-sql
-SELECT Scientist FROM AssignedTo
-WHERE Project = ‘Ast3’;
+SELECT Name FROM Projects
+ORDER BY Hours DESC
+LIMIT 1;
 ```
 
-10. Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
+13. Escreva uma query para exibir o nome do segundo projeto com menor quantidade de horas.
+
+```language-sql
+SELECT Name FROM Projects
+ORDER BY Hours ASC
+LIMIT 1
+OFFSET 1;
+```
+
+14. Escreva uma query para exibir todas as informações dos cinco projetos com a menor quantidade de horas.
 
 ```language-sql
 SELECT * FROM Projects
 ORDER BY Hours ASC LIMIT 5;
 ```
 
+15. Escreva uma query que exiba a string "Existem `Number` cientistas na tabela Scientists.", em que `Number` se refira a quantidade de cientistas.
+
+```language-sql
+SELECT CONCAT('Existem ', COUNT(Name), ' cientistas na tabela Scientists.') FROM Scientists;
+```
+
 **Bônus**
 
-**Exercício 6:** Exercícios do 1 ao 5:
+**Exercício 2:** Tarefas do 1 ao 4:
 
-1. Escreva uma query para exibir a peça e o preço de tudo que é provido pela empresa RBT .
+1. Escreva uma query para ordernar o nome das empresas de forma alfabética descendente e que retorne somente o código e o nome da primeira empresa.
 
 ```language-sql
 USE PiecesProviders;
 
-SELECT Piece, Provider, Price FROM Provides WHERE Provider = ‘RBT’;
+SELECT Code, Name FROM Providers
+ORDER BY Name DESC
+LIMIT 1;
 ```
 
 2. Escreve uma query para exibir todas as informações das cinco peças com os maiores preços.
@@ -292,18 +330,14 @@ SELECT DISTINCT Provider, Price FROM Provides
 ORDER BY Price DESC LIMIT 4 OFFSET 3;
 ```
 
-4. Escreva uma query para exibir todas as informações das peças que são providas pela empresa HAL . Ordene o resultado pelos preços das peças de forma decrescente.
+4. Escreva uma query para exibir a string "A peça mais cara é a: `Piece` , provida pela empresa `Provider` e custa `Price` reais.", essa query deve retornar somene uma única string, sendo que `Price` se refere ao maior preço.
 
 ```language-sql
-SELECT * FROM Provides WHERE Provider = ‘HAL’
-ORDER BY Price DESC;
+SELECT CONCAT('A peça mais cara é a: ', Piece, ', provida pela empresa ', Provider, ' e custa ', Price, ' reais.') FROM Provides
+ORDER BY Price DESC
+LIMIT 1;
 ```
 
-5. Escreva uma query para exibir por quantas empresas a peça 1 é provida.
-
-```language-sql
-SELECT Provider FROM Provides WHERE Piece = ‘1’;
-```
 
 ### Soluções LIKE
 

@@ -16,7 +16,7 @@ Na primeira parte da sua jornada através do **HTML & CSS**, você vai aprender 
 
 ## Por que isso é importante?
 
-Para trabalhar com desenvolvimento web, não é **estritamente necessário** aprender HTML e CSS. Porém, no decorrer da sua carreira, certamente você vai se deparar com código e/ou aplicações inteiras que rodam no **cliente**. Então o quanto antes você iniciar seu contato com as linguagens de marcação, estilo e comportamento utilizadas no cliente (por exemplo, os _browsers_), mais rápido irá desenvolver as habilidades necessárias para criar páginas web cada vez mais robustas!
+Para trabalhar com desenvolvimento web, não é **estritamente necessário** aprender HTML e CSS. Porém, no decorrer da sua carreira, certamente você vai se deparar com código e/ou aplicações inteiras que rodam no **cliente**. Então, o quanto antes você iniciar seu contato com as linguagens de marcação, estilo e comportamento utilizadas no cliente (por exemplo, os _browsers_), mais rápido irá desenvolver as habilidades necessárias para criar páginas web cada vez mais robustas!
 
 O _HTML_ e o _CSS_ são duas das pedras fundamentais no desenvolvimento web. São duas linguagens muito poderosas, que te permitem criar páginas web do zero e são utilizadas como base para inúmeras outras tecnologias de desenvolvimento web, como vamos aprender ao longo do curso.
 
@@ -30,19 +30,19 @@ Você pode pensar no HTML como se fosse o **esqueleto** da sua página. É atrav
 
 Para que você aprenda na prática, a partir de agora vamos ter vários conteúdos interativos, por meio dos quais você irá seguir a teoria e fazer exercícios ao mesmo tempo. Vamos lá!
 
-Você irá desenvolver alguns desafios entre os vídeos, para subi-los para o seu repositório de exercícios, siga as instruções abaixo:
+Você irá desenvolver alguns desafios entre os vídeos. Para subi-los para o seu repositório de exercícios, siga as instruções abaixo:
 
-1. Acesse seu repositório de exercícios, `trybe-exercises`. Caso ainda não tenha um crie-o e então siga para os próximos passos;
+1. Acesse seu repositório de exercícios, `trybe-exercises`. Caso ainda não tenha um, crie-o e então siga para os próximos passos;
 
 ```language-sh
 $ cd trybe-exercises
 ```
-2. Então crie uma `branch` para os desafios de hoje, a partir da `master`;
+2. Crie uma `branch` para os desafios de hoje, a partir da `master`;
 
 ```language-sh
 $ git checkout -b exercises/3.1
 ```
-3. Já dentro dá `branch exercises/3.1` crie uma pasta para o bloco em que você se encontra, caso ainda não tenha o feito, e então dentro dessa pasta crie uma outra pasta para os arquivos dos desafios de hoje;
+3. Já dentro da `branch exercises/3.1`, crie uma pasta para o bloco em que você se encontra **(caso ainda não o tenha feito)**, e então, dentro dessa pasta, crie uma outra pasta para os arquivos dos desafios de hoje;
 
 ```language-sh
 $ mkdir bloco_3
@@ -50,9 +50,8 @@ $ cd bloco_3
 $ mkdir dia_1
 $ cd dia_1
 ```
-4. Desenvolva os exercícios de conteúdo;
-5. Crie ou altere um arquivo `.html` para cada exercício. Repita esse processo para cada desafio que for desenvolvendo;
-6. Após finalizar os exercícios propostos para hoje commite tudo o que fez e abra um PR no seu repositório de exercícios no `GitHub`.
+4. Desenvolva os exercícios de conteúdo criando ou alterando o html de cada um;
+5. Após finalizar os exercícios propostos da parte de conteúdo, faça o commit de tudo o que fez e abra um PR no seu repositório de exercícios no `GitHub` .
 
 ```language-sh
 $ git add .
@@ -64,7 +63,7 @@ $ git push -u origin exercises/3.1
 
 ### Parte I
 
-Primeiro você verá o que é o HTML e onde ele surgiu!
+Primeiro, você verá o que é o HTML e onde ele surgiu!
 
 <%= vimeo "465938716" %>
 
@@ -75,6 +74,8 @@ Primeiro você verá o que é o HTML e onde ele surgiu!
 Nesse vídeo você terá contato com as primeiras `tags` e entenderá como os elementos se relacionam.
 
 <%= vimeo "465923655" %>
+
+Para executar o seu código enquanto o desenvolve, utilize a extensão `Live Server`. Para saber mais sobre ela [acesse nosso conteúdo](/real-life-engineer/vscode#live-server) sobre isso.
 
 ```language-html
 <!DOCTYPE html>
@@ -148,11 +149,13 @@ Com este exercício, você será capaz de:
 
 ### Construindo seu primeiro Portfólio Web!
 
-Antes de começar, você deve seguir as instruções a seguir e fazer o setup para o exercício de hoje:
+Antes de começar, tenha em mente que, por estar utilizando o GitHub Pages, a maneira como você versionará seu código do exercício de hoje (e dos próximos dois dias) é um pouco diferente da forma como o realizará no decorrer do curso. Para os exercícios relacionados ao seu Portfólio Web, você não utilizará seu diretório `trybe-exercises`.
 
-1. Criar um novo diretório onde você vai desenvolver o seu portfolio. É importante que ele seja criado _fora do seu diretório de exercícios_, pois a sua manutenção daqui em diante será feita em outro ambiente;
-2. Iniciar um novo repositório local com `Git` no diretório que você criou na etapa 1;
-3. Criar um arquivo index.html.
+Você deve seguir as instruções a seguir e fazer o setup para o exercício de hoje:
+
+1. Crie um novo diretório onde você vai desenvolver o seu portfólio. É importante que ele seja criado _fora do seu diretório de exercícios_, pois a sua manutenção daqui em diante será feita em outro ambiente;
+2. Inicie um novo repositório local com `Git` no diretório que você criou na etapa 1;
+3. Crie um arquivo `index.html`;
 4. Para executar o seu código enquanto o desenvolve, utilize a extensão `Live Server`. Para saber mais sobre ela [acesse nosso conteúdo](/real-life-engineer/vscode#live-server) sobre isso.
 
 ---
@@ -181,7 +184,7 @@ Seu Portfólio Web deve ter as seguintes informações:
 
 ### Dicas
 
-Parabéns, você aprendeu `Git`! Agora, sempre que você finalizar um dos requisitos_, **faça um novo commit**, assim você mantém o histórico das alterações e deixa o código organizado.
+Parabéns, você aprendeu `Git`! Agora, sempre que você finalizar um dos requisitos, **faça um novo commit**, assim você mantém o histórico das alterações e deixa o código organizado.
 
 ---
 
@@ -197,7 +200,7 @@ Para isso, basta seguir as instruções abaixo:
 
 ## Recursos adicionais (opcional)
 
-E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras referências para você se aprofundar sobre o tema. Artigos, tutoriais, livros etc…
+E aí, gostou do que aprendeu até aqui? Nesta parte, vamos colocar outras referências para você se aprofundar sobre o tema. Artigos, tutoriais, livros etc…
 
 * [Tutorial - Como utilizar as ferramentas de desenvolvedor do browser](https://www.khanacademy.org/computing/computer-programming/html-css/web-development-tools/a/using-the-browser-developer-tools) {: .external-link target="_blank" rel="noreferrer noopener" }
 
@@ -207,7 +210,7 @@ E aí, gostou do que aprendeu até aqui? Nesta parte, nós colocamos outras refe
 
 * [Curso Online Gratuito - Introdução ao HTML - Scrimba](https://scrimba.com/g/ghtml) {: .external-link target="_blank" rel="noreferrer noopener" }
 
-* [Curso Online Gratuito - HTML, CSS, e JavaScript para desenvolvedores web](https://www.coursera.org/learn/html-css-javascript-for-web-developers/home/welcome) {: .external-link target="_blank" rel="noreferrer noopener" }
+* [Curso Online Gratuito - HTML, CSS e JavaScript para desenvolvedores web](https://www.coursera.org/learn/html-css-javascript-for-web-developers/home/welcome) {: .external-link target="_blank" rel="noreferrer noopener" }
 
 * [Tutorial - Série de artigos ensinando HTML & CSS](https://internetingishard.com/) {: .external-link target="_blank" rel="noreferrer noopener" }
 
