@@ -127,6 +127,22 @@ Add Enviroment Variables
 cp .env.example .env
 ```
 
+Notice that in the `.env` file we have the **CONTENT_API_KEY** environment variable. Change its current value, from `<API_KEY>` to the value you want to use. It can be any value, for example:
+
+```
+CONTENT_API_KEY = dev_test_key
+```
+
+After doing this, go to the file `dev.exs` of the project **Trybe**. In this file add the following line to `config: trybe`:
+
+```
+content_api: "dev_test_key"
+```
+
+~~**PS:**~~ if your Trybe project is running, restart it.
+
+**Importante**: Make sure that the `FILES_PATH` and` ASSETS_PATH` environment variables really reflect the path that your `.md` files and images are in.
+
 Run locally
 
 ```bash
