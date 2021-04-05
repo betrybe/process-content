@@ -97,11 +97,11 @@ describe('Files', () => {
     s3.uploadToBucket
       .mockResolvedValueOnce({ ETag: 'bebda3f165aede5d08136413d13dca70' });
 
-    const urlHashObj = await files.processAssetContent(assetPath);
+    const urlHashObj = await files.processAssetContent(assetPath, '__mocks__/fixtures/assets/static');
 
     expect(typeof urlHashObj).toBe('object');
     expect(urlHashObj).toEqual({
-      [assetPath]: '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png',
+      '/agile/scrum.png': '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png',
     });
   });
 });

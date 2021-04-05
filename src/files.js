@@ -97,7 +97,7 @@ const getAssetsFiles = async (path) => {
   return sanitizedArrayOfAssets;
 };
 
-const processAssetContent = async (assetPath) => {
+const processAssetContent = async (assetPath, path) => {
   const { assetContent } = await extractFileInfo(assetPath);
   const assetContentMd5 = generateContentMd5Hash(assetPath, assetContent);
   const fileType = getExtension(assetPath);
@@ -105,7 +105,9 @@ const processAssetContent = async (assetPath) => {
 
   await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
 
-  return { [assetPath]: assetUrlHash };
+  const relativeAssetPath = assetPath.replace(path, '');
+
+  return { [relativeAssetPath]: assetUrlHash };
 };
 
 const buildAssets = async (path) => {
@@ -113,7 +115,7 @@ const buildAssets = async (path) => {
 
   core.info(`Processing ${arrayOfAssets.length} Assets`);
   return Promise.all(
-    arrayOfAssets.map((assetPath) => processAssetContent(assetPath)),
+    arrayOfAssets.map((assetPath) => processAssetContent(assetPath, path)),
   );
 };
 
