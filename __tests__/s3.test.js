@@ -2,10 +2,10 @@ const fs = require('fs');
 const s3Service = require('../src/s3');
 
 const readMockFile = (path) => fs.readFileSync(path, 'utf8');
-const putObjectOutputMock = { promise: jest.fn().mockResolvedValue({ ETag: 'bebda3f165aede5d08136413d13dca70' }) };
-const putObjectMock = jest.fn(() => putObjectOutputMock);
+const uploadOutputMock = { promise: jest.fn().mockResolvedValue({ Location: '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png' }) };
+const uploadMock = jest.fn(() => uploadOutputMock);
 const mockS3 = {
-  putObject: putObjectMock,
+  upload: uploadMock,
 };
 
 jest.mock('aws-sdk', () => ({ S3: jest.fn(() => mockS3) }));
@@ -17,10 +17,10 @@ describe('S3 Client Actions', () => {
     const assetPath = '__mocks__/fixtures/assets/static/agile/scrum.png';
     const rawAssetBlob = readMockFile(assetPath);
 
-    const result = await s3Service.uploadToBucket(rawAssetBlob, assetPath);
+    const result = await s3Service.imageUpload(rawAssetBlob, assetPath, '.png');
 
-    expect(typeof result).toBe('string');
-    expect(result).toEqual('bebda3f165aede5d08136413d13dca70');
-    expect(putObjectMock).toHaveBeenCalled();
+    expect(typeof result).toBe('object');
+    expect(result).toHaveProperty('Location', '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png');
+    expect(uploadMock).toHaveBeenCalled();
   });
 });

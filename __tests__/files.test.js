@@ -95,7 +95,7 @@ describe('Files', () => {
       .mockResolvedValueOnce(assetContent);
 
     s3.uploadToBucket
-      .mockResolvedValueOnce({ ETag: 'bebda3f165aede5d08136413d13dca70' });
+      .mockResolvedValueOnce('__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png');
 
     const urlHashObj = await files.processAssetContent(assetPath, '__mocks__/fixtures/assets/static');
 
