@@ -103,11 +103,11 @@ const processAssetContent = async (assetPath, path) => {
   const fileType = getExtension(assetPath);
   const assetUrlHash = buildAssetHashUrl(assetPath, assetContentMd5);
 
-  await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
+  const s3UrlLocation = await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
 
   const relativeAssetPath = assetPath.replace(path, '');
 
-  return { [relativeAssetPath]: assetUrlHash };
+  return { [relativeAssetPath]: s3UrlLocation };
 };
 
 const buildAssets = async (path) => {
