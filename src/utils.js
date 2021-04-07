@@ -1,13 +1,13 @@
-const path = require('path');
-
 const sanitizeExtension = (file) => file.replace(/\.[^/.]+$/, '');
+
+const getExtension = (file) => file.split('.').pop();
 
 const verifyFileMatching = (file1, file2) =>
   sanitizeExtension(file1).includes(sanitizeExtension(file2))
-  && path.extname(file1) !== path.extname(file2);
+    && getExtension(file1) !== getExtension(file2);
 
 const sanitizeFilesArray = (fileArray) =>
-  fileArray.split('\n').filter((file) => path.extname(file) !== 'eex' && file !== '' && path.extname(file) !== 'mp4');
+  fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '' && getExtension(file) !== 'mp4');
 
 const urlSanitizer = (url) => url.replace('https://', 'https:\\/\\/');
 
