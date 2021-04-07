@@ -1,29 +1,20 @@
 const core = require('@actions/core');
 const crypto = require('crypto');
+const path = require('path');
 const gitCommands = require('./git');
 const s3 = require('./s3');
+const utils = require('./utils');
 
-const sanitizeExtension = (file) => file.replace(/\.[^/.]+$/, '');
+const extractFileInfo = async (filePath) => {
+  const commitId = await gitCommands.getCommitId(filePath);
+  const blobContent = await gitCommands.getBlobContent(commitId, filePath);
 
-const getExtension = (file) => file.split('.').pop();
-
-const verifyFileMatching = (file1, file2) =>
-  sanitizeExtension(file1).includes(sanitizeExtension(file2))
-  && getExtension(file1) !== getExtension(file2);
-
-const sanitizeFilesArray = (fileArray) =>
-  fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '' && getExtension(file) !== 'mp4');
-
-const extractFileInfo = async (path) => {
-  const commitId = await gitCommands.getCommitId(path);
-  const blobContent = await gitCommands.getBlobContent(commitId, path);
-
-  if (getExtension(path) === 'md') {
+  if (path.extname(filePath) === '.md') {
     return {
       markdownCommitId: commitId,
       contentMd: blobContent,
     };
-  } if (getExtension(path) === 'yaml') {
+  } if (path.extname(filePath) === '.yaml') {
     return {
       yamlCommitId: commitId,
       contentYaml: blobContent,
@@ -49,9 +40,9 @@ const buildChapterObj = async (chapterObj) => {
 const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, index, array) => {
   if (index === array.length) return groupedFiles;
 
-  if (getExtension(currentPath).includes('yaml')) return groupedFiles;
+  if (path.extname(currentPath).includes('.yaml')) return groupedFiles;
 
-  const filesMatch = verifyFileMatching(currentPath, array[index + 1]);
+  const filesMatch = utils.verifyFileMatching(currentPath, array[index + 1]);
 
   if (filesMatch) {
     const markdownPath = currentPath;
@@ -63,10 +54,10 @@ const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, ind
   return groupedFiles;
 }, []);
 
-const buildChapters = async (path) => {
-  const arrayOfFiles = await gitCommands.getFiles(path);
+const buildChapters = async (chapterPath) => {
+  const arrayOfFiles = await gitCommands.getFiles(chapterPath);
 
-  const sanitizedArrayOfFiles = sanitizeFilesArray(arrayOfFiles);
+  const sanitizedArrayOfFiles = utils.sanitizeFilesArray(arrayOfFiles);
 
   const chapterArrayOfObj = groupFiles(sanitizedArrayOfFiles);
 
@@ -76,10 +67,10 @@ const buildChapters = async (path) => {
   );
 };
 
-const buildAssetHashUrl = (path, blobHash) => {
-  const extension = getExtension(path);
-  const pathSuffix = path.substring(0, path.lastIndexOf('.'));
-  const newHashUrl = `${pathSuffix}-${blobHash}.${extension}`;
+const buildAssetHashUrl = (assetPath, blobHash) => {
+  const extension = path.extname(assetPath);
+  const pathSuffix = assetPath.substring(0, assetPath.lastIndexOf('.')).split('static/').pop();
+  const newHashUrl = `${pathSuffix}-${blobHash}${extension}`;
 
   return newHashUrl;
 };
@@ -89,27 +80,29 @@ const generateContentMd5Hash = (fileContent) => {
   return contentMd5;
 };
 
-const getAssetsFiles = async (path) => {
-  const arrayOfAssets = await gitCommands.getFiles(path);
+const getAssetsFiles = async (assetsPath) => {
+  const arrayOfAssets = await gitCommands.getFiles(assetsPath);
 
-  const sanitizedArrayOfAssets = sanitizeFilesArray(arrayOfAssets);
+  const sanitizedArrayOfAssets = utils.sanitizeFilesArray(arrayOfAssets);
 
   return sanitizedArrayOfAssets;
 };
 
 const processAssetContent = async (assetPath) => {
   const { assetContent } = await extractFileInfo(assetPath);
+
   const assetContentMd5 = generateContentMd5Hash(assetPath, assetContent);
-  const fileType = getExtension(assetPath);
   const assetUrlHash = buildAssetHashUrl(assetPath, assetContentMd5);
 
-  await s3.uploadToBucket(assetUrlHash, assetPath, fileType);
+  const location = await s3.uploadToBucket(assetUrlHash, assetPath);
+  const s3UrlLocation = utils.urlSanitizer(location);
+  const relativeAssetPath = assetPath.split('static').pop();
 
-  return { [assetPath]: assetUrlHash };
+  return { [relativeAssetPath]: s3UrlLocation };
 };
 
-const buildAssets = async (path) => {
-  const arrayOfAssets = await getAssetsFiles(path);
+const buildAssets = async (assetsPath) => {
+  const arrayOfAssets = await getAssetsFiles(assetsPath);
 
   core.info(`Processing ${arrayOfAssets.length} Assets`);
   return Promise.all(

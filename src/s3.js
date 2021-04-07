@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const path = require('path');
 const logger = require('./logger');
 
 const credentials = {
@@ -8,22 +9,27 @@ const credentials = {
   secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
 };
 
-const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
+const imageUpload = (assetUrlHash, assetBlob, fileType) => {
+  const s3BucketClient = new AWS.S3(credentials);
+
+  const params = {
+    Bucket: core.getInput('bucketName') || process.env.BUCKET_NAME,
+    Key: assetUrlHash,
+    Body: assetBlob,
+    ContentType: `image/${fileType}`,
+  };
+
+  return s3BucketClient.upload(params, {}).promise();
+};
+
+const uploadToBucket = async (assetUrlHash, assetPath) => {
   try {
-    const s3BucketClient = new AWS.S3(credentials);
-
     const assetBlob = fs.readFileSync(assetPath);
+    const fileType = path.extname(assetPath);
 
-    const params = {
-      Bucket: core.getInput('bucketName') || process.env.BUCKET_NAME,
-      Key: assetUrlHash,
-      Body: assetBlob,
-      ContentType: `image/${fileType}`,
-    };
+    const { Location } = await imageUpload(assetUrlHash, assetBlob, fileType);
 
-    const { ETag } = await s3BucketClient.putObject(params).promise();
-
-    return ETag;
+    return Location;
   } catch (error) {
     const logBody = {
       path: assetPath,
@@ -37,4 +43,5 @@ const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
 
 module.exports = {
   uploadToBucket,
+  imageUpload,
 };

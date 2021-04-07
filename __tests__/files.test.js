@@ -84,7 +84,7 @@ describe('Files', () => {
     const newHashUrl = files.buildAssetHashUrl(assetPath, 'c0c1cebaf505a08a0c63d2437ad338c7');
 
     expect(typeof newHashUrl).toBe('string');
-    expect(newHashUrl).toEqual('__mocks__/fixtures/assets/static/agile/scrum-c0c1cebaf505a08a0c63d2437ad338c7.png');
+    expect(newHashUrl).toEqual('agile/scrum-c0c1cebaf505a08a0c63d2437ad338c7.png');
   });
 
   test('Builds array of assets new hash urls', async () => {
@@ -95,13 +95,13 @@ describe('Files', () => {
       .mockResolvedValueOnce(assetContent);
 
     s3.uploadToBucket
-      .mockResolvedValueOnce({ ETag: 'bebda3f165aede5d08136413d13dca70' });
+      .mockResolvedValueOnce('__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png');
 
-    const urlHashObj = await files.processAssetContent(assetPath);
+    const urlHashObj = await files.processAssetContent(assetPath, '__mocks__/fixtures/assets/static');
 
     expect(typeof urlHashObj).toBe('object');
     expect(urlHashObj).toEqual({
-      [assetPath]: '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png',
+      '/agile/scrum.png': '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png',
     });
   });
 });
