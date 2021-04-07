@@ -84,7 +84,7 @@ describe('Files', () => {
     const newHashUrl = files.buildAssetHashUrl(assetPath, 'c0c1cebaf505a08a0c63d2437ad338c7');
 
     expect(typeof newHashUrl).toBe('string');
-    expect(newHashUrl).toEqual('__mocks__/fixtures/assets/static/agile/scrum-c0c1cebaf505a08a0c63d2437ad338c7.png');
+    expect(newHashUrl).toEqual('agile/scrum-c0c1cebaf505a08a0c63d2437ad338c7.png');
   });
 
   test('Builds array of assets new hash urls', async () => {

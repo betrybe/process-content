@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const path = require('path');
 const logger = require('./logger');
 
 const credentials = {
@@ -21,9 +22,10 @@ const imageUpload = (assetUrlHash, assetBlob, fileType) => {
   return s3BucketClient.upload(params, {}).promise();
 };
 
-const uploadToBucket = async (assetUrlHash, assetPath, fileType) => {
+const uploadToBucket = async (assetUrlHash, assetPath) => {
   try {
     const assetBlob = fs.readFileSync(assetPath);
+    const fileType = path.extname(assetPath);
 
     const { Location } = await imageUpload(assetUrlHash, assetBlob, fileType);
 
