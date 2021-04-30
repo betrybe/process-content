@@ -97,7 +97,7 @@ const processAssetContent = async (assetPath) => {
   const location = await s3.uploadToBucket(assetUrlHash, assetPath);
   const s3UrlLocation = utils.urlSanitizer(location);
   const relativeAssetPath = assetPath.split('static').pop();
-
+  core.info(`Asset: ${s3UrlLocation} sucessfully uploaded`);
   return { [relativeAssetPath]: s3UrlLocation };
 };
 
