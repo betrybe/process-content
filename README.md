@@ -6,6 +6,8 @@
 
 A GitHub action that process and creates content after merge from a specific _Pull Request_.
 
+[Action workflow Diagram](https://excalidraw.com/#room=34517199ed4f07c97d7c,pRraNLw2SvxHOJyrPYn3KA)
+
 ## Example usage
 ```yaml
 steps:
