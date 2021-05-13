@@ -17,7 +17,7 @@ describe('S3 Client Actions', () => {
     const assetPath = '__mocks__/fixtures/assets/static/agile/scrum.png';
     const rawAssetBlob = readMockFile(assetPath);
 
-    const result = await s3Service.imageUpload(rawAssetBlob, assetPath, '.png');
+    const result = await s3Service.imageUpload(rawAssetBlob, assetPath, 'png');
 
     expect(typeof result).toBe('object');
     expect(result).toHaveProperty('Location', '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png');
