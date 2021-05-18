@@ -4,6 +4,8 @@ const logger = require('./logger');
 
 const CHUNK_SIZE = core.getInput('chunkSize') || process.env.CHUNK_SIZE;
 const INTERVAL_BETWEEN_CHUNKS = core.getInput('intervalBetweenChunks') || process.env.INTERVAL_BETWEEN_CHUNKS;
+const MAX_SERVICE_RETRY = core.getInput('maxServiceRetry') || process.env.MAX_SERVICE_RETRY || 15;
+const HEALTH_CHECK_INTERVAL = core.getInput('healthCheckInterval') || process.env.HEALTH_CHECK_INTERVAL || 10000;
 
 const handleChapterError = (chapter) => {
   const filePath = JSON.parse(chapter.config.data).path;
@@ -97,16 +99,21 @@ const createVersion = (apiUrl, apiKey, versionBodyObj) => {
   return axios.post(apiUrl, versionBodyObj, headerObj);
 };
 
-const checkForApplication = (apiUrl, apiKey, retries = 15) => {
+const checkForApplication = (apiUrl, apiKey, retries = MAX_SERVICE_RETRY) => {
   const headerObj = configHeaders(apiKey);
+
+  if (retries === 0) return Promise.resolve({ applicationReady: false });
 
   return axios.get(apiUrl, headerObj)
     .then((result) => {
       if (result.status === 200) return { applicationReady: true };
+      core.info(`status = ${result.status}:: retrying(${retries})... ${apiUrl}`);
       return checkForApplication(apiUrl, apiKey, retries - 1);
     })
-    .catch(async () => {
-      await sleep(15000);
+    .catch(async (response) => {
+      await sleep(HEALTH_CHECK_INTERVAL);
+      core.info(response);
+      core.info(`retrying(${retries})... ${apiUrl}`);
       return checkForApplication(apiUrl, apiKey, retries - 1);
     });
 };

@@ -23,6 +23,7 @@ const processContent = async () => {
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
 
+  core.info(`::Check ${applicationHealthApiURL}::`);
   const { applicationReady } = await checkForApplication(applicationHealthApiURL, apiKey);
 
   if (!applicationReady) {
