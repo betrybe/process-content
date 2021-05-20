@@ -46,7 +46,7 @@ describe('Action Execution', () => {
       },
     );
 
-    await expect(main.processContent()).rejects.toThrow('Aplicação http://localhost:4001/health_check ainda não está disponível. Execute novamente esta action e assim que o servidor estiver pronto ela fará o processo normalmente.');
+    await expect(main.processContent()).rejects.toThrow(/Aplicação (.+?) ainda não está disponível. Execute novamente esta action e assim que o servidor estiver pronto ela fará o processo normalmente./);
   });
 
   test('throw error when a chapter couldn`t be created', async () => {
