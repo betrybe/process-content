@@ -1,32 +1,22 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const fs = require('fs');
-const path = require('path');
+const mime = require('mime');
 const logger = require('./logger');
-
-/**
- * Extrai do caminho do arquivo a extensão.
- * @param {string} filePath
- * @returns {string}
- */
-const extractFileExtension = (filePath) => {
-  const extension = path.extname(filePath);
-  return extension.slice(1);
-};
 
 const credentials = {
   accessKeyId: core.getInput('awsAccessKey') || process.env.AWS_ACCESS_KEY,
   secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
 };
 
-const imageUpload = (assetUrlHash, assetBlob, extension) => {
+const imageUpload = (assetUrlHash, assetBlob, assetType) => {
   const s3BucketClient = new AWS.S3(credentials);
 
   const params = {
     Bucket: core.getInput('bucketName') || process.env.BUCKET_NAME,
     Key: assetUrlHash,
     Body: assetBlob,
-    ContentType: `image/${extension}`,
+    ContentType: assetType,
   };
 
   return s3BucketClient.upload(params, {}).promise();
@@ -35,9 +25,9 @@ const imageUpload = (assetUrlHash, assetBlob, extension) => {
 const uploadToBucket = async (assetUrlHash, assetPath) => {
   try {
     const assetBlob = fs.readFileSync(assetPath);
-    const extension = extractFileExtension(assetPath);
+    const assetType = mime.getType(assetPath);
 
-    const { Location } = await imageUpload(assetUrlHash, assetBlob, extension);
+    const { Location } = await imageUpload(assetUrlHash, assetBlob, assetType);
 
     return Location;
   } catch (error) {
