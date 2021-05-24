@@ -104,6 +104,17 @@ This action accepts the following configuration parameters via `with:`
 
   Interval in milliseconds between each group of chapter creation requests
 
+- `healthCheckInterval`
+
+  **Not Required**
+
+  Interval in milliseconds between each retry on content api health_check
+
+- `maxServiceRetry`
+
+  **Not Required**
+
+  Maximum of retries action would be doing to content api to check if it is up
 ## Outputs
 
 - `result`

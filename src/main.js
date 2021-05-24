@@ -23,10 +23,11 @@ const processContent = async () => {
 
   const arrayOfAssets = await buildAssets(assetsFilesPath);
 
+  core.info(`::Check ${applicationHealthApiURL}::`);
   const { applicationReady } = await checkForApplication(applicationHealthApiURL, apiKey);
 
   if (!applicationReady) {
-    throw new Error('Application deployment isn`t available');
+    throw new Error(`Aplicação ${applicationHealthApiURL} ainda não está disponível. Execute novamente esta action e assim que o servidor estiver pronto ela fará o processo normalmente.`);
   }
 
   const arrayOfChapters = await buildChapters(filesPath);
