@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const AWS = require('aws-sdk');
 const fs = require('fs');
-const path = require('path');
+const mime = require('mime');
 const logger = require('./logger');
 
 const credentials = {
@@ -9,14 +9,14 @@ const credentials = {
   secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
 };
 
-const imageUpload = (assetUrlHash, assetBlob, fileType) => {
+const imageUpload = (assetUrlHash, assetBlob, assetType) => {
   const s3BucketClient = new AWS.S3(credentials);
 
   const params = {
     Bucket: core.getInput('bucketName') || process.env.BUCKET_NAME,
     Key: assetUrlHash,
     Body: assetBlob,
-    ContentType: `image/${fileType}`,
+    ContentType: assetType,
   };
 
   return s3BucketClient.upload(params, {}).promise();
@@ -25,9 +25,9 @@ const imageUpload = (assetUrlHash, assetBlob, fileType) => {
 const uploadToBucket = async (assetUrlHash, assetPath) => {
   try {
     const assetBlob = fs.readFileSync(assetPath);
-    const fileType = path.extname(assetPath);
+    const assetType = mime.getType(assetPath);
 
-    const { Location } = await imageUpload(assetUrlHash, assetBlob, fileType);
+    const { Location } = await imageUpload(assetUrlHash, assetBlob, assetType);
 
     return Location;
   } catch (error) {
