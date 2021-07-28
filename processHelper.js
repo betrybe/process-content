@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 
-const spawnProcess = (...args) => {
-  const process = spawn(...args);
+const spawnProcess = (opts, ...args) => {
+  const process = spawn(...args, opts);
   const processOutput = {
     stdout: '',
     stderr: '',
@@ -22,8 +22,8 @@ const spawnProcess = (...args) => {
 
     process.on('error', reject);
     process.on('close', (code) => {
-      if (code === 0) return resolve(processOutput);
-      return reject(processOutput);
+      if (code === 0) return resolve(processOutput.stdout);
+      return reject(processOutput.stderr);
     });
   });
 };

@@ -57,8 +57,6 @@ const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, ind
 const buildChapters = async (chapterPath) => {
   const arrayOfFiles = await gitCommands.getFiles(chapterPath);
 
-  const sanitizedArrayOfFiles = utils.sanitizeFilesArray(arrayOfFiles);
-
   const chapterArrayOfObj = groupFiles(sanitizedArrayOfFiles);
 
   core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
@@ -81,11 +79,7 @@ const generateContentMd5Hash = (fileContent) => {
 };
 
 const getAssetsFiles = async (assetsPath) => {
-  const arrayOfAssets = await gitCommands.getFiles(assetsPath);
-
-  const sanitizedArrayOfAssets = utils.sanitizeFilesArray(arrayOfAssets);
-
-  return sanitizedArrayOfAssets;
+  return await gitCommands.getFiles(assetsPath);
 };
 
 const processAssetContent = async (assetPath) => {
@@ -103,7 +97,6 @@ const processAssetContent = async (assetPath) => {
 
 const buildAssets = async (assetsPath) => {
   const arrayOfAssets = await getAssetsFiles(assetsPath);
-
   core.info(`Processing ${arrayOfAssets.length} Assets`);
   return Promise.all(
     arrayOfAssets.map((assetPath) => processAssetContent(assetPath)),
