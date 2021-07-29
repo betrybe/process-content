@@ -75,9 +75,7 @@ const generateContentMd5Hash = (fileContent) => {
   return contentMd5;
 };
 
-const getAssetsFiles = async (assetsPath) => {
-  return await gitCommands.getFiles(assetsPath);
-};
+const getAssetsFiles = async (assetsPath) => gitCommands.getFiles(assetsPath);
 
 const processAssetContent = async (assetPath) => {
   const { assetContent } = await extractFileInfo(assetPath);
