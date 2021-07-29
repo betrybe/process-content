@@ -8,23 +8,25 @@ const path = require('path')
 
 const bashExec = util.promisify(exec)
 
-const getFiles = async (path) => {
+const getFiles = async (directory) => {
   try {
-    const gitRoot = await getGitRoot(path);  
+    const gitRoot = await getGitRoot(directory);  
 
-    const {stdout, _} = await bashExec(`git ls-files ':!:./basket-of-unused-content*' --full-name`, {cwd: path});
+    const {stdout, _} = await bashExec(`git ls-files ':!:./basket-of-unused-content*' --full-name`, {cwd: directory});
+
     const sanitizedArrayOfFiles = utils.sanitizeFilesArray(stdout);    
 
-    return sanitizedArrayOfFiles.map((f) => `${gitRoot}/${f}`)
+    return sanitizedArrayOfFiles.map((f) => path.join(gitRoot,f))
 
   } catch(error) {
     return logger.info({ message: `Error at getFiles because: ${error.stderr}` });
   }
 };
 
-const getCommitId = async (path) => {
+const getCommitId = async (file) => {
   try {
-    const { stdout, _ } = await bashExec(`git log -n 1 --pretty=format:%H`, path);
+    gitRoot = await getGitRoot(file);
+    const { stdout, _ } = await bashExec(`git log -n 1 --pretty=format:%H -- ${file}`, {cwd: gitRoot});
     return stdout;
   } catch (error) {
     return logger.info({ message: `Error at getCommitIds because: ${error.stderr}` });

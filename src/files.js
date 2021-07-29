@@ -41,7 +41,6 @@ const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, ind
   if (index === array.length) return groupedFiles;
 
   if (path.extname(currentPath).includes('.yaml')) return groupedFiles;
-
   const filesMatch = utils.verifyFileMatching(currentPath, array[index + 1]);
 
   if (filesMatch) {
@@ -56,9 +55,7 @@ const groupFiles = (filesArr) => filesArr.reduce((groupedFiles, currentPath, ind
 
 const buildChapters = async (chapterPath) => {
   const arrayOfFiles = await gitCommands.getFiles(chapterPath);
-
-  const chapterArrayOfObj = groupFiles(sanitizedArrayOfFiles);
-
+  const chapterArrayOfObj = groupFiles(arrayOfFiles);
   core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
   return Promise.all(
     chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj)),
