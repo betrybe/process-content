@@ -27,10 +27,16 @@
   "dependencies": {
     "@actions/core": "^1.2.5",
     "aws-sdk": "^2.808.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "benchmark": "^2.1.4",
     "dotenv": "^8.2.0",
-    "mime": "^2.5.2"
+    "mime": "^2.5.2",
+    "glob-parent": "^5.1.2",
+    "lodash": "^4.17.21",
+    "y18n": "^4.0.1",
+    "ws": "^7.4.6",
+    "node-notifier": "^8.0.1",
+    "hosted-git-info": "^2.8.9"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
