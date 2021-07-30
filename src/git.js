@@ -13,7 +13,7 @@ const getGitRoot = async (dirOrFile) => {
     const { stdout } = await bashExec('git rev-parse --show-toplevel', { cwd: directory });
     return stdout.trim();
   } catch (error) {
-    return logger.info({ message: `Error at getGitRoot: ${error}` });
+    return logger.error({ message: `Error at getGitRoot: ${error}` });
   }
 };
 
@@ -24,7 +24,7 @@ const getFiles = async (directory) => {
     const sanitizedArrayOfFiles = utils.sanitizeFilesArray(stdout);
     return sanitizedArrayOfFiles.map((f) => path.join(gitRoot, f));
   } catch (error) {
-    return logger.info({ message: `Error at getFiles because: ${error.stderr}` });
+    return logger.error({ message: `Error at getFiles because: ${error.stderr}` });
   }
 };
 
@@ -34,7 +34,7 @@ const getCommitId = async (file) => {
     const { stdout } = await bashExec(`git log -n 1 --pretty=format:%H -- ${file}`, { cwd: gitRoot });
     return stdout;
   } catch (error) {
-    return logger.info({ message: `Error at getCommitIds because: ${error.stderr}` });
+    return logger.error({ message: `Error at getCommitIds because: ${error.stderr}` });
   }
 };
 
@@ -44,7 +44,7 @@ const getBlobContent = async (commitId, file) => {
     const relativePath = path.relative(gitRoot, file);
     return await spawnProcess({ cwd: gitRoot }, 'git', ['cat-file', '-p', `${commitId}:${relativePath}`]);
   } catch (error) {
-    return logger.info({ message: `Error at getRawContent because: ${error}` });
+    return logger.error({ message: `Error at getRawContent because: ${error}` });
   }
 };
 
