@@ -1,13 +1,18 @@
-const { spawn } = require('child_process');
+import { spawn } from 'child_process';
 
-const spawnProcess = (...args) => {
-  const process = spawn(...args);
+type StandardOutput = {
+  stdout: string;
+  stderr: string;
+}
+
+export const spawnProcess = (args: string, options: string[]) => {
+  const process = spawn(args, options);
   const processOutput = {
     stdout: '',
     stderr: '',
   };
 
-  return new Promise((resolve, reject) => {
+  return new Promise<StandardOutput>((resolve, reject) => {
     if (process.stdout) {
       process.stdout.on('data', (data) => {
         processOutput.stdout += data;
@@ -26,8 +31,4 @@ const spawnProcess = (...args) => {
       return reject(processOutput);
     });
   });
-};
-
-module.exports = {
-  spawnProcess,
 };

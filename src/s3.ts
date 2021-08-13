@@ -9,7 +9,7 @@ const credentials = {
   secretAccessKey: core.getInput('awsSecret') || process.env.AWS_SECRET,
 };
 
-const imageUpload = (assetUrlHash, assetBlob, assetType) => {
+export const imageUpload = (assetUrlHash: string, assetBlob: string, assetType: string) => {
   const s3BucketClient = new AWS.S3(credentials);
 
   const params = {
@@ -22,7 +22,7 @@ const imageUpload = (assetUrlHash, assetBlob, assetType) => {
   return s3BucketClient.upload(params, {}).promise();
 };
 
-const uploadToBucket = async (assetUrlHash, assetPath) => {
+export const uploadToBucket = async (assetUrlHash: string, assetPath: string) => {
   try {
     const assetBlob = fs.readFileSync(assetPath);
     const assetType = mime.getType(assetPath);
@@ -39,9 +39,4 @@ const uploadToBucket = async (assetUrlHash, assetPath) => {
     };
     return logger.setFailed(logBody);
   }
-};
-
-module.exports = {
-  uploadToBucket,
-  imageUpload,
 };

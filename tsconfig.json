@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // Library configuration.
+    "lib": ["esnext"],
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+
+    // Strictness & code quality configuration.
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+
+    // Module configuration.
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["./src"]
+}
