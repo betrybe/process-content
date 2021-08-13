@@ -1,24 +1,17 @@
-const sanitizeExtension = (file) => file.replace(/\.[^/.]+$/, '');
+export const sanitizeExtension = (file: string) => file.replace(/\.[^/.]+$/, '');
 
-const getExtension = (file) => file.split('.').pop();
+export const getExtension = (file: string) => file.split('.').pop();
 
-const verifyFileMatching = (file1, file2) =>
+export const verifyFileMatching = (file1: string, file2: string) =>
   sanitizeExtension(file1).includes(sanitizeExtension(file2))
     && getExtension(file1) !== getExtension(file2);
 
-const sanitizeFilesArray = (fileArray) =>
+export const sanitizeFilesArray = (fileArray: string) =>
   fileArray.split('\n').filter((file) => getExtension(file) !== 'eex' && file !== '' && getExtension(file) !== 'mp4');
 
-const isFigure = (extension) => (/\.(gif|jpe?g|tiff?|png|webp|svg)$/i).test(extension);
+export const isFigure = (extension: string) => (/\.(gif|jpe?g|tiff?|png|webp|svg)$/i).test(extension);
 
-const urlSanitizer = (url) => {
+export const urlSanitizer = (url: string) => {
   if (isFigure(url)) return url.replace('https://', 'https:\\/\\/');
   return url;
-};
-
-module.exports = {
-  sanitizeExtension,
-  verifyFileMatching,
-  sanitizeFilesArray,
-  urlSanitizer,
 };
