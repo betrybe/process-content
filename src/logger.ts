@@ -1,6 +1,6 @@
-const core = require('@actions/core');
+import * as core from '@actions/core';
 
-const loggerDisplay = (params, display) => {
+const loggerDisplay = (params: Record<string, unknown>, display: (value: string) => void) => {
   const logEntries = Object.entries(params);
 
   return logEntries.forEach((entrie) => {
@@ -9,9 +9,9 @@ const loggerDisplay = (params, display) => {
 };
 
 const Logger = {
-  error: (args) => { loggerDisplay(args, core.error); },
-  setFailed: (args) => { loggerDisplay(args, core.setFailed); },
-  info: (args) => { loggerDisplay(args, core.info); },
+  error: (args: Record<string, unknown>) => { loggerDisplay(args, core.error); },
+  setFailed: (args: Record<string, unknown>) => { loggerDisplay(args, core.setFailed); },
+  info: (args: Record<string, unknown>) => { loggerDisplay(args, core.info); },
 };
 
-module.exports = Logger;
+export default Logger;
