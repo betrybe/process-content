@@ -23,10 +23,10 @@ const handleChapterError = (chapter) => {
 };
 
 const handleChaptersResult = (createdChaptersResult) => {
-  core.info(`Raw data: START ${createdChaptersResult} END `);
+  core.info(`Raw data: START ${JSON.stringify(createdChaptersResult)} END `);
   createdChaptersResult.reduce((resultAccumulator, currentResult) => {
     const newResultAccumulator = { ...resultAccumulator };
-    core.info(`currentResult: START ${currentResult} END `);
+    core.info(`currentResult: START ${JSON.stringify(currentResult)} END `);
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
         ...newResultAccumulator.results, currentResult.data.data.chapter_id,
@@ -56,6 +56,7 @@ const createChapter = (apiUrl, body, arrayOfAssets, apiKey) => {
     assets_map: arrayOfAssets,
   };
 
+  core.info(`createChapter: START ${apiUrl} ${JSON.stringify(bodyObj)} ${JSON.stringify(headerObj)} END `);
   return axios.post(apiUrl, bodyObj, headerObj);
 };
 
