@@ -23,10 +23,8 @@ const handleChapterError = (chapter) => {
 };
 
 const handleChaptersResult = (createdChaptersResult) => {
-  core.info(`Raw data: START ${JSON.stringify(createdChaptersResult)} END `);
   createdChaptersResult.reduce((resultAccumulator, currentResult) => {
     const newResultAccumulator = { ...resultAccumulator };
-    core.info(`currentResult: START ${JSON.stringify(currentResult)} END `);
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
         ...newResultAccumulator.results, currentResult.data.data.chapter_id,
@@ -56,7 +54,6 @@ const createChapter = (apiUrl, body, arrayOfAssets, apiKey) => {
     assets_map: arrayOfAssets,
   };
 
-  core.info(`createChapter: START ${apiUrl} ${JSON.stringify(bodyObj)} ${JSON.stringify(headerObj)} END `);
   return axios.post(apiUrl, bodyObj, headerObj);
 };
 
@@ -92,6 +89,7 @@ const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) =>
   ), Promise.resolve());
 
   core.info('::Todos os grupos de requests finalizados::');
+  core.info(`START ${JSON.stringify(result)} END`);
 
   return handleChaptersResult(result);
 };
