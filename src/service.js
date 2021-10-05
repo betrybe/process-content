@@ -22,9 +22,11 @@ const handleChapterError = (chapter) => {
   return logger.error(logBody);
 };
 
-const handleChaptersResult = (createdChaptersResult) =>
+const handleChaptersResult = (createdChaptersResult) => {
+  core.info(`Raw data: START ${createdChaptersResult} END `);
   createdChaptersResult.reduce((resultAccumulator, currentResult) => {
     const newResultAccumulator = { ...resultAccumulator };
+    core.info(`currentResult: START ${currentResult} END `);
     if (currentResult.status === 200) {
       newResultAccumulator.results = [
         ...newResultAccumulator.results, currentResult.data.data.chapter_id,
@@ -39,7 +41,7 @@ const handleChaptersResult = (createdChaptersResult) =>
     }
 
     return newResultAccumulator;
-  }, { results: [], success: true });
+  }, { results: [], success: true })};
 
 const configHeaders = (apiKey) => ({ headers: { 'x-api-content-key': apiKey } });
 
