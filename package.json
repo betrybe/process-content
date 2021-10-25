@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.2.5",
     "aws-sdk": "^2.808.0",
-    "axios": "^0.21.0",
+    "axios": "^0.24.0",
     "benchmark": "^2.1.4",
     "dotenv": "^8.2.0",
     "mime": "^2.5.2"
