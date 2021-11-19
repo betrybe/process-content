@@ -128,7 +128,7 @@ const buildAssets = async (assetsPath) => {
       core.info(`Iniciando upload de grupo ${(index + 1)}...`);
 
       const responses = await Promise.all(
-        assets.map((assetPath) => processAssetContent(assetPath))
+        assets.map((assetPath) => processAssetContent(assetPath)),
       );
 
       await sleep(1000);
