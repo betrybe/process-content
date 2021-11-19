@@ -62,6 +62,7 @@ const buildChapters = async (chapterPath) => {
   const chapterArrayOfObj = groupFiles(sanitizedArrayOfFiles);
 
   core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
+
   return Promise.all(
     chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj)),
   );
@@ -101,13 +102,41 @@ const processAssetContent = async (assetPath) => {
   return { [relativeAssetPath]: s3UrlLocation };
 };
 
+const chunkArray = (myArray, chunkSize) => {
+  const results = [];
+
+  while (myArray.length) {
+    results.push(myArray.splice(0, chunkSize));
+  }
+
+  return results;
+};
+
+const createFilesChunk = (arrayOfChapters) => chunkArray(arrayOfChapters, 100);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const buildAssets = async (assetsPath) => {
   const arrayOfAssets = await getAssetsFiles(assetsPath);
-
   core.info(`Processing ${arrayOfAssets.length} Assets`);
-  return Promise.all(
-    arrayOfAssets.map((assetPath) => processAssetContent(assetPath)),
-  );
+
+  const groupOfAssets = createFilesChunk(arrayOfAssets);
+
+  core.info(`Número de Grupos: #${groupOfAssets.length}`);
+
+  const result = await groupOfAssets.reduce((chain, assets, index) => (
+    chain.then(async (previousResults) => {
+      core.info(`Iniciando upload de grupo ${(index + 1)}...`);
+
+      const responses = await Promise.all(
+        assets.map((assetPath) => processAssetContent(assetPath)),
+      );
+
+      await sleep(1000);
+      return [...responses, ...previousResults || []];
+    })
+  ), Promise.resolve());
+
+  return result;
 };
 
 module.exports = {
