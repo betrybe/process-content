@@ -6,13 +6,9 @@ const s3 = require('./s3');
 const utils = require('./utils');
 
 const extractFileInfo = async (filePath) => {
-  console.log(filePath)
   const commitId = await gitCommands.getCommitId(filePath);
-  console.log(commitId)
   const blobContent = await gitCommands.getBlobContent(commitId, filePath);
 
-  console.log(commitId)
-  console.log(blobContent)
   if (path.extname(filePath) === '.md') {
     return {
       markdownCommitId: commitId,
@@ -67,12 +63,9 @@ const buildChapters = async (chapterPath) => {
 
   core.info(`Processing ${chapterArrayOfObj.length} Chapters`);
 
-  return chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj))
-    .map((pendingPromise) => pendingPromise.then((result, error) => result))
-
-  // return Promise.all(
-  //   chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj)),
-  // );
+  return Promise.all(
+    chapterArrayOfObj.map((chapterObj) => buildChapterObj(chapterObj)),
+  );
 };
 
 const buildAssetHashUrl = (assetPath, blobHash) => {
@@ -109,30 +102,6 @@ const processAssetContent = async (assetPath) => {
   return { [relativeAssetPath]: s3UrlLocation };
 };
 
-const buildAssets = async (assetsPath) => {
-  const arrayOfAssets = await getAssetsFiles(assetsPath);
-  core.info(`Processing ${arrayOfAssets.length} Assets`);
-
-  const groupOfAssets = createFilesChunk(arrayOfAssets);
-
-  core.info(`Número de Grupos: #${groupOfAssets.length}`);
-
-  const result = await groupOfAssets.reduce((chain, assets, index) => (
-    chain.then(async (previousResults) => {
-      core.info(`Iniciando upload de grupo ${(index + 1)}...`);
-
-      const responses = await Promise.all(
-        assets.map((assetPath) => processAssetContent(assetPath)).catch((e) => e.response)
-      )
-
-      await sleep(1000);
-      return [...responses, ...previousResults || []];
-    })
-  ), Promise.resolve());
-
-  return result;
-};
-
 const chunkArray = (myArray, chunkSize) => {
   const results = [];
 
@@ -146,6 +115,29 @@ const chunkArray = (myArray, chunkSize) => {
 const createFilesChunk = (arrayOfChapters) => chunkArray(arrayOfChapters, 100);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const buildAssets = async (assetsPath) => {
+  const arrayOfAssets = await getAssetsFiles(assetsPath);
+  core.info(`Processing ${arrayOfAssets.length} Assets`);
+
+  const groupOfAssets = createFilesChunk(arrayOfAssets);
+
+  core.info(`Número de Grupos: #${groupOfAssets.length}`);
+
+  const result = await groupOfAssets.reduce((chain, assets, index) => (
+    chain.then(async (previousResults) => {
+      core.info(`Iniciando upload de grupo ${(index + 1)}...`);
+
+      const responses = await Promise.all(
+        assets.map((assetPath) => processAssetContent(assetPath)).catch((e) => e.response),
+      );
+
+      await sleep(1000);
+      return [...responses, ...previousResults || []];
+    })
+  ), Promise.resolve());
+
+  return result;
+};
 
 module.exports = {
   buildChapters,
