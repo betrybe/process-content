@@ -113,13 +113,13 @@ describe('Files', () => {
       .mockResolvedValueOnce(assetContent);
 
     s3.uploadToBucket
-      .mockResolvedValueOnce('https://s3.bucketname.amazonaws.com/assets.app.betrybe.com/back-end/image-d1291f436dfe589ba4efe36562ae4db4.sql');
+      .mockResolvedValueOnce('https://s3.bucketname.amazonaws.com/assets.app.betrybe.com/agile/scrum-d1291f436dfe589ba4efe36562ae4db4.png');
 
     const urlHashObj = await files.processAssetContent(assetPath, '__mocks__/fixtures/assets/static');
 
     expect(typeof urlHashObj).toBe('object');
     expect(urlHashObj).toEqual({
-      '/agile/scrum.png': 'https://assets.app.betrybe.com/back-end/image-d1291f436dfe589ba4efe36562ae4db4.sql',
+      '/agile/scrum.png': 'https:\\/\\/assets.app.betrybe.com/agile/scrum-d1291f436dfe589ba4efe36562ae4db4.png',
     });
   });
 });
