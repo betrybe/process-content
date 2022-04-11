@@ -18,7 +18,7 @@ const urlSanitizer = (url) => {
 
 const useCachedUrl = (url) => {
   const regex = /(https:)(.+?)\/(assets.app.betrybe.com)(.+)/;
-  return regex.test(url) ? urlSanitizer(url.replace(regex, "$1//$3$4")) : url;
+  return regex.test(url) ? urlSanitizer(url.replace(regex, '$1//$3$4')) : url;
 };
 
 module.exports = {
