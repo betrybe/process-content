@@ -71,6 +71,8 @@ const createChaptersChunk = (arrayOfChapters) => chunkArray(arrayOfChapters, CHU
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const createChapters = async (arrayOfChapters, arrayOfAssets, apiUrl, apiKey) => {
+  core.info(`assets => ${arrayOfAssets}`);
+
   const groupOfChapters = createChaptersChunk(arrayOfChapters);
 
   core.info(`Número de Grupos: #${groupOfChapters.length}`);
