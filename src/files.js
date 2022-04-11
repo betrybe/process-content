@@ -99,7 +99,7 @@ const processAssetContent = async (assetPath) => {
   const s3UrlLocation = utils.urlSanitizer(location);
   const relativeAssetPath = assetPath.split('static').pop();
   core.info(`Asset: ${s3UrlLocation} sucessfully uploaded`);
-  return { [relativeAssetPath]: s3UrlLocation };
+  return { [relativeAssetPath]: utils.useCachedUrl(s3UrlLocation) };
 };
 
 const chunkArray = (myArray, chunkSize) => {
