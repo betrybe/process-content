@@ -96,11 +96,10 @@ const processAssetContent = async (assetPath) => {
   const assetUrlHash = buildAssetHashUrl(assetPath, assetContentMd5);
 
   const location = await s3.uploadToBucket(assetUrlHash, assetPath);
-  const s3UrlLocation = utils.urlSanitizer(location);
+  const s3UrlLocation = utils.useCachedUrl(location);
   const relativeAssetPath = assetPath.split('static').pop();
   core.info(`Asset: ${s3UrlLocation} sucessfully uploaded`);
-  core.info(`Assert relative (${relativeAssetPath}) : ${utils.useCachedUrl(s3UrlLocation)}`);
-  return { [relativeAssetPath]: utils.useCachedUrl(s3UrlLocation) };
+  return { [relativeAssetPath]: s3UrlLocation };
 };
 
 const chunkArray = (myArray, chunkSize) => {
