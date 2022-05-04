@@ -104,4 +104,22 @@ describe('Files', () => {
       '/agile/scrum.png': '__mocks__/fixtures/assets/static/agile/scrum-213c790c4129428a74486324d08e78e7.png',
     });
   });
+
+  test('Builds array of assets new hash urls with cached path', async () => {
+    const assetPath = '__mocks__/fixtures/assets/static/agile/scrum.png';
+    const assetContent = readMockFile(assetPath);
+
+    gitCommands.getBlobContent
+      .mockResolvedValueOnce(assetContent);
+
+    s3.uploadToBucket
+      .mockResolvedValueOnce('https://s3.bucketname.amazonaws.com/assets.app.betrybe.com/agile/scrum-d1291f436dfe589ba4efe36562ae4db4.png');
+
+    const urlHashObj = await files.processAssetContent(assetPath, '__mocks__/fixtures/assets/static');
+
+    expect(typeof urlHashObj).toBe('object');
+    expect(urlHashObj).toEqual({
+      '/agile/scrum.png': 'https:\\/\\/assets.app.betrybe.com/agile/scrum-d1291f436dfe589ba4efe36562ae4db4.png',
+    });
+  });
 });
